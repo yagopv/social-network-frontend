@@ -1,0 +1,30 @@
+.grid-layout-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(auto, 200px) 1fr minmax(auto, 200px);
+  grid-template-rows: 100px 1fr 100px;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+:host ::ng-deep [grid-layout-header] {
+  grid-column: 1 / -1;
+}
+
+:host ::ng-deep [grid-layout-nav] {
+  grid-column: 1 / 2;
+}
+
+:host ::ng-deep [grid-layout-content] {
+  grid-column: 2 / 3;
+}
+
+:host ::ng-deep [grid-layout-aside] {
+  grid-column: 3 / 4;
+}
+
+:host ::ng-deep [grid-layout-footer] {
+  grid-column: 1 / -1;
+}

@@ -2,9 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,800');
 
 html {
+  height: 100%;
   body {
     background-color: $white-smoke;
     font-family: 'Open Sans', Helvetica, sans-serif;
+    height: 100%;
   }
 
   h1 {
