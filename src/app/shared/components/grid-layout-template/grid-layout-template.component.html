@@ -1,7 +1,17 @@
 <div class="grid-layout-container">
-  <ng-content select="[grid-layout-header]"></ng-content>
-  <ng-content select="[grid-layout-nav]"></ng-content>
-  <ng-content select="[grid-layout-content]"></ng-content>
-  <ng-content select="[grid-layout-aside]"></ng-content>
-  <ng-content select="[grid-layout-footer]"></ng-content>
+  <header *ngIf="headerTemplate">
+    <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+  </header>
+  <nav *ngIf="navTemplate">
+    <ng-container *ngTemplateOutlet="navTemplate"></ng-container>
+  </nav>
+  <section class="content" *ngIf="contentTemplate">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </section>
+  <aside *ngIf="asideTemplate">
+    <ng-container *ngTemplateOutlet="asideTemplate"></ng-container>
+  </aside>
+  <footer *ngIf="footerTemplate">
+    <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+  </footer>
 </div>

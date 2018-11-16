@@ -6,7 +6,7 @@ import { GridLayoutTemplateComponent } from './components/grid-layout-template/g
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [NotFoundComponent, GridLayoutProjectionComponent],
-  exports: [NotFoundComponent, GridLayoutTemplateComponent]
+  declarations: [NotFoundComponent, GridLayoutTemplateComponent, GridLayoutProjectionComponent],
+  exports: [NotFoundComponent, GridLayoutTemplateComponent, GridLayoutProjectionComponent]
 })
 export class SharedModule {}

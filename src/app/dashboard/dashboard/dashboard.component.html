@@ -1,7 +1,27 @@
-<hab-grid-layout>
-  <header grid-layout-header>header</header>
-  <nav grid-layout-nav>nav</nav>
-  <section grid-layout-content>content</section>
-  <aside grid-layout-aside>aside</aside>
-  <footer grid-layout-footer>footer</footer>
-</hab-grid-layout>
+<!--
+  <hab-grid-layout-projection>
+    <header grid-layout-header>header</header>
+    <nav grid-layout-nav>nav</nav>
+    <section grid-layout-content>content</section>
+    <aside grid-layout-aside>aside</aside>
+    <footer grid-layout-footer>footer</footer>
+  </hab-grid-layout-projection>
+-->
+
+<ng-template #header> <p>Header</p> </ng-template>
+
+<ng-template #nav> <p>Nav</p> </ng-template>
+
+<ng-template #content> <p>Content</p> </ng-template>
+
+<ng-template #aside> <p>Aside</p> </ng-template>
+
+<ng-template #footer> <p>Header</p> </ng-template>
+
+<hab-grid-layout-template
+  [headerTemplate]="header"
+  [navTemplate]="nav"
+  [contentTemplate]="content"
+  [asideTemplate]="aside"
+  [footerTemplate]="footer"
+></hab-grid-layout-template>
