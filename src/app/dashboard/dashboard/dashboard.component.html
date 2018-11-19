@@ -1,14 +1,14 @@
 <!--
   <hab-grid-layout-projection>
-    <header grid-layout-header>header</header>
+    <ng-container grid-layout-header> <hab-header></hab-header> </ng-container>
     <nav grid-layout-nav>nav</nav>
     <section grid-layout-content>content</section>
     <aside grid-layout-aside>aside</aside>
-    <footer grid-layout-footer>footer</footer>
+    <ng-container grid-layout-footer> <hab-footer></hab-footer> </ng-container>
   </hab-grid-layout-projection>
 -->
 
-<ng-template #header> <p>Header</p> </ng-template>
+<ng-template #header> <hab-header></hab-header></ng-template>
 
 <ng-template #nav> <p>Nav</p> </ng-template>
 
@@ -16,7 +16,7 @@
 
 <ng-template #aside> <p>Aside</p> </ng-template>
 
-<ng-template #footer> <p>Header</p> </ng-template>
+<ng-template #footer> <hab-footer></hab-footer> </ng-template>
 
 <hab-grid-layout-template
   [headerTemplate]="header"
