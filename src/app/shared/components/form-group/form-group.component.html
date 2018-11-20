@@ -1,0 +1,9 @@
+<div class="form-group">
+  <ng-content></ng-content>
+  <p
+    class="text-danger"
+    *ngIf="control.hasError('required') && control.touched"
+  >
+    <span class="error">Campo requerido</span>
+  </p>
+</div>

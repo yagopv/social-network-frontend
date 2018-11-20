@@ -5,6 +5,8 @@ import { GridLayoutProjectionComponent } from './components/grid-layout-projecti
 import { GridLayoutTemplateComponent } from './components/grid-layout-template/grid-layout-template.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.component';
+import { FormGroupComponent } from './components/form-group/form-group.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -13,14 +15,18 @@ import { FooterComponent } from './components/footer/footer.component';
     GridLayoutTemplateComponent,
     GridLayoutProjectionComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FormWrapperComponent,
+    FormGroupComponent
   ],
   exports: [
     NotFoundComponent,
     GridLayoutTemplateComponent,
     GridLayoutProjectionComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FormWrapperComponent,
+    FormGroupComponent
   ]
 })
 export class SharedModule {}
