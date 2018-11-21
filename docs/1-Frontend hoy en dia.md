@@ -12,3 +12,12 @@
 
 [https://itnext.io/why-concept-of-immutability-is-so-damn-important-for-a-beginner-front-end-developer-8da85b565c8e](https://itnext.io/why-concept-of-immutability-is-so-damn-important-for-a-beginner-front-end-developer-8da85b565c8e)
 
+---
+
+# Errores mas comunes de los desarrolladores
+
+- Tendencia a estimar bajo el coste de hacer algo
+- Acumulando deuda tecnica
+- "Lo arreglare mas tarde"
+- No ser pragmatico. Sobre complicar las cosas
+
