@@ -1,2 +1,8 @@
 <p>dash</p>
-<router-outlet></router-outlet>
+<hab-container class="dashboard">
+  <hab-dashboard-header> </hab-dashboard-header>
+  <hab-container class="nav"></hab-container>
+  <hab-container class="main"> <router-outlet></router-outlet> </hab-container>
+  <hab-container class="aside"></hab-container>
+  <hab-dashboard-footer> </hab-dashboard-footer>
+</hab-container>
