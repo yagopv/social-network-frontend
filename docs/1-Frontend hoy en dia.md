@@ -6,6 +6,8 @@
 
 [The web developer roadmap in 2018](https://github.com/kamranahmedse/developer-roadmap)
 
+https://2018.stateofjs.com/
+
 ---
 
 # Inmutabilidad
@@ -20,4 +22,14 @@
 - Acumulando deuda tecnica
 - "Lo arreglare mas tarde"
 - No ser pragmatico. Sobre complicar las cosas
+- Cuando heredo un proyecto WTF!! por todos lados
+- [Hype driven development](https://www.youtube.com/watch?v=_kVxXV0TQ7M)
+
+---
+
+# Articulos de interes
+
+https://medium.com/javascript-scene/the-single-biggest-mistake-programmers-make-every-day-62366b432308
+
+---
 
