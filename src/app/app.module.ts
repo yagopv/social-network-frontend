@@ -9,6 +9,7 @@ import { LayoutModule } from './layout/layout.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { FriendsModule } from './friends/friends.module';
 import { AuthModule } from './auth/auth.module';
+import { AboutModule } from './about/about.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     DashboardModule,
     FriendsModule,
     AuthModule,
+    AboutModule,
     AppRoutingModule
   ],
   providers: [],

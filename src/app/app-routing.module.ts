@@ -8,12 +8,16 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { FriendsComponent } from './friends/friends/friends.component';
+import { AboutComponent } from './about/about/about.component';
 
 const routes: Routes = [
   {
     path: '',
     component: SiteLayoutComponent,
-    children: [{ path: '', component: WelcomeComponent, pathMatch: 'full' }]
+    children: [
+      { path: '', component: WelcomeComponent, pathMatch: 'full' },
+      { path: 'about', component: AboutComponent }
+    ]
   },
   {
     path: '',
@@ -36,6 +40,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  import { AboutComponent } from './about/about/about.component';
+exports: [RouterModule]
 })
 export class AppRoutingModule {}
