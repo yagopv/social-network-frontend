@@ -1,5 +1,6 @@
 @import 'colors.scss';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,800');
+@import url('https://fonts.googleapis.com/css?family=Knewave');
 
 html {
   height: 100%;
@@ -31,5 +32,13 @@ html {
 
   p {
     font-size: 1rem;
+  }
+
+  a {
+    color: $white-smoke;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

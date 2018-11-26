@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faHackerrank } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'hab-site-layout-header',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./site-layout-header.component.scss']
 })
 export class SiteLayoutHeaderComponent implements OnInit {
+  logo = faHackerrank;
+
   ngOnInit() {
     console.log('onInit - SiteLayoutHeaderComponent');
   }

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'app/shared/shared.module';
-
 import { SiteLayoutComponent } from 'app/layout/site-layout/site-layout.component';
 import { SiteLayoutHeaderComponent } from './site-layout-header/site-layout-header.component';
 import { SiteLayoutFooterComponent } from './site-layout-footer/site-layout-footer.component';
@@ -14,7 +15,7 @@ import { AppLayoutHeaderComponent } from './app-layout-header/app-layout-header.
 import { AppLayoutFooterComponent } from './app-layout-footer/app-layout-footer.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, SharedModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule, SharedModule],
   declarations: [
     SiteLayoutComponent,
     SiteLayoutHeaderComponent,
