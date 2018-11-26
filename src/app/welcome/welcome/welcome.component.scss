@@ -1,0 +1,14 @@
+.welcome {
+  display: flex;
+  height: 100%;
+  .picture {
+    flex: 2;
+    background-image: url('/assets/images/welcome.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: url('#purple-filter');
+  }
+  .content {
+    flex: 1;
+  }
+}
