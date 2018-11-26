@@ -1,8 +1,18 @@
+@import '~scss/colors.scss';
+
 hab-container {
   &.site-layout {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 100px 1fr 100px;
     height: 100%;
+
+    hab-site-layout-header {
+      background-color: $razzmic-berry;
+    }
+
+    hab-site-layout-footer {
+      background-color: $razzmic-berry;
+    }
   }
 }

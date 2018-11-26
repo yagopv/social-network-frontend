@@ -1,3 +1,5 @@
+@import '~scss/colors.scss';
+
 hab-container {
   &.app-layout {
     display: grid;
@@ -11,10 +13,14 @@ hab-container {
 
     hab-app-layout-header {
       grid-area: header;
+      background-color: $razzmic-berry;
+      align-self: center;
+      height: 100%;
     }
 
     hab-app-layout-nav {
       grid-area: nav;
+      background-color: $tuscany;
     }
 
     hab-container {
@@ -29,6 +35,7 @@ hab-container {
 
     hab-app-layout-footer {
       grid-area: footer;
+      background-color: $razzmic-berry;
     }
   }
 }
