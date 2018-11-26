@@ -1,0 +1,34 @@
+hab-container {
+  &.app-layout {
+    display: grid;
+    grid-template-columns: minmax(100px, 200px) 1fr minmax(100px, 200px);
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas:
+      'header header header'
+      'nav content aside'
+      'footer footer footer';
+    height: 100%;
+
+    hab-app-layout-header {
+      grid-area: header;
+    }
+
+    hab-app-layout-nav {
+      grid-area: nav;
+    }
+
+    hab-container {
+      &.content {
+        grid-area: content;
+      }
+    }
+
+    hab-app-layout-aside {
+      grid-area: aside;
+    }
+
+    hab-app-layout-footer {
+      grid-area: footer;
+    }
+  }
+}

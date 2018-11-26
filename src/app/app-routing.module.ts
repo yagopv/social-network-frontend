@@ -1,11 +1,36 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from 'app/shared/components/not-found/not-found.component';
-import { WelcomeComponent } from './welcome/welcome/welcome.component';
+import { SiteLayoutComponent } from './layout/site-layout/site-layout.component';
+import { WelcomeComponent } from 'app/welcome/welcome/welcome.component';
+import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { FriendsComponent } from './friends/friends/friends.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'welcome' },
+  {
+    path: '',
+    component: SiteLayoutComponent,
+    children: [{ path: '', component: WelcomeComponent, pathMatch: 'full' }]
+  },
+  {
+    path: '',
+    component: AppLayoutComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'friends', component: FriendsComponent }
+    ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
   { path: '**', component: NotFoundComponent }
 ];
 

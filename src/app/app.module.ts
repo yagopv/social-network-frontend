@@ -5,15 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { WelcomeModule } from 'app/welcome/welcome.module';
+import { LayoutModule } from './layout/layout.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { FriendsModule } from './friends/friends.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     WelcomeModule,
-    DashboardModule,
+    LayoutModule,
     SharedModule,
+    DashboardModule,
+    FriendsModule,
+    AuthModule,
     AppRoutingModule
   ],
   providers: [],

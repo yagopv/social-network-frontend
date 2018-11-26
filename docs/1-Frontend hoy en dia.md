@@ -23,6 +23,7 @@ https://2018.stateofjs.com/
 - "Lo arreglare mas tarde"
 - No ser pragmatico. Sobre complicar las cosas
 - Cuando heredo un proyecto WTF!! por todos lados
+- Nadie mira tu código
 - [Hype driven development](https://www.youtube.com/watch?v=_kVxXV0TQ7M)
 
 ---
