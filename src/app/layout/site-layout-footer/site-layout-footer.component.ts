@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./site-layout-footer.component.scss']
 })
 export class SiteLayoutFooterComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit() {
+    console.log('onInit - SiteLayoutFooterComponent');
   }
-
 }

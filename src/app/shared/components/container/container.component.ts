@@ -5,4 +5,8 @@ import { Component, OnInit } from '@angular/core';
   template: '<ng-content></ng-content>',
   styleUrls: ['./container.component.scss']
 })
-export class ContainerComponent {}
+export class ContainerComponent implements OnInit {
+  ngOnInit() {
+    console.log('onInit - ContainerComponent');
+  }
+}

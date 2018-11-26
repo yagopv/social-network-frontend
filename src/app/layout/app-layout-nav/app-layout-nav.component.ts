@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-layout-nav.component.scss']
 })
 export class AppLayoutNavComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit() {
+    console.log('onInit - AppLayoutNavComponent');
   }
-
 }
