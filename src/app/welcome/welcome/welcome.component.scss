@@ -17,12 +17,22 @@
     text-align: center;
     margin-bottom: 20px;
     li {
-      &.selected {
-        border-bottom: 2px solid $razzmic-berry;
-      }
       display: inline-block;
-      padding: 10px 0 5px 0;
       margin-left: 10px;
+      &:after {
+        content: '';
+        margin-top: 5px;
+        display: block;
+        width: 0;
+        height: 2px;
+        background: $razzmic-berry;
+        transition: width 0.3s;
+      }
+      &.selected {
+        &:after {
+          width: 100%;
+        }
+      }
       a {
         color: $razzmic-berry;
       }
