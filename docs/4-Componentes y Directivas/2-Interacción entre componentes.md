@@ -1,3 +1,5 @@
+theme: Next, 8
+
 # **@Input**
 
 - `Input` nos permite enviar datos de un componente padre a su hijo

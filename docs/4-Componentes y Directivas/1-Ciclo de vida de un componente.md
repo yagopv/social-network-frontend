@@ -1,3 +1,4 @@
+theme: Next, 8
 autoscale: true
 
 # Ciclo de vida de un componente

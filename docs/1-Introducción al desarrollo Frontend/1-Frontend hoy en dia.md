@@ -1,3 +1,5 @@
+theme: Next, 8
+
 # Angular vs React vs Vue
 
 ---

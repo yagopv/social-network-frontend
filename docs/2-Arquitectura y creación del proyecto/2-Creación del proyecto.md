@@ -1,3 +1,5 @@
+theme: Next, 8
+
 # Crear un nuevo proyecto
 
 ```bash

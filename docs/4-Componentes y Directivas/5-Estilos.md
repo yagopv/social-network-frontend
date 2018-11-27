@@ -1,3 +1,5 @@
+theme: Next, 8
+
 # Dando estilos a nuestros componentes
 
 - Las aplicaciones Angular pueden reciben estilos usando CSS. También podremos utilizar precompiladores como SASS de forma sencilla

@@ -1,3 +1,5 @@
+theme: Next, 8
+
 # Que es Angular?
 
 Angular es una plataforma para la creación de aplicaciones en HTML y TypeScript.
