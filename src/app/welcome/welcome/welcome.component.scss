@@ -1,3 +1,5 @@
+@import '~scss/colors.scss';
+
 .welcome {
   display: flex;
   height: 100%;
@@ -10,5 +12,20 @@
   }
   .content {
     flex: 1;
+  }
+  .toolbar {
+    text-align: center;
+    margin-bottom: 20px;
+    li {
+      &.selected {
+        border-bottom: 2px solid $razzmic-berry;
+      }
+      display: inline-block;
+      padding: 10px 0 5px 0;
+      margin-left: 10px;
+      a {
+        color: $razzmic-berry;
+      }
+    }
   }
 }

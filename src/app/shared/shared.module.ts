@@ -5,6 +5,7 @@ import { NotFoundComponent } from 'app/shared/components/not-found/not-found.com
 import { FormWrapperComponent } from 'app/shared/components/form-wrapper/form-wrapper.component';
 import { ContainerComponent } from './components/container/container.component';
 import { PictureComponent } from './components/picture/picture.component';
+import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -12,7 +13,8 @@ import { PictureComponent } from './components/picture/picture.component';
     NotFoundComponent,
     FormWrapperComponent,
     ContainerComponent,
-    PictureComponent
+    PictureComponent,
+    ClickPreventDefaultDirective
   ],
   exports: [
     NotFoundComponent,

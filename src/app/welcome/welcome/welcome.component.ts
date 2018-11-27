@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
-  isRegisterFormVisible = false;
+  isRegisterFormVisible = true;
 
   ngOnInit() {
     console.log('onInit - WelcomeComponent');
