@@ -4,9 +4,10 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { AuthModule } from 'app/auth/auth.module';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, SharedModule],
+  imports: [CommonModule, RouterModule, AuthModule, SharedModule],
   declarations: [WelcomeComponent]
 })
 export class WelcomeModule {}
