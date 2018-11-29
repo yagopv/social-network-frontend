@@ -1,4 +1,17 @@
 @import '~scss/colors.scss';
 
 :host {
+  ::ng-deep {
+    button {
+      background-color: $white-smoke;
+      color: $razzmic-berry;
+      padding: 20px 30px;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      &.right {
+        float: right;
+      }
+    }
+  }
 }

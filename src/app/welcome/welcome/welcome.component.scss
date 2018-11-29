@@ -1,16 +1,25 @@
 @import '~scss/colors.scss';
+@import '~scss/breakpoints.scss';
+
 hab-container {
   display: flex;
   height: 100%;
   background-color: $razzmic-berry;
+  flex-direction: column;
   justify-content: center;
-  padding-top: 30px;
+  padding: 0 20px;
   hab-welcome-hero {
     flex: 1;
-    padding: 0 0 0 10%;
   }
   hab-welcome-forms {
     flex: 1;
-    padding: 0 10%;
+    @include respond-above(md) {
+      flex-direction: row;
+      max-width: 500px;
+    }
+  }
+  @include respond-above(md) {
+    padding: 5% 10%;
+    flex-direction: row;
   }
 }
