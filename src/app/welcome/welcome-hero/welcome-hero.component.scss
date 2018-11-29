@@ -1,0 +1,10 @@
+@import '~scss/colors.scss';
+ul {
+  li {
+    color: $white-smoke;
+    margin: 40px 0px 0px 40px;
+    fa-icon {
+      margin-right: 20px;
+    }
+  }
+}

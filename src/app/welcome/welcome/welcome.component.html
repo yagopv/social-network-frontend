@@ -1,28 +1,4 @@
-<div class="welcome">
-  <section class="picture">
-    <svg>
-      <filter id="purple-filter">
-        <feColorMatrix
-          type="matrix"
-          values="1 -0.2 0 0 0 0 1 0 -0.1 0 0 1.2 1 0.1 0 0 0 1.7 1 0"
-        ></feColorMatrix>
-      </filter>
-    </svg>
-  </section>
-  <section class="content">
-    <ul class="toolbar">
-      <li [class.selected]="isRegisterFormVisible">
-        <a href="#" habPreventDefault (click)="toggleForm()">Register</a>
-      </li>
-      <li [class.selected]="!isRegisterFormVisible">
-        <a href="#" habPreventDefault (click)="toggleForm()">Login</a>
-      </li>
-    </ul>
-    <div class="register-form" [hidden]="!isRegisterFormVisible">
-      <hab-register></hab-register>
-    </div>
-    <div class="login-form" [hidden]="isRegisterFormVisible">
-      <p>Login Form</p>
-    </div>
-  </section>
-</div>
+<hab-container>
+  <hab-welcome-hero></hab-welcome-hero>
+  <hab-welcome-forms></hab-welcome-forms>
+</hab-container>

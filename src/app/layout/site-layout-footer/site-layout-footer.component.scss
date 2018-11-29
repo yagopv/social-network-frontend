@@ -1,0 +1,21 @@
+@import '~scss/colors.scss';
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.4em;
+  margin: 20px 50px;
+  p {
+    justify-self: start;
+    color: $white-smoke;
+    font-size: inherit;
+    margin-right: auto;
+  }
+  ul {
+    li {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+}

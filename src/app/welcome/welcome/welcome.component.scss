@@ -1,41 +1,16 @@
 @import '~scss/colors.scss';
-
-.welcome {
+hab-container {
   display: flex;
   height: 100%;
-  .picture {
-    flex: 2;
-    background-image: url('/assets/images/welcome.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: url('#purple-filter');
-  }
-  .content {
+  background-color: $razzmic-berry;
+  justify-content: center;
+  padding-top: 30px;
+  hab-welcome-hero {
     flex: 1;
+    padding: 0 0 0 10%;
   }
-  .toolbar {
-    text-align: center;
-    margin-bottom: 20px;
-    li {
-      display: inline-block;
-      margin-left: 10px;
-      &:after {
-        content: '';
-        margin-top: 5px;
-        display: block;
-        width: 0;
-        height: 2px;
-        background: $razzmic-berry;
-        transition: width 0.3s;
-      }
-      &.selected {
-        &:after {
-          width: 100%;
-        }
-      }
-      a {
-        color: $razzmic-berry;
-      }
-    }
+  hab-welcome-forms {
+    flex: 1;
+    padding: 0 10%;
   }
 }
