@@ -1,9 +1,9 @@
 <hab-form-group>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <hab-form-control>
+    <hab-form-control [control]="loginForm.get('email')">
       <input type="email" placeholder="Email" formControlName="email" />
     </hab-form-control>
-    <hab-form-control>
+    <hab-form-control [control]="loginForm.get('password')">
       <input
         type="password"
         placeholder="Password"

@@ -42,7 +42,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  import { HelpComponent } from './help/help/help.component';
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

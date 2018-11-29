@@ -1,12 +1,12 @@
 <hab-form-group>
   <form [formGroup]="registerForm" (ngSubmit)="register()">
-    <hab-form-control>
+    <hab-form-control [control]="registerForm.get('firstName')">
       <input type="text" placeholder="First Name" formControlName="firstName" />
     </hab-form-control>
-    <hab-form-control>
+    <hab-form-control [control]="registerForm.get('lastName')">
       <input type="text" placeholder="Last name" formControlName="lastName" />
     </hab-form-control>
-    <hab-form-control>
+    <hab-form-control [control]="registerForm.get('email')">
       <input type="email" placeholder="email" formControlName="email" />
     </hab-form-control>
     <button type="submit" class="right">Register</button>

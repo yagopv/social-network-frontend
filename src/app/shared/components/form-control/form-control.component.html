@@ -1,0 +1,10 @@
+<ng-content></ng-content>
+
+<p
+  class="error-message"
+  *ngIf="control.hasError('required') && control.touched"
+>
+  <span class="glyphicon glyphicon-exclamation-sign">
+    Este campo es obligatorio
+  </span>
+</p>
