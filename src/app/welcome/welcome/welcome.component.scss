@@ -4,10 +4,12 @@
 hab-container {
   display: flex;
   height: 100%;
-  background-color: $razzmic-berry;
+  background-color: $white-smoke;
   flex-direction: column;
   justify-content: center;
   padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   hab-welcome-hero {
     flex: 1;
   }

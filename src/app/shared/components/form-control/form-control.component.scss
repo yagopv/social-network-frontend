@@ -1,8 +1,8 @@
 @import '~scss/colors.scss';
 
-:host {
+div {
   display: block;
-  margin: 40px 0;
+  margin: 30px 0;
   height: 50px;
   ::ng-deep {
     input[type='text'],
@@ -17,11 +17,32 @@
       outline: none;
       background: $white-smoke;
       height: 100%;
+      transition: all 0.2s ease-in;
       &:focus {
-        box-shadow: 0 0 3px 2px $white-smoke;
+        box-shadow: 0 0 3px 2px $razzmic-berry;
       }
       &::placeholder {
         color: $razzmic-berry;
+      }
+    }
+  }
+  &.has-error {
+    .error-message {
+      margin-top: 5px;
+      color: $error;
+    }
+    ::ng-deep {
+      input {
+        border: 1px solid $error;
+        color: $white-smoke;
+        background: $error;
+        transition: all 0.2s ease-in;
+        &:focus {
+          box-shadow: none;
+        }
+        &::placeholder {
+          color: $white-smoke;
+        }
       }
     }
   }
