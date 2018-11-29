@@ -19,7 +19,7 @@ hab-container {
     }
   }
   @include respond-above(md) {
-    padding: 5% 10%;
+    padding: 5% 0;
     flex-direction: row;
   }
 }

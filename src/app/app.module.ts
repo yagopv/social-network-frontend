@@ -10,6 +10,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { FriendsModule } from './friends/friends.module';
 import { AuthModule } from './auth/auth.module';
 import { AboutModule } from './about/about.module';
+import { HelpModule } from './help/help.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { AboutModule } from './about/about.module';
     DashboardModule,
     FriendsModule,
     AuthModule,
+    HelpModule,
     AboutModule,
     AppRoutingModule
   ],

@@ -6,7 +6,6 @@ div {
   align-items: center;
   justify-content: flex-end;
   font-size: 1.4em;
-  margin: 0 50px;
   p {
     justify-self: start;
     color: $white-smoke;
@@ -16,7 +15,7 @@ div {
   ul {
     li {
       display: inline-block;
-      margin-left: 10px;
+      margin-left: 20px;
     }
   }
 }

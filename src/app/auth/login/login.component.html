@@ -1,3 +1,15 @@
-<p>
-  login works!
-</p>
+<hab-form-group>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <hab-form-control>
+      <input type="email" placeholder="Email" formControlName="email" />
+    </hab-form-control>
+    <hab-form-control>
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </hab-form-control>
+    <button type="submit" class="right">Login</button>
+  </form>
+</hab-form-group>

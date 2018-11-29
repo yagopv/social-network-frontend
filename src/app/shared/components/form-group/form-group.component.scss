@@ -9,8 +9,12 @@
       border-radius: 5px;
       font-size: 1rem;
       font-weight: bold;
+      outline: none;
       &.right {
         float: right;
+      }
+      &:hover {
+        box-shadow: 0 0 5px 4px $white-smoke;
       }
     }
   }

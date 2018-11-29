@@ -6,7 +6,8 @@
   height: 50px;
   ::ng-deep {
     input[type='text'],
-    input[type='email'] {
+    input[type='email'],
+    input[type='password'] {
       width: 100%;
       border: 1px solid $razzmic-berry;
       color: $razzmic-berry;
