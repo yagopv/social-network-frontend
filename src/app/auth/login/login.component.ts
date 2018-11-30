@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { NgForm, FormControl, AbstractControl } from '@angular/forms';
+import { NgForm, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginModel } from './login.model';
 
 @Component({
   selector: 'hab-login',
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  loginModel = {};
+  loginModel: LoginModel = new LoginModel();
+
   constructor(private router: Router) {}
 
   login(form: NgForm) {
