@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'hab-form-control',
@@ -7,5 +7,5 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./form-control.component.scss']
 })
 export class FormControlComponent {
-  @Input() control: FormControl;
+  @Input() control: AbstractControl;
 }

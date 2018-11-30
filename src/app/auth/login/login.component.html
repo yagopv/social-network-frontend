@@ -1,13 +1,27 @@
+<!-- Template-Driven -->
 <hab-form-group>
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <hab-form-control [control]="loginForm.get('email')">
-      <input type="email" placeholder="Email" formControlName="email" />
+  <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+    <hab-form-control [control]="email">
+      <input
+        type="text"
+        id="email"
+        placeholder="Email"
+        required
+        email
+        [(ngModel)]="loginModel.email"
+        name="email"
+        #email="ngModel"
+      />
     </hab-form-control>
-    <hab-form-control [control]="loginForm.get('password')">
+    <hab-form-control [control]="password">
       <input
         type="password"
+        id="password"
         placeholder="Password"
-        formControlName="password"
+        required
+        [(ngModel)]="loginModel.password"
+        name="password"
+        #password="ngModel"
       />
     </hab-form-control>
     <button type="submit" class="right">Login</button>

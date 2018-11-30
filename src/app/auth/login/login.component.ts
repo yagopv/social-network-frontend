@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { MailValidator } from 'app/shared/validators/mail.validator';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,20 +7,14 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  loginForm = this.fb.group({
-    email: ['', [Validators.required, MailValidator]],
-    password: ['', Validators.required]
-  });
+  loginModel = {};
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.loginForm.valueChanges.subscribe(value => console.log(value));
-  }
+  constructor(private router: Router) {}
 
-  login() {
-    if (this.loginForm.valid) {
-      const formData = this.loginForm.value;
+  login(form: NgForm) {
+    if (form.valid) {
       // TODO: Login user
-      console.log('login() - ', formData);
+      console.log('login() - ', form.value);
       this.router.navigate(['/dashboard']);
     }
   }
