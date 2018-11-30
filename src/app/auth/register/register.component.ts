@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { MailValidator } from 'app/shared/validators/mail.validator';
+import { MailValidator } from 'app/shared/validators/mail/mail.validator';
 import { Router } from '@angular/router';
 
 @Component({

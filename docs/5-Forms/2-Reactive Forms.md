@@ -298,7 +298,7 @@ Una parte fundamental en cualquier librería o módulo de gestión de formulario
 ```javascript
 profileForm = this.fb.group({
   firstName: ['', Validators.required],
-  lastName: [''],
+  lastName: ['', MailValidator],
   address: this.fb.group({
     street: [''],
     city: [''],
@@ -311,6 +311,29 @@ profileForm = this.fb.group({
 ```html
 <input type="text" formControlName="firstName" required>
 ```
+
+---
+
+# Custom Validation
+
+```javascript
+export const MailValidator = (
+  control: AbstractControl
+): { [key: string]: boolean } => {
+  const EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+
+  if (
+    control.value !== '' &&
+    (control.value.length <= 5 || !EMAIL_REGEXP.test(control.value))
+  ) {
+    return { malformedMail: true };
+  }
+
+  return null;
+};
+```
+
+
 
 ---
 

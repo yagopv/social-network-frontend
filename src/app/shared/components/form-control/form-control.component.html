@@ -1,12 +1,11 @@
 <div [class.has-error]="control.errors && control.touched">
   <ng-content></ng-content>
 
-  <p
-    class="error-message"
-    *ngIf="control.hasError('required') && control.touched"
-  >
-    <span class="glyphicon glyphicon-exclamation-sign">
-      Este campo es obligatorio
-    </span>
-  </p>
+  <ng-container *ngIf="control.invalid && (control.dirty || control.touched)">
+    <p class="error-message" *ngIf="control.hasError('required')">
+      <span class="glyphicon glyphicon-exclamation-sign">
+        Este campo es obligatorio
+      </span>
+    </p>
+  </ng-container>
 </div>

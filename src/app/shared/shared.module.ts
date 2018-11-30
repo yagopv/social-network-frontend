@@ -7,6 +7,7 @@ import { ContainerComponent } from './components/container/container.component';
 import { PictureComponent } from './components/picture/picture.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form-control/form-control.component';
+import { MailValidatorDirective } from './validators/mail/mail.validator';
 
 @NgModule({
   imports: [CommonModule],
@@ -16,14 +17,16 @@ import { FormControlComponent } from './components/form-control/form-control.com
     ContainerComponent,
     PictureComponent,
     ClickPreventDefaultDirective,
-    FormControlComponent
+    FormControlComponent,
+    MailValidatorDirective
   ],
   exports: [
     NotFoundComponent,
     FormGroupComponent,
     ContainerComponent,
     PictureComponent,
-    FormControlComponent
+    FormControlComponent,
+    MailValidatorDirective
   ]
 })
 export class SharedModule {}
