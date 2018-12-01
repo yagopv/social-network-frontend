@@ -26,6 +26,6 @@ export class MailValidatorDirective implements Validator {
   @Input('habMail') mail: string;
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    return this.mail ? MailValidator(control) : null;
+    return MailValidator(control);
   }
 }
