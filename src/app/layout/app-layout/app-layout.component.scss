@@ -3,7 +3,7 @@
 hab-container {
   &.app-layout {
     display: grid;
-    grid-template-columns: minmax(100px, 200px) 1fr minmax(100px, 200px);
+    grid-template-columns: minmax(100px, 200px) 1fr minmax(200px, 400px);
     grid-template-rows: 50px 1fr 50px;
     grid-template-areas:
       'header header header'
