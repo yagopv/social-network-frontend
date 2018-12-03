@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from 'app/shared/components/not-found/not-found.component';
 import { FormGroupComponent } from 'app/shared/components/form-group/form-group.component';
 import { ContainerComponent } from './components/container/container.component';
-import { PictureComponent } from './components/picture/picture.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form-control/form-control.component';
 import { MailValidatorDirective } from './validators/mail/mail.validator';
+import { MyStatusComponent } from './components/my-status/my-status.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -15,18 +15,18 @@ import { MailValidatorDirective } from './validators/mail/mail.validator';
     NotFoundComponent,
     FormGroupComponent,
     ContainerComponent,
-    PictureComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
-    MailValidatorDirective
+    MailValidatorDirective,
+    MyStatusComponent
   ],
   exports: [
     NotFoundComponent,
     FormGroupComponent,
     ContainerComponent,
-    PictureComponent,
     FormControlComponent,
-    MailValidatorDirective
+    MailValidatorDirective,
+    MyStatusComponent
   ]
 })
 export class SharedModule {}
