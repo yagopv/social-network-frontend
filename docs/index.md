@@ -61,12 +61,18 @@
 
 13. Animaciones
 
-14. Despliegue de aplicaciones
+14. Redux
+  - Arquitectura de una aplicación basada en Redux
+  - Smart && Dumb components
+  - ngrx store
+  - ngrx effects
+
+15. Despliegue de aplicaciones
   - Compilación AOT
   - Creando los bundles para despliegue
   - Despliegue de una aplicación en Github
 
-15. Temas avanzados
+16. Temas avanzados
   - Seguridad
   - i18n
   - Service Workers y PWA
