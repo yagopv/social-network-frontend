@@ -1,0 +1,12 @@
+<section class="post-content">
+  <div class="post-content-head">
+    <img [src]="postContent.user.avatar" />
+    <div>
+      <h3>{{ postContent.user.name }}</h3>
+      <small>{{ postContent.datetime }}</small>
+    </div>
+  </div>
+  <div class="post-content-body">
+    <p>{{ postContent.message }}</p>
+  </div>
+</section>

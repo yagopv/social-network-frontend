@@ -1,0 +1,9 @@
+<hab-container>
+  <hab-post-content [postContent]="postContent"></hab-post-content>
+  <hab-post-comment-counter
+    [count]="post.comments.length"
+  ></hab-post-comment-counter>
+  <ng-container *ngFor="let comment of post.comments">
+    <hab-post-comment [comment]="comment"></hab-post-comment>
+  </ng-container>
+</hab-container>
