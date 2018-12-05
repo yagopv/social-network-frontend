@@ -1,4 +1,11 @@
 <div class="post-comment">
   <img [src]="comment.user.avatar" />
-  <p>{{ comment.comment }}</p>
+  <div class="post-message">
+    <h5>
+      <b
+        >{{ comment.user.name }} <small>{{ comment.datetime }}</small></b
+      >
+    </h5>
+    <p>{{ comment.comment }}</p>
+  </div>
 </div>

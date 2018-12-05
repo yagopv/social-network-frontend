@@ -1,3 +1,19 @@
+@import '~scss/colors.scss';
+
 .post-comment {
   display: flex;
+  margin: 10px 0;
+  img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+  .post-message {
+    margin-left: 20px;
+    background: $razzmic-berry;
+    color: $white-smoke;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 500px;
+  }
 }
