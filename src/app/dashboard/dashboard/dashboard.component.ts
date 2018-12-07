@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
         name: 'Juan Antonio Rodriguez',
         avatar: 'http://i.pravatar.cc/128?img=2'
       },
-      datetime: 1543924629944
+      datetime: 1543924629944,
       message:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra scelerisque lectus, quis commodo eros fermentum vitae. Nulla a ante quis lectus vestibulum tempor ut sed libero',
       comments: [{
