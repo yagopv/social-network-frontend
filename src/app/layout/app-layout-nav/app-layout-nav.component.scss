@@ -6,7 +6,7 @@
     li {
       display: inline-block;
       margin-left: 10px;
-      @include respond-above(sm) {
+      @include respond-above(lg) {
         display: block;
         margin-left: 0;
       }
