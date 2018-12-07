@@ -3,7 +3,8 @@
   <div class="post-message">
     <h5>
       <b
-        >{{ comment.user.name }} <small>{{ comment.datetime }}</small></b
+        >{{ comment.user.name }}
+        <small>{{ comment.datetime | userFriendlyDate }}</small></b
       >
     </h5>
     <p>{{ comment.comment }}</p>

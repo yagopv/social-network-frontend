@@ -8,6 +8,7 @@ import { ClickPreventDefaultDirective } from './directives/click-prevent-default
 import { FormControlComponent } from './components/form-control/form-control.component';
 import { MailValidatorDirective } from './validators/mail/mail.validator';
 import { MyStatusComponent } from './components/my-status/my-status.component';
+import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 
 @NgModule({
   imports: [CommonModule],
@@ -18,7 +19,8 @@ import { MyStatusComponent } from './components/my-status/my-status.component';
     ClickPreventDefaultDirective,
     FormControlComponent,
     MailValidatorDirective,
-    MyStatusComponent
+    MyStatusComponent,
+    UserFriendlyDatePipe
   ],
   exports: [
     NotFoundComponent,
@@ -26,7 +28,8 @@ import { MyStatusComponent } from './components/my-status/my-status.component';
     ContainerComponent,
     FormControlComponent,
     MailValidatorDirective,
-    MyStatusComponent
+    MyStatusComponent,
+    UserFriendlyDatePipe
   ]
 })
 export class SharedModule {}

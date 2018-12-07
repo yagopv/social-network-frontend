@@ -5,7 +5,7 @@
       <h4>
         <b>{{ postContent.user.name }}</b>
       </h4>
-      <small>{{ postContent.datetime }}</small>
+      <small>{{ postContent.datetime | userFriendlyDate }}</small>
     </div>
   </div>
   <div class="post-content-body">
