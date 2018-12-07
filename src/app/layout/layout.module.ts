@@ -13,9 +13,16 @@ import { AppLayoutAsideComponent } from './app-layout-aside/app-layout-aside.com
 import { AppLayoutNavComponent } from './app-layout-nav/app-layout-nav.component';
 import { AppLayoutHeaderComponent } from './app-layout-header/app-layout-header.component';
 import { AppLayoutFooterComponent } from './app-layout-footer/app-layout-footer.component';
+import { FriendsRequestModule } from 'app/friends-request/friends-request.module';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FontAwesomeModule, SharedModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FontAwesomeModule,
+    FriendsRequestModule,
+    SharedModule
+  ],
   declarations: [
     SiteLayoutComponent,
     SiteLayoutHeaderComponent,

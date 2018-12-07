@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { WelcomeModule } from 'app/welcome/welcome.module';
 import { LayoutModule } from './layout/layout.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { FriendsRequestModule } from './friends-request/friends-request.module';
 import { FriendsModule } from './friends/friends.module';
 import { AuthModule } from './auth/auth.module';
 import { AboutModule } from './about/about.module';
@@ -21,6 +22,7 @@ import { HelpModule } from './help/help.module';
     SharedModule,
     DashboardModule,
     FriendsModule,
+    FriendsRequestModule,
     AuthModule,
     HelpModule,
     AboutModule,
