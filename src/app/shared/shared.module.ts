@@ -9,6 +9,7 @@ import { FormControlComponent } from './components/form-control/form-control.com
 import { MailValidatorDirective } from './validators/mail/mail.validator';
 import { MyStatusComponent } from './components/my-status/my-status.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
+import { MeComponent } from './components/me/me.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -20,7 +21,8 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     FormControlComponent,
     MailValidatorDirective,
     MyStatusComponent,
-    UserFriendlyDatePipe
+    UserFriendlyDatePipe,
+    MeComponent
   ],
   exports: [
     NotFoundComponent,
@@ -29,7 +31,8 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     FormControlComponent,
     MailValidatorDirective,
     MyStatusComponent,
-    UserFriendlyDatePipe
+    UserFriendlyDatePipe,
+    MeComponent
   ]
 })
 export class SharedModule {}
