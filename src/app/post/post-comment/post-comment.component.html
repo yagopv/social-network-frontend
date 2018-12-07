@@ -1,11 +1,9 @@
-<div class="post-comment">
+<div class="post-comment" [class.me]="comment.user.id === 1">
   <img [src]="comment.user.avatar" />
   <div class="post-message">
     <h5>
-      <b
-        >{{ comment.user.name }}
-        <small>{{ comment.datetime | userFriendlyDate }}</small></b
-      >
+      {{ comment.user.name }}
+      <small>{{ comment.datetime | userFriendlyDate }}</small>
     </h5>
     <p>{{ comment.comment }}</p>
   </div>
