@@ -12,12 +12,6 @@ import { FriendsModule } from './friends/friends.module';
 import { AuthModule } from './auth/auth.module';
 import { AboutModule } from './about/about.module';
 import { HelpModule } from './help/help.module';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './app.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,10 +26,7 @@ import { AppEffects } from './app.effects';
     AuthModule,
     HelpModule,
     AboutModule,
-    AppRoutingModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects])
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
