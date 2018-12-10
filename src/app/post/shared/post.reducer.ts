@@ -12,16 +12,16 @@ const initialState: PostsState = {
 
 export function reducer(
   state = initialState,
-  action: PostActions.PostActionsUnion
+  action: PostActions.ActionsUnion
 ): PostsState {
   switch (action.type) {
-    case PostActions.PostActionTypes.GetPosts: {
+    case PostActions.ActionTypes.GetPosts: {
       return {
         posts: []
       };
     }
 
-    case PostActions.PostActionTypes.GetPostsSuccess: {
+    case PostActions.ActionTypes.GetPostsSuccess: {
       return {
         ...state,
         posts: action.posts

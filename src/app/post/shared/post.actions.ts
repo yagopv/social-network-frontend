@@ -1,24 +1,24 @@
 import { Action } from '@ngrx/store';
 import { PostViewModel } from 'app/post/shared/post.model';
 
-export enum PostActionTypes {
+export enum ActionTypes {
   GetPosts = '[Post] GetPosts',
   GetPostsSuccess = '[Post] GetPostsSuccess',
   GetPostsFailed = '[Post] GetPostsFailed'
 }
 
 export class GetPosts implements Action {
-  readonly type = PostActionTypes.GetPosts;
+  readonly type = ActionTypes.GetPosts;
 }
 
 export class GetPostsSuccess implements Action {
-  readonly type = PostActionTypes.GetPostsSuccess;
+  readonly type = ActionTypes.GetPostsSuccess;
 
   constructor(public posts: PostViewModel[]) {}
 }
 
 export class GetPostsFailed implements Action {
-  readonly type = PostActionTypes.GetPostsFailed;
+  readonly type = ActionTypes.GetPostsFailed;
 }
 
-export type PostActionsUnion = GetPosts | GetPostsSuccess | GetPostsFailed;
+export type ActionsUnion = GetPosts | GetPostsSuccess | GetPostsFailed;
