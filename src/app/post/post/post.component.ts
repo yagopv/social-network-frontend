@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Post, PostContent } from '../shared/post.model';
+import { PostViewModel, PostContentViewModel } from '../shared/post.model';
 
 @Component({
   selector: 'hab-post',
@@ -7,11 +7,11 @@ import { Post, PostContent } from '../shared/post.model';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  @Input() post: Post;
+  @Input() post: PostViewModel;
 
-  postContent: PostContent;
+  postContent: PostContentViewModel;
 
   ngOnInit() {
-    this.postContent = new PostContent(this.post);
+    this.postContent = new PostContentViewModel(this.post);
   }
 }

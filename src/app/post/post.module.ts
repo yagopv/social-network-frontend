@@ -5,9 +5,18 @@ import { PostCommentComponent } from './post-comment/post-comment.component';
 import { PostCommentCounterComponent } from './post-comment-counter/post-comment-counter.component';
 import { PostContentComponent } from './post-content/post-content.component';
 import { SharedModule } from 'app/shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromPosts from './shared/post.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PostEffects } from './shared/post.effects';
 
 @NgModule({
-  imports: [CommonModule, SharedModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    StoreModule.forFeature('posts', fromPosts.reducer),
+    EffectsModule.forRoot([PostEffects])
+  ],
   declarations: [
     PostComponent,
     PostCommentComponent,

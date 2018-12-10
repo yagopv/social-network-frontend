@@ -1,4 +1,4 @@
-theme: Next, 8
+ theme: Next, 8
 autoscale: true
 
 # Template-driven Forms

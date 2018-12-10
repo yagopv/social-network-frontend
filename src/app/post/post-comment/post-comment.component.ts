@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostComment } from '../shared/post.model';
+import { PostCommentViewModel } from '../shared/post.model';
 
 @Component({
   selector: 'hab-post-comment',
@@ -7,7 +7,7 @@ import { PostComment } from '../shared/post.model';
   styleUrls: ['./post-comment.component.scss']
 })
 export class PostCommentComponent implements OnInit {
-  @Input() comment: PostComment;
+  @Input() comment: PostCommentViewModel;
 
   constructor() {}
 

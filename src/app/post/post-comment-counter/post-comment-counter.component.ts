@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostCommentCounter } from '../shared/post.model';
 
 @Component({
   selector: 'hab-post-comment-counter',
