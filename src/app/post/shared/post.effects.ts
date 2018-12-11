@@ -130,10 +130,7 @@ const posts: PostViewModel[] = [
 export class PostEffects {
   @Effect() getPosts$: Observable<Action> = this.actions$.pipe(
     ofType(fromActions.ActionTypes.GetPosts),
-    switchMap(action => {
-      console.log(action);
-      return of(new fromActions.GetPostsSuccess(posts));
-    })
+    switchMap(action => of(new fromActions.GetPostsSuccess(posts)))
   );
 
   constructor(private actions$: Actions) {}

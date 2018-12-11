@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select, State } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { GetPosts } from 'app/post/shared/post.actions';
 import * as fromPosts from 'app/post/shared/post.reducer';
 import { Observable } from 'rxjs';

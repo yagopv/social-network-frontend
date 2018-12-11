@@ -12,7 +12,7 @@ export class PostContentViewModel {
 
 export interface PostCommentViewModel {
   user: PostUserViewModel;
-  datetime: string;
+  datetime: number;
   comment: string;
 }
 
