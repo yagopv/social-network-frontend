@@ -5,8 +5,8 @@ theme: Next, 8
 ```bash
 npm install -g @angular/cli
 
-ng new hack-a-boss --prefix=hab
-cd hack-a-boss
+ng new hack-a-bos --prefix=hab
+cd hack-a-bos
 ng serve
 ```
 
