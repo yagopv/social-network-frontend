@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { PostViewModel } from 'app/post/shared/post.model';
+import { PostViewModel } from 'app/post/models/post.model';
 
 export enum ActionTypes {
   GetPosts = '[Post] GetPosts',

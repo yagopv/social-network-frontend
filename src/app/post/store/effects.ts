@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import * as fromActions from './post.actions';
+import * as fromActions from './actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
-import { PostViewModel } from './post.model';
+import { PostViewModel } from '../models/post.model';
 
 const posts: PostViewModel[] = [
   {

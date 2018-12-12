@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from 'app/shared/components/not-found/not-found.component';
-import { SiteLayoutComponent } from './layout/site-layout/site-layout.component';
-import { WelcomeComponent } from 'app/welcome/welcome/welcome.component';
-import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { FriendsComponent } from './friends/friends/friends.component';
-import { AboutComponent } from './about/about/about.component';
-import { HelpComponent } from './help/help/help.component';
+import { SiteLayoutComponent } from './layout/components/site-layout/site-layout.component';
+import { WelcomeComponent } from 'app/welcome/components/welcome/welcome.component';
+import { AppLayoutComponent } from './layout/components/app-layout/app-layout.component';
+import { LoginComponent } from './auth/components/login/login.component';
+import { RegisterComponent } from './auth/components/register/register.component';
+import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
+import { FriendsComponent } from './friends/components/friends/friends.component';
+import { AboutComponent } from './about/components/about/about.component';
+import { HelpComponent } from './help/components/help/help.component';
 
 const routes: Routes = [
   {

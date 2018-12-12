@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostComponent } from './post/post.component';
-import { PostCommentComponent } from './post-comment/post-comment.component';
-import { PostCommentCounterComponent } from './post-comment-counter/post-comment-counter.component';
-import { PostContentComponent } from './post-content/post-content.component';
+import { PostComponent } from './components/post/post.component';
+import { PostCommentComponent } from './components/post-comment/post-comment.component';
+import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
+import { PostContentComponent } from './components/post-content/post-content.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { StoreModule } from '@ngrx/store';
-import * as fromPosts from './shared/post.reducer';
+import * as fromPosts from './store/reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { PostEffects } from './shared/post.effects';
+import { PostEffects } from './store/effects';
 
 @NgModule({
   imports: [
