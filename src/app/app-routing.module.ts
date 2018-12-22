@@ -49,7 +49,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  import { CenteredLayoutComponent } from './layout/components/centered-layout/centered-layout.component';
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
