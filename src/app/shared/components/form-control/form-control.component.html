@@ -1,10 +1,15 @@
-<div [class.has-error]="control.errors && control.touched">
+<div [class.has-error]="control.errors && (control.dirty || control.touched)">
   <ng-content></ng-content>
 
   <ng-container *ngIf="control.invalid && (control.dirty || control.touched)">
     <p class="error-message" *ngIf="control.hasError('required')">
       <span class="glyphicon glyphicon-exclamation-sign">
         Este campo es obligatorio
+      </span>
+    </p>
+    <p class="error-message" *ngIf="control.hasError('malformedMail')">
+      <span class="glyphicon glyphicon-exclamation-sign">
+        Introduce un mail valido
       </span>
     </p>
   </ng-container>
