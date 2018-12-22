@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'hab-register',
-  templateUrl: './register.component.html'
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   registerForm = this.fb.group({

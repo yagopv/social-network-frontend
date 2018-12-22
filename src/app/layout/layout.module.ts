@@ -14,6 +14,7 @@ import { AppLayoutHeaderComponent } from './components/app-layout-header/app-lay
 import { AppLayoutFooterComponent } from './components/app-layout-footer/app-layout-footer.component';
 import { FriendsRequestModule } from 'app/friends-request/friends-request.module';
 import { SiteLayoutComponent } from './components/site-layout/site-layout.component';
+import { CenteredLayoutComponent } from './components/centered-layout/centered-layout.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { SiteLayoutComponent } from './components/site-layout/site-layout.compon
     AppLayoutHeaderComponent,
     AppLayoutAsideComponent,
     AppLayoutNavComponent,
-    AppLayoutFooterComponent
+    AppLayoutFooterComponent,
+    CenteredLayoutComponent
   ]
 })
 export class LayoutModule {}

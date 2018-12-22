@@ -1,0 +1,15 @@
+@import '~scss/colors.scss';
+
+hab-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30%;
+
+  div {
+    width: 100%;
+    border: 5px solid $razzmic-berry;
+    padding: 30px;
+    border-radius: 10px;
+  }
+}

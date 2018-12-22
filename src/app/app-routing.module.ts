@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/components/dashboard/dashboard.c
 import { FriendsComponent } from './friends/components/friends/friends.component';
 import { AboutComponent } from './about/components/about/about.component';
 import { HelpComponent } from './help/components/help/help.component';
+import { CenteredLayoutComponent } from './layout/components/centered-layout/centered-layout.component';
 
 const routes: Routes = [
   {
@@ -30,18 +31,25 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
+    path: '',
+    component: CenteredLayoutComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      }
+    ]
   },
   { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  import { CenteredLayoutComponent } from './layout/components/centered-layout/centered-layout.component';
+exports: [RouterModule]
 })
 export class AppRoutingModule {}
