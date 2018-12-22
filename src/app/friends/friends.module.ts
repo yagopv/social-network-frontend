@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FriendsComponent } from './friends/friends.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 @NgModule({
   imports: [CommonModule],

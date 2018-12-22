@@ -13,7 +13,7 @@ hab-container {
       'aside aside aside'
       'footer footer footer';
     height: 100%;
-
+    position: relative;
     @include respond-above(sm) {
       grid-template-rows: 50px auto 1fr 50px;
       grid-template-areas:

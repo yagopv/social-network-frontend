@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostViewModel, PostContentViewModel } from '../shared/post.model';
+import { PostViewModel, PostContentViewModel } from '../../models/post.model';
 
 @Component({
   selector: 'hab-post',

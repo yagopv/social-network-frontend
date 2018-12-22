@@ -7,8 +7,8 @@ import {
   NG_VALIDATORS
 } from '@angular/forms';
 
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, ReactiveFormsModule, FormsModule],

@@ -1,5 +1,5 @@
-import * as PostActions from './post.actions';
-import { PostViewModel } from './post.model';
+import * as PostActions from './actions';
+import { PostViewModel } from '../models/post.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface PostsState {
