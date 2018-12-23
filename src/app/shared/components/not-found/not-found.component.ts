@@ -6,7 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-  ngOnInit() {
-    console.log('onInit - NotFoundComponent');
-  }
+  ngOnInit() {}
 }

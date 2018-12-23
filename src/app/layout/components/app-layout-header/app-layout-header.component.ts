@@ -8,7 +8,5 @@ import { faHackerrank } from '@fortawesome/free-brands-svg-icons';
 export class AppLayoutHeaderComponent implements OnInit {
   logo = faHackerrank;
 
-  ngOnInit() {
-    console.log('onInit - AppLayoutHeaderComponent');
-  }
+  ngOnInit() {}
 }
