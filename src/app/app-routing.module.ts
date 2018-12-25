@@ -44,6 +44,11 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'popup-route',
+    component: HelpComponent,
+    outlet: 'popup'
+  },
   { path: '**', component: NotFoundComponent }
 ];
 
