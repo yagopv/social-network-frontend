@@ -7,7 +7,7 @@ import { AppLayoutComponent } from './layout/components/app-layout/app-layout.co
 import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
-import { FriendsComponent } from './friends/components/friends/friends.component';
+import { FriendsGridComponent } from './friends/containers/friends-grid/friends-grid.component';
 import { AboutComponent } from './about/components/about/about.component';
 import { HelpComponent } from './help/components/help/help.component';
 import { CenteredLayoutComponent } from './layout/components/centered-layout/centered-layout.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
     component: AppLayoutComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'friends', component: FriendsComponent }
+      { path: 'friends', component: FriendsGridComponent }
     ]
   },
   {

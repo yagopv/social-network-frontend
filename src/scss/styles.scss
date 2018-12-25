@@ -53,3 +53,11 @@ html {
     }
   }
 }
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $dust-storm;
+}
