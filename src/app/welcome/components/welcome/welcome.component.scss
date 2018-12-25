@@ -1,15 +1,15 @@
 @import '~scss/colors.scss';
 @import '~scss/breakpoints.scss';
 
-hab-container {
+:host {
   display: flex;
   height: 100%;
   background-color: $white-smoke;
   flex-direction: column;
   justify-content: center;
-  padding: 0 20px;
   max-width: 1200px;
-  margin: 40px auto;
+  padding: 30px 20px;
+  margin: 0 auto;
 
   hab-welcome-hero {
     display: none;
