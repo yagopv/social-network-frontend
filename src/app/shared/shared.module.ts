@@ -10,6 +10,7 @@ import { MailValidatorDirective } from './validators/mail/mail.validator';
 import { MyStatusComponent } from './components/my-status/my-status.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
+import { PopupWrapperComponent } from './components/popup-wrapper/popup-wrapper.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -22,7 +23,8 @@ import { MeComponent } from './components/me/me.component';
     MailValidatorDirective,
     MyStatusComponent,
     UserFriendlyDatePipe,
-    MeComponent
+    MeComponent,
+    PopupWrapperComponent
   ],
   exports: [
     NotFoundComponent,
@@ -32,7 +34,8 @@ import { MeComponent } from './components/me/me.component';
     MailValidatorDirective,
     MyStatusComponent,
     UserFriendlyDatePipe,
-    MeComponent
+    MeComponent,
+    PopupWrapperComponent
   ]
 })
 export class SharedModule {}

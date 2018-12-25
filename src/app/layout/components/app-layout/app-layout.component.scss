@@ -1,61 +1,81 @@
 @import '~scss/colors.scss';
 @import '~scss/breakpoints.scss';
 
+hab-app-layout-header {
+  background: $razzmic-berry;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+}
+
 hab-container {
   &.app-layout {
+    padding-top: 50px;
     display: grid;
-    grid-template-columns: minmax(150px, 200px) 5fr minmax(300px, 2fr);
-    grid-template-rows: 100px repeat(3, auto) 100px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto) 100px;
     grid-template-areas:
-      'header header header'
       'nav nav nav'
-      'content content content'
+      'main main main'
       'aside aside aside'
       'footer footer footer';
     height: 100%;
-    position: relative;
-    @include respond-above(sm) {
-      grid-template-rows: 50px auto 1fr 50px;
-      grid-template-areas:
-        'header header header'
-        'nav nav nav'
-        'content content aside'
-        'footer footer footer';
-    }
 
-    @include respond-above(lg) {
-      grid-template-rows: 50px 1fr 50px;
-      grid-template-areas:
-        'header header header'
-        'nav content aside'
-        'footer footer footer';
-    }
-
-    hab-app-layout-header {
-      grid-area: header;
-      background-color: $razzmic-berry;
-      align-self: center;
-      height: 100%;
-    }
-
-    hab-app-layout-nav {
+    nav {
       grid-area: nav;
       background-color: $tuscany;
     }
 
-    hab-container {
-      &.content {
-        grid-area: content;
-      }
+    main {
+      grid-area: main;
+      overflow: inherit;
     }
 
-    hab-app-layout-aside {
+    aside {
       grid-area: aside;
     }
 
-    hab-app-layout-footer {
+    footer {
       grid-area: footer;
       background-color: $razzmic-berry;
+    }
+
+    hab-app-layout-nav,
+    hab-app-layout-aside,
+    hab-app-layout-footer {
+      display: block;
+    }
+
+    @include respond-above(sm) {
+      height: 100vh;
+      grid-template-columns: minmax(150px, 200px) 5fr minmax(300px, 2fr);
+      grid-template-rows: auto 1fr 50px;
+      grid-template-areas:
+        'nav nav nav'
+        'main main aside'
+        'footer footer footer';
+
+      main {
+        overflow: scroll;
+      }
+    }
+
+    @include respond-above(lg) {
+      height: 100vh;
+      grid-template-columns: minmax(150px, 200px) 5fr minmax(300px, 2fr);
+      grid-template-rows: 1fr 50px;
+      grid-template-areas:
+        'nav main aside'
+        'footer footer footer';
+
+      nav,
+      main,
+      aside {
+        height: calc(100vh - 100px);
+      }
+      main {
+        overflow: scroll;
+      }
     }
   }
 }

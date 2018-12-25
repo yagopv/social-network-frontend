@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FriendsComponent } from './components/friends/friends.component';
+import { FriendsGridComponent } from './containers/friends-grid/friends-grid.component';
+import { FriendComponent } from './components/friend/friend.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [FriendsComponent],
-  exports: [FriendsComponent]
+  declarations: [FriendsGridComponent, FriendComponent],
+  exports: [FriendsGridComponent]
 })
 export class FriendsModule {}

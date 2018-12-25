@@ -1,4 +1,5 @@
-@import '~scss/breakpoints';
+@import '~scss/colors.scss';
+@import '~scss/breakpoints.scss';
 
 :host {
   padding: 20px 10px;
@@ -6,9 +7,15 @@
     li {
       display: inline-block;
       margin-left: 10px;
+      line-height: 2.5rem;
       @include respond-above(lg) {
         display: block;
         margin-left: 0;
+      }
+      a {
+        &.active {
+          color: $razzmic-berry;
+        }
       }
     }
   }
