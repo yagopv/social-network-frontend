@@ -8,14 +8,14 @@ autoscale: true
 # Que son?
 
 - Propocionan una aproximación a los formularios basada en modelos de datos creados en nuestras clases asociadas a componentes
-- Inmutables. Cada cambio en el estado de un form devuelve un nuevo estado
+- Inmutables. Cada cambio en el estado de un form devuelve un nuevo estado => Eficiencia
 - La implementación esta basada en Observables (Pueden accederse de forma síncrona) 
 - Facilitan el testeo al estar basados en clases
-- Lo que programo es lo que va a pasar y puedo depurarlo. Son menos mágicos
+- Lo que programo es lo que va a pasar y puedo depurarlo
 
 ---
 
-# Paso 1. Registrar el módulo
+# Registro del módulo que nos permite usar Reactive Forms
 
 ```javascript
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +31,7 @@ export class AppModule { }
 
 ---
 
-# Paso 2. Crear un componente y registrar un nuevo FormControl
+# FormControl. Registro en el componente
 
 ```javascript
 import { Component } from '@angular/core';
@@ -49,7 +49,7 @@ export class NameEditorComponent {
 
 ---
 
-# Paso 3. Registrar el FormControl en la template
+# FormControl. Registro en la template
 
 ```html
 <label>
@@ -58,9 +58,9 @@ export class NameEditorComponent {
 </label>
 ```
 
+---
 
-
-**Mostrar el componente**
+# FormControl. Mostrar el componente
 
 ```html
 <app-name-editor></app-name-editor>
@@ -68,7 +68,7 @@ export class NameEditorComponent {
 
 ---
 
-# Mostrando valores
+# FormControl. Mostrando valores
 
 - A través del Observable `valueChanges`
 - A través de la propiedad `value`
@@ -81,7 +81,7 @@ export class NameEditorComponent {
 
 ---
 
-# Modificando el valor
+# FormControl. Modificando el valor
 
 - A través del método `setValue()`. Modifica el valor y lo valida contra la estructura definida en el `FormControl`
 
@@ -102,16 +102,13 @@ updateName() {
 # FormGroup
 
 - *FormControl* permite realizar tracking sobre un elemento *input* 
-- *FormGroup* permite controlar el estado de un grypo de *FormControl
+- *FormGroup* permite controlar el estado de un grupo de *FormControl
 
 ---
 
-# Paso 1. Creamos la instancia
+# FormGroup. Creamos la instancia
 
 ```javascript
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-
 @Component({
   selector: 'app-profile-editor',
   templateUrl: './profile-editor.component.html',
@@ -127,7 +124,7 @@ export class ProfileEditorComponent {
 
 ---
 
-# Paso 2. Asociamos el FormGroup con el modelo y la vista
+# FormGroup. Asociación modelo - vista
 
 ```html
 <form [formGroup]="profileForm">
@@ -145,7 +142,7 @@ export class ProfileEditorComponent {
 
 ---
 
-# Paso 3. Haciendo submit del form
+# FormGroup. Submit
 
 ```html
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
@@ -153,7 +150,6 @@ export class ProfileEditorComponent {
 
 ```javascript
 onSubmit() {
-  // TODO: Use EventEmitter with form value
   console.warn(this.profileForm.value);
 }
 ```
@@ -164,15 +160,7 @@ onSubmit() {
 
 ---
 
-#FormGroup en escenarios complejos
-
-Cuando trabajamos con Formularios de cierta complejidad es interesante tener un mecanismo que nos permita agrupar elementos similares o que formen un todo juntos. Esto permite aplicar composición a los modelos de datos que estamos creando.
-
-
-
----
-
-#Paso 1. Aninando FormGroup
+#FormGroup. Anidando
 
 ```javascript
 @Component({
@@ -196,7 +184,7 @@ export class ProfileEditorComponent {
 
 ---
 
-# Paso 2. Agrupando los elementos en la plantilla
+# FormGroup. Aninando en plantilla
 
 ```html
 <form [formGroup]="profileForm">
@@ -235,6 +223,10 @@ export class ProfileEditorComponent {
 
 - *patchValue()* permite actualizar diversos *FormControl* a la vez
 
+---
+
+#Ejemplo con patchValue
+
 ```javascript
 updateProfile() {
   this.profileForm.patchValue({
@@ -250,20 +242,16 @@ updateProfile() {
 
 # FormBuilder
 
-El proceso de creación de un formulario usando *FormBuilder* y *FormGroup* puede resultar repetitivo y monótono. 
+El proceso de creación de un formulario usando *FormGroup* puede resultar repetitivo y monótono. 
 
 
-
-Angular proporciona un método más declarativo y fácil de usar.
+Angular proporciona un método más declarativo y fácil de usar con *FormBuilder*.
 
 ---
 
-# Ejemplo de creación de formulario utilizando *FormGroup*
+# FormBuilder. Ejemplo
 
 ```javascript
-import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-
 @Component({
   selector: 'app-profile-editor',
   templateUrl: './profile-editor.component.html',
@@ -287,13 +275,13 @@ export class ProfileEditorComponent {
 
 ---
 
-# Validación en formularios
+# Validación
 
 Una parte fundamental en cualquier librería o módulo de gestión de formularios es la validación de los mismos
 
 ---
 
-# Validando un formulario
+# Validación en ReactiveForms 
 
 ```javascript
 profileForm = this.fb.group({
@@ -317,23 +305,21 @@ profileForm = this.fb.group({
 # Custom Validation
 
 ```javascript
-export const MailValidator = (
+export function MailValidator(
   control: AbstractControl
-): { [key: string]: boolean } => {
+): { [key: string]: boolean } {
   const EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
   if (
-    control.value !== '' &&
+    control.value &&
     (control.value.length <= 5 || !EMAIL_REGEXP.test(control.value))
   ) {
     return { malformedMail: true };
   }
 
   return null;
-};
+}
 ```
-
-
 
 ---
 
@@ -343,7 +329,7 @@ export const MailValidator = (
 
 ---
 
-# Definiendo un formulario con *FormArray*
+# FormArray. Ejemplo
 
 ```javascript
 profileForm = this.fb.group({
@@ -363,7 +349,7 @@ profileForm = this.fb.group({
 
 ---
 
-## Utilizando nuestra nueva property
+## FormArray. Uso en clase
 
 ###Accediendo a los *alias*
 
@@ -375,7 +361,7 @@ get aliases() {
 
 
 
-### Añadiendo nuevos *alias*
+### FormArray. Añadiendo nuevos *alias*
 
 ```javascript
 addAlias() {
@@ -385,7 +371,7 @@ addAlias() {
 
 ---
 
-##Uso en la plantilla
+## FormArray. Uso en la plantilla
 
 ```html
 <div formArrayName="aliases">

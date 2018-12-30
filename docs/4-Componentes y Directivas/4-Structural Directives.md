@@ -1,5 +1,4 @@
 theme: Next, 8
-
 autoscale: true
 
 #Structural Directives
@@ -26,17 +25,17 @@ Otra forma de NO mostrar un elemento DOM sería
 
 Pero aunque el resultado visual sea el mismo las diferencias son mayores
 
-- Cuando utilizo ngIf Se eliminan listeners y todos los elementos, clases asociados. Al hacer el attach de nuevo, comienza el ciclo de vida del componente
+- Cuando utilizo una directiva como `ngIf` se eliminan listeners y todos los elementos y clases asociados. Al hacer el attach de nuevo, comienza el ciclo de vida del componente
 
-- Cuando utilizo style se mantiene el estado con todas las consecuencias. Puede que sea lo buscado
+- Cuando utilizo style se mantiene el estado con todas las consecuencias. Puede que sea lo buscado en algún caso
 
 ---
 
 # (*)
 
-- Las directivas estructurales tienen una sintaxis particular utilizando un * 
+- Las directivas estructurales tienen una sintaxis particular utilizando un asterisco _*_ 
 
-- Se traduce a un tag *ng-template* alrededor del *host*
+- En compilación esto se traduce a un tag *ng-template* alrededor del *host*
 
 ---
 
@@ -98,25 +97,25 @@ Pero aunque el resultado visual sea el mismo las diferencias son mayores
 # <ng-template />
 
 - Es un elemento del framework para mostrar HTML
-- Nunca se muestra
+- Nunca se visualiza en el DOM, es un elemento Angular que desaparece tras la compilación
 - Se sustituye por un comentario en la fase de render
 
 ---
 
 # <ng-container />
 
-- Se debe usar ng-container en caso de no disponer de un elemento host. 
+- Se puedo usar `ng-container` en caso de no disponer de un elemento host
 - Reducimos riesgo de recibir estilos globales
-- Sólo se puede introducir una directiva estructural por elemento por lo que una buena forma de esquivar esta restricción es mediante el anidado de varios ng-container
+- Sólo se puede introducir una directiva estructural por elemento por lo que una buena forma de esquivar esta restricción es mediante el anidado de varios `ng-container`
 
 ---
 
 # Ejemplo
 
-
-
 ```javascript
-@Directive({ selector: '[appUnless]'})
+@Directive({ 
+  selector: '[appUnless]'
+})
 export class UnlessDirective {
   private hasView = false;
 

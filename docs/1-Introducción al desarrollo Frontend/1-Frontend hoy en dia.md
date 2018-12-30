@@ -1,6 +1,6 @@
 theme: Next, 8
 
-# Angular vs React vs Vue
+# Frontend hoy en día
 
 ---
 
@@ -8,31 +8,12 @@ theme: Next, 8
 
 [The web developer roadmap in 2018](https://github.com/kamranahmedse/developer-roadmap)
 
+---
+
+#JS en 2018-2019
+
 https://2018.stateofjs.com/
 
 ---
 
-# Inmutabilidad
-
-[https://itnext.io/why-concept-of-immutability-is-so-damn-important-for-a-beginner-front-end-developer-8da85b565c8e](https://itnext.io/why-concept-of-immutability-is-so-damn-important-for-a-beginner-front-end-developer-8da85b565c8e)
-
----
-
-# Errores mas comunes de los desarrolladores
-
-- Tendencia a estimar bajo el coste de hacer algo
-- Acumulando deuda tecnica
-- "Lo arreglare mas tarde"
-- No ser pragmatico. Sobre complicar las cosas
-- Cuando heredo un proyecto WTF!! por todos lados
-- Nadie mira tu código
-- [Hype driven development](https://www.youtube.com/watch?v=_kVxXV0TQ7M)
-
----
-
-# Articulos de interes
-
-https://medium.com/javascript-scene/the-single-biggest-mistake-programmers-make-every-day-62366b432308
-
----
 

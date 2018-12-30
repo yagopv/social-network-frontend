@@ -119,8 +119,8 @@ export class HeroAppComponent {
 
 - *ShadowDom* - Implementación nativa de ShadowDom. Soporte limitado
 - *Native* - Implmentación nativa también pero de un estándar anterior
-- Emulated - Por defecto. Simula *ShadowDom* y por tanto soporta todos los navegadores
-- None - Los estilos se aplicacarán de forma global
+- *Emulated* - Por defecto si no se especifica otra. Simula *ShadowDom* y por tanto soporta todos los navegadores
+- *None* - Los estilos se aplicacarán de forma global
 
 ---
 
