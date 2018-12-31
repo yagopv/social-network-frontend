@@ -4,6 +4,7 @@ import { GetPosts } from 'app/post/store/actions';
 import * as fromPosts from 'app/post/store/reducer';
 import { Observable } from 'rxjs';
 import { PostViewModel } from 'app/post/models/post.model';
+
 @Component({
   selector: 'hab-dashboard',
   templateUrl: './dashboard.component.html',

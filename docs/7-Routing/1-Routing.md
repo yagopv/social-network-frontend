@@ -235,6 +235,33 @@ El router [emite eventos](https://angular.io/guide/router#router-events) en cada
 
 ---
 
+## Usando Los eventos del Router para realizar acciones
+
+```javascript
+@Component({
+  selector: 'app-routable',
+  templateUrl: './routable.component.html',
+  styleUrls: ['./routable.component.css']
+})
+export class Routable1Component implements OnInit {
+ 
+  navStart: Observable<NavigationStart>;
+ 
+  constructor(private router: Router) {
+    // Create a new Observable the publishes only the NavigationStart event
+    this.navStart = router.events.pipe(
+      filter(evt => evt instanceof NavigationStart)
+    ) as Observable<NavigationStart>;
+  }
+ 
+  ngOnInit() {
+    this.navStart.subscribe(evt => console.log('Navigation Started!'));
+  }
+}
+```
+
+---
+
 # Routing component
 
 Se dice que un componente es un routing component cuando tiene un RouterOutlet en su plantilla
