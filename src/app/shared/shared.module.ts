@@ -6,7 +6,7 @@ import { FormGroupComponent } from 'app/shared/components/form-group/form-group.
 import { ContainerComponent } from './components/container/container.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form-control/form-control.component';
-import { MailValidatorDirective } from './validators/mail/mail.validator';
+import { MailValidatorDirective } from './validators/mail.validator';
 import { MyStatusComponent } from './components/my-status/my-status.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';

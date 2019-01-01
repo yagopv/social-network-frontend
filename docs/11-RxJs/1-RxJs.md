@@ -91,3 +91,9 @@ myObservable.subscribe({
 
 ---
 
+# switchMap & mergeMap
+
+https://netbasal.com/understanding-mergemap-and-switchmap-in-rxjs-13cf9c57c885
+
+https://rxjs-playground.github.io/#/?html=%3Cbutton%3EClick%3C%2Fbutton%3E&js=const%20button%20%3D%20document.querySelector%28%27button%27%29%3B%0A%0ARx.Observable.fromEvent%28button%2C%20%27click%27%29.subscribe%28event%20%3D%3E%20%7B%0A%20%0A%20Rx.Observable.interval%281000%29.subscribe%28num%20%3D%3E%20%7B%0A%20%20%20%20console.log%28num%29%3B%0A%20%7D%29%3B%0A%20%0A%7D%29%3B
+

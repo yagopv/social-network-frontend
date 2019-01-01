@@ -8,7 +8,32 @@
       <input type="text" placeholder="Last name" formControlName="lastName" />
     </hab-form-control>
     <hab-form-control [control]="registerForm.get('email')">
-      <input type="email" placeholder="email" formControlName="email" />
+      <input type="email" placeholder="Email" formControlName="email" />
+    </hab-form-control>
+    <hab-form-control [control]="registerForm.get('password')">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </hab-form-control>
+    <hab-form-control [control]="registerForm.get('confirmPassword')">
+      <input
+        type="password"
+        placeholder="Confirm the password"
+        formControlName="confirmPassword"
+      />
+      <p
+        class="error-message"
+        *ngIf="
+          registerForm.hasError('passwordMismatch') &&
+          (registerForm.touched || registerForm.dirty)
+        "
+      >
+        <span class="glyphicon glyphicon-exclamation-sign">
+          El password y su confirmación no coinciden
+        </span>
+      </p>
     </hab-form-control>
     <button type="submit" class="right">Register</button>
   </form>

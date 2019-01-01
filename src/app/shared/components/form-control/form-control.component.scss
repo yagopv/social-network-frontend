@@ -47,3 +47,10 @@ div {
     }
   }
 }
+
+::ng-deep {
+  .error-message {
+    margin-top: 5px;
+    color: $error;
+  }
+}

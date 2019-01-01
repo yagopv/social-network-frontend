@@ -21,12 +21,9 @@ export class AuthEffects {
         })
         .pipe(
           // If successful, dispatch success action with result
-          map(data => ({
-            type: AuthActions.ActionTypes.LoginSuccess,
-            payload: data
-          })),
+          map(data => new AuthActions.LoginSuccess(data)),
           // If request fails, dispatch failed action
-          catchError(() => of({ type: AuthActions.ActionTypes.LoginFailed }))
+          catchError(() => of(new AuthActions.LoginFailed()))
         )
     )
   );
