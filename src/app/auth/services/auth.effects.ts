@@ -21,7 +21,7 @@ export class AuthEffects {
     )
   );
 
-  @Effect()
+  @Effect({ dispatch: false })
   loginSuccess$: Observable<Action> = this.actions$.pipe(
     ofType(AuthActions.ActionTypes.LoginSuccess),
     tap(() => this.router.navigate(['/dashboard']))
