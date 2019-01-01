@@ -1,0 +1,8 @@
+<div class="notifications-panel">
+  <hab-notification
+    [notification]="notifications"
+    *ngFor="let notifications of (notifications | async)"
+    (dismiss)="removeNotification(notifications.id)"
+  >
+  </hab-notification>
+</div>

@@ -4,8 +4,8 @@ import { NotFoundComponent } from 'app/shared/components/not-found/not-found.com
 import { SiteLayoutComponent } from './layout/components/site-layout/site-layout.component';
 import { WelcomeComponent } from 'app/welcome/components/welcome/welcome.component';
 import { AppLayoutComponent } from './layout/components/app-layout/app-layout.component';
-import { LoginComponent } from './auth/components/login/login.component';
-import { RegisterComponent } from './auth/components/register/register.component';
+import { LoginComponent } from './auth/containers/login/login.component';
+import { RegisterComponent } from './auth/containers/register/register.component';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 import { FriendsGridComponent } from './friends/containers/friends-grid/friends-grid.component';
 import { AboutComponent } from './about/components/about/about.component';

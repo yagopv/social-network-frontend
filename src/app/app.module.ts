@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { AboutModule } from './about/about.module';
 import { HelpModule } from './help/help.module';
 import { StoreModule } from '@ngrx/store';
+import { NotificationModule } from './notification/notification.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
@@ -30,6 +31,7 @@ import { environment } from '../environments/environment';
     AuthModule,
     HelpModule,
     AboutModule,
+    NotificationModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({

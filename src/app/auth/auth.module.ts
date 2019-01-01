@@ -7,8 +7,8 @@ import { SharedModule } from 'app/shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './containers/login/login.component';
+import { RegisterComponent } from './containers/register/register.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromAuth from './store/reducer';
 import { JwtInterceptor } from './services/jwt.interceptor';

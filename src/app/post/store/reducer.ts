@@ -17,6 +17,7 @@ export function reducer(
   switch (action.type) {
     case PostActions.ActionTypes.GetPosts: {
       return {
+        ...state,
         posts: []
       };
     }
