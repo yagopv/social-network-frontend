@@ -14,23 +14,28 @@ export class AuthEffects {
   login$: Observable<Action> = this.actions$.pipe(
     ofType(AuthActions.ActionTypes.Login),
     switchMap((action: AuthActions.Login) =>
-      this.authService
-        .login({
-          email: action.payload.email,
-          password: action.payload.password
-        })
-        .pipe(
-          // If successful, dispatch success action with result
-          map(data => new AuthActions.LoginSuccess(data)),
-          // If request fails, dispatch failed action
-          catchError(() => of(new AuthActions.LoginFailed()))
-        )
+      this.authService.login(action.payload).pipe(
+        map(data => new AuthActions.LoginSuccess(data)),
+        catchError(() => of(new AuthActions.LoginFailed()))
+      )
     )
   );
 
+  @Effect()
   loginSuccess$: Observable<Action> = this.actions$.pipe(
     ofType(AuthActions.ActionTypes.LoginSuccess),
     tap(() => this.router.navigate(['/dashboard']))
+  );
+
+  @Effect()
+  register$: Observable<Action> = this.actions$.pipe(
+    ofType(AuthActions.ActionTypes.Register),
+    switchMap((action: AuthActions.Register) =>
+      this.authService.register(action.payload).pipe(
+        map(() => new AuthActions.RegisterSuccess()),
+        catchError(() => of(new AuthActions.RegisterFailed()))
+      )
+    )
   );
 
   constructor(
