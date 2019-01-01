@@ -4,7 +4,7 @@ theme: Next, 8
 
 Angular es una plataforma para la creación de aplicaciones en HTML y TypeScript.
 
-Angular esta escrito en Typescript y constituye un ecosistema formado por un gran numero de librerias que tratan de resolver un problema complejo de forma dogmática
+Angular esta escrito en Typescript y conforma un ecosistema de librerias que tratan de resolver un problema complejo de una forma un tanto dogmática (En comparación con otros Frameworks / Librerías)
 
 ---
 
@@ -14,11 +14,9 @@ Angular esta escrito en Typescript y constituye un ecosistema formado por un gra
 
 # Componentes y directivas
 
-Los componentes son piezas de nuestra aplicación encargadas de la gestión de partes de nuestra interfaz.
+- Los componentes son las piezas fundamentales de nuestra aplicación encargadas de la gestión de diferentes partes de nuestra interfaz. Una aplicación es en general un arbol de componentes
 
-Lo componentes tienen un ciclo de vida
-
-Los componentes se declaran mediante el decorator `@Component`
+- Se declaran mediante el decorator `@Component` y tienen un ciclo de vida que nos permite realizar acciones tanto en su creación y linkado con el DOM, como en su actualización como en su destrucción y eliminación del DOM.
 
 ---
 
@@ -35,62 +33,59 @@ class MyDirective() {}
 ```
 
 - _moduleId_: Cuando indicamos un id templateUrl y styleUrl se resuelven de forma relativa al componente
-
+- _selector_: string que permite identificar el componente a compilar y renderizar
 - _providers_: Lista de providers para la vista y su posible contenido proyectado
-
 - _viewProviders_: Lista de proveedores solo para la vista (Útil en libs)
-
 - _template | templateUrl_: Plantilla inline o externa de un componente
-
 - _styles | styleUrls_: Lista de estilos inline o hoja de estilos externa
 
 ---
 
 # Modulos
 
-Un módulo en Angular es un conjunto de componentes, servicios, directivas, etc. Los elementos del conjunto se supone que constituyen una caracteristica funcional de nuestra aplicación.
+- Un módulo en Angular es un conjunto de componentes, servicios, directivas, pipes, etc. Los elementos del conjunto deberían constituir una unidad funcional de nuestra aplicación
 
-Organizar una aplicación en módulos fomenta la reusabilidad.
+- Organizar una aplicación en módulos fomenta la reusabilidad
 
-Crearemos al menos un módulo para realizar el bootstrap de la aplicación (Por convención AppModule)
+- Existirá al menos un módulo para realizar el _bootstrap_ de la aplicación (Por convención _AppModule_)
 
 ---
 
 ```javascript
 @NgModule({ declarations: ..., imports: ...,
 exports: ..., providers: ..., bootstrap: ...})
-class MyModule {}
+class AppModule {}
 ```
 
-- _declarations_: Componentes, directivas y pipes del NgModule.
+- _declarations_: Componentes, directivas y pipes del NgModule
 
 - _exports_: Subconjunto de declarations que serán usables desde otros módulos
 
-- _imports_: Otros Módulos utilizados en este NgModule.
+- _imports_: Otros módulos utilizados en el _NgModule_ que se está declarando
 
-- _providers_: Métodos de creación de servicios que este NgModule contribuye al conjunto de servicios de la aplicación. Se convierten en globales y accesibles desde cualquier parte de la aplicación (También se pueden crear a nivel de componente)
+- _providers_: Declaración y definición de la manera de construir un Servicio de nuestra aplicación para el  NgModule en el que se está declarando. Se convierten en globales y accesibles desde cualquier parte de la aplicación aunque también se pueden crear a nivel de componente
 
 ---
 
 - _entryComponents_: Lista de componentes no referenciados en ninguna template. Normalmente creados dinámicamente
 
-- _bootstrap_: Vista principal de la aplicación. Root component. Sólo el modulo principal debe declarar la propiedad bootstrap
+- _bootstrap_: Componente raiz de nuestra aplicación principal. Sólo el modulo principal debe declarar la propiedad _bootstrap_
 
 ---
 
 # Templates
 
-Las templates en Angular combinan HTML con código Angular. En las plantillas podemos usar directivas para proporcionar flujo de control.
+- Las templates en Angular combinan HTML tradicional con una sintaxis especial que define Angular. Esta sintaxis permite enlazar los modelos de datos de nuestros componentes con las plantillas
 
-Puedes mostrar datos de la aplicación enlazando controles en la plantilla HTML con propiedades en la clase `@Component`
+- En las plantillas podemos usar directivas con el objetivo de realizar flujo de control, como si un lenguaje de programación se tratase (if, else, for, switch ...)
+
+- Puedes mostrar datos de la aplicación enlazando controles en la plantilla HTML con propiedades en la clase `@Component`
 
 ---
 
 # Data binding
 
-`autobinding: true`
-
-Data binding es el conjunto de utilidades o técnicas para conectar la aplicación con el HTML
+Data binding es el conjunto de utilidades o técnicas que crean un mecanismo para conectar la aplicación con el HTML
 
 - _Event binding_ permite a la aplicación responder a acciones del usuario
 
@@ -100,10 +95,10 @@ Data binding es el conjunto de utilidades o técnicas para conectar la aplicaci�
 
 # Services
 
-Los Services son clases que ofrecen funcionalidad y gestión de estada de la aplicación. Normalmente los usaremos con datos que no pertenecen a ninguna vista concreta sino a la aplicación
+Los _Services_ son clases que ofrecen funcionalidad y gestión del estado de la aplicación. Normalmente los usaremos con datos que no pertenecen a ninguna vista concreta sino a la aplicación en global
 
 ---
 
 # Inyección de dependencias
 
-Es el mecanismo que permite inyectar servicios como dependencias en los componentes
+Es el mecanismo que permite inyectar servicios en los componentes. Este mecanismo nos permite inyectar por ejemplo la misma instancia de un servicio en diferentes partes de la aplicación

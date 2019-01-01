@@ -1,4 +1,7 @@
 import { Action } from '@ngrx/store';
+import { LoginModel } from '../models/login.model';
+import { AuthUserModel } from '../models/auth-user.model';
+import { RegisterModel } from '../models/register.model';
 
 export enum ActionTypes {
   Login = '[Login] Login',
@@ -11,10 +14,12 @@ export enum ActionTypes {
 
 export class Login implements Action {
   readonly type = ActionTypes.Login;
+  constructor(public payload: LoginModel) {}
 }
 
 export class LoginSuccess implements Action {
   readonly type = ActionTypes.LoginSuccess;
+  constructor(public payload: AuthUserModel) {}
 }
 
 export class LoginFailed implements Action {
@@ -23,6 +28,7 @@ export class LoginFailed implements Action {
 
 export class Register implements Action {
   readonly type = ActionTypes.Register;
+  constructor(public payload: RegisterModel) {}
 }
 
 export class RegisterSuccess implements Action {

@@ -3,7 +3,7 @@ autoscale: true
 
 # Ciclo de vida de un componente
 
-Los componentes y directivas en Angular tienen un ciclo de vida. Se crean, se modifican, se destruyen. A través de una serie de métodos podremos engancharnos a dichos momentos para realizar las acciones que necesitemos
+Los componentes y directivas en Angular tienen un ciclo de vida en el cual se crean, se modifican, se destruyen. A través de una serie de métodos podremos engancharnos en dichos momentos para realizar las acciones que necesitemos
 
 ```javascript
 export class MyComponent implements OnInit {

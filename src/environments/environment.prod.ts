@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://api-base-url.com'
+  apiBaseUrl: 'https://hackabos.azurewebsites.net/api'
 };

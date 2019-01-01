@@ -2,36 +2,38 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from '../models/User';
+import { AuthUserModel } from '../models/auth-user.model';
 import { environment } from 'environments/environment';
+import { LoginModel } from '../components/login/login.model';
+import { RegisterModel } from '../models/register.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   // Don't expose Subject. Instead expose a read only Observable
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<AuthUserModel>;
+  public currentUser: Observable<AuthUserModel>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(
+    this.currentUserSubject = new BehaviorSubject<AuthUserModel>(
       JSON.parse(localStorage.getItem('currentUser'))
     );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): AuthUserModel {
     return this.currentUserSubject.value;
   }
 
-  login(username: string, password: string) {
+  login({ email, password }: LoginModel) {
     return this.http
-      .post<any>(`${environment.apiBaseUrl}/users/authenticate`, {
-        username,
+      .post<AuthUserModel>(`${environment.apiBaseUrl}/account/login`, {
+        email,
         password
       })
       .pipe(
         map(user => {
           // login successful if there's a jwt token in the response
-          if (user && user.token) {
+          if (user && user.accessToken) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
@@ -40,6 +42,13 @@ export class AuthService {
           return user;
         })
       );
+  }
+
+  register({ email, password }: RegisterModel) {
+    return this.http.post<any>(`${environment.apiBaseUrl}/account`, {
+      email,
+      password
+    });
   }
 
   logout() {

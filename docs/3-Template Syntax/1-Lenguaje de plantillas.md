@@ -1,7 +1,11 @@
 theme: Next, 8
 autoscale: true
 
-# {{ Interpolation }}
+# Interpolation, expressions y statements
+
+---
+
+#{{ Interpolation }}
 
 Angular convierte las expresiones en strings y los inserta en el lugar en el que se están declarando
 
@@ -20,9 +24,9 @@ Interpolation es una sintaxis especial que internamente Angular convierte en _pr
 
 ---
 
-# Expresiones
+# Expressions
 
-Las expresiones en plantillas producen valores. La sintaxis similar a Javascript pero con ciertas caracteristicas prohibidas:
+Las expresiones en plantillas producen valores. La sintaxis similar a Javascript pero con ciertas caracteristicas no permitidas:
 
 - Asignaciones (=, +=, -=, ...)
 - Operador new
@@ -35,7 +39,7 @@ Las expresiones en plantillas producen valores. La sintaxis similar a Javascript
 
 # Contexto de la expresión
 
-Normalmente el contexto será el componente al que pertenece pero también puede utilizar elementos dentro de la plantilla HTML a la que pertenece
+Normalmente el contexto será el componente asociado pero también puede utilizar elementos dentro de la plantilla HTML a la que pertenece
 
 ```html
 {{title}}
@@ -46,15 +50,15 @@ Normalmente el contexto será el componente al que pertenece pero también puede
 <input #heroInput> {{heroInput.value}}
 ```
 
-^ El scope esta limitado a la propia plantilla y el componente asociado. No se puede referenciar global scope (window)
+El scope de las variables esta limitado a la propia plantilla y el componente asociado. No se puede referenciar global scope (window)
 
 ---
 
-# Declaraciones
+# Statements
 
-Una declaración responde a un evento lanzado por un binding target (element, component, directive)
+Una declaración o statement responde a un evento lanzado por un binding target (element, component, directive)
 
-La diferencia con las expressiones es que producen efectos colaterales. Así es como modificamos el estado de nuestra aplicación. Respondiendo eventos
+La diferencia con las expressiones es que producen efectos colaterales. Una expresión evalúa pero un statement realiza una acción. Así es como modificamos el estado de nuestra aplicación. Respondiendo eventos
 
 ```html
 <button (click)="deleteHero()">Delete hero</button>
@@ -64,9 +68,7 @@ La diferencia con las expressiones es que producen efectos colaterales. Así es 
 
 # Contexto de la declaración
 
-Normalmente es el componente asociado.
-
-También puede hacer referencia a
+Normalmente es el componente asociado
 
 ```html
 <button (click)="onSave($event)">Save</button>
@@ -90,7 +92,11 @@ La complejidad se ha de derivar al componente o servicios
 
 ---
 
-# One way (Data source - Target view)
+# One way
+
+
+
+### Data source - Target view
 
 ```html
 {{expression}}
@@ -98,9 +104,7 @@ La complejidad se ha de derivar al componente o servicios
 bind-target="expression"
 ```
 
----
-
-# One way (Target view - Data source)
+### Target view - Data source
 
 ```html
 (target)="statement"
@@ -120,23 +124,21 @@ bindon-target="expression"
 
 # HTML Attributes vs DOM Properties
 
-Es importante distinguir entre atributos y propiedades para entender la forma de funcionar de Angular
+- Los atributos inicializan propiedades o caracteristicas del elemento al que pertenecen. El valor real realmente reside en la propiedad DOM del elemento.
 
-Los atributos inicializan propiedades o caracteristicas del elemento al que pertenecen. El valor real realmente reside en la propiedad DOM del elemento.
-
-Algunos nombres de atributos se corresponden con las propiedades (Por ejemplo id) pero no tienen porque.
-
-Un ejemplo claro es el uso de value en in input
+- Algunos nombres de atributos se corresponden con las propiedades (Por ejemplo id) pero no tienen porque.
 
 ---
 
-```
+Un ejemplo claro es el uso de value en in input
+
+```html
 <input value='My value' />
 ```
 
-value como atributo inicializa el valor del input pero cuano escribo no se actualiza. La que se actualiza es la propiedad subyacente.
+`value` como atributo inicializa el valor del input pero cuano escribo no se actualiza. La que se actualiza es la propiedad subyacente.
 
-** El data binding de Angular funciona a nivel de DOM Properties y Eventos **
+**El data binding de Angular funciona a nivel de propiedades y Eventos**
 
 ---
 
@@ -176,7 +178,7 @@ Si omito los brackets entonces la propiedad no se actualizará. En ocasiones es 
 
 ---
 
-## Property binding o interpolation
+## Property binding o interpolation?
 
 Normalmente son intercambiables y es una cuestión de preferencia.
 
@@ -285,7 +287,7 @@ El nombre entre `()` representa el evento (eventos estándar de los elementos DO
 
 # Eventos custom
 
-Mediante el uso de Event Emitter puedo lanzar eventos propios de la aplicación
+Mediante el uso de `EventEmitter` puedo lanzar eventos propios de la aplicación
 
 Es de gran utilidad cuando el componente no necesita conocer la implementación concreta => Reusabilidad
 
@@ -295,7 +297,7 @@ Por ejemplo, este componente no sabe como efectuar un borrado, simplemente emite
 
 ---
 
-```
+```html
 template: `
 <div>
   <img src="{{heroImageUrl}}">
@@ -316,7 +318,7 @@ delete() {
 
 Desde el padre, que conoce como efectuar el borrado, nos suscribimos al evento
 
-```
+```html
 <app-hero-detail (deleteRequest)="deleteHero($event)" [hero]="currentHero"></app-hero-detail>
 ```
 
@@ -326,11 +328,11 @@ Desde el padre, que conoce como efectuar el borrado, nos suscribimos al evento
 
 A veces necesitaremos que el binding vaya en ambos sentidos
 
+Esta técnica es la que se usa en los formularios de Angular
+
 ---
 
-```
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+```javascript
 @Component({
   selector: 'app-sizer',
   template: `
@@ -354,20 +356,29 @@ export class SizerComponent {
 }
 ```
 
-```
+---
+
+```html
 <app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer>
 ```
 
+
+
 Este patrón tiene su sintaxis propia en Angular
 
-```
+
+
+```html
 <app-sizer [(size)]="fontSizePx"></app-sizer>
+
 <div [style.font-size.px]="fontSizePx">Resizable Text</div>
 ```
 
+
+
 ---
 
-# Attribute vs Structural Directives
+#Attribute vs Structural Directives
 
 Angular permite construir diretivas de dos tipos:
 
@@ -387,11 +398,16 @@ Las directivas de atributo van ligadas y modifican el comportamiento de los elem
 
 Directiva avanzada para el control del atributo class. Podemos añadir o eliminar varias clases a la vez, cosa que no podríamos hacer a través de property binding con `class`
 
-```
+
+
+```html
 <div [ngClass]="currentClasses">This div is initially saveable, unchanged, and special</div>
+
+```
 
 ...
 
+```javascript
 currentClasses: {};
 setCurrentClasses() {
   // CSS classes: added/removed per current state of component properties
@@ -409,13 +425,15 @@ setCurrentClasses() {
 
 Similar a NgClass pero para los estilos inline
 
-```
+```html
 <div [ngStyle]="currentStyles">
   This div is initially italic, normal weight, and extra large (24px).
 </div>
+```
 
 ...
 
+```javascript
 currentStyles: {};
 setCurrentStyles() {
   // CSS styles: set per current state of component properties
@@ -433,7 +451,7 @@ setCurrentStyles() {
 
 Directiva especializada para controlar elementos de un formulario.
 
-```
+```html
 <input [(ngModel)]="currentHero.name">
 ```
 
@@ -441,26 +459,22 @@ Directiva especializada para controlar elementos de un formulario.
 
 En realidad `ngModel` es simplemente un shorthand de:
 
-```
+```html
 <input
   [ngModel]="currentHero.name"
   (ngModelChange)="currentHero.name=$event">
 ```
 
----
-
 que a su vez oculta el funcionamiento real del elemento input que seria:
 
-```
+```html
 <input [value]="currentHero.name"
        (input)="currentHero.name=$event.target.value" >
 ```
 
----
-
 El shorthand `[(ngModel)]`solo puede realizar el binding con una propiedad. Si se necesita algo más avanzado se puede recurrir a la forma extendida
 
-```
+```html
 <input
   [ngModel]="currentHero.name"
   (ngModelChange)="setUppercaseName($event)">
@@ -470,7 +484,7 @@ El shorthand `[(ngModel)]`solo puede realizar el binding con una propiedad. Si s
 
 # Built-in structural directives
 
-Este tipo de directivas permiten modificar el DOM subyacente añadiendo, eliminando o modificando elementos
+Este tipo de directivas permiten modificar el DOM añadiendo, eliminando o modificando elementos
 
 ---
 
@@ -478,7 +492,7 @@ Este tipo de directivas permiten modificar el DOM subyacente añadiendo, elimina
 
 Permite añadir o eliminar un elemento del DOM a través de la evaluación boolena de una propiedad o expresión
 
-```
+```html
 <app-hero-detail *ngIf="isActive"></app-hero-detail>
 ```
 
@@ -488,7 +502,7 @@ Permite añadir o eliminar un elemento del DOM a través de la evaluación boole
 
 Esta directiva permite la repetición de un elemento DOM a través de una sintaxis propia que Angular puede interpretar y que se conoce como _microsyntax_
 
-```
+```html
 <div *ngFor="let hero of heroes; let I=index; trackBy: hero.id">{{i + 1}} - {{hero.name}}</div>
 ```
 
@@ -500,9 +514,9 @@ Esta directiva permite la repetición de un elemento DOM a través de una sintax
 
 # NgSwitch
 
-Es un conjunto de directivas que emulan el comportamiento de un bloque switch.
+Es un conjunto de directivas que emulan el comportamiento de un bloque switch
 
-```
+```html
 <div [ngSwitch]="currentHero.emotion">
   <app-happy-hero    *ngSwitchCase="'happy'"    [hero]="currentHero"></app-happy-hero>
   <app-sad-hero      *ngSwitchCase="'sad'"      [hero]="currentHero"></app-sad-hero>
@@ -519,7 +533,7 @@ Sólo se mostrará el bloque que cumpla la condición. Nótese que ngSwitch es u
 
 Se pueden definir variables locales en plantillas mediante #. La variable se puede referencias en cualquier lado de la plantilla
 
-```
+```html
 <input #phone placeholder="phone number">
 
 <!-- lots of other elements -->
@@ -530,9 +544,9 @@ Se pueden definir variables locales en plantillas mediante #. La variable se pue
 
 ---
 
-# Plantilla resumen
+# Resumen
 
-```
+```javascript
 @Component({
   selector: 'app-little-tour',
   template: `
@@ -554,3 +568,4 @@ export class LittleTourComponent {
   }
 }
 ```
+

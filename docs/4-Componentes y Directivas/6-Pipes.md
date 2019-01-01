@@ -8,8 +8,6 @@ theme: Next, 8
 
 Un `Pipe` es simplemente una función que recibe datos como input y a través de una transformación produce una salida
 
-
-
 En Angular tenemos una serie de Pipes disponibles a través del framework pero también podemos crearlas nosotros
 
 ---
@@ -17,10 +15,10 @@ En Angular tenemos una serie de Pipes disponibles a través del framework pero t
 # Angular Pipes
 
 - `DatePipe`
--  `UpperCasePipe`
--  `LowerCasePipe`
--  `CurrencyPipe`
--  `PercentPipe`
+- `UpperCasePipe`
+- `LowerCasePipe`
+- `CurrencyPipe`
+- `PercentPipe`
 - `JsonPipe`
 - `AsyncPipe`
 
@@ -58,19 +56,7 @@ The chained hero's birthday is
 
 # Creación de Pipes
 
-Podemos crear nuestras propias Pipes de forma sencilla
-
 ```javascript
-import { Pipe, PipeTransform } from '@angular/core';
-/*
- * Raise the value exponentially
- * Takes an exponent argument that defaults to 1.
- * Usage:
- *   value | exponentialStrength:exponent
- * Example:
- *   {{ 2 | exponentialStrength:10 }}
- *   formats to: 1024
-*/
 @Pipe({name: 'exponentialStrength'})
 export class ExponentialStrengthPipe implements PipeTransform {
   transform(value: number, exponent: string): number {
@@ -131,39 +117,8 @@ Las función transform de las Pipes puras ha de ser también pura, es decir, deb
 
 # AsyncPipe
 
-Es una Pipe ampliamente utilizada. Se trata de una Pipe impura y que es capaz de mantener su propio estado
+- Es una Pipe importante dentro del framework. Se trata de una Pipe impura y que es capaz de mantener su propio estado
 
+- Permite suscribirnos a Promises o Observables y cada vez que se produce una actualización en los mismos se reflejará en la vista
 
-
-Permite suscribirnos a Promises o Observables y cada vez que se produce una actualización en los mismos se reflejará en la vista
-
----
-
-```javascript
-@Component({
-  selector: 'app-hero-message',
-  template: `
-    <h2>Async Hero Message and AsyncPipe</h2>
-    <p>Message: {{ message$ | async }}</p>
-    <button (click)="resend()">Resend</button>`,
-})
-export class HeroAsyncMessageComponent {
-  message$: Observable<string>;
- 
-  private messages = [
-    'You are my hero!',
-    'You are the best hero!',
-    'Will you be my hero?'
-  ];
- 
-  constructor() { this.resend(); }
- 
-  resend() {
-    this.message$ = interval(500).pipe(
-      map(i => this.messages[i]),
-      take(this.messages.length)
-    );
-  }
-}
-```
 

@@ -1,4 +1,5 @@
 theme: Next, 8
+autoscale: true
 
 # **@Input**
 
@@ -36,6 +37,7 @@ export class HeroChildComponent {
 **Componente padre**
 
 [.code-highlight: all]
+
 [.code-highlight: 5-8]
 
 ```javascript
@@ -59,7 +61,12 @@ export class HeroParentComponent {
 
 ### Interceptar @Input con **set**
 
+Para observar cambios que afectan sólo a una propiedad
+
+
+
 [.code-highlight: all]
+
 [.code-highlight: 9-11]
 
 ```javascript
@@ -83,13 +90,14 @@ export class NameChildComponent {
 <app-name-child *ngFor="let name of names" [name]="name"></app-name-child>
 ```
 
-^ TIP: Para observar cambios que afectan sólo a una propiedad
-
 ---
 
 ### Interceptar @Input con *ngOnChanges*
 
+Para observar cambios que afectan a múltiples propiedades
+
 [.code-highlight: all]
+
 [.code-highlight: 15-29]
 
 ```javascript
@@ -128,8 +136,6 @@ export class VersionChildComponent implements OnChanges {
 ```html
 <app-version-child [major]="major" [minor]="minor"></app-version-child>
 ```
-
-^ TIP: Para observar cambios que afectan a múltiples propiedades
 
 ---
 

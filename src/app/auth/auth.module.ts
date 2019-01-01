@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './services/auth.effects';
+
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'app/shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -18,7 +21,8 @@ import { ErrorInterceptor } from './services/error.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forFeature('auth', fromAuth.reducer)
+    StoreModule.forFeature('auth', fromAuth.reducer),
+    EffectsModule.forFeature([AuthEffects])
   ],
   declarations: [LoginComponent, RegisterComponent],
   providers: [

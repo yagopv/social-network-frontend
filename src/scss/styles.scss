@@ -4,6 +4,8 @@
 
 html {
   height: 100%;
+  overflow-y: auto !important;
+
   body {
     background-color: $white-smoke;
     font-family: 'Open Sans', Helvetica, sans-serif;

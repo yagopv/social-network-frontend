@@ -70,18 +70,29 @@ private highlight(color: string) {
 
 Podemos usar `@Input` para enviar valores a la Directiva como venimos haciendo habitualmente
 
-
-
 ```html
 <p [appHighlight]="color">Highlight me!</p>
 ```
 
 ```javascript
-export class AppComponent {
-  @Input('appHighlight') highlightColor: string;
-  @HostListener('mouseenter') onMouseEnter() {
-    this.highlight(this.highlightColor || 'red');
-  }
+@Input('appHighlight') highlightColor: string;
+@HostListener('mouseenter') onMouseEnter() {
+  this.highlight(this.highlightColor || 'red');
 }
+
 ```
+
+---
+
+# @HostBinding
+
+
+
+Puedo utilizar `HostBinding` para enlazar con atributos del elemento contenedor
+
+```javascript
+@HostBinding('class.active') private ishovering: boolean;
+```
+
+
 
