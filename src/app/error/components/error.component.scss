@@ -1,0 +1,16 @@
+@import '~scss/colors.scss';
+
+.errors {
+  background-color: $error;
+  padding: 10px;
+  border-radius: 5px;
+  p {
+    color: $white-smoke;
+    margin: 5px 0;
+  }
+  a {
+    color: $white-smoke;
+    text-decoration: underline;
+    font-size: 0.7rem;
+  }
+}

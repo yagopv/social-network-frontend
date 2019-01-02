@@ -1,5 +1,9 @@
 <!-- Template-Driven -->
 <hab-form-group>
+  <hab-errors
+    [errors]="errors$ | async"
+    (errorReset)="resetErrors()"
+  ></hab-errors>
   <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
     <hab-form-control [control]="email">
       <input

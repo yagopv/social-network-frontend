@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { MailValidator } from '../../../shared/validators/mail.validator';
 import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
 import { Register } from '../../auth.state';
+import { ErrorState, ResetErrors } from '../../../error/error.state';
+import { ErrorModel } from '../../../error/error.model';
 
 @Component({
   selector: 'hab-register',
@@ -12,6 +15,7 @@ import { Register } from '../../auth.state';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  @Select(ErrorState) errors$: Observable<ErrorModel>;
   registerForm = this.fb.group(
     {
       firstName: ['', [Validators.required]],
@@ -34,9 +38,11 @@ export class RegisterComponent {
     }
 
     const { email, password } = this.registerForm.value;
-
-    console.log('register() - ', this.registerForm.value);
     this.store.dispatch(new Register({ email, password }));
+  }
+
+  resetErrors() {
+    this.store.dispatch(new ResetErrors());
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
