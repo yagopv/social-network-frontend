@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { MailValidator } from 'app/shared/validators/mail.validator';
-import { Router } from '@angular/router';
+
+import { MailValidator } from '../../../shared/validators/mail.validator';
 import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
-import * as fromAuth from '../../store/reducer';
-import { Store } from '@ngrx/store';
-import { Register } from 'app/auth/store/actions';
-import { RegisterModel } from '../../models/register.model';
+import { Register } from '../../auth.state';
 
 @Component({
   selector: 'hab-register',
@@ -25,11 +23,7 @@ export class RegisterComponent {
     { validator: MatchPasswordValidator }
   );
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private store: Store<fromAuth.AuthState>
-  ) {
+  constructor(private fb: FormBuilder, private store: Store) {
     this.registerForm.valueChanges.subscribe(value => console.log(value));
   }
 

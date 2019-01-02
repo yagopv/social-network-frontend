@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,15 +16,18 @@ import { FriendsModule } from './friends/friends.module';
 import { AuthModule } from './auth/auth.module';
 import { AboutModule } from './about/about.module';
 import { HelpModule } from './help/help.module';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production
+    }),
+    NgxsLoggerPluginModule.forRoot({ logger: console, collapsed: false }),
+    NgxsModule.forRoot([], { developmentMode: !environment.production }),
     WelcomeModule,
     LayoutModule,
     SharedModule,
@@ -30,13 +37,7 @@ import { environment } from '../environments/environment';
     AuthModule,
     HelpModule,
     AboutModule,
-    AppRoutingModule,
-    StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production // Restrict extension to log-only mode
-    }),
-    EffectsModule.forRoot([])
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

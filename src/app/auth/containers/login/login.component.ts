@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NgForm, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgForm, AbstractControl } from '@angular/forms';
+
 import { LoginModel } from './login.model';
-import { Store } from '@ngrx/store';
-import * as fromAuth from '../../store/reducer';
-import { Login } from 'app/auth/store/actions';
+import { Store } from '@ngxs/store';
+import { Login } from 'app/auth/auth.state';
 
 @Component({
   selector: 'hab-login',
@@ -14,10 +14,7 @@ import { Login } from 'app/auth/store/actions';
 export class LoginComponent {
   loginModel: LoginModel = new LoginModel();
 
-  constructor(
-    private router: Router,
-    private store: Store<fromAuth.AuthState>
-  ) {}
+  constructor(private router: Router, private store: Store) {}
 
   login(form: NgForm) {
     if (!form.valid) {

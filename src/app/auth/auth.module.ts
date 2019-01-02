@@ -1,18 +1,15 @@
 import { NgModule } from '@angular/core';
-import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './services/auth.effects';
-
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'app/shared/shared.module';
+import { NgxsModule } from '@ngxs/store';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { StoreModule } from '@ngrx/store';
-import * as fromAuth from './store/reducer';
+import { SharedModule } from '../shared/shared.module';
+import { LoginComponent } from './containers/login/login.component';
+import { RegisterComponent } from './containers/register/register.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { ErrorInterceptor } from './services/error.interceptor';
+import { AuthState } from './auth.state';
 
 @NgModule({
   imports: [
@@ -21,8 +18,7 @@ import { ErrorInterceptor } from './services/error.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forFeature('auth', fromAuth.reducer),
-    EffectsModule.forFeature([AuthEffects])
+    NgxsModule.forFeature([AuthState])
   ],
   declarations: [LoginComponent, RegisterComponent],
   providers: [

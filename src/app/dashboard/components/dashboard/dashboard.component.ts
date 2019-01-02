@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { GetPosts } from 'app/post/store/actions';
-import * as fromPosts from 'app/post/store/reducer';
 import { Observable } from 'rxjs';
 import { PostViewModel } from 'app/post/models/post.model';
+import { Store, Select } from '@ngxs/store';
+import { PostState } from 'app/post/post.state';
+import { GetPosts } from '../../../post/post.state';
 
 @Component({
   selector: 'hab-dashboard',
@@ -11,11 +11,9 @@ import { PostViewModel } from 'app/post/models/post.model';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  posts$: Observable<PostViewModel[]>;
+  @Select(PostState) posts$: Observable<PostViewModel[]>;
 
-  constructor(private store: Store<fromPosts.PostsState>) {
-    this.posts$ = store.pipe(select(fromPosts.getPosts));
-  }
+  constructor(private store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(new GetPosts());
