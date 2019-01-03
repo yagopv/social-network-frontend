@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from 'app/shared/components/not-found/not-found.component';
-import { SiteLayoutComponent } from './layout/components/site-layout/site-layout.component';
 import { WelcomeComponent } from 'app/welcome/components/welcome/welcome.component';
-import { AppLayoutComponent } from './layout/components/app-layout/app-layout.component';
 import { LoginComponent } from './auth/containers/login/login.component';
 import { RegisterComponent } from './auth/containers/register/register.component';
-import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
-import { FriendsGridComponent } from './friends/containers/friends-grid/friends-grid.component';
 import { AboutComponent } from './about/components/about/about.component';
 import { HelpComponent } from './help/components/help/help.component';
-import { CenteredLayoutComponent } from './layout/components/centered-layout/centered-layout.component';
+import { CenteredLayoutComponent } from './shared/components/centered-layout/centered-layout.component';
+import { SiteLayoutComponent } from './shared/components/site-layout/site-layout.component';
 
 const routes: Routes = [
   {
@@ -23,12 +20,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: '',
-    component: AppLayoutComponent,
-    children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'friends', component: FriendsGridComponent }
-    ]
+    path: 'dashboard',
+    loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   {
     path: '',

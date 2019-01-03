@@ -10,6 +10,7 @@ import { RegisterComponent } from './containers/register/register.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { AuthState } from './auth.state';
+import { ErrorModule } from 'app/error/error.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { AuthState } from './auth.state';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    ErrorModule,
     NgxsModule.forFeature([AuthState])
   ],
   declarations: [LoginComponent, RegisterComponent],
