@@ -5,6 +5,8 @@ import { State, Action, StateContext } from '@ngxs/store';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
+import { Navigate } from '@ngxs/router-plugin';
+import { NgZone } from '@angular/core';
 
 export class Login {
   static readonly type = '[Auth] Login';
@@ -44,7 +46,7 @@ export interface AuthStateModel {
   }
 })
 export class AuthState {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, public ngZone: NgZone) {}
 
   // ngxs will subscribe to the post observable for you if you return it from the action
   @Action(Login)
@@ -56,8 +58,9 @@ export class AuthState {
   }
 
   @Action(LoginSuccess)
-  loginSuccess(ctx: StateContext<AuthStateModel>) {
-    this.router.navigate(['/dashboard']);
+  loginSuccess({ dispatch }: StateContext<AuthStateModel>) {
+    // Use ngxs Action or going to fail because running outside NgZone
+    dispatch(new Navigate(['/dashboard/home']));
   }
 
   @Action(Register)

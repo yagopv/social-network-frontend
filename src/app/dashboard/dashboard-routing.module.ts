@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: AppLayoutComponent,
     children: [
-      { path: '', pathMatch: 'full', component: DashboardComponent },
+      { path: 'home', component: DashboardComponent },
       { path: 'friends', component: FriendsGridComponent }
     ]
   }
