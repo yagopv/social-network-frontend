@@ -3,7 +3,7 @@ import { NgxsModule } from '@ngxs/store';
 import { CommonModule } from '@angular/common';
 
 import { ErrorComponent } from './components/error.component';
-import { ErrorState } from './error.state';
+import { ErrorState } from './store/error.state';
 
 @NgModule({
   imports: [CommonModule, NgxsModule.forFeature([ErrorState])],

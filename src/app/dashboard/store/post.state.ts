@@ -1,19 +1,7 @@
 import { State, StateContext, Action } from '@ngxs/store';
 
-import { PostViewModel } from './models/post.model';
-
-export class GetPosts {
-  static readonly type = '[Posts] GetPosts';
-}
-
-export class GetPostsSuccess {
-  static readonly type = '[Posts] GetPosts';
-  constructor(public posts: PostViewModel[]) {}
-}
-
-export class GetPostsFailed {
-  static readonly type = '[Posts] GetPosts';
-}
+import { PostViewModel } from '../models/post.model';
+import { GetPosts } from './post.actions';
 
 @State<PostViewModel[]>({
   name: 'posts',

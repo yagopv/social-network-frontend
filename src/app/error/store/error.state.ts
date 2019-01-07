@@ -1,15 +1,7 @@
 import { State, StateContext, Action } from '@ngxs/store';
 
-import { ErrorModel } from './error.model';
-
-export class SetErrors {
-  static readonly type = '[Error] Set';
-  constructor(public errors: ErrorModel[]) {}
-}
-
-export class ResetErrors {
-  static readonly type = '[Error] Reset';
-}
+import { ErrorModel } from '../error.model';
+import { SetErrors, ResetErrors } from './error.actions';
 
 @State<ErrorModel[]>({
   name: 'errors',

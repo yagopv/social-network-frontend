@@ -1,39 +1,48 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SharedModule } from 'app/shared/shared.module';
-import { PostModule } from 'app/post/post.module';
+
 import { FriendComponent } from './components/friend/friend.component';
 import { FriendsRequestComponent } from './containers/friend-request/friends-request.component';
-import { FriendsGridComponent } from './containers/friends-grid/friends-grid.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { AppLayoutAsideComponent } from './components/app-layout-aside/app-layout-aside.component';
-import { AppLayoutNavComponent } from './components/app-layout-nav/app-layout-nav.component';
-
-import { AppLayoutFooterComponent } from './components/app-layout-footer/app-layout-footer.component';
-import { AppLayoutComponent } from './components/app-layout/app-layout.component';
-import { AppLayoutHeaderComponent } from './components/app-layout-header/app-layout-header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardAsideComponent } from './components/dashboard-aside/dashboard-aside.component';
+import { DashboardFooterComponent } from './components/dashboard-footer/dashboard-footer.component';
+import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
+import { DashboardLayoutComponent } from './components/dashboard-layout/dashboard-layout.component';
+import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
+import { FriendsComponent } from './containers/friends/friends.component';
+import { PostComponent } from './components/post/post.component';
+import { HomeComponent } from './containers/home/home.component';
+import { NgxsModule } from '@ngxs/store';
+import { PostState } from './store/post.state';
+import { SharedModule } from '../shared/shared.module';
+import { PostCommentComponent } from './components/post-comment/post-comment.component';
+import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
+import { PostContentComponent } from './components/post-content/post-content.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    PostModule,
     DashboardRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxsModule.forFeature([PostState])
   ],
   declarations: [
-    DashboardComponent,
-    FriendsGridComponent,
+    DashboardAsideComponent,
+    DashboardFooterComponent,
+    DashboardHeaderComponent,
+    DashboardLayoutComponent,
+    DashboardNavComponent,
+    HomeComponent,
     FriendComponent,
+    FriendsComponent,
     FriendsRequestComponent,
-    AppLayoutComponent,
-    AppLayoutHeaderComponent,
-    AppLayoutFooterComponent,
-    AppLayoutNavComponent,
-    AppLayoutAsideComponent
+    PostComponent,
+    PostCommentComponent,
+    PostCommentCounterComponent,
+    PostContentComponent
   ],
-  exports: [DashboardComponent]
+  exports: []
 })
 export class DashboardModule {}

@@ -5,9 +5,10 @@ import { Observable } from 'rxjs';
 
 import { MailValidator } from '../../../shared/validators/mail.validator';
 import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
-import { Register } from '../../auth.state';
-import { ErrorState, ResetErrors } from '../../../error/error.state';
+import { ErrorState } from '../../../error/store/error.state';
 import { ErrorModel } from '../../../error/error.model';
+import { Register } from 'app/auth/store/auth.actions';
+import { ResetErrors } from 'app/error/store/error.actions';
 
 @Component({
   selector: 'hab-register',

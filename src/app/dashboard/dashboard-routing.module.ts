@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FriendsGridComponent } from './containers/friends-grid/friends-grid.component';
-import { AppLayoutComponent } from './components/app-layout/app-layout.component';
+
+import { DashboardLayoutComponent } from './components/dashboard-layout/dashboard-layout.component';
+import { HomeComponent } from './containers/home/home.component';
+import { FriendsComponent } from './containers/friends/friends.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppLayoutComponent,
+    component: DashboardLayoutComponent,
     children: [
-      { path: 'home', component: DashboardComponent },
-      { path: 'friends', component: FriendsGridComponent }
+      { path: '', redirectTo: 'home' },
+      { path: 'home', component: HomeComponent },
+      { path: 'friends', component: FriendsComponent }
     ]
   }
 ];

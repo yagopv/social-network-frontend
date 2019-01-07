@@ -9,8 +9,8 @@ import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { ErrorInterceptor } from './services/error.interceptor';
-import { AuthState } from './auth.state';
-import { ErrorModule } from 'app/error/error.module';
+import { AuthState } from './store/auth.state';
+import { ErrorModule } from '../error/error.module';
 
 @NgModule({
   imports: [

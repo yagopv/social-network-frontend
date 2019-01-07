@@ -1,7 +1,7 @@
 @import '~scss/colors.scss';
 @import '~scss/breakpoints.scss';
 
-hab-app-layout-header {
+hab-dashboard-header {
   background: $razzmic-berry;
   height: 50px;
   position: fixed;
@@ -40,9 +40,9 @@ hab-container {
       background-color: $razzmic-berry;
     }
 
-    hab-app-layout-nav,
-    hab-app-layout-aside,
-    hab-app-layout-footer {
+    hab-dashboard-nav,
+    hab-dashboard-aside,
+    hab-dashboard-footer {
       display: block;
     }
 
