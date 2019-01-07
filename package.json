@@ -35,7 +35,8 @@
     "markdown-toc": "^1.2.0",
     "rxjs": "~6.3.3",
     "simple-css-reset": "^3.0.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "rxjs-watcher": "^1.0.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.11.4",

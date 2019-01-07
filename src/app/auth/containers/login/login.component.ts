@@ -4,10 +4,11 @@ import { NgForm, AbstractControl } from '@angular/forms';
 
 import { LoginModel } from './login.model';
 import { Store, Select } from '@ngxs/store';
-import { Login } from 'app/auth/auth.state';
 import { Observable } from 'rxjs';
 import { ErrorModel } from 'app/error/error.model';
-import { ErrorState, ResetErrors } from '../../../error/error.state';
+import { ErrorState } from '../../../error/store/error.state';
+import { ResetErrors } from 'app/error/store/error.actions';
+import { Login } from '../../store/auth.actions';
 
 @Component({
   selector: 'hab-login',
