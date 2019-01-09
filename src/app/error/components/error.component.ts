@@ -12,7 +12,7 @@ import { ErrorModel } from '../error.model';
   selector: 'hab-errors',
   template: `
     <div class="errors" *ngIf="errors.length">
-      <p *ngFor="let error of errors">{{ error.detail | titlecase }}</p>
+      <p *ngFor="let error of errors">{{ error.detail | capitalize }}</p>
       <a (click)="reset()">Hide</a>
     </div>
   `,

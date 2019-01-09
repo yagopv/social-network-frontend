@@ -30,7 +30,7 @@ export class AuthState {
   // ngxs will subscribe to the post observable for you if you return it from the action
   @Action(Login)
   login({ dispatch }: StateContext<AuthStateModel>, action: Login) {
-    return this.authService.login(action.payload).pipe(
+    return this.authService.login(action.login).pipe(
       tap(data => dispatch(new LoginSuccess(data))),
       catchError(error => dispatch(new LoginFailed(error.error)))
     );
@@ -45,12 +45,12 @@ export class AuthState {
   @Action(LoginFailed)
   loginFailed({ dispatch }: StateContext<AuthStateModel>, action: LoginFailed) {
     // Use ngxs Action or going to fail because running outside NgZone
-    dispatch(new SetErrors(action.payload));
+    dispatch(new SetErrors(action.errors));
   }
 
   @Action(Register)
   register({ dispatch }: StateContext<AuthStateModel>, action: Register) {
-    return this.authService.register(action.payload).pipe(
+    return this.authService.register(action.register).pipe(
       tap(() => dispatch(new RegisterSuccess())),
       catchError(() => dispatch(new RegisterFailed()))
     );

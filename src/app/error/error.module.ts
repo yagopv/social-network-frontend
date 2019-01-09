@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 
 import { ErrorComponent } from './components/error.component';
 import { ErrorState } from './store/error.state';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, NgxsModule.forFeature([ErrorState])],
+  imports: [CommonModule, SharedModule, NgxsModule.forFeature([ErrorState])],
   declarations: [ErrorComponent],
   exports: [ErrorComponent]
 })

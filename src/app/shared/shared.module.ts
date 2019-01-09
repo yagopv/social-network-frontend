@@ -17,6 +17,7 @@ import { CenteredLayoutComponent } from './components/centered-layout/centered-l
 import { SiteLayoutHeaderComponent } from './components/site-layout-header/site-layout-header.component';
 import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-layout-footer.component';
 import { SiteLayoutComponent } from './components/site-layout/site-layout.component';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FontAwesomeModule],
@@ -34,7 +35,8 @@ import { SiteLayoutComponent } from './components/site-layout/site-layout.compon
     CenteredLayoutComponent,
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
-    SiteLayoutComponent
+    SiteLayoutComponent,
+    CapitalizePipe
   ],
   exports: [
     NotFoundComponent,
@@ -49,7 +51,8 @@ import { SiteLayoutComponent } from './components/site-layout/site-layout.compon
     CenteredLayoutComponent,
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
-    SiteLayoutComponent
+    SiteLayoutComponent,
+    CapitalizePipe
   ]
 })
 export class SharedModule {}
