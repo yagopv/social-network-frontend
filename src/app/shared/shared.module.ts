@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { NotFoundComponent } from 'app/shared/components/not-found/not-found.component';
-import { FormGroupComponent } from 'app/shared/components/form-group/form-group.component';
+import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
+import { FormGroupComponent } from '../shared/components/form-group/form-group.component';
 import { ContainerComponent } from './components/container/container.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form-control/form-control.component';

@@ -7,8 +7,8 @@ import { MailValidator } from '../../../shared/validators/mail.validator';
 import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
 import { ErrorState } from '../../../error/store/error.state';
 import { ErrorModel } from '../../../error/error.model';
-import { Register } from 'app/auth/store/auth.actions';
-import { ResetErrors } from 'app/error/store/error.actions';
+import { Register } from '../../store/auth.actions';
+import { ResetErrors } from '../../../error/store/error.actions';
 
 @Component({
   selector: 'hab-register',

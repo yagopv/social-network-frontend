@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { AuthModule } from 'app/auth/auth.module';
+import { AuthModule } from '../auth/auth.module';
 import { WelcomeHeroComponent } from './components/welcome-hero/welcome-hero.component';
 import { WelcomeFormsComponent } from './components/welcome-forms/welcome-forms.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { WelcomeRoutingModule } from './welcome-routing.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RouterModule,
     FontAwesomeModule,
     AuthModule,
-    SharedModule
+    SharedModule,
+    WelcomeRoutingModule
   ],
   declarations: [WelcomeComponent, WelcomeHeroComponent, WelcomeFormsComponent]
 })

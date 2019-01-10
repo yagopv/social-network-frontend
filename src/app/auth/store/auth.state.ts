@@ -1,9 +1,10 @@
+import { NgZone } from '@angular/core';
+import { catchError, tap } from 'rxjs/operators';
+import { Navigate } from '@ngxs/router-plugin';
+
 import { AuthUserModel } from '../models/auth-user.model';
 import { State, Action, StateContext } from '@ngxs/store';
 import { AuthService } from '../services/auth.service';
-import { catchError, tap } from 'rxjs/operators';
-import { Navigate } from '@ngxs/router-plugin';
-import { NgZone } from '@angular/core';
 import {
   Login,
   LoginSuccess,
@@ -12,7 +13,7 @@ import {
   RegisterFailed,
   LoginFailed
 } from './auth.actions';
-import { SetErrors } from 'app/error/store/error.actions';
+import { SetErrors } from '../../error/store/error.actions';
 
 export interface AuthStateModel {
   currentUser: AuthUserModel;

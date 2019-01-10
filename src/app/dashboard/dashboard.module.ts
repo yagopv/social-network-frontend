@@ -42,7 +42,6 @@ import { PostContentComponent } from './components/post-content/post-content.com
     PostCommentComponent,
     PostCommentCounterComponent,
     PostContentComponent
-  ],
-  exports: []
+  ]
 })
 export class DashboardModule {}

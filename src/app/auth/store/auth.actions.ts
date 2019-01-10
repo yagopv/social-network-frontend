@@ -1,7 +1,7 @@
 import { LoginModel } from '../models/login.model';
 import { AuthUserModel } from '../models/auth-user.model';
 import { RegisterModel } from '../models/register.model';
-import { ErrorModel } from 'app/error/error.model';
+import { ErrorModel } from '../../error/error.model';
 
 export class Login {
   static readonly type = '[Auth] Login';
