@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NgForm, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
@@ -19,7 +19,7 @@ export class LoginComponent {
   @Select(ErrorState) errors$: Observable<ErrorModel>;
   loginModel: LoginModel = new LoginModel();
 
-  constructor(private router: Router, private store: Store) {}
+  constructor(private route: ActivatedRoute, private store: Store) {}
 
   login(form: NgForm) {
     if (!form.valid) {

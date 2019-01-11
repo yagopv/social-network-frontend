@@ -7,12 +7,12 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'welcome'
+    loadChildren: './welcome/welcome.module#WelcomeModule'
   },
   {
-    path: 'welcome',
-    loadChildren: './welcome/welcome.module#WelcomeModule'
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   {
     path: 'help',
@@ -21,11 +21,6 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: './about/about.module#AboutModule'
-  },
-  {
-    path: 'dashboard',
-    canActivate: [AuthGuard],
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   { path: '**', component: NotFoundComponent }
 ];

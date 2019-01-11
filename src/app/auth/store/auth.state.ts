@@ -1,9 +1,9 @@
 import { NgZone } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
-import { Navigate } from '@ngxs/router-plugin';
+import { Navigate, RouterState } from '@ngxs/router-plugin';
+import { State, Action, StateContext, Store } from '@ngxs/store';
 
 import { AuthUserModel } from '../models/auth-user.model';
-import { State, Action, StateContext } from '@ngxs/store';
 import { AuthService } from '../services/auth.service';
 import {
   Login,
@@ -14,6 +14,7 @@ import {
   LoginFailed
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
+import { getCurrentSanitizer } from '@angular/core/src/render3/state';
 
 export interface AuthStateModel {
   currentUser: AuthUserModel;
@@ -26,7 +27,7 @@ export interface AuthStateModel {
   }
 })
 export class AuthState {
-  constructor(private authService: AuthService, public ngZone: NgZone) {}
+  constructor(private store: Store, private authService: AuthService) {}
 
   // ngxs will subscribe to the post observable for you if you return it from the action
   @Action(Login)
@@ -40,7 +41,10 @@ export class AuthState {
   @Action(LoginSuccess)
   loginSuccess({ dispatch }: StateContext<AuthStateModel>) {
     // Use ngxs Action or going to fail because running outside NgZone
-    dispatch(new Navigate(['/dashboard/home']));
+    const returnUrl = this.store.selectSnapshot(
+      state => state.router.state.root.queryParams['return-url']
+    );
+    dispatch(new Navigate([returnUrl || '/home']));
   }
 
   @Action(LoginFailed)
