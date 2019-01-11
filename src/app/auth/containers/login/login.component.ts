@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NgForm, AbstractControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Store, Select } from '@ngxs/store';
 
 import { LoginModel } from './login.model';
-import { Store, Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { ErrorModel } from 'app/error/error.model';
+import { ErrorModel } from '../../../error/error.model';
 import { ErrorState } from '../../../error/store/error.state';
-import { ResetErrors } from 'app/error/store/error.actions';
+import { ResetErrors } from '../../../error/store/error.actions';
 import { Login } from '../../store/auth.actions';
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent {
   @Select(ErrorState) errors$: Observable<ErrorModel>;
   loginModel: LoginModel = new LoginModel();
 
-  constructor(private router: Router, private store: Store) {}
+  constructor(private route: ActivatedRoute, private store: Store) {}
 
   login(form: NgForm) {
     if (!form.valid) {

@@ -4,6 +4,7 @@ import { NgxsModule } from '@ngxs/store';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AuthRoutingModule } from './auth-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
@@ -14,6 +15,7 @@ import { ErrorModule } from '../error/error.module';
 
 @NgModule({
   imports: [
+    AuthRoutingModule,
     CommonModule,
     SharedModule,
     ReactiveFormsModule,

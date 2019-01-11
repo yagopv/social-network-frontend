@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
-import { PostState } from 'app/dashboard/store/post.state';
-import { PostViewModel } from 'app/dashboard/models/post.model';
-import { GetPosts } from 'app/dashboard/store/post.actions';
+
+import { PostState } from '../../store/post.state';
+import { PostViewModel } from '../../models/post.model';
+import { GetPosts } from '../../store/post.actions';
 
 @Component({
   selector: 'hab-home',

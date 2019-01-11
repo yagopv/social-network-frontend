@@ -9,11 +9,8 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { WelcomeModule } from 'app/welcome/welcome.module';
-import { AuthModule } from './auth/auth.module';
-import { AboutModule } from './about/about.module';
-import { HelpModule } from './help/help.module';
 import { environment } from '../environments/environment';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,11 +23,8 @@ import { environment } from '../environments/environment';
     NgxsLoggerPluginModule.forRoot({ logger: console, collapsed: false }),
     NgxsRouterPluginModule.forRoot(),
     NgxsModule.forRoot([], { developmentMode: !environment.production }),
-    WelcomeModule,
     SharedModule,
     AuthModule,
-    HelpModule,
-    AboutModule,
     AppRoutingModule
   ],
   providers: [],
