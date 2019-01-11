@@ -41,6 +41,7 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
   exports: [
     NotFoundComponent,
     FormGroupComponent,
+    ClickPreventDefaultDirective,
     ContainerComponent,
     FormControlComponent,
     MailValidatorDirective,
