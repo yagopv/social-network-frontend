@@ -1,0 +1,33 @@
+@import '~src/scss/colors.scss';
+
+.comment-box {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+
+  img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+
+  .comment-text {
+    margin-left: 20px;
+    width: 100%;
+    input {
+      background: $white-smoke;
+      border: none;
+      outline: none;
+      font-size: 1.2em;
+      color: $razzmic-berry;
+      width: 100%;
+      padding: 1rem;
+      height: 40px;
+      border-radius: 10px;
+      &::placeholder {
+        color: $razzmic-berry;
+        opacity: 0.7;
+      }
+    }
+  }
+}
