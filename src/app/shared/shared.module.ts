@@ -18,6 +18,7 @@ import { SiteLayoutHeaderComponent } from './components/site-layout-header/site-
 import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-layout-footer.component';
 import { SiteLayoutComponent } from './components/site-layout/site-layout.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { TextAreaDirective } from './directives/textarea-directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FontAwesomeModule],
@@ -36,7 +37,8 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
     SiteLayoutComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    TextAreaDirective
   ],
   exports: [
     NotFoundComponent,
@@ -53,7 +55,8 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
     SiteLayoutComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    TextAreaDirective
   ]
 })
 export class SharedModule {}
