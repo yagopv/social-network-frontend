@@ -56,7 +56,7 @@ hab-container {
         'footer footer footer';
 
       main {
-        overflow: scroll;
+        overflow: auto;
       }
     }
 
@@ -74,7 +74,7 @@ hab-container {
         height: calc(100vh - 100px);
       }
       main {
-        overflow: scroll;
+        overflow: auto;
       }
     }
   }
