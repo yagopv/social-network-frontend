@@ -1,3 +1,6 @@
+theme: Next, 8
+autoscale: true
+
 # ngxs-store
 
 ---
@@ -36,6 +39,12 @@ $ npm install @ngxs/store @ngxs/devtools-plugin @ngxs/logger-plugin @ngxs/router
   ...
 })
 export class AppModule {}
+```
+
+En Feature modules
+
+```javascript
+NgxsModule.forFeature([PostState])
 ```
 
 ---
