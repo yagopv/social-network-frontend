@@ -45,3 +45,9 @@ const routes: Routes = [
 })
 export class CustomersRoutingModule { }
 ```
+
+---
+
+# Recordar!!
+
+- Cuando estoy haciendo lazy loading debo eliminar el import del módulo de AppModule o la carga se hará de forma normal
