@@ -149,6 +149,7 @@ export class AuthState {
 ```javascript
 export class HomeComponent implements OnInit {
   @Select(PostState) posts$: Observable<PostViewModel[]>;
+  @Select(state => state.posts) otherWayToGetPosts$: Observable<PostViewModel[]>;
 
   constructor(private store: Store) {}
 
@@ -160,6 +161,13 @@ export class HomeComponent implements OnInit {
 
 ---
 
+# Memoized Selectors
+
+- El termino memoizing indica un tipo de función cachea y devuelve el mismo valor siempre que los parámetros de entrada no se modifiquen. Es un concepto ampliamente utilizado con las librerías de State Management
+
+- ngxs nos proporciona un decorator @Selector para realizar memoizing de partes de nuestro estado
+
+---
 # Selectors
 
 ```javascript
@@ -175,3 +183,40 @@ export class PostState {
 
 @Select(PostState.postFromPaul) posts$: Observable<PostViewModel[]>;
 ```
+
+---
+
+# Dynamic Selectors
+
+```javascript
+@State<PostViewModel[]>({
+  name: 'posts',
+  defaults: []
+})
+export class PostState {
+  static postByType(type: string) {
+    return createSelector([PostState], (state: PostViewModel[]) => {
+      return state.filter(p => p.type(type) > -1);                  
+    });
+  }
+}
+
+...
+
+@Select(PostState.postByType('images')) postsByType$: Observable<PostViewModel[]>;  
+```
+
+---
+
+# Seleccionando de múltiples estados
+```javascript
+@State<PostViewModel[]>({ ... })
+export class PostState {
+​
+  @Selector([AuthState])
+  static postsFromCurrentUser(state: PostViewModel[], authState: AuthState) {
+    return state.filter(p => p.user.id === authState.currentUser.id);
+  }
+}
+```
+
