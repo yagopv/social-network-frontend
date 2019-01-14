@@ -5,14 +5,13 @@
   - Inyeccion de dependencias
   - Bootstrapping
   - Estructura de un proyecto Angular
+  - Smart & Dumb components
 
-2. Typescrypt
+2. TypeScrypt
   - Javascript con superpoderes
   - Variables y Enums
   - Interfaces, Classes y Funciones
   - Generics
-  - Inferencia de tipos
-  - Modulos
   - Decorators
 
 3. Modulos
@@ -61,20 +60,15 @@
 
 13. Animaciones
 
-14. Redux
-  - Arquitectura de una aplicación basada en Redux
-  - Smart && Dumb components
-  - ngrx store
-  - ngrx effects
+14. State Management
+  - Introducción a Redux y a los conceptos principales del State Management
+  - ngxs store
 
 15. Despliegue de aplicaciones
-  - Compilación AOT
   - Creando los bundles para despliegue
   - Despliegue de una aplicación en Github
 
 16. Temas avanzados
-  - Seguridad
-  - i18n
   - Service Workers y PWA
   - Server Side Rendering
-  - Web Components 
+  - Web Components
