@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-
-import { HeroModel } from '../../models/hero.model';
 import {
   faSearch,
   faUsers,
   faComments
 } from '@fortawesome/free-solid-svg-icons';
+
+import { HeroModel } from '../../models/hero.model';
 
 @Component({
   selector: 'hab-welcome-hero',
