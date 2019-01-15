@@ -1,13 +1,5 @@
 <ul>
-  <li>
-    <h1>
-      <fa-icon [icon]="search"></fa-icon>Encuentra gente con tus intereses
-    </h1>
-  </li>
-  <li>
-    <h1><fa-icon [icon]="people"></fa-icon>Crea tu red de amigos</h1>
-  </li>
-  <li>
-    <h1><fa-icon [icon]="messages"></fa-icon>Mantente en contacto</h1>
+  <li *ngFor="let row of rows">
+    <h1><fa-icon [icon]="row.icon"></fa-icon>{{ row.message }}</h1>
   </li>
 </ul>

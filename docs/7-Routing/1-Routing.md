@@ -33,7 +33,7 @@ autoscale: true
 
 ---
 
-# SPA. Inconvenientos 
+# SPA. Inconvenientes 
 
 - SEO. Google no renderiza perfectamente JS
 
