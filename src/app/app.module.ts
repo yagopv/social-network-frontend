@@ -27,7 +27,6 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

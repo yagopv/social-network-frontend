@@ -38,8 +38,10 @@ export class RegisterComponent {
       return;
     }
 
-    const { email, password } = this.registerForm.value;
-    this.store.dispatch(new Register({ email, password }));
+    const { email, password, firstName, lastName } = this.registerForm.value;
+    this.store.dispatch(
+      new Register({ email, password, fullName: `${firstName} ${lastName}` })
+    );
   }
 
   resetErrors() {
