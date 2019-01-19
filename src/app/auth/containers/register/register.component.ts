@@ -9,6 +9,7 @@ import { ErrorState } from '../../../error/store/error.state';
 import { ErrorModel } from '../../../error/error.model';
 import { Register } from '../../store/auth.actions';
 import { ResetErrors } from '../../../error/store/error.actions';
+import { Navigate } from '@ngxs/router-plugin';
 
 @Component({
   selector: 'hab-register',
