@@ -1,15 +1,20 @@
 @import '~src/scss/colors.scss';
+@import '~src/scss/breakpoints.scss';
 
 hab-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 30%;
+  padding: 20px;
 
   div {
     width: 100%;
     border: 5px solid $razzmic-berry;
     padding: 30px;
     border-radius: 10px;
+  }
+
+  @include respond-above(sm) {
+    padding: 20px 30%;
   }
 }

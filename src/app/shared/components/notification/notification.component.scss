@@ -1,4 +1,5 @@
 @import '~src/scss/colors.scss';
+@import '~src/scss/breakpoints.scss';
 
 .notification {
   position: absolute;
@@ -10,7 +11,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 20%;
   .content {
     padding: 2em;
     display: flex;
@@ -31,5 +31,9 @@
     border-radius: 5px;
     border: 2px solid $razzmic-berry;
     color: $razzmic-berry;
+  }
+
+  @include respond-above(sm) {
+    padding: 0 20%;
   }
 }
