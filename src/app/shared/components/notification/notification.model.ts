@@ -2,7 +2,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export enum NotificationType {
-  EMAIL_ACTIVATION = 'email-activation',
+  ACCOUNT_ACTIVATED = 'account-activated',
   REGISTRATION_SUCCESS = 'registration-success'
 }
 export class NotificationModel {
@@ -12,7 +12,7 @@ export class NotificationModel {
 
   constructor(private notificationType: NotificationType) {
     switch (this.notificationType) {
-      case NotificationType.EMAIL_ACTIVATION:
+      case NotificationType.ACCOUNT_ACTIVATED:
         this.title = 'Activation success';
         this.icon = faCheck;
         this.message = 'Your account was successfully activated';

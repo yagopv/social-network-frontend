@@ -23,4 +23,13 @@
       font-size: 6em;
     }
   }
+  button {
+    outline: none;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid $razzmic-berry;
+    color: $razzmic-berry;
+  }
 }
