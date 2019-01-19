@@ -26,7 +26,7 @@ export class RegisterComponent {
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     },
-    { validator: MatchPasswordValidator }
+    { validator: MatchPasswordValidator, updateOn: 'blur' }
   );
 
   constructor(private fb: FormBuilder, private store: Store) {
