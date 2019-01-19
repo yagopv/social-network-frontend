@@ -9,6 +9,7 @@ import { ErrorState } from '../../../error/store/error.state';
 import { ErrorModel } from '../../../error/error.model';
 import { Register } from '../../store/auth.actions';
 import { ResetErrors } from '../../../error/store/error.actions';
+import { Navigate } from '@ngxs/router-plugin';
 
 @Component({
   selector: 'hab-register',
@@ -25,7 +26,7 @@ export class RegisterComponent {
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     },
-    { validator: MatchPasswordValidator }
+    { validator: MatchPasswordValidator, updateOn: 'blur' }
   );
 
   constructor(private fb: FormBuilder, private store: Store) {
@@ -38,8 +39,10 @@ export class RegisterComponent {
       return;
     }
 
-    const { email, password } = this.registerForm.value;
-    this.store.dispatch(new Register({ email, password }));
+    const { email, password, firstName, lastName } = this.registerForm.value;
+    this.store.dispatch(
+      new Register({ email, password, fullName: `${firstName} ${lastName}` })
+    );
   }
 
   resetErrors() {

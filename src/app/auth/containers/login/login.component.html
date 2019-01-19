@@ -4,7 +4,11 @@
     [errors]="errors$ | async"
     (errorReset)="resetErrors()"
   ></hab-errors>
-  <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+  <form
+    (ngSubmit)="login(loginForm)"
+    #loginForm="ngForm"
+    [ngFormOptions]="{ updateOn: 'blur' }"
+  >
     <hab-form-control [control]="email">
       <input
         type="text"

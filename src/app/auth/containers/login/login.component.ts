@@ -9,6 +9,7 @@ import { ErrorModel } from '../../../error/error.model';
 import { ErrorState } from '../../../error/store/error.state';
 import { ResetErrors } from '../../../error/store/error.actions';
 import { Login } from '../../store/auth.actions';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'hab-login',
@@ -27,7 +28,9 @@ export class LoginComponent {
       return;
     }
 
-    this.store.dispatch(new Login(form.value));
+    this.store
+      .dispatch(new Login(form.value))
+      .subscribe(() => (this.loginModel.password = ''));
   }
 
   resetErrors() {

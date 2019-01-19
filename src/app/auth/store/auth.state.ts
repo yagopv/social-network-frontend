@@ -14,7 +14,6 @@ import {
   LoginFailed
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
-import { getCurrentSanitizer } from '@angular/core/src/render3/state';
 
 export interface AuthStateModel {
   currentUser: AuthUserModel;
@@ -58,6 +57,16 @@ export class AuthState {
     return this.authService.register(action.register).pipe(
       tap(() => dispatch(new RegisterSuccess())),
       catchError(() => dispatch(new RegisterFailed()))
+    );
+  }
+
+  @Action(RegisterSuccess)
+  registerSuccess({ dispatch }: StateContext<AuthStateModel>) {
+    dispatch(
+      new Navigate([
+        '',
+        { outlets: { popup: ['notification', 'registration-success'] } }
+      ])
     );
   }
 }

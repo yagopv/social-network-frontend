@@ -1,3 +1,6 @@
+theme: Next, 8
+autoscale: true
+
 # Redux
 
 ---

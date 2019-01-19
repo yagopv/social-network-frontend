@@ -3,8 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './auth/services/auth.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { NotificationComponent } from './shared/components/notification/notification.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full'
+  },
   {
     path: '',
     loadChildren: './welcome/welcome.module#WelcomeModule'
@@ -21,6 +27,11 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: './about/about.module#AboutModule'
+  },
+  {
+    path: 'notification/:notificationType',
+    component: NotificationComponent,
+    outlet: 'popup'
   },
   { path: '**', component: NotFoundComponent }
 ];

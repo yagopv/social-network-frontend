@@ -1,0 +1,8 @@
+<section class="notification">
+  <div class="content">
+    <h1>{{ notification.title }}</h1>
+    <fa-icon [icon]="notification.icon"></fa-icon>
+    <p>{{ notification.message }}</p>
+    <button (click)="close()">Close</button>
+  </div>
+</section>

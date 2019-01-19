@@ -5,9 +5,15 @@ import { CommonModule } from '@angular/common';
 import { ErrorComponent } from './components/error.component';
 import { ErrorState } from './store/error.state';
 import { SharedModule } from '../shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, NgxsModule.forFeature([ErrorState])],
+  imports: [
+    CommonModule,
+    SharedModule,
+    FontAwesomeModule,
+    NgxsModule.forFeature([ErrorState])
+  ],
   declarations: [ErrorComponent],
   exports: [ErrorComponent]
 })

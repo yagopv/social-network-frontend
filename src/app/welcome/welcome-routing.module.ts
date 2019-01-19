@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: SiteLayoutComponent,
-    children: [{ path: '', component: WelcomeComponent }]
+    children: [{ path: 'welcome', component: WelcomeComponent }]
   }
 ];
 

@@ -45,11 +45,8 @@ export class AuthService {
       );
   }
 
-  register({ email, password }: RegisterModel) {
-    return this.http.post<any>(`${environment.apiBaseUrl}/account`, {
-      email,
-      password
-    });
+  register(register: RegisterModel) {
+    return this.http.post<any>(`${environment.apiBaseUrl}/account`, register);
   }
 
   logout() {

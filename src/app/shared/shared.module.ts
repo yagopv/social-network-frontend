@@ -12,7 +12,7 @@ import { MailValidatorDirective } from './validators/mail.validator';
 import { MyStatusComponent } from './components/my-status/my-status.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
-import { PopupWrapperComponent } from './components/popup-wrapper/popup-wrapper.component';
+import { NotificationComponent } from './components/notification/notification.component';
 import { CenteredLayoutComponent } from './components/centered-layout/centered-layout.component';
 import { SiteLayoutHeaderComponent } from './components/site-layout-header/site-layout-header.component';
 import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-layout-footer.component';
@@ -32,7 +32,7 @@ import { TextAreaDirective } from './directives/textarea-directive';
     MyStatusComponent,
     UserFriendlyDatePipe,
     MeComponent,
-    PopupWrapperComponent,
+    NotificationComponent,
     CenteredLayoutComponent,
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
@@ -50,7 +50,7 @@ import { TextAreaDirective } from './directives/textarea-directive';
     MyStatusComponent,
     UserFriendlyDatePipe,
     MeComponent,
-    PopupWrapperComponent,
+    NotificationComponent,
     CenteredLayoutComponent,
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
