@@ -9,7 +9,6 @@ import { ErrorModel } from '../../../error/error.model';
 import { ErrorState } from '../../../error/store/error.state';
 import { ResetErrors } from '../../../error/store/error.actions';
 import { Login } from '../../store/auth.actions';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'hab-login',

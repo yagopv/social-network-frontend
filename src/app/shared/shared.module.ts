@@ -8,7 +8,7 @@ import { FormGroupComponent } from '../shared/components/form-group/form-group.c
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form-control/form-control.component';
 import { MailValidatorDirective } from './validators/mail.validator';
-import { MyStatusComponent } from './components/my-status/my-status.component';
+import { PublisherComponent } from './components/publisher/publisher.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
 import { NotificationComponent } from './components/notification/notification.component';
@@ -18,16 +18,17 @@ import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-
 import { SiteLayoutComponent } from './components/site-layout/site-layout.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { TextAreaDirective } from './directives/textarea-directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
   declarations: [
     NotFoundComponent,
     FormGroupComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
     MailValidatorDirective,
-    MyStatusComponent,
+    PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
     NotificationComponent,
@@ -44,7 +45,7 @@ import { TextAreaDirective } from './directives/textarea-directive';
     ClickPreventDefaultDirective,
     FormControlComponent,
     MailValidatorDirective,
-    MyStatusComponent,
+    PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
     NotificationComponent,

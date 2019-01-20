@@ -1,6 +1,6 @@
 @import '~src/scss/colors.scss';
 
-.my-status {
+.publisher {
   display: flex;
   align-items: center;
   height: auto;
@@ -14,7 +14,7 @@
     align-self: flex-start;
   }
 
-  .my-status-text {
+  .publisher-text {
     flex: 1;
     textarea {
       background: $white;
@@ -30,5 +30,12 @@
         opacity: 0.7;
       }
     }
+  }
+  button {
+    padding: 7px 10px;
+    outline: none;
+    font-size: 2em;
+    color: $dark;
+    align-self: flex-start;
   }
 }
