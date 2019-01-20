@@ -7,6 +7,7 @@ import { AuthUserModel } from '../models/auth-user.model';
 import { environment } from '../../../environments/environment';
 import { LoginModel } from '../containers/login/login.model';
 import { RegisterModel } from '../models/register.model';
+import { ProfileModel } from '../models/profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -47,6 +48,13 @@ export class AuthService {
 
   register(register: RegisterModel) {
     return this.http.post<any>(`${environment.apiBaseUrl}/account`, register);
+  }
+
+  updateProfile(profile: ProfileModel) {
+    return this.http.put<ProfileModel>(
+      `${environment.apiBaseUrl}/account`,
+      profile
+    );
   }
 
   logout() {
