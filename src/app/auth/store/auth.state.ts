@@ -11,7 +11,8 @@ import {
   Register,
   RegisterSuccess,
   RegisterFailed,
-  LoginFailed
+  LoginFailed,
+  Logout
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
 
@@ -68,5 +69,11 @@ export class AuthState {
         { outlets: { popup: ['notification', 'registration-success'] } }
       ])
     );
+  }
+
+  @Action(Logout)
+  logout({ dispatch }: StateContext<AuthState>) {
+    this.authService.logout();
+    dispatch(new Navigate(['/auth/login']));
   }
 }

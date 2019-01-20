@@ -1,11 +1,12 @@
 @import '~src/scss/colors.scss';
 @import '~src/scss/breakpoints.scss';
 
-hab-container {
+section {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  height: 100%;
 
   div {
     width: 100%;

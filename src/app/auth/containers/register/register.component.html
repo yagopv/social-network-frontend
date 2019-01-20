@@ -1,9 +1,6 @@
 <!-- Reactive -->
 <hab-form-group>
-  <hab-errors
-    [errors]="errors$ | async"
-    (errorReset)="resetErrors()"
-  ></hab-errors>
+  <hab-errors [errors]="errors$ | async" (reset)="resetErrors()"></hab-errors>
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <hab-form-control [control]="registerForm.get('firstName')">
       <input type="text" placeholder="First Name" formControlName="firstName" />

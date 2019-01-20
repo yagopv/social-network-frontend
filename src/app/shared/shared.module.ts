@@ -5,7 +5,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 import { FormGroupComponent } from '../shared/components/form-group/form-group.component';
-import { ContainerComponent } from './components/container/container.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form-control/form-control.component';
 import { MailValidatorDirective } from './validators/mail.validator';
@@ -25,7 +24,6 @@ import { TextAreaDirective } from './directives/textarea-directive';
   declarations: [
     NotFoundComponent,
     FormGroupComponent,
-    ContainerComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
     MailValidatorDirective,
@@ -44,7 +42,6 @@ import { TextAreaDirective } from './directives/textarea-directive';
     NotFoundComponent,
     FormGroupComponent,
     ClickPreventDefaultDirective,
-    ContainerComponent,
     FormControlComponent,
     MailValidatorDirective,
     MyStatusComponent,

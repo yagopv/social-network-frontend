@@ -8,7 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardAsideComponent } from './components/dashboard-aside/dashboard-aside.component';
 import { DashboardFooterComponent } from './components/dashboard-footer/dashboard-footer.component';
 import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
-import { DashboardLayoutComponent } from './components/dashboard-layout/dashboard-layout.component';
+import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
 import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
 import { FriendsComponent } from './containers/friends/friends.component';
 import { PostComponent } from './components/post/post.component';
