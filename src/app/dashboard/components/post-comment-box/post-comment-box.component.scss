@@ -15,17 +15,17 @@
     margin-left: 20px;
     width: 100%;
     input {
-      background: $white-smoke;
+      background: $white;
       border: none;
       outline: none;
       font-size: 1.2em;
-      color: $razzmic-berry;
+      color: $main;
       width: 100%;
       padding: 1rem;
       height: 40px;
       border-radius: 10px;
       &::placeholder {
-        color: $razzmic-berry;
+        color: $main;
         opacity: 0.7;
       }
     }

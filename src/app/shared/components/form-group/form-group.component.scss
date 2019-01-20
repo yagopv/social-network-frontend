@@ -4,8 +4,8 @@
   ::ng-deep {
     button {
       transition: background-color 0.2s ease-in;
-      background-color: $razzmic-berry;
-      color: $white-smoke;
+      background-color: $main;
+      color: $white;
       padding: 20px 30px;
       border-radius: 5px;
       font-size: 1rem;
@@ -15,7 +15,7 @@
         float: right;
       }
       &:hover {
-        background-color: darken($razzmic-berry, 10%);
+        background-color: darken($main, 10%);
       }
     }
   }

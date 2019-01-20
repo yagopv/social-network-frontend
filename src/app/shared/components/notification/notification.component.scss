@@ -7,7 +7,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba($razzmic-berry, 0.4);
+  background: rgba($main, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,8 +17,8 @@
     flex-direction: column;
     border-radius: 10px;
     align-items: center;
-    background: $white-smoke;
-    color: $razzmic-berry;
+    background: $white;
+    color: $main;
     fa-icon {
       font-size: 6em;
     }
@@ -29,8 +29,8 @@
     padding: 10px;
     font-size: 1rem;
     border-radius: 5px;
-    border: 2px solid $razzmic-berry;
-    color: $razzmic-berry;
+    border: 2px solid $main;
+    color: $main;
   }
 
   @include respond-above(sm) {

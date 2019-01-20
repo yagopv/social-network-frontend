@@ -9,20 +9,20 @@ div {
     input[type='email'],
     input[type='password'] {
       width: 100%;
-      border: 1px solid $razzmic-berry;
-      color: $razzmic-berry;
+      border: 1px solid $main;
+      color: $main;
       border-radius: 5px;
       font-size: 1rem;
       padding: 5px 10px;
       outline: none;
-      background: $white-smoke;
+      background: $white;
       height: 100%;
       transition: all 0.2s ease-in;
       &:focus {
-        box-shadow: 0 0 3px 2px $razzmic-berry;
+        box-shadow: 0 0 3px 2px $main;
       }
       &::placeholder {
-        color: $razzmic-berry;
+        color: $main;
       }
     }
   }
@@ -34,14 +34,14 @@ div {
     ::ng-deep {
       input {
         border: 1px solid $error;
-        color: $white-smoke;
+        color: $white;
         background: $error;
         transition: all 0.2s ease-in;
         &:focus {
           box-shadow: none;
         }
         &::placeholder {
-          color: $white-smoke;
+          color: $white;
         }
       }
     }

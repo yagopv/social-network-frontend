@@ -5,7 +5,7 @@
   align-items: center;
   height: auto;
   min-height: 60px;
-  border: 1px solid $dust-storm;
+  border: 1px solid $light;
 
   img {
     padding: 7px 10px;
@@ -17,16 +17,16 @@
   .my-status-text {
     flex: 1;
     textarea {
-      background: $white-smoke;
+      background: $white;
       border: none;
       outline: none;
       font-size: 1.2em;
-      color: $razzmic-berry;
+      color: $main;
       width: 100%;
       padding-right: 1em;
       resize: none;
       &::placeholder {
-        color: $razzmic-berry;
+        color: $main;
         opacity: 0.7;
       }
     }

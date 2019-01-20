@@ -14,7 +14,7 @@
       }
       a {
         &.active {
-          color: $razzmic-berry;
+          color: $main;
         }
       }
       &:last-child {
@@ -23,7 +23,7 @@
         @include respond-above(lg) {
           margin-top: 20px;
           padding: 10px 0;
-          border-top: 2px solid $white-smoke;
+          border-top: 2px solid $white;
           float: none;
         }
       }

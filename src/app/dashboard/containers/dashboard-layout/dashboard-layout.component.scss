@@ -2,7 +2,7 @@
 @import '~src/scss/breakpoints.scss';
 
 hab-dashboard-header {
-  background: $razzmic-berry;
+  background: $main;
   height: 50px;
   position: fixed;
   width: 100%;
@@ -23,7 +23,7 @@ div {
 
     nav {
       grid-area: nav;
-      background-color: $tuscany;
+      background-color: $contrast;
     }
 
     main {
@@ -37,7 +37,7 @@ div {
 
     footer {
       grid-area: footer;
-      background-color: $razzmic-berry;
+      background-color: $main;
     }
 
     hab-dashboard-nav,
