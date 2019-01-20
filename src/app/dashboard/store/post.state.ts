@@ -1,135 +1,32 @@
 import { State, StateContext, Action } from '@ngxs/store';
+import { catchError, tap } from 'rxjs/operators';
 
-import { PostViewModel } from '../models/post.model';
-import { GetPosts } from './post.actions';
+import { PostModel } from '../models/post.model';
+import { GetPosts, GetPostsFailed, GetPostsSuccess } from './post.actions';
+import { FeedService } from '../services/feed.service';
 
-@State<PostViewModel[]>({
+@State<PostModel[]>({
   name: 'posts',
   defaults: []
 })
 export class PostState {
-  constructor() {}
+  constructor(private feedService: FeedService) {}
 
   @Action(GetPosts)
-  getPosts({ setState }: StateContext<PostViewModel[]>) {
-    setState([
-      {
-        user: {
-          id: 2,
-          name: 'Juan Antonio Rodriguez',
-          avatar: 'http://i.pravatar.cc/128?img=2'
-        },
-        datetime: 1543924629944,
-        message:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra scelerisque lectus, quis commodo eros fermentum vitae. Nulla a ante quis lectus vestibulum tempor ut sed libero',
-        comments: [
-          {
-            user: {
-              id: 3,
-              name: 'Teresa',
-              avatar: 'http://i.pravatar.cc/128?img=3'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 4,
-              name: 'Juan Antonio',
-              avatar: 'http://i.pravatar.cc/128?img=4'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 1,
-              name: 'Yago Pérez',
-              avatar: 'http://i.pravatar.cc/128?img=1'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          }
-        ]
-      },
-      {
-        user: {
-          id: 2,
-          name: 'Juan Antonio Rodriguez',
-          avatar: 'http://i.pravatar.cc/128?img=2'
-        },
-        datetime: 1543924629944,
-        message:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra scelerisque lectus, quis commodo eros fermentum vitae. Nulla a ante quis lectus vestibulum tempor ut sed libero',
-        comments: [
-          {
-            user: {
-              id: 3,
-              name: 'Teresa',
-              avatar: 'http://i.pravatar.cc/128?img=3'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 4,
-              name: 'Juan Antonio',
-              avatar: 'http://i.pravatar.cc/128?img=4'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 1,
-              name: 'Yago Pérez',
-              avatar: 'http://i.pravatar.cc/128?img=1'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          }
-        ]
-      },
-      {
-        user: {
-          id: 2,
-          name: 'Juan Antonio Rodriguez',
-          avatar: 'http://i.pravatar.cc/128?img=2'
-        },
-        datetime: 1543924629944,
-        message:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra scelerisque lectus, quis commodo eros fermentum vitae. Nulla a ante quis lectus vestibulum tempor ut sed libero',
-        comments: [
-          {
-            user: {
-              id: 3,
-              name: 'Teresa',
-              avatar: 'http://i.pravatar.cc/128?img=3'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 4,
-              name: 'Juan Antonio',
-              avatar: 'http://i.pravatar.cc/128?img=4'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 1,
-              name: 'Yago Pérez',
-              avatar: 'http://i.pravatar.cc/128?img=1'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          }
-        ]
-      }
-    ]);
+  posts({ dispatch }: StateContext<PostModel[]>) {
+    return this.feedService.getFeed().pipe(
+      tap(posts => dispatch(new GetPostsSuccess(posts))),
+      catchError(error => dispatch(new GetPostsFailed(error)))
+    );
+  }
+
+  @Action(GetPostsSuccess)
+  postsSuccess(ctx: StateContext<PostModel[]>, action: GetPostsSuccess) {
+    console.log('ACTION!!!', action);
+  }
+
+  @Action(GetPostsFailed)
+  postsError(ctx: StateContext<PostModel[]>, action: GetPostsFailed) {
+    console.log('GetPostsFailed', action);
   }
 }

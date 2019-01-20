@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
 
 import { PostState } from '../../store/post.state';
-import { PostViewModel } from '../../models/post.model';
 import { GetPosts } from '../../store/post.actions';
+import { PostModel } from '../../models/post.model';
 
 @Component({
   selector: 'hab-home',
@@ -12,7 +12,7 @@ import { GetPosts } from '../../store/post.actions';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @Select(PostState) posts$: Observable<PostViewModel[]>;
+  @Select(PostState) posts$: Observable<PostModel[]>;
 
   constructor(private store: Store) {}
 

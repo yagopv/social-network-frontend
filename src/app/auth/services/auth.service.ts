@@ -22,7 +22,7 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): AuthUserModel {
+  public get currentUserSnapshot(): AuthUserModel {
     return this.currentUserSubject.value;
   }
 

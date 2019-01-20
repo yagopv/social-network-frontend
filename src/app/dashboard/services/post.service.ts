@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { PublishModel, PostCommentModel } from '../models/publish.model';
+import { PublishModel, PostCommentModel } from '../models/post.model';
 import { Observable } from 'rxjs';
+import { DashboardModule } from '../dashboard.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: DashboardModule
 })
-export class PublishService {
+export class PostService {
   constructor(private http: HttpClient) {}
 
   publish(content: string): Observable<PublishModel> {
@@ -22,14 +23,6 @@ export class PublishService {
       {
         message
       }
-    );
-  }
-
-  getFeed(userId?: string): Observable<PublishModel[]> {
-    const path = userId ? `/${userId}` : '/';
-
-    return this.http.get<PublishModel[]>(
-      `${environment.apiBaseUrl}/user${path}/feed`
     );
   }
 }

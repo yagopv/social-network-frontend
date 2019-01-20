@@ -1,6 +1,5 @@
-import { NgZone } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
-import { Navigate, RouterState } from '@ngxs/router-plugin';
+import { Navigate } from '@ngxs/router-plugin';
 import { State, Action, StateContext, Store } from '@ngxs/store';
 
 import { AuthUserModel } from '../models/auth-user.model';
@@ -49,7 +48,7 @@ export class AuthState {
 
   @Action(LoginFailed)
   loginFailed({ dispatch }: StateContext<AuthStateModel>, action: LoginFailed) {
-    // Use ngxs Action or going to fail because running outside NgZone
+    // Use ngxs Action or this is going to fail because running outside NgZone
     dispatch(new SetErrors(action.errors));
   }
 

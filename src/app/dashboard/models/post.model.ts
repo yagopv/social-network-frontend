@@ -1,30 +1,23 @@
-export class PostContentViewModel {
-  user: PostUserViewModel;
-  datetime: number;
+export interface PostModel {
+  likes: any[];
+  author: string;
+  content: string;
+  comments: CommentModel[];
+  createdAt: number;
+  id: string;
+}
+
+export interface CommentModel {
+  author: string;
   message: string;
-
-  constructor(post: PostViewModel) {
-    this.user = post.user;
-    this.datetime = post.datetime;
-    this.message = post.message;
-  }
+  createdAt: number;
+  id: string;
 }
 
-export interface PostCommentViewModel {
-  user: PostUserViewModel;
-  datetime: number;
-  comment: string;
+export interface PublishModel {
+  content: string;
 }
 
-export interface PostUserViewModel {
-  id: number;
-  name: string;
-  avatar: string;
-}
-
-export interface PostViewModel {
-  user: PostUserViewModel;
-  datetime: number;
+export interface PostCommentModel {
   message: string;
-  comments: PostCommentViewModel[];
 }

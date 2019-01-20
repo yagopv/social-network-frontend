@@ -32,5 +32,5 @@ export class RegisterFailed {
 }
 
 export class Logout {
-  static readonly type = '[Authh] Logout';
+  static readonly type = '[Auth] Logout';
 }
