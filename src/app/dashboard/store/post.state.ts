@@ -1,28 +1,33 @@
-import { State, StateContext, Action } from '@ngxs/store';
+import { State, StateContext, Action, Selector } from '@ngxs/store';
 import { catchError, tap } from 'rxjs/operators';
 
 import {
   GetPosts,
   GetPostsFailed,
   GetPostsSuccess,
-  Publish
+  Publish,
+  PublishSuccess,
+  PublishFailed
 } from './post.actions';
 import { PostService } from '../services/post.service';
 import { PostStateModel } from '../models/post-state.model';
-import { SetComments } from './comment.actions';
 
 @State<PostStateModel>({
   name: 'posts',
-  defaults: {
-    byId: {},
-    allIds: []
-  }
+  defaults: {}
 })
 export class PostState {
   constructor(private postService: PostService) {}
 
+  @Selector()
+  static getPostsByDate(state: PostStateModel) {
+    return Object.values(state).sort((p1, p2) => {
+      return p2.createdAt - p1.createdAt;
+    });
+  }
+
   @Action(GetPosts)
-  posts({ dispatch }: StateContext<PostStateModel>) {
+  getPosts({ dispatch }: StateContext<PostStateModel>) {
     return this.postService.getFeed().pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
       catchError(error => dispatch(new GetPostsFailed(error)))
@@ -30,35 +35,44 @@ export class PostState {
   }
 
   @Action(GetPostsSuccess)
-  postsSuccess(
-    { setState, dispatch }: StateContext<PostStateModel>,
+  getPostsSuccess(
+    { setState }: StateContext<PostStateModel>,
     { posts }: GetPostsSuccess
   ) {
-    const comments = [];
-
     setState(
-      posts.reduce(
-        (draft, post) => {
-          draft.byId[post.id] = post;
-          draft.allIds.push(post.id);
-          comments.push(post.comments);
-          return draft;
-        },
-        {
-          byId: {},
-          allIds: []
-        }
-      )
+      posts.reduce((draft, post) => {
+        draft[post.id] = post;
+        return draft;
+      }, {})
     );
-
-    dispatch(new SetComments(comments));
   }
 
   @Action(GetPostsFailed)
-  postsError(ctx: StateContext<PostStateModel>, action: GetPostsFailed) {
+  getPostsError(ctx: StateContext<PostStateModel>, action: GetPostsFailed) {
     console.log('GetPostsFailed', action);
   }
 
   @Action(Publish)
-  publish(ctx: StateContext<PostStateModel>, { publish }: Publish) {}
+  publish(
+    { dispatch, setState }: StateContext<PostStateModel>,
+    { publish }: Publish
+  ) {
+    return this.postService.publish(publish.content).pipe(
+      tap(post => {
+        dispatch(new PublishSuccess(post));
+      }),
+      catchError(error => dispatch(new PublishFailed(error)))
+    );
+  }
+
+  @Action(PublishSuccess)
+  publishSuccess(
+    { setState, getState }: StateContext<PostStateModel>,
+    { post }: PublishSuccess
+  ) {
+    setState({
+      ...getState(),
+      [post.id]: post
+    });
+  }
 }

@@ -9,7 +9,6 @@ export class GetPostsSuccess {
   static readonly type = '[Posts] GetPostsSuccess';
   constructor(public posts: PostModel[]) {}
 }
-
 export class GetPostsFailed {
   static readonly type = '[Posts] GetPostsFailed';
   constructor(public error: ErrorModel[]) {}
@@ -27,5 +26,19 @@ export class PublishSuccess {
 
 export class PublishFailed {
   static readonly type = '[Posts] PublishFailed';
+  constructor(public error: ErrorModel[]) {}
+}
+
+export class AddComment {
+  static readonly type = '[Comment] AddComment';
+  constructor(public message: string) {}
+}
+
+export class AddCommentSuccess {
+  static readonly type = '[Comment] AddCommentSuccess';
+}
+
+export class AddCommentFailed {
+  static readonly type = '[Comment] AddCommentFailed';
   constructor(public error: ErrorModel[]) {}
 }

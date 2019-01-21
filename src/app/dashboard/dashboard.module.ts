@@ -15,7 +15,6 @@ import { PostComponent } from './components/post/post.component';
 import { HomeComponent } from './containers/home/home.component';
 import { NgxsModule } from '@ngxs/store';
 import { PostState } from './store/post.state';
-import { CommentState } from './store/comment.state';
 import { SharedModule } from '../shared/shared.module';
 import { PostCommentComponent } from './components/post-comment/post-comment.component';
 import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
@@ -28,7 +27,7 @@ import { PostCommentBoxComponent } from './components/post-comment-box/post-comm
     SharedModule,
     DashboardRoutingModule,
     FontAwesomeModule,
-    NgxsModule.forFeature([PostState, CommentState])
+    NgxsModule.forFeature([PostState])
   ],
   declarations: [
     DashboardAsideComponent,

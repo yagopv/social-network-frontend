@@ -24,8 +24,8 @@ export class PostService {
     );
   }
 
-  publish(content: string): Observable<PublishModel> {
-    return this.http.post<PublishModel>(`${environment.apiBaseUrl}/post`, {
+  publish(content: string): Observable<PostModel> {
+    return this.http.post<PostModel>(`${environment.apiBaseUrl}/post`, {
       content
     });
   }
