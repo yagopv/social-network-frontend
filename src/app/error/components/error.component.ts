@@ -15,22 +15,22 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
   template: `
     <div class="errors" *ngIf="errors.length">
       <p *ngFor="let error of errors">{{ error.detail | capitalize }}</p>
-      <a (click)="reset()"><fa-icon [icon]="closeIcon"></fa-icon></a>
+      <a (click)="resetErrors()"><fa-icon [icon]="closeIcon"></fa-icon></a>
     </div>
   `,
   styleUrls: ['./error.component.scss']
 })
 export class ErrorComponent implements OnDestroy {
   @Input() errors: ErrorModel[];
-  @Output() errorReset = new EventEmitter();
+  @Output() reset = new EventEmitter();
 
   closeIcon: IconProp = faTimesCircle;
 
-  reset() {
-    this.errorReset.emit();
+  resetErrors() {
+    this.reset.emit();
   }
 
   ngOnDestroy() {
-    this.errorReset.emit();
+    this.reset.emit();
   }
 }

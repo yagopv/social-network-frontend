@@ -7,7 +7,7 @@ html {
   overflow-y: auto !important;
 
   body {
-    background-color: $white-smoke;
+    background-color: $white;
     font-family: 'Open Sans', Helvetica, sans-serif;
     height: 100%;
   }
@@ -47,7 +47,7 @@ html {
   }
 
   a {
-    color: $white-smoke;
+    color: $white;
     text-decoration: none;
     cursor: pointer;
     &:hover {
@@ -61,5 +61,5 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: $dust-storm;
+  background-color: $light;
 }

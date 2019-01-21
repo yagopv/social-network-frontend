@@ -1,135 +1,78 @@
-import { State, StateContext, Action } from '@ngxs/store';
+import { State, StateContext, Action, Selector } from '@ngxs/store';
+import { catchError, tap } from 'rxjs/operators';
 
-import { PostViewModel } from '../models/post.model';
-import { GetPosts } from './post.actions';
+import {
+  GetPosts,
+  GetPostsFailed,
+  GetPostsSuccess,
+  Publish,
+  PublishSuccess,
+  PublishFailed
+} from './post.actions';
+import { PostService } from '../services/post.service';
+import { PostStateModel } from '../models/post-state.model';
 
-@State<PostViewModel[]>({
+@State<PostStateModel>({
   name: 'posts',
-  defaults: []
+  defaults: {}
 })
 export class PostState {
-  constructor() {}
+  constructor(private postService: PostService) {}
+
+  @Selector()
+  static getPostsByDate(state: PostStateModel) {
+    return Object.values(state).sort((p1, p2) => {
+      return p2.createdAt - p1.createdAt;
+    });
+  }
 
   @Action(GetPosts)
-  getPosts({ setState }: StateContext<PostViewModel[]>) {
-    setState([
-      {
-        user: {
-          id: 2,
-          name: 'Juan Antonio Rodriguez',
-          avatar: 'http://i.pravatar.cc/128?img=2'
-        },
-        datetime: 1543924629944,
-        message:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra scelerisque lectus, quis commodo eros fermentum vitae. Nulla a ante quis lectus vestibulum tempor ut sed libero',
-        comments: [
-          {
-            user: {
-              id: 3,
-              name: 'Teresa',
-              avatar: 'http://i.pravatar.cc/128?img=3'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 4,
-              name: 'Juan Antonio',
-              avatar: 'http://i.pravatar.cc/128?img=4'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 1,
-              name: 'Yago Pérez',
-              avatar: 'http://i.pravatar.cc/128?img=1'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          }
-        ]
-      },
-      {
-        user: {
-          id: 2,
-          name: 'Juan Antonio Rodriguez',
-          avatar: 'http://i.pravatar.cc/128?img=2'
-        },
-        datetime: 1543924629944,
-        message:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra scelerisque lectus, quis commodo eros fermentum vitae. Nulla a ante quis lectus vestibulum tempor ut sed libero',
-        comments: [
-          {
-            user: {
-              id: 3,
-              name: 'Teresa',
-              avatar: 'http://i.pravatar.cc/128?img=3'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 4,
-              name: 'Juan Antonio',
-              avatar: 'http://i.pravatar.cc/128?img=4'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 1,
-              name: 'Yago Pérez',
-              avatar: 'http://i.pravatar.cc/128?img=1'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          }
-        ]
-      },
-      {
-        user: {
-          id: 2,
-          name: 'Juan Antonio Rodriguez',
-          avatar: 'http://i.pravatar.cc/128?img=2'
-        },
-        datetime: 1543924629944,
-        message:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra scelerisque lectus, quis commodo eros fermentum vitae. Nulla a ante quis lectus vestibulum tempor ut sed libero',
-        comments: [
-          {
-            user: {
-              id: 3,
-              name: 'Teresa',
-              avatar: 'http://i.pravatar.cc/128?img=3'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 4,
-              name: 'Juan Antonio',
-              avatar: 'http://i.pravatar.cc/128?img=4'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          },
-          {
-            user: {
-              id: 1,
-              name: 'Yago Pérez',
-              avatar: 'http://i.pravatar.cc/128?img=1'
-            },
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            datetime: 1543924629944
-          }
-        ]
-      }
-    ]);
+  getPosts({ dispatch }: StateContext<PostStateModel>) {
+    return this.postService.getFeed().pipe(
+      tap(posts => dispatch(new GetPostsSuccess(posts))),
+      catchError(error => dispatch(new GetPostsFailed(error)))
+    );
+  }
+
+  @Action(GetPostsSuccess)
+  getPostsSuccess(
+    { setState }: StateContext<PostStateModel>,
+    { posts }: GetPostsSuccess
+  ) {
+    setState(
+      posts.reduce((draft, post) => {
+        draft[post.id] = post;
+        return draft;
+      }, {})
+    );
+  }
+
+  @Action(GetPostsFailed)
+  getPostsError(ctx: StateContext<PostStateModel>, action: GetPostsFailed) {
+    console.log('GetPostsFailed', action);
+  }
+
+  @Action(Publish)
+  publish(
+    { dispatch, setState }: StateContext<PostStateModel>,
+    { publish }: Publish
+  ) {
+    return this.postService.publish(publish.content).pipe(
+      tap(post => {
+        dispatch(new PublishSuccess(post));
+      }),
+      catchError(error => dispatch(new PublishFailed(error)))
+    );
+  }
+
+  @Action(PublishSuccess)
+  publishSuccess(
+    { setState, getState }: StateContext<PostStateModel>,
+    { post }: PublishSuccess
+  ) {
+    setState({
+      ...getState(),
+      [post.id]: post
+    });
   }
 }

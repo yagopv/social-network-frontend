@@ -1,10 +1,10 @@
-<div class="post-comment" [class.me]="comment.user.id === 1">
-  <img [src]="comment.user.avatar" />
+<div class="post-comment" [class.me]="comment.author === '1'">
+  <img [src]="'http://i.pravatar.cc/128'" />
   <div class="post-message">
     <h5>
-      {{ comment.user.name }}
-      <small>{{ comment.datetime | userFriendlyDate }}</small>
+      {{ comment.author }}
+      <small>{{ comment.createdAt | userFriendlyDate }}</small>
     </h5>
-    <p>{{ comment.comment }}</p>
+    <p>{{ comment.message }}</p>
   </div>
 </div>

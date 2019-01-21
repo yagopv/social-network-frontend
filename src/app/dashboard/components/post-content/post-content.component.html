@@ -1,14 +1,14 @@
 <section class="post-content">
   <div class="post-content-head">
-    <img [src]="postContent.user.avatar" />
+    <img [src]="'http://i.pravatar.cc/128'" />
     <div>
       <h4>
-        <b>{{ postContent.user.name }}</b>
+        <b>{{ post.author }}</b>
       </h4>
-      <small>{{ postContent.datetime | userFriendlyDate }}</small>
+      <small>{{ post.createdAt | userFriendlyDate }}</small>
     </div>
   </div>
   <div class="post-content-body">
-    <p>{{ postContent.message }}</p>
+    <p>{{ post.content }}</p>
   </div>
 </section>

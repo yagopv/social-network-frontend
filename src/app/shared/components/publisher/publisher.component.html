@@ -1,0 +1,14 @@
+<div class="publisher">
+  <img src="http://i.pravatar.cc/256" />
+  <div class="publisher-text">
+    <textarea
+      habTextArea
+      rows="1"
+      placeholder="Qué estas pensando?"
+      [(ngModel)]="publishText"
+    ></textarea>
+  </div>
+  <button (click)="publishStatus()">
+    <fa-icon [icon]="faCaretSquareRight"></fa-icon>
+  </button>
+</div>

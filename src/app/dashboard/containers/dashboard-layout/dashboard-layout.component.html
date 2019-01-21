@@ -1,7 +1,7 @@
 <hab-dashboard-header></hab-dashboard-header>
-<hab-container class="app-layout">
-  <nav><hab-dashboard-nav></hab-dashboard-nav></nav>
+<div class="app-layout">
+  <nav><hab-dashboard-nav (logout)="logout()"></hab-dashboard-nav></nav>
   <main><router-outlet></router-outlet></main>
   <aside><hab-dashboard-aside></hab-dashboard-aside></aside>
   <footer><hab-dashboard-footer></hab-dashboard-footer></footer>
-</hab-container>
+</div>
