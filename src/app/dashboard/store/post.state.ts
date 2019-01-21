@@ -7,7 +7,10 @@ import {
   GetPostsSuccess,
   Publish,
   PublishSuccess,
-  PublishFailed
+  PublishFailed,
+  AddComment,
+  AddCommentSuccess,
+  AddCommentFailed
 } from './post.actions';
 import { PostService } from '../services/post.service';
 import { PostStateModel } from '../models/post-state.model';
@@ -47,11 +50,6 @@ export class PostState {
     );
   }
 
-  @Action(GetPostsFailed)
-  getPostsError(ctx: StateContext<PostStateModel>, action: GetPostsFailed) {
-    console.log('GetPostsFailed', action);
-  }
-
   @Action(Publish)
   publish(
     { dispatch, setState }: StateContext<PostStateModel>,
@@ -74,5 +72,29 @@ export class PostState {
       ...getState(),
       [post.id]: post
     });
+  }
+
+  @Action(AddComment)
+  addComment(
+    { dispatch }: StateContext<PostStateModel>,
+    { postId, message }: AddComment
+  ) {
+    return this.postService.publishComment(postId, message).pipe(
+      tap(comment => {
+        dispatch(new AddCommentSuccess(comment));
+      }),
+      catchError(error => dispatch(new AddCommentFailed(error)))
+    );
+  }
+
+  @Action(AddCommentSuccess)
+  addCommentSuccess(
+    { setState, getState }: StateContext<PostStateModel>,
+    { comment }: AddCommentSuccess
+  ) {}
+
+  @Action([PublishFailed, GetPostsFailed, AddCommentFailed])
+  error(ctx: StateContext<PostStateModel>, action: any) {
+    console.log(action);
   }
 }

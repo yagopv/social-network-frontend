@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,6 +8,7 @@ import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./publisher.component.scss']
 })
 export class PublisherComponent {
+  @Input() placeholder: string;
   @Output() publish = new EventEmitter();
   faCaretSquareRight: IconProp = faCaretSquareRight;
   publishText: string;
@@ -15,6 +16,9 @@ export class PublisherComponent {
   constructor() {}
 
   publishStatus() {
+    if (!this.publishText) {
+      return;
+    }
     this.publish.emit(this.publishText);
     this.publishText = '';
     console.log(this.publishText);

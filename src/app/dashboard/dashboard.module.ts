@@ -19,7 +19,6 @@ import { SharedModule } from '../shared/shared.module';
 import { PostCommentComponent } from './components/post-comment/post-comment.component';
 import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
 import { PostContentComponent } from './components/post-content/post-content.component';
-import { PostCommentBoxComponent } from './components/post-comment-box/post-comment-box.component';
 
 @NgModule({
   imports: [
@@ -42,8 +41,7 @@ import { PostCommentBoxComponent } from './components/post-comment-box/post-comm
     PostComponent,
     PostCommentComponent,
     PostCommentCounterComponent,
-    PostContentComponent,
-    PostCommentBoxComponent
+    PostContentComponent
   ]
 })
 export class DashboardModule {}

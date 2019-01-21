@@ -4,7 +4,10 @@
     [count]="post.comments.length"
   ></hab-post-comment-counter>
   <hr />
-  <hab-post-comment-box></hab-post-comment-box>
+  <hab-publisher
+    placeholder="Publica un comentario"
+    (publish)="addComment($event)"
+  ></hab-publisher>
   <ng-container *ngFor="let comment of post.comments">
     <hab-post-comment [comment]="comment"></hab-post-comment>
   </ng-container>

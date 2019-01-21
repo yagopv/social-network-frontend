@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
 
 import { PostState } from '../../store/post.state';
-import { GetPosts, Publish } from '../../store/post.actions';
+import { GetPosts, Publish, AddComment } from '../../store/post.actions';
 import { PostStateModel } from '../../models/post-state.model';
 
 @Component({
@@ -22,5 +22,9 @@ export class HomeComponent implements OnInit {
 
   publishPost(content: string) {
     this.store.dispatch(new Publish({ content }));
+  }
+
+  publishComment({ postId, message }: { postId: string; message: string }) {
+    this.store.dispatch(new AddComment(postId, message));
   }
 }
