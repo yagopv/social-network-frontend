@@ -2,6 +2,7 @@
   (publish)="publishPost($event)"
   placeholder="Qué estas pensando?"
 ></hab-publisher>
-<ng-container *ngFor="let post of (posts$ | async)">
+<!-- Removing trackBy cause the post to rerender -->
+<ng-container *ngFor="let post of (posts$ | async); trackBy: postIdentity">
   <hab-post [post]="post" (publishComment)="publishComment($event)"></hab-post>
 </ng-container>

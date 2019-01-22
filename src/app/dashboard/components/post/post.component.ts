@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { PostModel } from '../../models/post.model';
+import { PostModel, CommentModel } from '../../models/post.model';
 import { AuthUserModel } from '../../../auth/models/auth-user.model';
 
 @Component({
@@ -17,5 +17,9 @@ export class PostComponent {
       postId: this.post.id,
       message: content
     });
+  }
+
+  commentIdentity(index: number, comment: CommentModel) {
+    return comment.id;
   }
 }

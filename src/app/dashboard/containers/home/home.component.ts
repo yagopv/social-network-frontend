@@ -5,6 +5,7 @@ import { Store, Select } from '@ngxs/store';
 import { PostState } from '../../store/post.state';
 import { GetPosts, Publish, AddComment } from '../../store/post.actions';
 import { PostStateModel } from '../../models/post-state.model';
+import { PostModel } from '../../models/post.model';
 
 @Component({
   selector: 'hab-home',
@@ -26,5 +27,9 @@ export class HomeComponent implements OnInit {
 
   publishComment({ postId, message }: { postId: string; message: string }) {
     this.store.dispatch(new AddComment(postId, message));
+  }
+
+  postIdentity(index: number, post: PostModel) {
+    return post.id;
   }
 }
