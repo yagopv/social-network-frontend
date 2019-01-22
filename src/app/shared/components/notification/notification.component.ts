@@ -12,7 +12,7 @@ export class NotificationComponent {
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.notification = new NotificationModel(
-      this.route.snapshot.params.notificationType
+      this.route.snapshot.params.notificationName
     );
   }
 

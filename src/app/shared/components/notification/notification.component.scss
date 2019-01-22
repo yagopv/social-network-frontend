@@ -32,7 +32,16 @@
     border: 2px solid $main;
     color: $main;
   }
-
+  &.error {
+    .content {
+      background: $error;
+      color: $white;
+    }
+    button {
+      border-color: $white;
+      color: $white;
+    }
+  }
   @include respond-above(sm) {
     padding: 0 20%;
   }

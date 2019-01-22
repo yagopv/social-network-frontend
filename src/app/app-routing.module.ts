@@ -29,7 +29,7 @@ const routes: Routes = [
     loadChildren: './about/about.module#AboutModule'
   },
   {
-    path: 'notification/:notificationType',
+    path: 'notification/:notificationName',
     component: NotificationComponent,
     outlet: 'popup'
   },
