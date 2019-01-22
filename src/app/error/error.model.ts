@@ -10,4 +10,12 @@ export interface ErrorModel {
     parameter: string;
   };
   meta: any;
+  data: ErrorDataModel;
+}
+
+export interface ErrorDataModel {
+  pattern: any;
+  value: string;
+  key: string;
+  label: string;
 }

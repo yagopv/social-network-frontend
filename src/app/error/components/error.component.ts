@@ -14,7 +14,9 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
   selector: 'hab-errors',
   template: `
     <div class="errors" *ngIf="errors.length">
-      <p *ngFor="let error of errors">{{ error.detail | capitalize }}</p>
+      <p *ngFor="let error of errors">
+        {{ getErrorMessage(error) | capitalize }}
+      </p>
       <a (click)="resetErrors()"><fa-icon [icon]="closeIcon"></fa-icon></a>
     </div>
   `,
@@ -30,6 +32,15 @@ export class ErrorComponent implements OnDestroy {
     this.reset.emit();
   }
 
+  getErrorMessage({ detail, data }: ErrorModel): string {
+    if (detail) {
+      return detail;
+    }
+
+    if (data) {
+      return `You ${data.label} is wrong`;
+    }
+  }
   ngOnDestroy() {
     this.reset.emit();
   }
