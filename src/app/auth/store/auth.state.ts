@@ -56,7 +56,7 @@ export class AuthState {
   register({ dispatch }: StateContext<AuthStateModel>, action: Register) {
     return this.authService.register(action.register).pipe(
       tap(() => dispatch(new RegisterSuccess())),
-      catchError(() => dispatch(new RegisterFailed()))
+      catchError(error => dispatch(new RegisterFailed(error.error)))
     );
   }
 
@@ -68,6 +68,15 @@ export class AuthState {
         { outlets: { popup: ['notification', 'registration-success'] } }
       ])
     );
+  }
+
+  @Action(RegisterFailed)
+  registerFailed(
+    { dispatch }: StateContext<AuthStateModel>,
+    action: RegisterFailed
+  ) {
+    // Use ngxs Action or this is going to fail because running outside NgZone
+    dispatch(new SetErrors(action.errors));
   }
 
   @Action(Logout)
