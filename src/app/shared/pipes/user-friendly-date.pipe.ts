@@ -22,7 +22,7 @@ export class UserFriendlyDatePipe implements PipeTransform {
         second: 1
       };
 
-      let counter;
+      let counter: number;
       for (const interval of Object.keys(intervals)) {
         counter = Math.floor(seconds / intervals[interval]);
         if (counter > 0) {

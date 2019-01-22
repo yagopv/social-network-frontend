@@ -20,8 +20,7 @@ export class RegisterComponent {
   @Select(ErrorState) errors$: Observable<ErrorModel>;
   registerForm = this.fb.group(
     {
-      firstName: ['', [Validators.required]],
-      lastName: ['', Validators.required],
+      fullName: ['', [Validators.required]],
       email: ['', [Validators.required, MailValidator]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
@@ -39,10 +38,8 @@ export class RegisterComponent {
       return;
     }
 
-    const { email, password, firstName, lastName } = this.registerForm.value;
-    this.store.dispatch(
-      new Register({ email, password, fullName: `${firstName} ${lastName}` })
-    );
+    const { email, password, fullName } = this.registerForm.value;
+    this.store.dispatch(new Register({ email, password, fullName }));
   }
 
   resetErrors() {

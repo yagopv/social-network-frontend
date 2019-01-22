@@ -6,7 +6,8 @@ import { environment } from '../../../environments/environment';
 import {
   PublishModel,
   PostCommentModel,
-  PostModel
+  PostModel,
+  CommentModel
 } from '../models/post.model';
 import { DashboardModule } from '../dashboard.module';
 
@@ -30,9 +31,9 @@ export class PostService {
     });
   }
 
-  addComment(commentId: number, message: string) {
-    return this.http.post<PostCommentModel>(
-      `${environment.apiBaseUrl}/post/${commentId}/comment`,
+  publishComment(postId: string, message: string) {
+    return this.http.post<CommentModel>(
+      `${environment.apiBaseUrl}/post/${postId}/comment`,
       {
         message
       }

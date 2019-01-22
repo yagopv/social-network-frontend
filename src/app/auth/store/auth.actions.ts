@@ -29,6 +29,8 @@ export class RegisterSuccess {
 
 export class RegisterFailed {
   static type = '[Auth] RegisterFailed';
+  constructor(public errors: ErrorModel[]) {}
+
 }
 
 export class Logout {

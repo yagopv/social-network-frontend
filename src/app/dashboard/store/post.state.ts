@@ -7,23 +7,28 @@ import {
   GetPostsSuccess,
   Publish,
   PublishSuccess,
-  PublishFailed
+  PublishFailed,
+  AddComment,
+  AddCommentSuccess,
+  AddCommentFailed
 } from './post.actions';
 import { PostService } from '../services/post.service';
 import { PostStateModel } from '../models/post-state.model';
+import { AuthService } from '../../auth/services/auth.service';
 
 @State<PostStateModel>({
   name: 'posts',
   defaults: {}
 })
 export class PostState {
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private authService: AuthService
+  ) {}
 
   @Selector()
-  static getPostsByDate(state: PostStateModel) {
-    return Object.values(state).sort((p1, p2) => {
-      return p2.createdAt - p1.createdAt;
-    });
+  static getPosts(state: PostStateModel) {
+    return Object.values(state);
   }
 
   @Action(GetPosts)
@@ -39,24 +44,20 @@ export class PostState {
     { setState }: StateContext<PostStateModel>,
     { posts }: GetPostsSuccess
   ) {
+    const orderedPosts = posts.sort((p1, p2) => {
+      return p2.createdAt - p1.createdAt;
+    });
+
     setState(
-      posts.reduce((draft, post) => {
+      orderedPosts.reduce((draft, post) => {
         draft[post.id] = post;
         return draft;
       }, {})
     );
   }
 
-  @Action(GetPostsFailed)
-  getPostsError(ctx: StateContext<PostStateModel>, action: GetPostsFailed) {
-    console.log('GetPostsFailed', action);
-  }
-
   @Action(Publish)
-  publish(
-    { dispatch, setState }: StateContext<PostStateModel>,
-    { publish }: Publish
-  ) {
+  publish({ dispatch }: StateContext<PostStateModel>, { publish }: Publish) {
     return this.postService.publish(publish.content).pipe(
       tap(post => {
         dispatch(new PublishSuccess(post));
@@ -71,8 +72,61 @@ export class PostState {
     { post }: PublishSuccess
   ) {
     setState({
-      ...getState(),
-      [post.id]: post
+      [post.id]: post,
+      ...getState()
+    });
+  }
+
+  @Action(AddComment)
+  addComment(
+    { dispatch }: StateContext<PostStateModel>,
+    { postId, message }: AddComment
+  ) {
+    return this.postService.publishComment(postId, message).pipe(
+      tap(() => {
+        dispatch(
+          new AddCommentSuccess(
+            {
+              id: this.uuidv4(),
+              message,
+              createdAt: new Date().getTime(),
+              author: this.authService.currentUserSnapshot.uuid
+            },
+            postId
+          )
+        );
+      }),
+      catchError(error => dispatch(new AddCommentFailed(error)))
+    );
+  }
+
+  @Action(AddCommentSuccess)
+  addCommentSuccess(
+    { setState, getState }: StateContext<PostStateModel>,
+    { comment, postId }: AddCommentSuccess
+  ) {
+    const state = getState();
+
+    setState({
+      ...state,
+      [postId]: {
+        ...state[postId],
+        comments: [comment, ...state[postId].comments]
+      }
+    });
+  }
+
+  @Action([PublishFailed, GetPostsFailed, AddCommentFailed])
+  error(ctx: StateContext<PostStateModel>, action: any) {
+    console.log(action);
+  }
+
+  private uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      // tslint:disable-next-line
+      let r = (Math.random() * 16) | 0, // tslint:disable-line
+        v = c == 'x' ? r : (r & 0x3) | 0x8; // tslint:disable-line
+      return v.toString(16);
     });
   }
 }

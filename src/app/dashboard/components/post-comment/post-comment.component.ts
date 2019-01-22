@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentModel } from '../../models/post.model';
+import { AuthUserModel } from '../../../auth/models/auth-user.model';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'hab-post-comment',
@@ -8,8 +10,11 @@ import { CommentModel } from '../../models/post.model';
 })
 export class PostCommentComponent implements OnInit {
   @Input() comment: CommentModel;
+  currenUser: AuthUserModel;
 
-  constructor() {}
+  constructor(private authService: AuthService) {
+    this.currenUser = this.authService.currentUserSnapshot;
+  }
 
   ngOnInit() {}
 }
