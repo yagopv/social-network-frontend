@@ -27,10 +27,8 @@ export class PostState {
   ) {}
 
   @Selector()
-  static getPostsByDate(state: PostStateModel) {
-    return Object.values(state).sort((p1, p2) => {
-      return p2.createdAt - p1.createdAt;
-    });
+  static getPosts(state: PostStateModel) {
+    return Object.values(state);
   }
 
   @Action(GetPosts)
@@ -46,8 +44,12 @@ export class PostState {
     { setState }: StateContext<PostStateModel>,
     { posts }: GetPostsSuccess
   ) {
+    const orderedPosts = posts.sort((p1, p2) => {
+      return p2.createdAt - p1.createdAt;
+    });
+
     setState(
-      posts.reduce((draft, post) => {
+      orderedPosts.reduce((draft, post) => {
         draft[post.id] = post;
         return draft;
       }, {})
@@ -70,8 +72,8 @@ export class PostState {
     { post }: PublishSuccess
   ) {
     setState({
-      ...getState(),
-      [post.id]: post
+      [post.id]: post,
+      ...getState()
     });
   }
 
@@ -81,7 +83,7 @@ export class PostState {
     { postId, message }: AddComment
   ) {
     return this.postService.publishComment(postId, message).pipe(
-      tap(comment => {
+      tap(() => {
         dispatch(
           new AddCommentSuccess(
             {
@@ -122,8 +124,8 @@ export class PostState {
   private uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       // tslint:disable-next-line
-      let r = (Math.random() * 16) | 0,
-        v = c == 'x' ? r : (r & 0x3) | 0x8;
+      let r = (Math.random() * 16) | 0, // tslint:disable-line
+        v = c == 'x' ? r : (r & 0x3) | 0x8; // tslint:disable-line
       return v.toString(16);
     });
   }

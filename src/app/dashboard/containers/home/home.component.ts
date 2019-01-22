@@ -12,7 +12,7 @@ import { PostStateModel } from '../../models/post-state.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @Select(PostState.getPostsByDate) posts$: Observable<PostStateModel>;
+  @Select(PostState.getPosts) posts$: Observable<PostStateModel>;
 
   constructor(private store: Store) {}
 
