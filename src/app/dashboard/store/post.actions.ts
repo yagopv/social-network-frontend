@@ -41,7 +41,7 @@ export class AddComment {
 
 export class AddCommentSuccess {
   static readonly type = '[Comment] AddCommentSuccess';
-  constructor(public comment: CommentModel) {}
+  constructor(public comment: CommentModel, public postId: string) {}
 }
 
 export class AddCommentFailed {

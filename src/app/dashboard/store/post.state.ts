@@ -14,13 +14,17 @@ import {
 } from './post.actions';
 import { PostService } from '../services/post.service';
 import { PostStateModel } from '../models/post-state.model';
+import { AuthService } from '../../auth/services/auth.service';
 
 @State<PostStateModel>({
   name: 'posts',
   defaults: {}
 })
 export class PostState {
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private authService: AuthService
+  ) {}
 
   @Selector()
   static getPostsByDate(state: PostStateModel) {
@@ -51,10 +55,7 @@ export class PostState {
   }
 
   @Action(Publish)
-  publish(
-    { dispatch, setState }: StateContext<PostStateModel>,
-    { publish }: Publish
-  ) {
+  publish({ dispatch }: StateContext<PostStateModel>, { publish }: Publish) {
     return this.postService.publish(publish.content).pipe(
       tap(post => {
         dispatch(new PublishSuccess(post));
@@ -81,7 +82,17 @@ export class PostState {
   ) {
     return this.postService.publishComment(postId, message).pipe(
       tap(comment => {
-        dispatch(new AddCommentSuccess(comment));
+        dispatch(
+          new AddCommentSuccess(
+            {
+              id: this.uuidv4(),
+              message,
+              createdAt: new Date().getTime(),
+              author: this.authService.currentUserSnapshot.uuid
+            },
+            postId
+          )
+        );
       }),
       catchError(error => dispatch(new AddCommentFailed(error)))
     );
@@ -90,11 +101,30 @@ export class PostState {
   @Action(AddCommentSuccess)
   addCommentSuccess(
     { setState, getState }: StateContext<PostStateModel>,
-    { comment }: AddCommentSuccess
-  ) {}
+    { comment, postId }: AddCommentSuccess
+  ) {
+    const state = getState();
+
+    setState({
+      ...state,
+      [postId]: {
+        ...state[postId],
+        comments: [comment, ...state[postId].comments]
+      }
+    });
+  }
 
   @Action([PublishFailed, GetPostsFailed, AddCommentFailed])
   error(ctx: StateContext<PostStateModel>, action: any) {
     console.log(action);
+  }
+
+  private uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      // tslint:disable-next-line
+      let r = (Math.random() * 16) | 0,
+        v = c == 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
   }
 }
