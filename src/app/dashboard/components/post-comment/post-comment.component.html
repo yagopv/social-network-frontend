@@ -1,8 +1,8 @@
-<div class="post-comment" [class.me]="comment.author === currenUser.uuid">
-  <img [src]="'http://i.pravatar.cc/128'" />
+<div class="post-comment" [class.me]="comment.author.uuid === user.uuid">
+  <img [src]="comment.author.avatarUrl || 'http://i.pravatar.cc/128'" />
   <div class="post-message">
     <h5>
-      {{ comment.author }}
+      {{ comment.author.fullName }}
       <small>{{ comment.createdAt | userFriendlyDate }}</small>
     </h5>
     <p>{{ comment.message }}</p>

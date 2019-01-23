@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AuthUserModel } from '../models/auth-user.model';
+import { LoginResponse, UserProfileResponse } from '../models/auth-user.model';
 import { environment } from '../../../environments/environment';
 import { LoginModel } from '../containers/login/login.model';
 import { RegisterModel } from '../models/register.model';
@@ -11,34 +11,22 @@ import { ProfileModel } from '../models/profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  // Don't expose Subject. Instead expose a read only Observable
-  private currentUserSubject: BehaviorSubject<AuthUserModel>;
-  public currentUser: Observable<AuthUserModel>;
-
-  constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<AuthUserModel>(
-      JSON.parse(localStorage.getItem('currentUser'))
-    );
-    this.currentUser = this.currentUserSubject.asObservable();
-  }
-
-  public get currentUserSnapshot(): AuthUserModel {
-    return this.currentUserSubject.value;
-  }
+  constructor(private http: HttpClient) {}
 
   login({ email, password }: LoginModel) {
     return this.http
-      .post<AuthUserModel>(`${environment.apiBaseUrl}/account/login`, {
+      .post<LoginResponse>(`${environment.apiBaseUrl}/account/login`, {
         email,
         password
       })
       .pipe(
         map(user => {
-          // login successful if there's a jwt token in the response
           if (user && user.accessToken) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            this.currentUserSubject.next(user);
+            const { accessToken, refreshToken } = user;
+            localStorage.setItem(
+              'auth',
+              JSON.stringify({ accessToken, refreshToken })
+            );
           }
 
           return user;
@@ -50,7 +38,11 @@ export class AuthService {
     return this.http.post<any>(`${environment.apiBaseUrl}/account`, register);
   }
 
-  updateProfile(profile: ProfileModel) {
+  getUserProfile() {
+    return this.http.get<UserProfileResponse>(`${environment.apiBaseUrl}/user`);
+  }
+
+  updateUserProfile(profile: ProfileModel) {
     return this.http.put<ProfileModel>(
       `${environment.apiBaseUrl}/account`,
       profile
@@ -58,8 +50,6 @@ export class AuthService {
   }
 
   logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+    localStorage.removeItem('auth');
   }
 }

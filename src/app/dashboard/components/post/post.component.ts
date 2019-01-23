@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { PostModel, CommentModel } from '../../models/post.model';
-import { AuthUserModel } from '../../../auth/models/auth-user.model';
+import { LoginResponse } from '../../../auth/models/auth-user.model';
+import { AuthStateModel } from '../../../auth/store/auth.state';
 
 @Component({
   selector: 'hab-post',
@@ -9,7 +10,7 @@ import { AuthUserModel } from '../../../auth/models/auth-user.model';
 })
 export class PostComponent {
   @Input() post: PostModel;
-  @Input() currentUser: AuthUserModel;
+  @Input() user: AuthStateModel;
   @Output() publishComment = new EventEmitter();
 
   addComment(content: string) {
