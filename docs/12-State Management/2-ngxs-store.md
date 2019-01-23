@@ -60,12 +60,12 @@ NgxsModule.forFeature([PostState])
 ```javascript
 export class Login {
   static readonly type = '[Auth] Login';
-  constructor(public login: LoginModel) {}
+  constructor(public loginRequest: LoginRequestModel) {}
 }
 
 export class LoginSuccess {
   static readonly type = '[Auth] LoginSuccess';
-  constructor(public currentUser: AuthUserModel) {}
+  constructor(public loginResponse: LoginResponseModel) {}
 }
 
 export class LoginFailed {
@@ -119,7 +119,10 @@ export class ErrorState {
 
 ```javascript
 export interface AuthStateModel {
-  currentUser: AuthUserModel;
+  refreshToken: string;
+  accessToken: string;
+  uuid: string;
+  email: string;
 }
 
 @State<AuthStateModel>({

@@ -1,5 +1,5 @@
 import { LoginModel } from '../models/login.model';
-import { AuthUserModel } from '../models/auth-user.model';
+import { LoginResponse, UserProfileResponse } from '../models/auth-user.model';
 import { RegisterModel } from '../models/register.model';
 import { ErrorModel } from '../../error/error.model';
 
@@ -10,7 +10,7 @@ export class Login {
 
 export class LoginSuccess {
   static readonly type = '[Auth] LoginSuccess';
-  constructor(public currentUser: AuthUserModel) {}
+  constructor(public loginResponse: LoginResponse) {}
 }
 
 export class LoginFailed {
@@ -30,9 +30,22 @@ export class RegisterSuccess {
 export class RegisterFailed {
   static type = '[Auth] RegisterFailed';
   constructor(public errors: ErrorModel[]) {}
-
 }
 
 export class Logout {
   static readonly type = '[Auth] Logout';
+}
+
+export class GetUserProfile {
+  static readonly type = '[Auth] GetUserProfile';
+}
+
+export class GetUserProfileSuccess {
+  static readonly type = '[Auth] GetUserProfileSuccess';
+  constructor(public userProfile: UserProfileResponse) {}
+}
+
+export class GetUserProfileFailed {
+  static type = '[Auth] GetUserProfileFailed';
+  constructor(public errors: ErrorModel[]) {}
 }

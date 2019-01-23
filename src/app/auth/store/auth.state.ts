@@ -1,8 +1,15 @@
 import { catchError, tap } from 'rxjs/operators';
 import { Navigate } from '@ngxs/router-plugin';
-import { State, Action, StateContext, Store } from '@ngxs/store';
+import {
+  State,
+  Action,
+  StateContext,
+  Store,
+  NgxsOnInit,
+  Selector
+} from '@ngxs/store';
 
-import { AuthUserModel } from '../models/auth-user.model';
+import { LoginResponse } from '../models/auth-user.model';
 import { AuthService } from '../services/auth.service';
 import {
   Login,
@@ -11,18 +18,33 @@ import {
   RegisterSuccess,
   RegisterFailed,
   LoginFailed,
-  Logout
+  Logout,
+  GetUserProfileFailed,
+  GetUserProfile,
+  GetUserProfileSuccess
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
 
 export interface AuthStateModel {
-  currentUser: AuthUserModel;
+  uuid: string;
+  email: string;
+  expiresIn: number;
+  refreshToken: string;
+  accessToken: string;
+  fullName: string;
+  avatarUrl: string;
+  preferences: {
+    isPublicProfile: string;
+    linkedIn: string;
+    twitter: string;
+    github: string;
+  };
 }
 
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {
-    currentUser: null
+    ...JSON.parse(localStorage.getItem('auth'))
   }
 })
 export class AuthState {
@@ -38,18 +60,16 @@ export class AuthState {
   }
 
   @Action(LoginSuccess)
-  loginSuccess({ dispatch }: StateContext<AuthStateModel>) {
+  loginSuccess(
+    { dispatch, patchState }: StateContext<AuthStateModel>,
+    { loginResponse }: LoginSuccess
+  ) {
     // Use ngxs Action or going to fail because running outside NgZone
+    patchState({ ...loginResponse });
     const returnUrl = this.store.selectSnapshot(
       state => state.router.state.root.queryParams['return-url']
     );
     dispatch(new Navigate([returnUrl || '/home']));
-  }
-
-  @Action(LoginFailed)
-  loginFailed({ dispatch }: StateContext<AuthStateModel>, action: LoginFailed) {
-    // Use ngxs Action or this is going to fail because running outside NgZone
-    dispatch(new SetErrors(action.errors));
   }
 
   @Action(Register)
@@ -70,7 +90,25 @@ export class AuthState {
     );
   }
 
-  @Action(RegisterFailed)
+  @Action(GetUserProfile)
+  getUserProfile({ dispatch }: StateContext<AuthStateModel>) {
+    return this.authService.getUserProfile().pipe(
+      tap(userProfile => dispatch(new GetUserProfileSuccess(userProfile))),
+      catchError(error => dispatch(new GetUserProfileFailed(error.error)))
+    );
+  }
+
+  @Action(GetUserProfileSuccess)
+  getUserProfileSuccess(
+    { patchState }: StateContext<AuthStateModel>,
+    { userProfile }: GetUserProfileSuccess
+  ) {
+    patchState({
+      ...userProfile
+    });
+  }
+
+  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed])
   registerFailed(
     { dispatch }: StateContext<AuthStateModel>,
     action: RegisterFailed
@@ -80,8 +118,9 @@ export class AuthState {
   }
 
   @Action(Logout)
-  logout({ dispatch }: StateContext<AuthState>) {
+  logout({ dispatch, setState }: StateContext<AuthStateModel>) {
     this.authService.logout();
+    setState(null);
     dispatch(new Navigate(['/auth/login']));
   }
 }

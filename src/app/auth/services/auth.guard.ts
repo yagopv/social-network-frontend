@@ -5,23 +5,23 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { AuthService } from './auth.service';
+import { Store } from '@ngxs/store';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private store: Store) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const currentUser = this.authService.currentUserSnapshot;
-    if (currentUser) {
-      // logged in so return true
+  canActivate(route: ActivatedRouteSnapshot, snapshot: RouterStateSnapshot) {
+    const currentUser = this.store.selectSnapshot(state => state.auth);
+
+    if (currentUser && currentUser.accessToken) {
       return true;
     }
 
-    // not logged in so redirect to login page with the return url
     this.router.navigate(['/auth/login'], {
-      queryParams: { ['return-url']: state.url }
+      queryParams: { ['return-url']: snapshot.url }
     });
+
     return false;
   }
 }

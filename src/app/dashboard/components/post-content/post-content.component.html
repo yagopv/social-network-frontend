@@ -1,9 +1,9 @@
 <section class="post-content">
   <div class="post-content-head">
-    <img [src]="'http://i.pravatar.cc/128'" />
+    <img [src]="post.author.avatarUrl || 'http://i.pravatar.cc/128'" />
     <div>
       <h4>
-        <b>{{ post.author }}</b>
+        <b>{{ post.author.fullName }}</b>
       </h4>
       <small>{{ post.createdAt | userFriendlyDate }}</small>
     </div>

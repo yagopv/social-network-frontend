@@ -1,4 +1,4 @@
-import { State, StateContext, Action, Selector } from '@ngxs/store';
+import { State, StateContext, Action, Selector, Store } from '@ngxs/store';
 import { catchError, tap } from 'rxjs/operators';
 
 import {
@@ -22,6 +22,7 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class PostState {
   constructor(
+    private store: Store,
     private postService: PostService,
     private authService: AuthService
   ) {}
@@ -58,9 +59,15 @@ export class PostState {
 
   @Action(Publish)
   publish({ dispatch }: StateContext<PostStateModel>, { publish }: Publish) {
+    const { avatarUrl, fullName, uuid } = this.store.selectSnapshot(
+      state => state.auth
+    );
+
     return this.postService.publish(publish.content).pipe(
       tap(post => {
-        dispatch(new PublishSuccess(post));
+        dispatch(
+          new PublishSuccess({ ...post, author: { uuid, avatarUrl, fullName } })
+        );
       }),
       catchError(error => dispatch(new PublishFailed(error)))
     );
@@ -82,6 +89,10 @@ export class PostState {
     { dispatch }: StateContext<PostStateModel>,
     { postId, message }: AddComment
   ) {
+    const { avatarUrl, fullName } = this.store.selectSnapshot(
+      state => state.auth
+    );
+
     return this.postService.publishComment(postId, message).pipe(
       tap(() => {
         dispatch(
@@ -90,7 +101,11 @@ export class PostState {
               id: this.uuidv4(),
               message,
               createdAt: new Date().getTime(),
-              author: this.authService.currentUserSnapshot.uuid
+              author: {
+                uuid: this.store.selectSnapshot(state => state.auth).uuid,
+                avatarUrl,
+                fullName
+              }
             },
             postId
           )

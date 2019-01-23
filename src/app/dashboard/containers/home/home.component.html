@@ -4,5 +4,9 @@
 ></hab-publisher>
 <!-- Removing trackBy cause the post to rerender -->
 <ng-container *ngFor="let post of (posts$ | async); trackBy: postIdentity">
-  <hab-post [post]="post" (publishComment)="publishComment($event)"></hab-post>
+  <hab-post
+    [post]="post"
+    [user]="user$ | async"
+    (publishComment)="publishComment($event)"
+  ></hab-post>
 </ng-container>

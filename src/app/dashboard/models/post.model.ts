@@ -1,6 +1,12 @@
+export interface AuthorModel {
+  avatarUrl: string;
+  fullName: string;
+  uuid: string;
+}
+
 export interface PostModel {
   likes: any[];
-  author: string;
+  author: AuthorModel;
   content: string;
   comments: CommentModel[];
   createdAt: number;
@@ -8,7 +14,7 @@ export interface PostModel {
 }
 
 export interface CommentModel {
-  author: string;
+  author: AuthorModel;
   message: string;
   createdAt: number;
   id: string;

@@ -228,7 +228,7 @@ export class ProfileEditorComponent {
 #Ejemplo con patchValue
 
 ```javascript
-updateProfile() {
+updateUserProfile() {
   this.profileForm.patchValue({
     firstName: 'Nancy',
     address: {
