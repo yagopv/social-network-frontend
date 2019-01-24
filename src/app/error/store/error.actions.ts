@@ -1,8 +1,8 @@
-import { ErrorModel } from '../error.model';
+import { Error } from '../models/error.model';
 
 export class SetErrors {
   static readonly type = '[Error] Set';
-  constructor(public errors: ErrorModel[]) {}
+  constructor(public errors: Error[]) {}
 }
 
 export class ResetErrors {

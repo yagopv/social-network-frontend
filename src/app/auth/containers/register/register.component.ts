@@ -6,10 +6,9 @@ import { Observable } from 'rxjs';
 import { MailValidator } from '../../../shared/validators/mail.validator';
 import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
 import { ErrorState } from '../../../error/store/error.state';
-import { ErrorModel } from '../../../error/error.model';
+import { Error } from '../../../error/models/error.model';
 import { Register } from '../../store/auth.actions';
 import { ResetErrors } from '../../../error/store/error.actions';
-import { Navigate } from '@ngxs/router-plugin';
 
 @Component({
   selector: 'hab-register',
@@ -17,7 +16,7 @@ import { Navigate } from '@ngxs/router-plugin';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  @Select(ErrorState) errors$: Observable<ErrorModel>;
+  @Select(ErrorState) errors$: Observable<Error>;
   registerForm = this.fb.group(
     {
       fullName: ['', [Validators.required]],

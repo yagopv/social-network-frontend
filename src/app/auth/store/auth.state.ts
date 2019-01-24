@@ -24,24 +24,9 @@ import {
   GetUserProfileSuccess
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
+import { Auth } from '../models/auth.model';
 
-export interface AuthStateModel {
-  uuid: string;
-  email: string;
-  expiresIn: number;
-  refreshToken: string;
-  accessToken: string;
-  fullName: string;
-  avatarUrl: string;
-  preferences: {
-    isPublicProfile: string;
-    linkedIn: string;
-    twitter: string;
-    github: string;
-  };
-}
-
-@State<AuthStateModel>({
+@State<Auth>({
   name: 'auth',
   defaults: {
     ...JSON.parse(localStorage.getItem('auth'))
@@ -50,9 +35,20 @@ export interface AuthStateModel {
 export class AuthState {
   constructor(private store: Store, private authService: AuthService) {}
 
+  @Selector()
+  static getUser({ uuid, email, avatarUrl, fullName, preferences }: Auth) {
+    return {
+      uuid,
+      email,
+      avatarUrl,
+      fullName,
+      preferences
+    };
+  }
+
   // ngxs will subscribe to the post observable for you if you return it from the action
   @Action(Login)
-  login({ dispatch }: StateContext<AuthStateModel>, action: Login) {
+  login({ dispatch }: StateContext<Auth>, action: Login) {
     return this.authService.login(action.login).pipe(
       tap(data => dispatch(new LoginSuccess(data))),
       catchError(error => dispatch(new LoginFailed(error.error)))
@@ -61,7 +57,7 @@ export class AuthState {
 
   @Action(LoginSuccess)
   loginSuccess(
-    { dispatch, patchState }: StateContext<AuthStateModel>,
+    { dispatch, patchState }: StateContext<Auth>,
     { loginResponse }: LoginSuccess
   ) {
     // Use ngxs Action or going to fail because running outside NgZone
@@ -73,7 +69,7 @@ export class AuthState {
   }
 
   @Action(Register)
-  register({ dispatch }: StateContext<AuthStateModel>, action: Register) {
+  register({ dispatch }: StateContext<Auth>, action: Register) {
     return this.authService.register(action.register).pipe(
       tap(() => dispatch(new RegisterSuccess())),
       catchError(error => dispatch(new RegisterFailed(error.error)))
@@ -81,7 +77,7 @@ export class AuthState {
   }
 
   @Action(RegisterSuccess)
-  registerSuccess({ dispatch }: StateContext<AuthStateModel>) {
+  registerSuccess({ dispatch }: StateContext<Auth>) {
     dispatch(
       new Navigate([
         '',
@@ -91,7 +87,7 @@ export class AuthState {
   }
 
   @Action(GetUserProfile)
-  getUserProfile({ dispatch }: StateContext<AuthStateModel>) {
+  getUserProfile({ dispatch }: StateContext<Auth>) {
     return this.authService.getUserProfile().pipe(
       tap(userProfile => dispatch(new GetUserProfileSuccess(userProfile))),
       catchError(error => dispatch(new GetUserProfileFailed(error.error)))
@@ -100,7 +96,7 @@ export class AuthState {
 
   @Action(GetUserProfileSuccess)
   getUserProfileSuccess(
-    { patchState }: StateContext<AuthStateModel>,
+    { patchState }: StateContext<Auth>,
     { userProfile }: GetUserProfileSuccess
   ) {
     patchState({
@@ -109,16 +105,13 @@ export class AuthState {
   }
 
   @Action([LoginFailed, RegisterFailed, GetUserProfileFailed])
-  registerFailed(
-    { dispatch }: StateContext<AuthStateModel>,
-    action: RegisterFailed
-  ) {
+  registerFailed({ dispatch }: StateContext<Auth>, action: RegisterFailed) {
     // Use ngxs Action or this is going to fail because running outside NgZone
     dispatch(new SetErrors(action.errors));
   }
 
   @Action(Logout)
-  logout({ dispatch, setState }: StateContext<AuthStateModel>) {
+  logout({ dispatch, setState }: StateContext<Auth>) {
     this.authService.logout();
     setState(null);
     dispatch(new Navigate(['/auth/login']));

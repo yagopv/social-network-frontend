@@ -7,7 +7,7 @@ import { LoginResponse, UserProfileResponse } from '../models/auth-user.model';
 import { environment } from '../../../environments/environment';
 import { LoginModel } from '../containers/login/login.model';
 import { RegisterModel } from '../models/register.model';
-import { ProfileModel } from '../models/profile.model';
+import { Profile } from '../models/profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -42,11 +42,8 @@ export class AuthService {
     return this.http.get<UserProfileResponse>(`${environment.apiBaseUrl}/user`);
   }
 
-  updateUserProfile(profile: ProfileModel) {
-    return this.http.put<ProfileModel>(
-      `${environment.apiBaseUrl}/account`,
-      profile
-    );
+  updateUserProfile(profile: Profile) {
+    return this.http.put<Profile>(`${environment.apiBaseUrl}/account`, profile);
   }
 
   logout() {

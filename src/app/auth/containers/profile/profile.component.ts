@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { ErrorState } from '../../../error/store/error.state';
-import { Observable } from 'rxjs';
-import { ErrorModel } from '../../../error/error.model';
 import { FormBuilder, Validators } from '@angular/forms';
+
+import { Observable } from 'rxjs';
+
+import { ErrorState } from '../../../error/store/error.state';
+import { Error } from '../../../error/models/error.model';
 
 @Component({
   selector: 'hab-profile',
@@ -11,7 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  @Select(ErrorState) errors$: Observable<ErrorModel>;
+  @Select(ErrorState) errors$: Observable<Error>;
 
   updateProfileForm = this.fb.group(
     {

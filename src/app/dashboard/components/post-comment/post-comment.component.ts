@@ -1,19 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommentModel } from '../../models/post.model';
-import { LoginResponse } from '../../../auth/models/auth-user.model';
-import { AuthService } from '../../../auth/services/auth.service';
-import { AuthStateModel } from '../../../auth/store/auth.state';
+import { Profile } from '../../../auth/models/profile.model';
 
 @Component({
   selector: 'hab-post-comment',
   templateUrl: './post-comment.component.html',
   styleUrls: ['./post-comment.component.scss']
 })
-export class PostCommentComponent implements OnInit {
+export class PostCommentComponent {
   @Input() comment: CommentModel;
-  @Input() user: AuthStateModel;
-
-  constructor() {}
-
-  ngOnInit() {}
+  @Input() user: Profile;
 }

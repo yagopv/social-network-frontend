@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
 
@@ -6,7 +7,8 @@ import { PostState } from '../../store/post.state';
 import { GetPosts, Publish, AddComment } from '../../store/post.actions';
 import { PostStateModel } from '../../models/post-state.model';
 import { PostModel } from '../../models/post.model';
-import { AuthStateModel, AuthState } from '../../../auth/store/auth.state';
+import { AuthState } from '../../../auth/store/auth.state';
+import { Profile } from '../../../auth/models/profile.model';
 
 @Component({
   selector: 'hab-home',
@@ -15,7 +17,7 @@ import { AuthStateModel, AuthState } from '../../../auth/store/auth.state';
 })
 export class HomeComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<PostStateModel>;
-  @Select(AuthState) user$: AuthStateModel;
+  @Select(AuthState.getUser) user$: Profile;
 
   constructor(private store: Store) {}
 
