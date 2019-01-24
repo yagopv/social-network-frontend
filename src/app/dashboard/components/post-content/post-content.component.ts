@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostModel } from '../../models/post.model';
+import { Post } from '../../models/post.model';
 
 @Component({
   selector: 'hab-post-content',
@@ -7,7 +7,7 @@ import { PostModel } from '../../models/post.model';
   styleUrls: ['./post-content.component.scss']
 })
 export class PostContentComponent implements OnInit {
-  @Input() post: PostModel;
+  @Input() post: Post;
 
   constructor() {}
 

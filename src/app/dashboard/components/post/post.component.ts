@@ -1,7 +1,8 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { PostModel, CommentModel } from '../../models/post.model';
-import { LoginResponse } from '../../../auth/models/auth-user.model';
-import { AuthStateModel } from '../../../auth/store/auth.state';
+
+import { Post } from '../../models/post.model';
+import { Profile } from '../../../auth/models/profile.model';
+import { Comment } from '../../models/comment.model';
 
 @Component({
   selector: 'hab-post',
@@ -9,8 +10,8 @@ import { AuthStateModel } from '../../../auth/store/auth.state';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent {
-  @Input() post: PostModel;
-  @Input() user: AuthStateModel;
+  @Input() post: Post;
+  @Input() user: Profile;
   @Output() publishComment = new EventEmitter();
 
   addComment(content: string) {
@@ -20,7 +21,7 @@ export class PostComponent {
     });
   }
 
-  commentIdentity(index: number, comment: CommentModel) {
+  commentIdentity(index: number, comment: Comment) {
     return comment.id;
   }
 }

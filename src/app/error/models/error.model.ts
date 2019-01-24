@@ -1,4 +1,4 @@
-export interface ErrorModel {
+export interface Error {
   id: string;
   links: any;
   status: string;
@@ -10,10 +10,10 @@ export interface ErrorModel {
     parameter: string;
   };
   meta: any;
-  data: ErrorDataModel;
+  data: ErrorData;
 }
 
-export interface ErrorDataModel {
+export interface ErrorData {
   pattern: any;
   value: string;
   key: string;

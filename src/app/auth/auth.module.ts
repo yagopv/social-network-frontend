@@ -12,6 +12,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { AuthState } from './store/auth.state';
 import { ErrorModule } from '../error/error.module';
+import { ProfileComponent } from './containers/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -24,11 +25,11 @@ import { ErrorModule } from '../error/error.module';
     ErrorModule,
     NgxsModule.forFeature([AuthState])
   ],
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, ProfileComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  exports: [LoginComponent, RegisterComponent]
+  exports: [LoginComponent, RegisterComponent, ProfileComponent]
 })
 export class AuthModule {}

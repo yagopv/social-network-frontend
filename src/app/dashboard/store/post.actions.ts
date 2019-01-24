@@ -1,10 +1,6 @@
-import {
-  PostModel,
-  PublishModel,
-  PostCommentModel,
-  CommentModel
-} from '../models/post.model';
-import { ErrorModel } from '../../error/error.model';
+import { Post, PostRequest } from '../models/post.model';
+import { Error } from '../../error/models/error.model';
+import { Comment } from '../models/comment.model';
 
 export class GetPosts {
   static readonly type = '[Posts] GetPosts';
@@ -12,26 +8,26 @@ export class GetPosts {
 
 export class GetPostsSuccess {
   static readonly type = '[Posts] GetPostsSuccess';
-  constructor(public posts: PostModel[]) {}
+  constructor(public posts: Post[]) {}
 }
 export class GetPostsFailed {
   static readonly type = '[Posts] GetPostsFailed';
-  constructor(public error: ErrorModel[]) {}
+  constructor(public error: Error[]) {}
 }
 
-export class Publish {
-  static readonly type = '[Posts] Publish';
-  constructor(public publish: PublishModel) {}
+export class AddPost {
+  static readonly type = '[Posts] AddPost';
+  constructor(public postRequest: PostRequest) {}
 }
 
-export class PublishSuccess {
-  static readonly type = '[Posts] PublishSuccess';
-  constructor(public post: PostModel) {}
+export class AddPostSuccess {
+  static readonly type = '[Posts] AddPostSuccess';
+  constructor(public post: Post) {}
 }
 
-export class PublishFailed {
-  static readonly type = '[Posts] PublishFailed';
-  constructor(public error: ErrorModel[]) {}
+export class AddPostFailed {
+  static readonly type = '[Posts] AddPostFailed';
+  constructor(public error: Error[]) {}
 }
 
 export class AddComment {
@@ -41,10 +37,10 @@ export class AddComment {
 
 export class AddCommentSuccess {
   static readonly type = '[Comment] AddCommentSuccess';
-  constructor(public comment: CommentModel, public postId: string) {}
+  constructor(public comment: Comment, public postId: string) {}
 }
 
 export class AddCommentFailed {
   static readonly type = '[Comment] AddCommentFailed';
-  constructor(public error: ErrorModel[]) {}
+  constructor(public error: Error[]) {}
 }

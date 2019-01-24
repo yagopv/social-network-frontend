@@ -20,6 +20,7 @@ import { PostCommentComponent } from './components/post-comment/post-comment.com
 import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
 import { PostContentComponent } from './components/post-content/post-content.component';
 import { MyAccountComponent } from './containers/my-account/my-account.component';
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { MyAccountComponent } from './containers/my-account/my-account.component
     SharedModule,
     DashboardRoutingModule,
     FontAwesomeModule,
+    AuthModule,
     NgxsModule.forFeature([PostState])
   ],
   declarations: [

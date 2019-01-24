@@ -6,9 +6,10 @@ import {
   OnDestroy
 } from '@angular/core';
 
-import { ErrorModel } from '../error.model';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+
+import { Error } from '../models/error.model';
 
 @Component({
   selector: 'hab-errors',
@@ -23,7 +24,7 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./error.component.scss']
 })
 export class ErrorComponent implements OnDestroy {
-  @Input() errors: ErrorModel[];
+  @Input() errors: Error[];
   @Output() reset = new EventEmitter();
 
   closeIcon: IconProp = faTimesCircle;
@@ -32,7 +33,7 @@ export class ErrorComponent implements OnDestroy {
     this.reset.emit();
   }
 
-  getErrorMessage({ detail, data }: ErrorModel): string {
+  getErrorMessage({ detail, data }: Error): string {
     if (detail) {
       return detail;
     }

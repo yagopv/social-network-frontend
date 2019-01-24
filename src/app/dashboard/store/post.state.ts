@@ -5,35 +5,30 @@ import {
   GetPosts,
   GetPostsFailed,
   GetPostsSuccess,
-  Publish,
-  PublishSuccess,
-  PublishFailed,
+  AddPost,
+  AddPostSuccess,
+  AddPostFailed,
   AddComment,
   AddCommentSuccess,
   AddCommentFailed
 } from './post.actions';
 import { PostService } from '../services/post.service';
-import { PostStateModel } from '../models/post-state.model';
-import { AuthService } from '../../auth/services/auth.service';
+import { PostCollection } from '../models/post-collection.model';
 
-@State<PostStateModel>({
+@State<PostCollection>({
   name: 'posts',
   defaults: {}
 })
 export class PostState {
-  constructor(
-    private store: Store,
-    private postService: PostService,
-    private authService: AuthService
-  ) {}
+  constructor(private store: Store, private postService: PostService) {}
 
   @Selector()
-  static getPosts(state: PostStateModel) {
+  static getPosts(state: PostCollection) {
     return Object.values(state);
   }
 
   @Action(GetPosts)
-  getPosts({ dispatch }: StateContext<PostStateModel>) {
+  getPosts({ dispatch }: StateContext<PostCollection>) {
     return this.postService.getFeed().pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
       catchError(error => dispatch(new GetPostsFailed(error)))
@@ -42,7 +37,7 @@ export class PostState {
 
   @Action(GetPostsSuccess)
   getPostsSuccess(
-    { setState }: StateContext<PostStateModel>,
+    { setState }: StateContext<PostCollection>,
     { posts }: GetPostsSuccess
   ) {
     const orderedPosts = posts.sort((p1, p2) => {
@@ -57,26 +52,29 @@ export class PostState {
     );
   }
 
-  @Action(Publish)
-  publish({ dispatch }: StateContext<PostStateModel>, { publish }: Publish) {
+  @Action(AddPost)
+  addPost(
+    { dispatch }: StateContext<PostCollection>,
+    { postRequest: publish }: AddPost
+  ) {
     const { avatarUrl, fullName, uuid } = this.store.selectSnapshot(
       state => state.auth
     );
 
-    return this.postService.publish(publish.content).pipe(
+    return this.postService.addPost(publish.content).pipe(
       tap(post => {
         dispatch(
-          new PublishSuccess({ ...post, author: { uuid, avatarUrl, fullName } })
+          new AddPostSuccess({ ...post, author: { uuid, avatarUrl, fullName } })
         );
       }),
-      catchError(error => dispatch(new PublishFailed(error)))
+      catchError(error => dispatch(new AddPostFailed(error)))
     );
   }
 
-  @Action(PublishSuccess)
-  publishSuccess(
-    { setState, getState }: StateContext<PostStateModel>,
-    { post }: PublishSuccess
+  @Action(AddPostSuccess)
+  addPostSuccess(
+    { setState, getState }: StateContext<PostCollection>,
+    { post }: AddPostSuccess
   ) {
     setState({
       [post.id]: post,
@@ -86,14 +84,14 @@ export class PostState {
 
   @Action(AddComment)
   addComment(
-    { dispatch }: StateContext<PostStateModel>,
+    { dispatch }: StateContext<PostCollection>,
     { postId, message }: AddComment
   ) {
     const { avatarUrl, fullName } = this.store.selectSnapshot(
       state => state.auth
     );
 
-    return this.postService.publishComment(postId, message).pipe(
+    return this.postService.addComment(postId, message).pipe(
       tap(() => {
         dispatch(
           new AddCommentSuccess(
@@ -117,7 +115,7 @@ export class PostState {
 
   @Action(AddCommentSuccess)
   addCommentSuccess(
-    { setState, getState }: StateContext<PostStateModel>,
+    { setState, getState }: StateContext<PostCollection>,
     { comment, postId }: AddCommentSuccess
   ) {
     const state = getState();
@@ -131,8 +129,8 @@ export class PostState {
     });
   }
 
-  @Action([PublishFailed, GetPostsFailed, AddCommentFailed])
-  error(ctx: StateContext<PostStateModel>, action: any) {
+  @Action([AddPostFailed, GetPostsFailed, AddCommentFailed])
+  error(ctx: StateContext<PostCollection>, action: any) {
     console.log(action);
   }
 
