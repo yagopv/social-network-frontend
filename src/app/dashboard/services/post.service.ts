@@ -3,13 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import {
-  PublishModel,
-  PostCommentModel,
-  PostModel,
-  CommentModel
-} from '../models/post.model';
-import { DashboardModule } from '../dashboard.module';
+import { Post } from '../models/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,22 +11,20 @@ import { DashboardModule } from '../dashboard.module';
 export class PostService {
   constructor(private http: HttpClient) {}
 
-  getFeed(userId?: string): Observable<PostModel[]> {
+  getFeed(userId?: string): Observable<Post[]> {
     const path = userId ? `/${userId}` : '';
 
-    return this.http.get<PostModel[]>(
-      `${environment.apiBaseUrl}/user${path}/feed`
-    );
+    return this.http.get<Post[]>(`${environment.apiBaseUrl}/user${path}/feed`);
   }
 
-  publish(content: string): Observable<PostModel> {
-    return this.http.post<PostModel>(`${environment.apiBaseUrl}/post`, {
+  publish(content: string): Observable<Post> {
+    return this.http.post<Post>(`${environment.apiBaseUrl}/post`, {
       content
     });
   }
 
   publishComment(postId: string, message: string) {
-    return this.http.post<CommentModel>(
+    return this.http.post<Comment>(
       `${environment.apiBaseUrl}/post/${postId}/comment`,
       {
         message

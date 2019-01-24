@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { CommentModel } from '../../models/post.model';
+
+import { Comment } from '../../models/comment.model';
 import { Profile } from '../../../auth/models/profile.model';
 
 @Component({
@@ -8,6 +9,6 @@ import { Profile } from '../../../auth/models/profile.model';
   styleUrls: ['./post-comment.component.scss']
 })
 export class PostCommentComponent {
-  @Input() comment: CommentModel;
+  @Input() comment: Comment;
   @Input() user: Profile;
 }

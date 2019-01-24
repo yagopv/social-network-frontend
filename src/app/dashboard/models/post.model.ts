@@ -1,29 +1,15 @@
-export interface AuthorModel {
-  avatarUrl: string;
-  fullName: string;
-  uuid: string;
-}
+import { Author } from './author.model';
+import { Comment } from './comment.model';
 
-export interface PostModel {
+export interface Post {
   likes: any[];
-  author: AuthorModel;
+  author: Author;
   content: string;
-  comments: CommentModel[];
+  comments: Comment[];
   createdAt: number;
   id: string;
 }
 
-export interface CommentModel {
-  author: AuthorModel;
-  message: string;
-  createdAt: number;
-  id: string;
-}
-
-export interface PublishModel {
+export interface PostRequest {
   content: string;
-}
-
-export interface PostCommentModel {
-  message: string;
 }

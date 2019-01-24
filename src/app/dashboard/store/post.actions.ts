@@ -1,5 +1,6 @@
-import { PostModel, PublishModel, CommentModel } from '../models/post.model';
+import { Post, PostRequest } from '../models/post.model';
 import { Error } from '../../error/models/error.model';
+import { Comment } from '../models/comment.model';
 
 export class GetPosts {
   static readonly type = '[Posts] GetPosts';
@@ -7,7 +8,7 @@ export class GetPosts {
 
 export class GetPostsSuccess {
   static readonly type = '[Posts] GetPostsSuccess';
-  constructor(public posts: PostModel[]) {}
+  constructor(public posts: Post[]) {}
 }
 export class GetPostsFailed {
   static readonly type = '[Posts] GetPostsFailed';
@@ -16,12 +17,12 @@ export class GetPostsFailed {
 
 export class Publish {
   static readonly type = '[Posts] Publish';
-  constructor(public publish: PublishModel) {}
+  constructor(public publish: PostRequest) {}
 }
 
 export class PublishSuccess {
   static readonly type = '[Posts] PublishSuccess';
-  constructor(public post: PostModel) {}
+  constructor(public post: Post) {}
 }
 
 export class PublishFailed {
@@ -36,7 +37,7 @@ export class AddComment {
 
 export class AddCommentSuccess {
   static readonly type = '[Comment] AddCommentSuccess';
-  constructor(public comment: CommentModel, public postId: string) {}
+  constructor(public comment: Comment, public postId: string) {}
 }
 
 export class AddCommentFailed {

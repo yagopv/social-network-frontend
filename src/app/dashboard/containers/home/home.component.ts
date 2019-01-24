@@ -5,8 +5,8 @@ import { Store, Select } from '@ngxs/store';
 
 import { PostState } from '../../store/post.state';
 import { GetPosts, Publish, AddComment } from '../../store/post.actions';
-import { PostStateModel } from '../../models/post-state.model';
-import { PostModel } from '../../models/post.model';
+import { PostCollection } from '../../models/post-collection.model';
+import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
 import { Profile } from '../../../auth/models/profile.model';
 
@@ -16,7 +16,7 @@ import { Profile } from '../../../auth/models/profile.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @Select(PostState.getPosts) posts$: Observable<PostStateModel>;
+  @Select(PostState.getPosts) posts$: Observable<PostCollection>;
   @Select(AuthState.getUser) user$: Profile;
 
   constructor(private store: Store) {}
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(new AddComment(postId, message));
   }
 
-  postIdentity(index: number, post: PostModel) {
+  postIdentity(index: number, post: Post) {
     return post.id;
   }
 }
