@@ -6,8 +6,7 @@ import { PostState } from '../../store/post.state';
 import { GetPosts, Publish, AddComment } from '../../store/post.actions';
 import { PostStateModel } from '../../models/post-state.model';
 import { PostModel } from '../../models/post.model';
-import { AuthState, AuthStateModel } from '../../../auth/store/auth.state';
-import { GetUserProfile } from '../../../auth/store/auth.actions';
+import { AuthStateModel, AuthState } from '../../../auth/store/auth.state';
 
 @Component({
   selector: 'hab-home',
@@ -16,12 +15,12 @@ import { GetUserProfile } from '../../../auth/store/auth.actions';
 })
 export class HomeComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<PostStateModel>;
-  @Select(AuthState) user$: Observable<AuthStateModel>;
+  @Select(AuthState) user$: AuthStateModel;
 
   constructor(private store: Store) {}
 
   ngOnInit() {
-    this.store.dispatch([new GetPosts(), new GetUserProfile()]);
+    this.store.dispatch(new GetPosts());
   }
 
   publishPost(content: string) {
