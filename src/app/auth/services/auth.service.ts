@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { LoginResponse, UserProfileResponse } from '../models/auth-user.model';
 import { environment } from '../../../environments/environment';
 import { LoginModel } from '../containers/login/login.model';
-import { RegisterModel } from '../models/register.model';
+import { RegisterRequest } from '../models/register-request.model';
 import { Profile } from '../models/profile.model';
+import { UserProfileResponse } from '../models/user-profile-response.model';
+import { LoginResponse } from '../models/login-response.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -34,7 +34,7 @@ export class AuthService {
       );
   }
 
-  register(register: RegisterModel) {
+  register(register: RegisterRequest) {
     return this.http.post<any>(`${environment.apiBaseUrl}/account`, register);
   }
 

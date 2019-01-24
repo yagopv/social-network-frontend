@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
 
 import { PostState } from '../../store/post.state';
-import { GetPosts, Publish, AddComment } from '../../store/post.actions';
+import { GetPosts, AddPost, AddComment } from '../../store/post.actions';
 import { PostCollection } from '../../models/post-collection.model';
 import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   publishPost(content: string) {
-    this.store.dispatch(new Publish({ content }));
+    this.store.dispatch(new AddPost({ content }));
   }
 
   publishComment({ postId, message }: { postId: string; message: string }) {

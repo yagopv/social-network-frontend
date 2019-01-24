@@ -15,18 +15,18 @@ export class GetPostsFailed {
   constructor(public error: Error[]) {}
 }
 
-export class Publish {
-  static readonly type = '[Posts] Publish';
-  constructor(public publish: PostRequest) {}
+export class AddPost {
+  static readonly type = '[Posts] AddPost';
+  constructor(public postRequest: PostRequest) {}
 }
 
-export class PublishSuccess {
-  static readonly type = '[Posts] PublishSuccess';
+export class AddPostSuccess {
+  static readonly type = '[Posts] AddPostSuccess';
   constructor(public post: Post) {}
 }
 
-export class PublishFailed {
-  static readonly type = '[Posts] PublishFailed';
+export class AddPostFailed {
+  static readonly type = '[Posts] AddPostFailed';
   constructor(public error: Error[]) {}
 }
 

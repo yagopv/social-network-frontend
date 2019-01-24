@@ -9,7 +9,6 @@ import {
   Selector
 } from '@ngxs/store';
 
-import { LoginResponse } from '../models/auth-user.model';
 import { AuthService } from '../services/auth.service';
 import {
   Login,

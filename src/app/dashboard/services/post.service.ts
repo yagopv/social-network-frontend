@@ -17,13 +17,13 @@ export class PostService {
     return this.http.get<Post[]>(`${environment.apiBaseUrl}/user${path}/feed`);
   }
 
-  publish(content: string): Observable<Post> {
+  addPost(content: string): Observable<Post> {
     return this.http.post<Post>(`${environment.apiBaseUrl}/post`, {
       content
     });
   }
 
-  publishComment(postId: string, message: string) {
+  addComment(postId: string, message: string) {
     return this.http.post<Comment>(
       `${environment.apiBaseUrl}/post/${postId}/comment`,
       {

@@ -1,11 +1,12 @@
-import { LoginModel } from '../models/login.model';
-import { LoginResponse, UserProfileResponse } from '../models/auth-user.model';
-import { RegisterModel } from '../models/register.model';
+import { LoginRequest } from '../models/login-request.model';
+import { RegisterRequest } from '../models/register-request.model';
 import { Error } from '../../error/models/error.model';
+import { LoginResponse } from '../models/login-response.model';
+import { UserProfileResponse } from '../models/user-profile-response.model';
 
 export class Login {
   static readonly type = '[Auth] Login';
-  constructor(public login: LoginModel) {}
+  constructor(public login: LoginRequest) {}
 }
 
 export class LoginSuccess {
@@ -20,7 +21,7 @@ export class LoginFailed {
 
 export class Register {
   static type = '[Auth] Register';
-  constructor(public register: RegisterModel) {}
+  constructor(public register: RegisterRequest) {}
 }
 
 export class RegisterSuccess {
