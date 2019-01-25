@@ -64,8 +64,4 @@ export class ProfileComponent implements OnInit {
       control.markAsTouched();
     });
   }
-
-  logout() {
-    this.store.dispatch(new Logout());
-  }
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 import { FormGroupComponent } from '../shared/components/form-group/form-group.component';
@@ -18,7 +19,6 @@ import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-
 import { SiteLayoutComponent } from './components/site-layout/site-layout.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { TextAreaDirective } from './directives/textarea-directive';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],

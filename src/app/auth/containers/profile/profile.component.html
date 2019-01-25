@@ -1,7 +1,3 @@
-<!-- Reactive -->
-<h3>My account</h3>
-<p>Update you account details</p>
-
 <hab-form-group>
   <hab-errors [errors]="errors$ | async"></hab-errors>
   <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
@@ -49,7 +45,3 @@
     </div>
   </form>
 </hab-form-group>
-
-<hr />
-
-<a herf="" habPreventDefault (click)="logout()">Logout</a>
