@@ -1,0 +1,15 @@
+<div class="search-friends">
+  <div class="search-box">
+    <input type="text" placeholder="Search for friends" />
+    <fa-icon [icon]="searchIcon"></fa-icon>
+  </div>
+  <div *ngIf="users.length">
+    <div *ngFor="let user of users" class="friend">
+      <img [src]="user.avatarUrl || 'http://i.pravatar.cc/128?img=1'" />
+      <div class="request">
+        <p>{{ user.fullName }}</p>
+        <a href="">Add to friends</a>
+      </div>
+    </div>
+  </div>
+</div>
