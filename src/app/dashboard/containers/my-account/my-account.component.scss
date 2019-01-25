@@ -1,0 +1,10 @@
+@import '~src/scss/breakpoints.scss';
+
+:host {
+  display: block;
+  padding: 20px;
+
+  @include respond-above(sm) {
+    padding: 20px 20%;
+  }
+}

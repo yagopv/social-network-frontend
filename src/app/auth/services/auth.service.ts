@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   updateUserProfile(profile: Profile) {
-    return this.http.put<Profile>(`${environment.apiBaseUrl}/account`, profile);
+    return this.http.put<Profile>(`${environment.apiBaseUrl}/user`, profile);
   }
 
   logout() {

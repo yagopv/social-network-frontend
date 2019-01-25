@@ -7,7 +7,7 @@ export interface Profile {
 }
 
 export interface Preferences {
-  isPublicProfile: string;
+  isPublicProfile: boolean;
   linkedIn: string;
   twitter: string;
   github: string;

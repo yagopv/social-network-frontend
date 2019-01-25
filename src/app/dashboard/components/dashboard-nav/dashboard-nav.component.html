@@ -8,5 +8,9 @@
   <li>
     <a routerLink="/my-account" routerLinkActive="active"><b>My Account</b></a>
   </li>
-  <li><a href="" (click)="logoutUser()" habPreventDefault>Logout</a></li>
+  <li>
+    <a href="" (click)="logoutUser()" habPreventDefault
+      ><fa-icon [icon]="logoutIcon"></fa-icon> <span>Logout</span></a
+    >
+  </li>
 </ul>

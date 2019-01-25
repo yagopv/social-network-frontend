@@ -3,6 +3,7 @@ import { RegisterRequest } from '../models/register-request.model';
 import { Error } from '../../error/models/error.model';
 import { LoginResponse } from '../models/login-response.model';
 import { UserProfileResponse } from '../models/user-profile-response.model';
+import { Profile } from '../models/profile.model';
 
 export class Login {
   static readonly type = '[Auth] Login';
@@ -48,5 +49,20 @@ export class GetUserProfileSuccess {
 
 export class GetUserProfileFailed {
   static type = '[Auth] GetUserProfileFailed';
+  constructor(public errors: Error[]) {}
+}
+
+export class UpdateUserProfile {
+  static readonly type = '[Auth] UpdateUserProfile';
+  constructor(public profile: Profile) {}
+}
+
+export class UpdateUserProfileSuccess {
+  static readonly type = '[Auth] UpdateUserProfileSuccess';
+  constructor(public profile: Profile) {}
+}
+
+export class UpdateUserProfileFailed {
+  static type = '[Auth] UpdateUserProfileFailed';
   constructor(public errors: Error[]) {}
 }

@@ -1,13 +1,6 @@
 import { catchError, tap } from 'rxjs/operators';
 import { Navigate } from '@ngxs/router-plugin';
-import {
-  State,
-  Action,
-  StateContext,
-  Store,
-  NgxsOnInit,
-  Selector
-} from '@ngxs/store';
+import { State, Action, StateContext, Store, Selector } from '@ngxs/store';
 
 import { AuthService } from '../services/auth.service';
 import {
@@ -20,7 +13,10 @@ import {
   Logout,
   GetUserProfileFailed,
   GetUserProfile,
-  GetUserProfileSuccess
+  GetUserProfileSuccess,
+  UpdateUserProfile,
+  UpdateUserProfileSuccess,
+  UpdateUserProfileFailed
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
 import { Auth } from '../models/auth.model';
@@ -46,7 +42,7 @@ export class AuthState {
   }
 
   // ngxs will subscribe to the post observable for you if you return it from the action
-  @Action(Login)
+  @Action(Login, { cancelUncompleted: true })
   login({ dispatch }: StateContext<Auth>, action: Login) {
     return this.authService.login(action.login).pipe(
       tap(data => dispatch(new LoginSuccess(data))),
@@ -67,7 +63,7 @@ export class AuthState {
     dispatch(new Navigate([returnUrl || '/home']));
   }
 
-  @Action(Register)
+  @Action(Register, { cancelUncompleted: true })
   register({ dispatch }: StateContext<Auth>, action: Register) {
     return this.authService.register(action.register).pipe(
       tap(() => dispatch(new RegisterSuccess())),
@@ -103,13 +99,39 @@ export class AuthState {
     });
   }
 
-  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed])
+  @Action(UpdateUserProfile, { cancelUncompleted: true })
+  updateUserProfile(
+    { dispatch }: StateContext<Auth>,
+    { profile }: UpdateUserProfile
+  ) {
+    return this.authService.updateUserProfile(profile).pipe(
+      tap(() => dispatch(new UpdateUserProfileSuccess(profile))),
+      catchError(error => dispatch(new UpdateUserProfileFailed(error.error)))
+    );
+  }
+
+  @Action(UpdateUserProfileSuccess)
+  updateUserProfileSuccess(
+    { patchState }: StateContext<Auth>,
+    { profile }: UpdateUserProfileSuccess
+  ) {
+    patchState({
+      ...profile
+    });
+  }
+
+  @Action([
+    LoginFailed,
+    RegisterFailed,
+    GetUserProfileFailed,
+    UpdateUserProfile
+  ])
   registerFailed({ dispatch }: StateContext<Auth>, action: RegisterFailed) {
     // Use ngxs Action or this is going to fail because running outside NgZone
     dispatch(new SetErrors(action.errors));
   }
 
-  @Action(Logout)
+  @Action(Logout, { cancelUncompleted: true })
   logout({ dispatch, setState }: StateContext<Auth>) {
     this.authService.logout();
     setState(null);
