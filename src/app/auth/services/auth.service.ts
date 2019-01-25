@@ -8,7 +8,6 @@ import { RegisterRequest } from '../models/register-request.model';
 import { Profile } from '../models/profile.model';
 import { UserProfileResponse } from '../models/user-profile-response.model';
 import { LoginResponse } from '../models/login-response.model';
-import { Subject, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -60,5 +59,11 @@ export class AuthService {
       `${environment.apiBaseUrl}/user/avatar`,
       formData
     );
+  }
+
+  search(text: string) {
+    return this.http.get(`${environment.production}/user/search`, {
+      params: { q: text }
+    });
   }
 }
