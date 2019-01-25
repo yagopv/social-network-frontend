@@ -3,6 +3,8 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Post } from '../../models/post.model';
 import { Profile } from '../../../auth/models/profile.model';
 import { Comment } from '../../models/comment.model';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'hab-post',
@@ -12,13 +14,20 @@ import { Comment } from '../../models/comment.model';
 export class PostComponent {
   @Input() post: Post;
   @Input() user: Profile;
-  @Output() publishComment = new EventEmitter();
+  @Output() comment = new EventEmitter();
+  @Output() delete = new EventEmitter();
+
+  deleteCommentIcon: IconProp = faTrashAlt;
 
   addComment(content: string) {
-    this.publishComment.emit({
+    this.comment.emit({
       postId: this.post.id,
       message: content
     });
+  }
+
+  deletePost() {
+    this.delete.emit(this.post.id);
   }
 
   commentIdentity(index: number, comment: Comment) {
