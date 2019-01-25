@@ -1,3 +1,5 @@
+import { Preferences } from './profile.model';
+
 export interface Auth {
   uuid: string;
   email: string;
@@ -6,10 +8,5 @@ export interface Auth {
   accessToken: string;
   fullName: string;
   avatarUrl: string;
-  preferences: {
-    isPublicProfile: string;
-    linkedIn: string;
-    twitter: string;
-    github: string;
-  };
+  preferences: Preferences;
 }

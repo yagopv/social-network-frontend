@@ -4,12 +4,17 @@
   <ng-container *ngIf="control.invalid && (control.dirty || control.touched)">
     <p class="error-message" *ngIf="control.hasError('required')">
       <span class="glyphicon glyphicon-exclamation-sign">
-        Este campo es obligatorio
+        This field is mandatory
       </span>
     </p>
     <p class="error-message" *ngIf="control.hasError('malformedMail')">
       <span class="glyphicon glyphicon-exclamation-sign">
-        Introduce un mail valido
+        The Email is not valid
+      </span>
+    </p>
+    <p class="error-message" *ngIf="control.hasError('malformedUrl')">
+      <span class="glyphicon glyphicon-exclamation-sign">
+        The URL is not valid
       </span>
     </p>
   </ng-container>

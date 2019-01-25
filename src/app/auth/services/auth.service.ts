@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
@@ -43,10 +43,27 @@ export class AuthService {
   }
 
   updateUserProfile(profile: Profile) {
-    return this.http.put<Profile>(`${environment.apiBaseUrl}/account`, profile);
+    return this.http.put<Profile>(`${environment.apiBaseUrl}/user`, profile);
   }
 
   logout() {
     localStorage.removeItem('auth');
+  }
+
+  uploadAvatar(image: File) {
+    const formData = new FormData();
+
+    formData.append('avatar', image);
+
+    return this.http.post<Response>(
+      `${environment.apiBaseUrl}/user/avatar`,
+      formData
+    );
+  }
+
+  search(text: string) {
+    return this.http.get(`${environment.production}/user/search`, {
+      params: { q: text }
+    });
   }
 }

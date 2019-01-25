@@ -1,4 +1,4 @@
 <div class="user">
-  <img [src]="user?.avatarUrl" />
+  <img [src]="user?.avatarUrl || 'http://i.pravatar.cc/128?img=1'" />
   <p>{{ user?.fullName }}</p>
 </div>

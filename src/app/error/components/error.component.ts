@@ -14,7 +14,7 @@ import { Error } from '../models/error.model';
 @Component({
   selector: 'hab-errors',
   template: `
-    <div class="errors" *ngIf="errors.length">
+    <div class="errors" *ngIf="errors?.length">
       <p *ngFor="let error of errors">
         {{ getErrorMessage(error) | capitalize }}
       </p>

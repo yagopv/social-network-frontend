@@ -1,0 +1,16 @@
+<label
+  class="image-upload-container"
+  [ngStyle]="{ 'background-image': imageUrl && 'url(' + imageUrl + ')' }"
+>
+  <input
+    #imageInput
+    type="file"
+    accept="image/*"
+    (change)="processFile(imageInput)"
+  />
+  <fa-icon
+    *ngIf="selectedFile"
+    [icon]="getIcon()"
+    [spin]="selectedFile?.status !== 'ok' && selectedFile?.status !== 'fail'"
+  ></fa-icon>
+</label>

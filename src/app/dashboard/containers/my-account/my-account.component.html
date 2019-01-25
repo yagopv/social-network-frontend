@@ -1,1 +1,13 @@
+<h2>My account</h2>
+
+<hab-file-upload [imageUrl]="(user$ | async)?.avatarUrl"></hab-file-upload>
+
+<hr />
+
+<h5>Update you profile details</h5>
+
 <hab-profile></hab-profile>
+
+<hr />
+
+<a href="" habPreventDefault (click)="logout()">Logout</a>

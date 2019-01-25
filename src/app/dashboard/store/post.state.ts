@@ -10,7 +10,10 @@ import {
   AddPostFailed,
   AddComment,
   AddCommentSuccess,
-  AddCommentFailed
+  AddCommentFailed,
+  DeletePostFailed,
+  DeletePost,
+  DeletePostSuccess
 } from './post.actions';
 import { PostService } from '../services/post.service';
 import { PostCollection } from '../models/post-collection.model';
@@ -71,7 +74,7 @@ export class PostState {
     );
   }
 
-  @Action(AddPostSuccess)
+  @Action(AddPostSuccess, { cancelUncompleted: true })
   addPostSuccess(
     { setState, getState }: StateContext<PostCollection>,
     { post }: AddPostSuccess
@@ -82,7 +85,31 @@ export class PostState {
     });
   }
 
-  @Action(AddComment)
+  @Action(DeletePost, { cancelUncompleted: true })
+  deletePost({ dispatch }: StateContext<PostCollection>, { uuid }: DeletePost) {
+    return this.postService.deletePost(uuid).pipe(
+      tap(() => dispatch(new DeletePostSuccess(uuid))),
+      catchError(error => dispatch(new DeletePostFailed(error.error)))
+    );
+  }
+
+  @Action(DeletePostSuccess)
+  deletePostSuccess(
+    { setState, getState }: StateContext<PostCollection>,
+    { uuid }: DeletePostSuccess
+  ) {
+    const posts = getState();
+    setState(
+      Object.keys(posts).reduce((draft, postId) => {
+        if (postId !== uuid) {
+          draft[postId] = posts[postId];
+        }
+        return draft;
+      }, {})
+    );
+  }
+
+  @Action(AddComment, { cancelUncompleted: true })
   addComment(
     { dispatch }: StateContext<PostCollection>,
     { postId, message }: AddComment
@@ -129,7 +156,7 @@ export class PostState {
     });
   }
 
-  @Action([AddPostFailed, GetPostsFailed, AddCommentFailed])
+  @Action([AddPostFailed, GetPostsFailed, AddCommentFailed, DeletePostFailed])
   error(ctx: StateContext<PostCollection>, action: any) {
     console.log(action);
   }

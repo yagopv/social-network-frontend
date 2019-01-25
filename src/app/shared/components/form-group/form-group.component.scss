@@ -2,20 +2,18 @@
 
 :host {
   ::ng-deep {
-    button {
-      transition: background-color 0.2s ease-in;
-      background-color: $main;
-      color: $white;
-      padding: 20px 30px;
-      border-radius: 5px;
-      font-size: 1rem;
-      font-weight: bold;
-      outline: none;
-      &.right {
-        float: right;
-      }
-      &:hover {
-        background-color: darken($main, 10%);
+    .button-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        transition: background-color 0.2s ease-in;
+        background-color: $main;
+        color: $white;
+        padding: 20px 30px;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        outline: none;
       }
     }
   }

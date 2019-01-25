@@ -1,11 +1,24 @@
 @import '~src/scss/colors.scss';
 
-div {
+article {
   background-color: $light;
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
+  position: relative;
   hr {
     border: 1px solid $contrast;
+  }
+  fa-icon {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    display: none;
+    cursor: pointer;
+  }
+  &:hover {
+    fa-icon {
+      display: inline;
+    }
   }
 }

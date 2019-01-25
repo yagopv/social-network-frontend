@@ -21,6 +21,7 @@ import { PostCommentCounterComponent } from './components/post-comment-counter/p
 import { PostContentComponent } from './components/post-content/post-content.component';
 import { MyAccountComponent } from './containers/my-account/my-account.component';
 import { AuthModule } from '../auth/auth.module';
+import { SearchUserComponent } from './containers/search-user/search-user.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { AuthModule } from '../auth/auth.module';
     PostCommentComponent,
     PostCommentCounterComponent,
     PostContentComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    SearchUserComponent
   ]
 })
 export class DashboardModule {}

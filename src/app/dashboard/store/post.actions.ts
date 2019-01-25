@@ -30,6 +30,21 @@ export class AddPostFailed {
   constructor(public error: Error[]) {}
 }
 
+export class DeletePost {
+  static readonly type = '[Posts] DeletePost';
+  constructor(public uuid: string) {}
+}
+
+export class DeletePostSuccess {
+  static readonly type = '[Posts] DeletePostSuccess';
+  constructor(public uuid: string) {}
+}
+
+export class DeletePostFailed {
+  static readonly type = '[Posts] DeletePostFailed';
+  constructor(public error: Error[]) {}
+}
+
 export class AddComment {
   static readonly type = '[Comment] AddComment';
   constructor(public postId: string, public message: string) {}

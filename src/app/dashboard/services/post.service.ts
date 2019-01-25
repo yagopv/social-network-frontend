@@ -23,6 +23,10 @@ export class PostService {
     });
   }
 
+  deletePost(uuid: string) {
+    return this.http.delete(`${environment.apiBaseUrl}/post/${uuid}`);
+  }
+
   addComment(postId: string, message: string) {
     return this.http.post<Comment>(
       `${environment.apiBaseUrl}/post/${postId}/comment`,

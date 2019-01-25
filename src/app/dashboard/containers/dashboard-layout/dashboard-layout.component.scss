@@ -22,6 +22,7 @@ div {
     height: 100%;
 
     nav {
+      position: relative;
       grid-area: nav;
       background-color: $contrast;
       padding: 20px 10px;

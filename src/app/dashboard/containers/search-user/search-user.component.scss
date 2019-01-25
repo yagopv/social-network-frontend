@@ -1,0 +1,44 @@
+@import '~src/scss/colors.scss';
+
+.search-friends {
+  background-color: $contrast;
+  border-radius: 10px;
+  color: $white;
+  padding: 10px;
+  .search-box {
+    display: flex;
+    height: 30px;
+    input {
+      outline: none;
+      flex: 1;
+      font-size: 1.2rem;
+      color: $white;
+      background: transparent;
+      border-bottom: 1px solid $white;
+      &::placeholder {
+        color: $white;
+      }
+    }
+    fa-icon {
+      font-size: 1.2rem;
+    }
+  }
+  .friend {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    .request {
+      margin-left: 10px;
+      a {
+        color: $dark;
+        font-size: 0.8rem;
+        text-decoration: underline;
+      }
+    }
+  }
+}

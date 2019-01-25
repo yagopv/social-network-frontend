@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'hab-dashboard-nav',
@@ -7,6 +9,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class DashboardNavComponent {
   @Output() logout = new EventEmitter();
+  logoutIcon: IconProp = faSignOutAlt;
 
   logoutUser() {
     this.logout.emit();

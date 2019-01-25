@@ -1,0 +1,25 @@
+@import '~src/scss/colors.scss';
+@import '~src/scss/breakpoints.scss';
+
+:host {
+  display: block;
+  padding: 20px;
+
+  h2,
+  h5 {
+    margin: 20px 0;
+  }
+
+  hr {
+    margin: 20px 0;
+    border: 1px solid $main;
+  }
+
+  a {
+    color: $main;
+  }
+
+  @include respond-above(sm) {
+    padding: 20px 20%;
+  }
+}
