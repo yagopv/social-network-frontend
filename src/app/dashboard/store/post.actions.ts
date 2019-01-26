@@ -4,6 +4,7 @@ import { Comment } from '../models/comment.model';
 
 export class GetPosts {
   static readonly type = '[Posts] GetPosts';
+  constructor(public userId?: string) {}
 }
 
 export class GetPostsSuccess {

@@ -31,8 +31,8 @@ export class PostState {
   }
 
   @Action(GetPosts)
-  getPosts({ dispatch }: StateContext<PostCollection>) {
-    return this.postService.getFeed().pipe(
+  getPosts({ dispatch }: StateContext<PostCollection>, { userId }: GetPosts) {
+    return this.postService.getFeed(userId).pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
       catchError(error => dispatch(new GetPostsFailed(error)))
     );
