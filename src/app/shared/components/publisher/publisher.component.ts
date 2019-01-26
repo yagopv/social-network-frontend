@@ -21,6 +21,5 @@ export class PublisherComponent {
     }
     this.publish.emit(this.publishText);
     this.publishText = '';
-    console.log(this.publishText);
   }
 }

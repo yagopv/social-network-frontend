@@ -2,27 +2,34 @@
 @import '~src/scss/breakpoints.scss';
 
 :host {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  hab-friend {
-    margin: 2% 0;
+  padding: 20px;
+  hab-search-user {
+    width: 40%;
+    margin: 0 auto;
+    display: block;
   }
-
-  @include respond-above(xs) {
-    flex-direction: row;
+  .friends-grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
     hab-friend {
-      flex: 0 0 46%;
-      margin: 2%;
+      margin: 2% 0;
     }
-  }
 
-  @include respond-above(sm) {
-    hab-friend {
-      flex: 0 0 29.3333%;
+    @include respond-above(xs) {
+      flex-direction: row;
+
+      hab-friend {
+        flex: 0 0 46%;
+        margin: 2%;
+      }
+    }
+
+    @include respond-above(sm) {
+      hab-friend {
+        flex: 0 0 29.3333%;
+      }
     }
   }
 }
