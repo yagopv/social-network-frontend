@@ -18,6 +18,8 @@ import {
   tap,
   filter
 } from 'rxjs/operators';
+import { Store } from '@ngxs/store';
+import { SearchUsers } from '../../store/friend.actions';
 
 @Component({
   selector: 'hab-search-user',
@@ -29,7 +31,7 @@ export class SearchUserComponent implements OnInit {
 
   searchIcon: IconProp = faSearch;
   users: Profile[] = [];
-  constructor(private authService: AuthService) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
     fromEvent(this.input.nativeElement, 'keyup')
@@ -38,8 +40,7 @@ export class SearchUserComponent implements OnInit {
         map((event: any) => event.target.value), // Apply projection with each value from source
         filter(text => text.length > 3), // Filter values
         distinctUntilChanged(), // Only emit when the current value is different than the last
-        switchMap(s => this.authService.search(s)), // Map to observable, complete previous inner observable, emit values
-        tap(f => console.log(f))
+        switchMap(s => this.store.dispatch(new SearchUsers(s))) // Map to observable, complete previous inner observable, emit values
       )
       .subscribe();
   }

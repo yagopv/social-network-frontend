@@ -3,10 +3,15 @@
 
 :host {
   padding: 20px;
+  display: block;
   hab-search-user {
-    width: 40%;
     margin: 0 auto;
     display: block;
+  }
+  @include respond-above(md) {
+    hab-search-user {
+      width: 40%;
+    }
   }
   .friends-grid {
     display: flex;

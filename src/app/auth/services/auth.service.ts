@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   search(text: string) {
-    return this.http.get(`${environment.apiBaseUrl}/user/search`, {
+    return this.http.get<Profile[]>(`${environment.apiBaseUrl}/user/search`, {
       params: { q: text }
     });
   }

@@ -58,6 +58,7 @@ div {
 
       main {
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
       }
     }
 
@@ -73,9 +74,6 @@ div {
       main,
       aside {
         height: calc(100vh - 100px);
-      }
-      main {
-        overflow: auto;
       }
     }
   }
