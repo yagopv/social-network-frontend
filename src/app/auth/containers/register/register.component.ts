@@ -47,10 +47,6 @@ export class RegisterComponent {
     );
   }
 
-  resetErrors() {
-    this.store.dispatch(new ResetErrors());
-  }
-
   private markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control => {
       control.markAsTouched();
