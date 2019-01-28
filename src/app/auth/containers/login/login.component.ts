@@ -32,10 +32,6 @@ export class LoginComponent {
       .subscribe(() => (this.loginModel.password = ''));
   }
 
-  resetErrors() {
-    this.store.dispatch(new ResetErrors());
-  }
-
   private markControlsAsTouched(controls: { [key: string]: AbstractControl }) {
     Object.values(controls).forEach(control => {
       control.markAsTouched();

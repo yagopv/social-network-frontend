@@ -10,6 +10,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { Error } from '../models/error.model';
+import { ResetErrors } from '../store/error.actions';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'hab-errors',
@@ -27,6 +29,8 @@ export class ErrorComponent implements OnDestroy {
   @Input() errors: Error[];
   @Output() reset = new EventEmitter();
 
+  constructor(private store: Store) {}
+
   closeIcon: IconProp = faTimesCircle;
 
   resetErrors() {
@@ -43,6 +47,6 @@ export class ErrorComponent implements OnDestroy {
     }
   }
   ngOnDestroy() {
-    this.reset.emit();
+    this.store.dispatch(new ResetErrors());
   }
 }

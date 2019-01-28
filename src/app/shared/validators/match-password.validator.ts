@@ -1,6 +1,8 @@
 import { AbstractControl } from '@angular/forms';
 
-export function MatchPasswordValidator(control: AbstractControl) {
+export function MatchPasswordValidator(
+  control: AbstractControl
+): { [key: string]: boolean } {
   {
     const password = control.get('password').value;
     const confirmPassword = control.get('confirmPassword').value;

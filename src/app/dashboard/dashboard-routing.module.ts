@@ -12,6 +12,7 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       { path: 'home', component: HomeComponent },
+      { path: 'user/:userId/home', component: HomeComponent },
       { path: 'friends', component: FriendsComponent },
       { path: 'my-account', component: MyAccountComponent }
     ]

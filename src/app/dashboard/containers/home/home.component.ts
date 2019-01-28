@@ -14,6 +14,7 @@ import { PostCollection } from '../../models/post-collection.model';
 import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
 import { Profile } from '../../../auth/models/profile.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'hab-home',
@@ -24,10 +25,10 @@ export class HomeComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<PostCollection>;
   @Select(AuthState.getUser) user$: Profile;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.store.dispatch(new GetPosts());
+    this.store.dispatch(new GetPosts(this.route.snapshot.params.userId));
   }
 
   publishPost(content: string) {

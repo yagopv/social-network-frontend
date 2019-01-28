@@ -1,6 +1,6 @@
 <!-- Template-Driven -->
 <hab-form-group>
-  <hab-errors [errors]="errors$ | async" (reset)="resetErrors()"></hab-errors>
+  <hab-errors [errors]="errors$ | async"></hab-errors>
   <form
     (ngSubmit)="login(loginForm)"
     #loginForm="ngForm"

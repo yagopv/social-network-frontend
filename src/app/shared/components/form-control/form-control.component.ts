@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, AbstractControl } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'hab-form-control',
@@ -7,5 +9,7 @@ import { FormControl, AbstractControl } from '@angular/forms';
   styleUrls: ['./form-control.component.scss']
 })
 export class FormControlComponent {
+  @Input() group?: FormGroup;
   @Input() control: AbstractControl;
+  errorIcon: IconProp = faExclamationTriangle;
 }

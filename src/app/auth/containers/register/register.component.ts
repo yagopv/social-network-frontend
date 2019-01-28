@@ -24,11 +24,11 @@ export class RegisterComponent {
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     },
-    { validator: MatchPasswordValidator, updateOn: 'blur' }
+    { validators: MatchPasswordValidator, updateOn: 'blur' }
   );
 
   constructor(private fb: FormBuilder, private store: Store) {
-    this.registerForm.valueChanges.subscribe(value => console.log(value));
+    // this.registerForm.valueChanges.subscribe(value => console.log(value));
   }
 
   register() {
@@ -37,11 +37,14 @@ export class RegisterComponent {
       return;
     }
 
-    this.store.dispatch(new Register(this.registerForm.value));
-  }
-
-  resetErrors() {
-    this.store.dispatch(new ResetErrors());
+    const { fullName, email, password } = this.registerForm.value;
+    this.store.dispatch(
+      new Register({
+        fullName,
+        email,
+        password
+      })
+    );
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
