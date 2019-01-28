@@ -15,24 +15,15 @@
         formControlName="password"
       />
     </hab-form-control>
-    <hab-form-control [control]="registerForm.get('confirmPassword')">
+    <hab-form-control
+      [group]="registerForm"
+      [control]="registerForm.get('confirmPassword')"
+    >
       <input
         type="password"
         placeholder="Confirm the password"
         formControlName="confirmPassword"
       />
-      <p
-        class="error-message"
-        *ngIf="
-          registerForm.hasError('passwordMismatch') &&
-          registerForm.invalid &&
-          (registerForm.dirty || registerForm.touched)
-        "
-      >
-        <span class="glyphicon glyphicon-exclamation-sign">
-          El password y su confirmación no coinciden
-        </span>
-      </p>
     </hab-form-control>
     <div class="button-wrapper"><button type="submit">Register</button></div>
   </form>

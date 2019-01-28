@@ -77,6 +77,12 @@ div {
     .error-message {
       margin-top: 5px;
       color: $error;
+      font-size: 0.9rem;
+      fa-icon {
+        font-size: 0.8rem;
+        position: relative;
+        top: -1px;
+      }
     }
     ::ng-deep {
       input {
@@ -92,12 +98,5 @@ div {
         }
       }
     }
-  }
-}
-
-::ng-deep {
-  .error-message {
-    margin-top: 5px;
-    color: $error;
   }
 }

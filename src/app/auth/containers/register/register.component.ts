@@ -24,11 +24,11 @@ export class RegisterComponent {
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     },
-    { validator: MatchPasswordValidator, updateOn: 'blur' }
+    { validators: MatchPasswordValidator, updateOn: 'blur' }
   );
 
   constructor(private fb: FormBuilder, private store: Store) {
-    this.registerForm.valueChanges.subscribe(value => console.log(value));
+    // this.registerForm.valueChanges.subscribe(value => console.log(value));
   }
 
   register() {
