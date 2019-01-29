@@ -1,5 +1,5 @@
 <div class="post-comment" [class.me]="comment.author.uuid === user.uuid">
-  <img [src]="comment.author.avatarUrl || 'http://i.pravatar.cc/128'" />
+  <hab-avatar [user]="comment.author"></hab-avatar>
   <div class="post-message">
     <h5>
       {{ comment.author.fullName }}

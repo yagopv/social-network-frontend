@@ -6,6 +6,7 @@
   <hr />
   <hab-publisher
     placeholder="Publica un comentario"
+    [user]="post.author"
     (publish)="addComment($event)"
   ></hab-publisher>
   <ng-container *ngFor="let comment of post.comments; trackBy: commentIdentity">

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
@@ -55,14 +55,13 @@ export class AuthService {
 
     formData.append('avatar', image);
 
-    return this.http.post<Response>(
-      `${environment.apiBaseUrl}/user/avatar`,
-      formData
-    );
+    return this.http.post(`${environment.apiBaseUrl}/user/avatar`, formData, {
+      observe: 'response'
+    });
   }
 
   search(text: string) {
-    return this.http.get(`${environment.apiBaseUrl}/user/search`, {
+    return this.http.get<Profile[]>(`${environment.apiBaseUrl}/user/search`, {
       params: { q: text }
     });
   }

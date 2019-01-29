@@ -20,6 +20,7 @@ import {
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
 import { Auth } from '../models/auth.model';
+import { Error } from '../../error/models/error.model';
 
 @State<Auth>({
   name: 'auth',
@@ -126,9 +127,9 @@ export class AuthState {
     GetUserProfileFailed,
     UpdateUserProfile
   ])
-  registerFailed({ dispatch }: StateContext<Auth>, action: RegisterFailed) {
+  error({ dispatch }: StateContext<Auth>, { errors }: any) {
     // Use ngxs Action or this is going to fail because running outside NgZone
-    dispatch(new SetErrors(action.errors));
+    dispatch(new SetErrors(errors));
   }
 
   @Action(Logout, { cancelUncompleted: true })

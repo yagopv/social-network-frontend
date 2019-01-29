@@ -22,6 +22,7 @@ import { PostContentComponent } from './components/post-content/post-content.com
 import { MyAccountComponent } from './containers/my-account/my-account.component';
 import { AuthModule } from '../auth/auth.module';
 import { SearchUserComponent } from './containers/search-user/search-user.component';
+import { FriendsState } from './store/friend.state';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { SearchUserComponent } from './containers/search-user/search-user.compon
     DashboardRoutingModule,
     FontAwesomeModule,
     AuthModule,
-    NgxsModule.forFeature([PostState])
+    NgxsModule.forFeature([PostState, FriendsState])
   ],
   declarations: [
     DashboardAsideComponent,

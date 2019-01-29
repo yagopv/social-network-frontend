@@ -12,8 +12,16 @@ import { Auth } from '../../../auth/models/auth.model';
 })
 export class MyAccountComponent {
   @Select(AuthState.getUser) user$: Observable<Auth>;
+  profileImageUrl = '';
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+    this.user$.subscribe(user => {
+      if (user && user.avatarUrl !== undefined) {
+        this.profileImageUrl =
+          user.avatarUrl || `https://api.adorable.io/avatars/128/${user.uuid}`;
+      }
+    });
+  }
 
   logout() {
     this.store.dispatch(new Logout());
