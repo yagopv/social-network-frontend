@@ -217,7 +217,7 @@ export class PostState {
 export class PostState {
 ​
   @Selector([AuthState])
-  static postsFromCurrentUser(state: PostViewModel[], authState: AuthState) {
+  static postsFromCurrentUser(state: PostViewModel[], authState: Auth) {
     return state.filter(p => p.user.id === authState.currentUser.id);
   }
 }

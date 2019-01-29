@@ -1,23 +1,9 @@
 <hab-search-user></hab-search-user>
 <div class="friends-grid">
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
-  <hab-friend></hab-friend>
+  <hab-friend
+    *ngFor="let friend of (friends$ | async)"
+    [friend]="friend"
+    (add)="addFriend($event)"
+    (remove)="removeFriend($event)"
+  ></hab-friend>
 </div>

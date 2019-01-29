@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Profile } from '../../../auth/models/profile.model';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'hab-friend',
   templateUrl: './friend.component.html',
   styleUrls: ['./friend.component.scss']
 })
-export class FriendComponent implements OnInit {
+export class FriendComponent {
+  @Input() friend: Profile;
+  @Output() add = new EventEmitter();
+  @Output() remove = new EventEmitter();
 
-  constructor() { }
+  addIcon: IconProp = faPlus;
+  removeIcon: IconProp = faTrashAlt;
 
-  ngOnInit() {
+  addFriend() {
+    this.add.emit(this.friend.uuid);
   }
-
+  removeFriend() {
+    this.remove.emit(this.friend.uuid);
+  }
 }

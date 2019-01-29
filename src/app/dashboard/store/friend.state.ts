@@ -1,4 +1,4 @@
-import { State, Action, StateContext } from '@ngxs/store';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { tap, catchError } from 'rxjs/operators';
 
 import { Friends } from '../models/friends.model';
@@ -19,6 +19,11 @@ import { SetErrors } from '../../error/store/error.actions';
 })
 export class FriendsState {
   constructor(private authService: AuthService) {}
+
+  @Selector()
+  static getSearchFriends({ friends, userSearch }: Friends) {
+    return [...userSearch, ...friends];
+  }
 
   @Action(SearchUsers)
   searchUsers(

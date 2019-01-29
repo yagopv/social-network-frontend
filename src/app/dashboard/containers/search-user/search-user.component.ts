@@ -1,21 +1,13 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  AfterViewInit,
-  ElementRef
-} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Profile } from '../../../auth/models/profile.model';
-import { AuthService } from '../../../auth/services/auth.service';
 import { fromEvent } from 'rxjs';
 import {
   debounceTime,
   map,
   distinctUntilChanged,
   switchMap,
-  tap,
   filter
 } from 'rxjs/operators';
 import { Store } from '@ngxs/store';
