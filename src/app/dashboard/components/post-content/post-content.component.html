@@ -1,6 +1,6 @@
 <section class="post-content">
   <div class="post-content-head">
-    <img [src]="post.author.avatarUrl || 'http://i.pravatar.cc/128'" />
+    <hab-avatar [user]="post.author"></hab-avatar>
     <div>
       <h4>
         <b>{{ post.author.fullName }}</b>

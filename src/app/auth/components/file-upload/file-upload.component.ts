@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
 import {
   faCheck,
-  faSpinner,
   faCrosshairs,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
@@ -29,9 +28,10 @@ export class FileUploadComponent {
 
   constructor(private authService: AuthService) {}
 
-  private onSuccess() {
+  private onSuccess(response: any) {
     this.selectedFile.pending = false;
     this.selectedFile.status = 'ok';
+    this.imageUrl = response.headers.get('Location');
     interval(1000)
       .pipe(take(5))
       .subscribe(() => (this.selectedFile = null));
@@ -52,7 +52,7 @@ export class FileUploadComponent {
 
       this.authService
         .uploadAvatar(this.selectedFile.file)
-        .subscribe(res => this.onSuccess(), err => this.onError());
+        .subscribe(response => this.onSuccess(response), () => this.onError());
     });
 
     reader.readAsDataURL(file);
