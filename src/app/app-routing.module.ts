@@ -21,10 +21,6 @@ const routes: Routes = [
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   {
-    path: 'help',
-    loadChildren: './help/help.module#HelpModule'
-  },
-  {
     path: 'about',
     loadChildren: './about/about.module#AboutModule'
   },
