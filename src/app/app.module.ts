@@ -6,6 +6,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 
+import { GlobalState } from './shared/store/global.state';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -22,7 +23,9 @@ import { AuthModule } from './auth/auth.module';
     }),
     NgxsLoggerPluginModule.forRoot({ logger: console, collapsed: false }),
     NgxsRouterPluginModule.forRoot(),
-    NgxsModule.forRoot([], { developmentMode: !environment.production }),
+    NgxsModule.forRoot([GlobalState], {
+      developmentMode: !environment.production
+    }),
     SharedModule,
     AuthModule,
     AppRoutingModule

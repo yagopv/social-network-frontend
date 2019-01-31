@@ -1,2 +1,3 @@
 <router-outlet></router-outlet>
 <router-outlet name="popup"></router-outlet>
+<hab-loader *ngIf="(isFetching$ | async)"></hab-loader>
