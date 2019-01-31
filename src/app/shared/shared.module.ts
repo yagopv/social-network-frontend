@@ -20,6 +20,7 @@ import { SiteLayoutComponent } from './components/site-layout/site-layout.compon
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { TextAreaDirective } from './directives/textarea-directive';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
@@ -39,7 +40,8 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     SiteLayoutComponent,
     CapitalizePipe,
     TextAreaDirective,
-    AvatarComponent
+    AvatarComponent,
+    LoaderComponent
   ],
   exports: [
     NotFoundComponent,
@@ -57,7 +59,8 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     SiteLayoutComponent,
     CapitalizePipe,
     TextAreaDirective,
-    AvatarComponent
+    AvatarComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule {}
