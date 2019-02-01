@@ -38,13 +38,19 @@ export class RegisterComponent {
     }
 
     const { fullName, email, password } = this.registerForm.value;
-    this.store.dispatch(
-      new Register({
-        fullName,
-        email,
-        password
-      })
-    );
+    this.store
+      .dispatch(
+        new Register({
+          fullName,
+          email,
+          password
+        })
+      )
+      .subscribe(state => {
+        if (!state.errors.length) {
+          this.registerForm.reset();
+        }
+      });
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {

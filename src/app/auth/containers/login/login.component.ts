@@ -7,8 +7,9 @@ import { Store, Select } from '@ngxs/store';
 
 import { LoginModel } from './login.model';
 import { ErrorState } from '../../../error/store/error.state';
-import { ResetErrors } from '../../../error/store/error.actions';
 import { Login } from '../../store/auth.actions';
+import { withLatestFrom } from 'rxjs/operators';
+import { Error } from '../../../error/models/error.model';
 
 @Component({
   selector: 'hab-login',
@@ -27,9 +28,11 @@ export class LoginComponent {
       return;
     }
 
-    this.store
-      .dispatch(new Login(form.value))
-      .subscribe(() => (this.loginModel.password = ''));
+    this.store.dispatch(new Login(form.value)).subscribe(state => {
+      if (state.errors.length) {
+        this.loginModel.password = '';
+      }
+    });
   }
 
   private markControlsAsTouched(controls: { [key: string]: AbstractControl }) {

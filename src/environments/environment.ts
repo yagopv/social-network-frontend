@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://hackabos.azurewebsites.net/api'
+  apiBaseUrl: 'http://localhost:8000/api'
 };
 
 /*
