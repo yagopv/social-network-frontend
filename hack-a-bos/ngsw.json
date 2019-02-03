@@ -1,0 +1,82 @@
+{
+  "configVersion": 1,
+  "index": "https://yagopv.github.io/hack-a-bos/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://yagopv.github.io/hack-a-bos/5.e5da71b0c86b9304d844.js",
+        "https://yagopv.github.io/hack-a-bos/6.77fb79c6a8f2088a7bbb.js",
+        "https://yagopv.github.io/hack-a-bos/7.3029c119d73b3f9e3c95.js",
+        "https://yagopv.github.io/hack-a-bos/common.93c817924a2782a7679b.js",
+        "https://yagopv.github.io/hack-a-bos/favicon.ico",
+        "https://yagopv.github.io/hack-a-bos/index.html",
+        "https://yagopv.github.io/hack-a-bos/main.23c4ae67e735455dbd84.js",
+        "https://yagopv.github.io/hack-a-bos/polyfills.c0dd1ad951da7cf82272.js",
+        "https://yagopv.github.io/hack-a-bos/runtime.65c271c71cc12d341198.js",
+        "https://yagopv.github.io/hack-a-bos/styles.8bf9739f9d48babcef30.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://yagopv.github.io/hack-a-bos/assets/icons/icon-128x128.png",
+        "https://yagopv.github.io/hack-a-bos/assets/icons/icon-144x144.png",
+        "https://yagopv.github.io/hack-a-bos/assets/icons/icon-152x152.png",
+        "https://yagopv.github.io/hack-a-bos/assets/icons/icon-192x192.png",
+        "https://yagopv.github.io/hack-a-bos/assets/icons/icon-384x384.png",
+        "https://yagopv.github.io/hack-a-bos/assets/icons/icon-512x512.png",
+        "https://yagopv.github.io/hack-a-bos/assets/icons/icon-72x72.png",
+        "https://yagopv.github.io/hack-a-bos/assets/icons/icon-96x96.png"
+      ],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/.*",
+        "https:\\/\\/fonts\\.gstatic\\.com\\/.*"
+      ]
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://yagopv.github.io/hack-a-bos/5.e5da71b0c86b9304d844.js": "0066e38d2bdc2f7883adbbca5157ee459bc9d1c0",
+    "https://yagopv.github.io/hack-a-bos/6.77fb79c6a8f2088a7bbb.js": "789349436c53ea9d806ec4495d361907923dd9df",
+    "https://yagopv.github.io/hack-a-bos/7.3029c119d73b3f9e3c95.js": "0f4a07e4bac7f572ebf75c72942cd0fb854d459e",
+    "https://yagopv.github.io/hack-a-bos/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://yagopv.github.io/hack-a-bos/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://yagopv.github.io/hack-a-bos/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://yagopv.github.io/hack-a-bos/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://yagopv.github.io/hack-a-bos/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://yagopv.github.io/hack-a-bos/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://yagopv.github.io/hack-a-bos/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://yagopv.github.io/hack-a-bos/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://yagopv.github.io/hack-a-bos/common.93c817924a2782a7679b.js": "0be9f212a440bc32a4b94eb6027eab877d775fde",
+    "https://yagopv.github.io/hack-a-bos/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "https://yagopv.github.io/hack-a-bos/index.html": "1644a8a1fdc988de3a3efc514dd6a243f3adea71",
+    "https://yagopv.github.io/hack-a-bos/main.23c4ae67e735455dbd84.js": "a762e000d1b17a252eea8327f71bd62aa908a713",
+    "https://yagopv.github.io/hack-a-bos/polyfills.c0dd1ad951da7cf82272.js": "94dbc0373facec9aefef89c8f784c6ec76c0151e",
+    "https://yagopv.github.io/hack-a-bos/runtime.65c271c71cc12d341198.js": "29b435d0bf7e3d1d93ac29e120df3574610342c5",
+    "https://yagopv.github.io/hack-a-bos/styles.8bf9739f9d48babcef30.css": "09b29405dda2942b2c1d4e204772b0a0408e2e2e"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
