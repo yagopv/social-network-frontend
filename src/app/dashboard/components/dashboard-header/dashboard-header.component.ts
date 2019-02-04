@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons';
+import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'hab-dashboard-header',
@@ -8,6 +9,6 @@ import { faHackerrank } from '@fortawesome/free-brands-svg-icons';
 })
 export class DashboardHeaderComponent implements OnInit {
   logo = faHackerrank;
-
+  title = environment.siteName;
   ngOnInit() {}
 }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Profile } from '../../../auth/models/profile.model';
 import { Author } from '../../../dashboard/models/author.model';
+import { FriendRequest } from '../../../dashboard/models/friend-request.model';
 
 @Component({
   selector: 'hab-avatar',
@@ -19,7 +20,7 @@ export class AvatarComponent {
   imageUrl = '';
 
   @Input()
-  set user(user: Profile | Author) {
+  set user(user: Profile | Author | FriendRequest) {
     if (user.avatarUrl !== undefined) {
       this.imageUrl =
         user.avatarUrl || `https://api.adorable.io/avatars/128/${user.uuid}`;

@@ -1,24 +1,12 @@
-<div class="friends-request">
-  <h5><b>Solicitudes de amistad</b></h5>
-  <div class="friend">
-    <img src="http://i.pravatar.cc/128?img=1" />
+<div class="friends-request" *ngIf="(requests$ | async).length">
+  <h5><b>Friend Requests</b></h5>
+  <div class="friend" *ngFor="let request of (requests$ | async)">
+    <hab-avatar [user]="request"></hab-avatar>
     <div class="request">
-      <p>Ana Sanchez</p>
-      <a href="">Confirmar amistad</a>
-    </div>
-  </div>
-  <div class="friend">
-    <img src="http://i.pravatar.cc/128?img=2" />
-    <div class="request">
-      <p>Jorge Rodriguez</p>
-      <a href="">Confirmar amistad</a>
-    </div>
-  </div>
-  <div class="friend">
-    <img src="http://i.pravatar.cc/128?img=3" />
-    <div class="request">
-      <p>Benni hill</p>
-      <a href="">Confirmar amistad</a>
+      <p>{{ request.fullName }}</p>
+      <a href="" habPreventDefault (click)="acceptRequest(request)"
+        >Accept request</a
+      >
     </div>
   </div>
 </div>

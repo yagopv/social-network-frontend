@@ -88,7 +88,7 @@ build-lists: true
 ## No!!
 
 ```bash
-ng add @nguniversal/express-engine --clientProject hack-a-bos
+ng add @nguniversal/express-engine --clientProject social-network
 ```
 
 ---

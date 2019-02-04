@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { FriendsState } from '../../store/friend.state';
 import { Friends } from '../../models/friends.model';
 import { Observable } from 'rxjs';
+import { GetFriends } from '../../store/friend.actions';
 
 @Component({
   selector: 'hab-friends',
@@ -12,9 +13,11 @@ import { Observable } from 'rxjs';
 export class FriendsComponent implements OnInit {
   @Select(FriendsState.getSearchFriends) friends$: Observable<Friends>;
 
-  constructor() {}
+  constructor(private store: Store) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.dispatch(new GetFriends());
+  }
 
   addFriend(uuid: string) {
     console.log(uuid);

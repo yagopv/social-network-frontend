@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://023ac813.ngrok.io/api'
+  siteName: 'hack a bos',
+  apiBaseUrl: 'http://0d30d03b.ngrok.io/api'
 };
 
 /*

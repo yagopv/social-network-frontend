@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
+import { FriendRequest } from '../models/friend-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,16 @@ import { environment } from '../../../environments/environment';
 export class FriendService {
   constructor(private http: HttpClient) {}
 
+  getFriends() {
+    return this.http.get<FriendRequest[]>(
+      `${environment.apiBaseUrl}/user/friends`
+    );
+  }
+
   getFriendRequests() {
-    return this.http.get(`${environment.apiBaseUrl}/user/friendrequests`);
+    return this.http.get<FriendRequest[]>(
+      `${environment.apiBaseUrl}/user/friendrequests`
+    );
   }
 
   acceptFriendRequest(uuid: string) {

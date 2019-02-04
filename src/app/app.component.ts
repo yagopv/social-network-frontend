@@ -3,6 +3,7 @@ import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
 import { GlobalState } from './shared/store/global.state';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'hab-root',
@@ -12,5 +13,5 @@ import { GlobalState } from './shared/store/global.state';
 export class AppComponent {
   @Select(GlobalState.isFetching) isFetching$: Observable<boolean>;
 
-  title = 'hack-a-bos';
+  title = environment.siteName;
 }
