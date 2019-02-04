@@ -5,7 +5,8 @@
       snTextArea
       rows="1"
       [placeholder]="placeholder"
-      [(ngModel)]="publishText"
+      [(ngModel)]="content"
+      #text
     ></textarea>
   </div>
   <button (click)="publishStatus()">

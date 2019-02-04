@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, AfterViewInit, OnInit } from '@angular/core';
 import { Post } from '../../models/post.model';
+import { markViewDirty } from '@angular/core/src/render3/instructions';
+import marked from 'marked';
 
 @Component({
   selector: 'sn-post-content',
@@ -9,7 +11,9 @@ import { Post } from '../../models/post.model';
 export class PostContentComponent implements OnInit {
   @Input() post: Post;
 
-  constructor() {}
+  content: string;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.content = marked(this.post.content);
+  }
 }

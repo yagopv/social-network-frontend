@@ -3,20 +3,23 @@
 .publisher {
   display: flex;
   align-items: center;
-  height: auto;
-  min-height: 60px;
   border: 1px solid $light;
 
   sn-avatar {
-    padding: 7px 10px;
-    width: 64px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    margin: 0 10px;
+    padding: 10px;
     align-self: flex-start;
   }
 
   .publisher-text {
     flex: 1;
+    display: flex;
+    align-items: center;
     textarea {
+      height: 30px;
       background: $white;
       border: none;
       outline: none;
@@ -33,7 +36,7 @@
     }
   }
   button {
-    padding: 7px 10px;
+    padding: 10px;
     outline: none;
     font-size: 2em;
     color: $dark;

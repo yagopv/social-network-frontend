@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<PostCollection>;
   @Select(AuthState.getUser) user$: Profile;
 
+  content: string;
+
   constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -32,7 +34,9 @@ export class HomeComponent implements OnInit {
   }
 
   publishPost(content: string) {
-    this.store.dispatch(new AddPost({ content }));
+    this.store
+      .dispatch(new AddPost({ content }))
+      .subscribe(() => (this.content = ''));
   }
 
   addComment({ postId, message }: { postId: string; message: string }) {
