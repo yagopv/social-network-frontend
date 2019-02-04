@@ -8,10 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+  &.is-friend {
+    background-color: $dark;
   }
   .friend-details {
     margin-left: 10px;

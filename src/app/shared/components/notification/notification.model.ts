@@ -7,7 +7,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 export enum NotificationName {
   ACCOUNT_ACTIVATED = 'account-activated',
   ACCOUNT_NOT_ACTIVATED = 'account-not-activated',
-  REGISTRATION_SUCCESS = 'registration-success'
+  REGISTRATION_SUCCESS = 'registration-success',
+  REQUEST_NEW_FRIEND = 'request-new-friend'
 }
 
 export enum NotificationType {
@@ -41,6 +42,13 @@ export class NotificationModel {
         this.icon = faCheck;
         this.message =
           'Now, go to your email app and click on the provided link for activate your account';
+        this.type = NotificationType.SUCCESS;
+        break;
+      case NotificationName.REQUEST_NEW_FRIEND:
+        this.title = 'Your request has been emitted';
+        this.icon = faCheck;
+        this.message =
+          'Now you have to wait until the request will be accepted';
         this.type = NotificationType.SUCCESS;
         break;
       default:

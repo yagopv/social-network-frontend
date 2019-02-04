@@ -4,6 +4,7 @@ export interface Profile {
   fullName: string;
   avatarUrl: string;
   preferences: Preferences;
+  isFriend: boolean;
 }
 
 export interface Preferences {

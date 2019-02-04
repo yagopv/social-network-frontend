@@ -15,18 +15,21 @@ import {
   AcceptFriendRequestsSuccess,
   GetFriends,
   GetFriendsSuccess,
-  GetFriendsFailed
+  GetFriendsFailed,
+  AddFriend,
+  AddFriendSuccess
 } from './friend.actions';
 import { AuthService } from '../../auth/services/auth.service';
 import { SetErrors } from '../../error/store/error.actions';
 import { FriendService } from '../services/friend.service';
+import { Navigate } from '@ngxs/router-plugin';
 
 @State<Friends>({
   name: 'friends',
   defaults: {
-    friends: [],
-    userSearch: [],
-    requests: []
+    friends: {},
+    userSearch: {},
+    requests: {}
   }
 })
 export class FriendsState {
@@ -37,12 +40,12 @@ export class FriendsState {
 
   @Selector()
   static getSearchFriends({ friends, userSearch }: Friends) {
-    return [...userSearch, ...friends];
+    return [...Object.values(userSearch), ...Object.values(friends)];
   }
 
   @Selector()
   static getFriendRequests({ requests }: Friends) {
-    return requests;
+    return Object.values(requests);
   }
 
   @Action(SearchUsers)
@@ -58,10 +61,17 @@ export class FriendsState {
 
   @Action(SearchUsersSuccess)
   searchUsersSuccess(
-    { patchState }: StateContext<Friends>,
+    { patchState, getState }: StateContext<Friends>,
     { users }: SearchUsersSuccess
   ) {
-    patchState({ userSearch: [...users] });
+    const friends = getState().friends;
+    patchState({
+      userSearch: users.reduce((draft, user) => {
+        user.isFriend = friends[user.uuid] ? true : false;
+        draft[user.uuid] = user;
+        return draft;
+      }, {})
+    });
   }
 
   @Action(GetFriends)
@@ -77,7 +87,13 @@ export class FriendsState {
     { patchState }: StateContext<Friends>,
     { friends }: GetFriendsSuccess
   ) {
-    patchState({ friends: [...friends] });
+    patchState({
+      friends: friends.reduce((draft, friend) => {
+        friend.isFriend = true;
+        draft[friend.uuid] = friend;
+        return draft;
+      }, {})
+    });
   }
 
   @Action(GetFriendRequests)
@@ -93,7 +109,14 @@ export class FriendsState {
     { patchState }: StateContext<Friends>,
     { requests }: GetFriendRequestsSuccess
   ) {
-    patchState({ requests: [...requests] });
+    patchState({
+      requests: requests.reduce((draft, request) => {
+        if (!request.request.confirmed) {
+          draft[request.uuid] = request;
+        }
+        return draft;
+      }, {})
+    });
   }
 
   @Action(AcceptFriendRequests)
@@ -112,9 +135,38 @@ export class FriendsState {
     { patchState, getState }: StateContext<Friends>,
     { uuid }: AcceptFriendRequestsSuccess
   ) {
+    const requests = getState().requests;
     patchState({
-      requests: getState().requests.filter(request => request.uuid !== uuid)
+      requests: {
+        ...requests,
+        uuid: {
+          ...requests[uuid],
+          request: {
+            ...requests[uuid].request,
+            confirmed: true,
+            confirmedAt: new Date()
+          }
+        }
+      }
     });
+  }
+
+  @Action(AddFriend)
+  addFriend({ dispatch }: StateContext<Friends>, { friend }: AddFriend) {
+    return this.friendService.addFriend(friend).pipe(
+      tap(requests => dispatch(new AddFriendSuccess())),
+      catchError(error => dispatch(new AddFriendFailed(error.error)))
+    );
+  }
+
+  @Action(AddFriendSuccess)
+  addFriendSuccess({ dispatch }: StateContext<Friends>) {
+    dispatch(
+      new Navigate([
+        '',
+        { outlets: { popup: ['notification', 'request-new-friend'] } }
+      ])
+    );
   }
 
   @Action([

@@ -3,7 +3,7 @@ import { Select, Store } from '@ngxs/store';
 import { FriendsState } from '../../store/friend.state';
 import { Friends } from '../../models/friends.model';
 import { Observable } from 'rxjs';
-import { GetFriends } from '../../store/friend.actions';
+import { GetFriends, AddFriend } from '../../store/friend.actions';
 
 @Component({
   selector: 'hab-friends',
@@ -20,7 +20,7 @@ export class FriendsComponent implements OnInit {
   }
 
   addFriend(uuid: string) {
-    console.log(uuid);
+    this.store.dispatch(new AddFriend(uuid));
   }
 
   removeFriend(uuid: string) {
