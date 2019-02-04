@@ -21,6 +21,7 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { TextAreaDirective } from './directives/textarea-directive';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ClockComponent } from './clock/clock.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
@@ -41,7 +42,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     CapitalizePipe,
     TextAreaDirective,
     AvatarComponent,
-    LoaderComponent
+    LoaderComponent,
+    ClockComponent
   ],
   exports: [
     NotFoundComponent,

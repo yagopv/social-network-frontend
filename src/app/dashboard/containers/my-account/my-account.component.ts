@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Auth } from '../../../auth/models/auth.model';
 
 @Component({
-  selector: 'hab-my-account',
+  selector: 'sn-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.scss']
 })

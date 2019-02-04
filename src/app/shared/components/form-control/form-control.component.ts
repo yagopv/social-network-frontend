@@ -4,7 +4,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'hab-form-control',
+  selector: 'sn-form-control',
   templateUrl: './form-control.component.html',
   styleUrls: ['./form-control.component.scss']
 })

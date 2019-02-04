@@ -14,7 +14,7 @@ import { Store } from '@ngxs/store';
 import { SearchUsers } from '../../store/friend.actions';
 
 @Component({
-  selector: 'hab-search-user',
+  selector: 'sn-search-user',
   templateUrl: './search-user.component.html',
   styleUrls: ['./search-user.component.scss']
 })

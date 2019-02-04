@@ -1,21 +1,21 @@
 <!-- Reactive -->
-<hab-form-group>
-  <hab-errors [errors]="errors$ | async"></hab-errors>
+<sn-form-group>
+  <sn-errors [errors]="errors$ | async"></sn-errors>
   <form [formGroup]="registerForm" (ngSubmit)="register()">
-    <hab-form-control [control]="registerForm.get('fullName')">
+    <sn-form-control [control]="registerForm.get('fullName')">
       <input type="text" placeholder="Name" formControlName="fullName" />
-    </hab-form-control>
-    <hab-form-control [control]="registerForm.get('email')">
+    </sn-form-control>
+    <sn-form-control [control]="registerForm.get('email')">
       <input type="email" placeholder="Email" formControlName="email" />
-    </hab-form-control>
-    <hab-form-control [control]="registerForm.get('password')">
+    </sn-form-control>
+    <sn-form-control [control]="registerForm.get('password')">
       <input
         type="password"
         placeholder="Password"
         formControlName="password"
       />
-    </hab-form-control>
-    <hab-form-control
+    </sn-form-control>
+    <sn-form-control
       [group]="registerForm"
       [control]="registerForm.get('confirmPassword')"
     >
@@ -24,7 +24,7 @@
         placeholder="Confirm the password"
         formControlName="confirmPassword"
       />
-    </hab-form-control>
+    </sn-form-control>
     <div class="button-wrapper"><button type="submit">Register</button></div>
   </form>
-</hab-form-group>
+</sn-form-group>

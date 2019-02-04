@@ -17,7 +17,7 @@ import { Profile } from '../../../auth/models/profile.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'hab-home',
+  selector: 'sn-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

@@ -3,7 +3,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
-  selector: 'hab-loader',
+  selector: 'sn-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss']
 })

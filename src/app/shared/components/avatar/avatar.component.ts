@@ -4,7 +4,7 @@ import { Author } from '../../../dashboard/models/author.model';
 import { FriendRequest } from '../../../dashboard/models/friend-request.model';
 
 @Component({
-  selector: 'hab-avatar',
+  selector: 'sn-avatar',
   template: `
     <img [src]="imageUrl" [ngStyle]="{ width: width, height: height }" />
   `,

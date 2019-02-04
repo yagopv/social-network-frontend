@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'hab-centered-layout',
+  selector: 'sn-centered-layout',
   template: `
     <section>
       <div><router-outlet></router-outlet></div>

@@ -6,7 +6,7 @@ import { GlobalState } from './shared/store/global.state';
 import { environment } from '../environments/environment';
 
 @Component({
-  selector: 'hab-root',
+  selector: 'sn-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

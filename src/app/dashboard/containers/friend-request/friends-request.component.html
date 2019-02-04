@@ -1,10 +1,10 @@
 <div class="friends-request" *ngIf="(requests$ | async).length">
   <h5><b>Friend Requests</b></h5>
   <div class="friend" *ngFor="let request of (requests$ | async)">
-    <hab-avatar [user]="request"></hab-avatar>
+    <sn-avatar [user]="request"></sn-avatar>
     <div class="request">
       <p>{{ request.fullName }}</p>
-      <a href="" habPreventDefault (click)="acceptRequest(request)"
+      <a href="" snPreventDefault (click)="acceptRequest(request)"
         >Accept request</a
       >
     </div>

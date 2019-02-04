@@ -11,7 +11,7 @@ import { Register } from '../../store/auth.actions';
 import { ResetErrors } from '../../../error/store/error.actions';
 
 @Component({
-  selector: 'hab-register',
+  selector: 'sn-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })

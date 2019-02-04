@@ -12,7 +12,7 @@ import { withLatestFrom } from 'rxjs/operators';
 import { Error } from '../../../error/models/error.model';
 
 @Component({
-  selector: 'hab-login',
+  selector: 'sn-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

@@ -11,23 +11,23 @@
   padding: 30px 20px;
   margin: 0 auto;
 
-  hab-welcome-hero {
+  sn-welcome-hero {
     display: none;
   }
 
-  hab-welcome-forms {
+  sn-welcome-forms {
     flex: 1;
   }
 
   @include respond-above(md) {
-    hab-welcome-hero {
+    sn-welcome-hero {
       flex: 1;
       display: block;
     }
   }
 
   @include respond-above(md) {
-    hab-welcome-forms {
+    sn-welcome-forms {
       flex-direction: row;
       max-width: 500px;
     }

@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "hab",
+      "prefix": "sn",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"

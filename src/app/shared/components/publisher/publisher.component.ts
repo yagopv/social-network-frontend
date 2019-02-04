@@ -5,7 +5,7 @@ import { Author } from '../../../dashboard/models/author.model';
 import { Profile } from 'selenium-webdriver/firefox';
 
 @Component({
-  selector: 'hab-publisher',
+  selector: 'sn-publisher',
   templateUrl: './publisher.component.html',
   styleUrls: ['./publisher.component.scss']
 })

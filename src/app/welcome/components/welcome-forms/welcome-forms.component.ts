@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'hab-welcome-forms',
+  selector: 'sn-welcome-forms',
   templateUrl: './welcome-forms.component.html',
   styleUrls: ['./welcome-forms.component.scss']
 })

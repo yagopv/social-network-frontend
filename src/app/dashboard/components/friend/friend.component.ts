@@ -4,7 +4,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'hab-friend',
+  selector: 'sn-friend',
   templateUrl: './friend.component.html',
   styleUrls: ['./friend.component.scss']
 })

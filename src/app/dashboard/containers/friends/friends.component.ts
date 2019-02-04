@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { GetFriends, AddFriend } from '../../store/friend.actions';
 
 @Component({
-  selector: 'hab-friends',
+  selector: 'sn-friends',
   templateUrl: './friends.component.html',
   styleUrls: ['./friends.component.scss']
 })

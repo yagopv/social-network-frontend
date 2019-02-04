@@ -1,16 +1,16 @@
 <article>
-  <hab-post-content [post]="post"></hab-post-content>
-  <hab-post-comment-counter
+  <sn-post-content [post]="post"></sn-post-content>
+  <sn-post-comment-counter
     [count]="post.comments.length"
-  ></hab-post-comment-counter>
+  ></sn-post-comment-counter>
   <hr />
-  <hab-publisher
+  <sn-publisher
     placeholder="Publica un comentario"
     [user]="post.author"
     (publish)="addComment($event)"
-  ></hab-publisher>
+  ></sn-publisher>
   <ng-container *ngFor="let comment of post.comments; trackBy: commentIdentity">
-    <hab-post-comment [comment]="comment" [user]="user"></hab-post-comment>
+    <sn-post-comment [comment]="comment" [user]="user"></sn-post-comment>
   </ng-container>
   <fa-icon [icon]="deleteCommentIcon" (click)="deletePost()"></fa-icon>
 </article>

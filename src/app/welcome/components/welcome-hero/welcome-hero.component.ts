@@ -8,7 +8,7 @@ import {
 import { Hero } from '../../models/hero.model';
 
 @Component({
-  selector: 'hab-welcome-hero',
+  selector: 'sn-welcome-hero',
   templateUrl: './welcome-hero.component.html',
   styleUrls: ['./welcome-hero.component.scss']
 })

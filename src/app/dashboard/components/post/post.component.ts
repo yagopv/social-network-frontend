@@ -7,7 +7,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
-  selector: 'hab-post',
+  selector: 'sn-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })

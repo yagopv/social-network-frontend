@@ -17,7 +17,7 @@ class ImageSnippet {
 }
 
 @Component({
-  selector: 'hab-file-upload',
+  selector: 'sn-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss']
 })

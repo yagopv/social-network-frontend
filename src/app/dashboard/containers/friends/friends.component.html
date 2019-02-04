@@ -1,9 +1,9 @@
-<hab-search-user></hab-search-user>
+<sn-search-user></sn-search-user>
 <div class="friends-grid">
-  <hab-friend
+  <sn-friend
     *ngFor="let friend of (friends$ | async)"
     [friend]="friend"
     (add)="addFriend($event)"
     (remove)="removeFriend($event)"
-  ></hab-friend>
+  ></sn-friend>
 </div>

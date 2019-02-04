@@ -13,7 +13,7 @@ import { UpdateUserProfile, Logout } from '../../store/auth.actions';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'hab-profile',
+  selector: 'sn-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })

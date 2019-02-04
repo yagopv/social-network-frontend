@@ -1,10 +1,10 @@
-<hab-dashboard-header></hab-dashboard-header>
+<sn-dashboard-header></sn-dashboard-header>
 <div class="app-layout">
   <nav>
-    <hab-me [user]="user$ | async"></hab-me>
-    <hab-dashboard-nav (logout)="logout()"></hab-dashboard-nav>
+    <sn-me [user]="user$ | async"></sn-me>
+    <sn-dashboard-nav (logout)="logout()"></sn-dashboard-nav>
   </nav>
   <main><router-outlet></router-outlet></main>
-  <aside><hab-dashboard-aside></hab-dashboard-aside></aside>
-  <footer><hab-dashboard-footer></hab-dashboard-footer></footer>
+  <aside><sn-dashboard-aside></sn-dashboard-aside></aside>
+  <footer><sn-dashboard-footer></sn-dashboard-footer></footer>
 </div>

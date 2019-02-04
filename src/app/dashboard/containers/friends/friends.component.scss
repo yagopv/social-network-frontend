@@ -4,12 +4,12 @@
 :host {
   padding: 20px;
   display: block;
-  hab-search-user {
+  sn-search-user {
     margin: 0 auto;
     display: block;
   }
   @include respond-above(md) {
-    hab-search-user {
+    sn-search-user {
       width: 40%;
     }
   }
@@ -18,7 +18,7 @@
     flex-direction: column;
     flex-wrap: wrap;
 
-    hab-friend {
+    sn-friend {
       margin: 2% 0;
       height: 100%;
     }
@@ -26,14 +26,14 @@
     @include respond-above(xs) {
       flex-direction: row;
 
-      hab-friend {
+      sn-friend {
         flex: 0 0 46%;
         margin: 2%;
       }
     }
 
     @include respond-above(sm) {
-      hab-friend {
+      sn-friend {
         flex: 0 0 29.3333%;
       }
     }

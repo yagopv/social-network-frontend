@@ -1,7 +1,7 @@
 @import '~src/scss/colors.scss';
 @import '~src/scss/breakpoints.scss';
 
-hab-dashboard-header {
+sn-dashboard-header {
   background: $main;
   height: 50px;
   position: fixed;
@@ -42,8 +42,8 @@ div {
       background-color: $main;
     }
 
-    hab-dashboard-nav,
-    hab-dashboard-aside {
+    sn-dashboard-nav,
+    sn-dashboard-aside {
       display: block;
     }
 

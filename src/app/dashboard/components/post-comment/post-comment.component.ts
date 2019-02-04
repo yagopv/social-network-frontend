@@ -4,7 +4,7 @@ import { Comment } from '../../models/comment.model';
 import { Profile } from '../../../auth/models/profile.model';
 
 @Component({
-  selector: 'hab-post-comment',
+  selector: 'sn-post-comment',
   templateUrl: './post-comment.component.html',
   styleUrls: ['./post-comment.component.scss']
 })

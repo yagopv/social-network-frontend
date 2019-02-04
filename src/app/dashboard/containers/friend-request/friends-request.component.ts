@@ -9,7 +9,7 @@ import {
 } from '../../store/friend.actions';
 
 @Component({
-  selector: 'hab-friends-request',
+  selector: 'sn-friends-request',
   templateUrl: './friends-request.component.html',
   styleUrls: ['./friends-request.component.scss']
 })

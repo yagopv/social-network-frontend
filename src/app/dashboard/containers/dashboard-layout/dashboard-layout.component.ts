@@ -5,7 +5,7 @@ import { AuthState } from '../../../auth/store/auth.state';
 import { Profile } from '../../../auth/models/profile.model';
 
 @Component({
-  selector: 'hab-dashboard-layout',
+  selector: 'sn-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.scss']
 })

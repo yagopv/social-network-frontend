@@ -144,13 +144,13 @@ En `template-driven forms` no tenemos acceso directo al `FormControl` por lo que
 
 ```javascript
 @Directive({
-  selector: '[habMail]',
+  selector: '[snMail]',
   providers: [
     { provide: NG_VALIDATORS, useExisting: MailValidatorDirective, multi: true }
   ]
 })
 export class MailValidatorDirective implements Validator {
-  @Input('habMail') mail: string;
+  @Input('snMail') mail: string;
 
   validate(control: AbstractControl): { [key: string]: any } | null {
     return MailValidator(control);

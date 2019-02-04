@@ -1,15 +1,15 @@
-<hab-publisher
+<sn-publisher
   [user]="user$ | async"
   (publish)="publishPost($event)"
   placeholder="Qué estas pensando?"
-></hab-publisher>
+></sn-publisher>
 
 <!-- Removing trackBy cause the post to rerender -->
 <ng-container *ngFor="let post of (posts$ | async); trackBy: postIdentity">
-  <hab-post
+  <sn-post
     [post]="post"
     [user]="user$ | async"
     (comment)="addComment($event)"
     (delete)="deletePost($event)"
-  ></hab-post>
+  ></sn-post>
 </ng-container>

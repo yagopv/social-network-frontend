@@ -1,16 +1,16 @@
 <div>
   <ul>
     <li [class.selected]="isRegisterFormVisible">
-      <a href="" habPreventDefault (click)="toggleForm()">Register</a>
+      <a href="" snPreventDefault (click)="toggleForm()">Register</a>
     </li>
     <li [class.selected]="!isRegisterFormVisible">
-      <a href="" habPreventDefault (click)="toggleForm()">Login</a>
+      <a href="" snPreventDefault (click)="toggleForm()">Login</a>
     </li>
   </ul>
   <div class="register-form" [hidden]="!isRegisterFormVisible">
-    <hab-register></hab-register>
+    <sn-register></sn-register>
   </div>
   <div class="login-form" [hidden]="isRegisterFormVisible">
-    <hab-login></hab-login>
+    <sn-login></sn-login>
   </div>
 </div>

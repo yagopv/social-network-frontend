@@ -1,11 +1,11 @@
-<hab-form-group>
-  <hab-errors [errors]="errors$ | async"></hab-errors>
+<sn-form-group>
+  <sn-errors [errors]="errors$ | async"></sn-errors>
   <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
-    <hab-form-control [control]="updateProfileForm.get('fullName')">
+    <sn-form-control [control]="updateProfileForm.get('fullName')">
       <input type="text" placeholder="Name" formControlName="fullName" />
-    </hab-form-control>
+    </sn-form-control>
     <div formGroupName="preferences">
-      <hab-form-control
+      <sn-form-control
         [control]="updateProfileForm.get('preferences.isPublicProfile')"
       >
         <label class="checkbox-wrapper"
@@ -13,8 +13,8 @@
           <input type="checkbox" formControlName="isPublicProfile" />
           <span class="checkmark"></span>
         </label>
-      </hab-form-control>
-      <hab-form-control
+      </sn-form-control>
+      <sn-form-control
         [control]="updateProfileForm.get('preferences.linkedIn')"
       >
         <input
@@ -22,8 +22,8 @@
           placeholder="Enter you LinkedIn public profile"
           formControlName="linkedIn"
         />
-      </hab-form-control>
-      <hab-form-control
+      </sn-form-control>
+      <sn-form-control
         [control]="updateProfileForm.get('preferences.twitter')"
       >
         <input
@@ -31,17 +31,17 @@
           placeholder="Enter you Twitter public profile"
           formControlName="twitter"
         />
-      </hab-form-control>
-      <hab-form-control [control]="updateProfileForm.get('preferences.github')">
+      </sn-form-control>
+      <sn-form-control [control]="updateProfileForm.get('preferences.github')">
         <input
           type="text"
           placeholder="Enter you Github public profile"
           formControlName="github"
         />
-      </hab-form-control>
+      </sn-form-control>
     </div>
     <div class="button-wrapper">
       <button type="submit">Update profile</button>
     </div>
   </form>
-</hab-form-group>
+</sn-form-group>
