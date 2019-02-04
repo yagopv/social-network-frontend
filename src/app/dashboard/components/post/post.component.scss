@@ -1,13 +1,15 @@
 @import '~src/scss/colors.scss';
 
 article {
-  background-color: $light;
+  background-color: $white;
+  border: 1px solid $light;
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
   position: relative;
   hr {
-    border: 1px solid $contrast;
+    margin: 20px 0;
+    border: 1px solid $light;
   }
   fa-icon {
     position: absolute;

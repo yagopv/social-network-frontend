@@ -1,7 +1,7 @@
 @import '~src/scss/colors.scss';
 
 .post-content {
-  color: $main;
+  color: $dark;
   .post-content-head {
     display: flex;
     align-items: center;
@@ -17,5 +17,21 @@
   }
   .post-content-body {
     margin: 20px 0;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    ul,
+    li {
+      margin: 10px 0 !important;
+    }
+    ul {
+      list-style-type: circle;
+      padding-left: 30px;
+    }
   }
 }
