@@ -62,7 +62,8 @@ import { ClockComponent } from './clock/clock.component';
     CapitalizePipe,
     TextAreaDirective,
     AvatarComponent,
-    LoaderComponent
+    LoaderComponent,
+    ClockComponent
   ]
 })
 export class SharedModule {}

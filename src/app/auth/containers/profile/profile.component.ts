@@ -9,8 +9,7 @@ import { Error } from '../../../error/models/error.model';
 import { AuthState } from '../../store/auth.state';
 import { Profile } from '../../models/profile.model';
 import { UrlValidator } from '../../../shared/validators/url.validator';
-import { UpdateUserProfile, Logout } from '../../store/auth.actions';
-import { AuthService } from '../../services/auth.service';
+import { UpdateUserProfile } from '../../store/auth.actions';
 
 @Component({
   selector: 'sn-profile',
