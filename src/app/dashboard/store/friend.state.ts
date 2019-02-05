@@ -52,12 +52,17 @@ export class FriendsState {
 
   @Action(SearchUsers)
   searchUsers(
-    { dispatch }: StateContext<Friends>,
+    { dispatch, getState }: StateContext<Friends>,
     { searchTerm }: SearchUsers
   ) {
     const currentUserId = this.store.snapshot().auth.uuid;
+    const friends = getState().friends;
+
+    // Filter out myself and already friends
     return this.authService.search(searchTerm).pipe(
-      map(users => users.filter(user => user.uuid !== currentUserId)),
+      map(users =>
+        users.filter(user => user.uuid !== currentUserId && !friends[user.uuid])
+      ),
       tap(users => dispatch(new SearchUsersSuccess(users))),
       catchError(error => dispatch(new SearchUsersFailed(error.error)))
     );
