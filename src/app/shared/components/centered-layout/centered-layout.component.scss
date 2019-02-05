@@ -15,6 +15,18 @@ section {
     border-radius: 10px;
   }
 
+  a {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    color: $main;
+    span {
+      &:hover {
+        border-bottom: 1px solid $main;
+      }
+    }
+  }
+
   @include respond-above(sm) {
     padding: 20px 30%;
   }
