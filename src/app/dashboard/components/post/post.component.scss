@@ -2,14 +2,14 @@
 
 article {
   background-color: $white;
-  border: 1px solid $light;
+  border: 1px solid $main;
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
   position: relative;
   hr {
     margin: 20px 0;
-    border: 1px solid $light;
+    border: 1px solid $main;
   }
   fa-icon {
     position: absolute;
