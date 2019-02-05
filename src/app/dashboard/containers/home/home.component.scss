@@ -1,4 +1,9 @@
+@import '~src/scss/breakpoints.scss';
+
 :host {
   padding: 20px;
   display: block;
+  @include respond-above(lg) {
+    padding: 20px 100px;
+  }
 }
