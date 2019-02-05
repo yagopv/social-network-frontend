@@ -1,16 +1,21 @@
 <article>
   <sn-post-content [post]="post"></sn-post-content>
-  <sn-post-comment-counter
-    [count]="post.comments.length"
-  ></sn-post-comment-counter>
-  <hr />
-  <sn-publisher
-    placeholder="Publica un comentario"
-    [user]="post.author"
-    (publish)="addComment($event)"
-  ></sn-publisher>
-  <ng-container *ngFor="let comment of post.comments; trackBy: commentIdentity">
-    <sn-post-comment [comment]="comment" [user]="user"></sn-post-comment>
-  </ng-container>
+  <div class="comment"></div>
+  <section class="comments">
+    <sn-post-comment-counter
+      [count]="post.comments.length"
+    ></sn-post-comment-counter>
+    <hr />
+    <sn-publisher
+      placeholder="Publica un comentario"
+      [user]="post.author"
+      (publish)="addComment($event)"
+    ></sn-publisher>
+    <ng-container
+      *ngFor="let comment of post.comments; trackBy: commentIdentity"
+    >
+      <sn-post-comment [comment]="comment" [user]="user"></sn-post-comment>
+    </ng-container>
+  </section>
   <fa-icon [icon]="deleteCommentIcon" (click)="deletePost()"></fa-icon>
 </article>
