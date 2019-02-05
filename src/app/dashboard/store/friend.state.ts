@@ -1,5 +1,5 @@
-import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { tap, catchError } from 'rxjs/operators';
+import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import { tap, catchError, map } from 'rxjs/operators';
 
 import { Friends } from '../models/friends.model';
 import {
@@ -35,6 +35,7 @@ import { Logout } from '../../auth/store/auth.actions';
 })
 export class FriendsState {
   constructor(
+    private store: Store,
     private authService: AuthService,
     private friendService: FriendService
   ) {}
@@ -54,7 +55,9 @@ export class FriendsState {
     { dispatch }: StateContext<Friends>,
     { searchTerm }: SearchUsers
   ) {
+    const currentUserId = this.store.snapshot().auth.uuid;
     return this.authService.search(searchTerm).pipe(
+      map(users => users.filter(user => user.uuid !== currentUserId)),
       tap(users => dispatch(new SearchUsersSuccess(users))),
       catchError(error => dispatch(new SearchUsersFailed(error.error)))
     );
