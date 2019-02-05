@@ -15,6 +15,7 @@ import { AuthState } from './store/auth.state';
 import { ErrorModule } from '../error/error.module';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    AuthLayoutComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -13,7 +13,6 @@ import { PublisherComponent } from './components/publisher/publisher.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { CenteredLayoutComponent } from './components/centered-layout/centered-layout.component';
 import { SiteLayoutHeaderComponent } from './components/site-layout-header/site-layout-header.component';
 import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-layout-footer.component';
 import { SiteLayoutComponent } from './components/site-layout/site-layout.component';
@@ -35,7 +34,6 @@ import { ClockComponent } from './clock/clock.component';
     UserFriendlyDatePipe,
     MeComponent,
     NotificationComponent,
-    CenteredLayoutComponent,
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
     SiteLayoutComponent,
@@ -55,7 +53,6 @@ import { ClockComponent } from './clock/clock.component';
     UserFriendlyDatePipe,
     MeComponent,
     NotificationComponent,
-    CenteredLayoutComponent,
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
     SiteLayoutComponent,
