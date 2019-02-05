@@ -1,7 +1,11 @@
 <!-- Reactive -->
 <sn-form-group>
   <sn-errors [errors]="errors$ | async"></sn-errors>
-  <form [formGroup]="registerForm" (ngSubmit)="register()">
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="register()"
+    (keyup.enter)="register()"
+  >
     <sn-form-control [control]="registerForm.get('fullName')">
       <input type="text" placeholder="Name" formControlName="fullName" />
     </sn-form-control>

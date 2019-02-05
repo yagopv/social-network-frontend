@@ -9,11 +9,11 @@ import {
 } from '../../store/friend.actions';
 
 @Component({
-  selector: 'sn-friends-request',
-  templateUrl: './friends-request.component.html',
-  styleUrls: ['./friends-request.component.scss']
+  selector: 'sn-friend-requests',
+  templateUrl: './friend-requests.component.html',
+  styleUrls: ['./friend-requests.component.scss']
 })
-export class FriendsRequestComponent implements OnInit {
+export class FriendRequestsComponent implements OnInit {
   @Select(FriendsState.getFriendRequests) requests$: Observable<
     FriendRequest[]
   >;

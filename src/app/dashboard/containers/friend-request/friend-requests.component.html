@@ -1,4 +1,4 @@
-<div class="friends-request" *ngIf="(requests$ | async).length">
+<div class="friend-requests" *ngIf="(requests$ | async).length">
   <h5><b>Friend Requests</b></h5>
   <div class="friend" *ngFor="let request of (requests$ | async)">
     <sn-avatar [user]="request"></sn-avatar>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FriendComponent } from './components/friend/friend.component';
-import { FriendsRequestComponent } from './containers/friend-request/friends-request.component';
+import { FriendRequestsComponent } from './containers/friend-request/friend-requests.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardAsideComponent } from './components/dashboard-aside/dashboard-aside.component';
@@ -42,7 +42,7 @@ import { FriendsState } from './store/friend.state';
     HomeComponent,
     FriendComponent,
     FriendsComponent,
-    FriendsRequestComponent,
+    FriendRequestsComponent,
     PostComponent,
     PostCommentComponent,
     PostCommentCounterComponent,

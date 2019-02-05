@@ -3,6 +3,7 @@
   <sn-errors [errors]="errors$ | async"></sn-errors>
   <form
     (ngSubmit)="login(loginForm)"
+    (keyup.enter)="login(loginForm)"
     #loginForm="ngForm"
     [ngFormOptions]="{ updateOn: 'blur' }"
   >

@@ -17,6 +17,7 @@ import {
 } from './post.actions';
 import { PostService } from '../services/post.service';
 import { PostCollection } from '../models/post-collection.model';
+import { Logout } from '../../auth/store/auth.actions';
 
 @State<PostCollection>({
   name: 'posts',
@@ -154,6 +155,11 @@ export class PostState {
         comments: [comment, ...state[postId].comments]
       }
     });
+  }
+
+  @Action(Logout)
+  logout({ setState }: StateContext<PostCollection>) {
+    setState({});
   }
 
   @Action([AddPostFailed, GetPostsFailed, AddCommentFailed, DeletePostFailed])

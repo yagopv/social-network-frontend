@@ -33,7 +33,7 @@ export class FriendService {
   }
 
   addFriend(uuid: string) {
-    return this.http.post(`${environment.apiBaseUrl}/user/friend`, {
+    return this.http.post(`${environment.apiBaseUrl}/user/friendrequests`, {
       friend: uuid
     });
   }

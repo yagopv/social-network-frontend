@@ -132,7 +132,7 @@ export class AuthState {
     dispatch(new SetErrors(errors));
   }
 
-  @Action(Logout, { cancelUncompleted: true })
+  @Action(Logout)
   logout({ dispatch, setState }: StateContext<Auth>) {
     this.authService.logout();
     setState(null);

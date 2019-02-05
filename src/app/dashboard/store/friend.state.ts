@@ -23,6 +23,7 @@ import { AuthService } from '../../auth/services/auth.service';
 import { SetErrors } from '../../error/store/error.actions';
 import { FriendService } from '../services/friend.service';
 import { Navigate } from '@ngxs/router-plugin';
+import { Logout } from '../../auth/store/auth.actions';
 
 @State<Friends>({
   name: 'friends',
@@ -125,7 +126,7 @@ export class FriendsState {
     { uuid }: AcceptFriendRequests
   ) {
     return this.friendService.acceptFriendRequest(uuid).pipe(
-      tap(requests => dispatch(new AcceptFriendRequestsSuccess(uuid))),
+      tap(() => dispatch(new AcceptFriendRequestsSuccess(uuid))),
       catchError(error => dispatch(new AcceptFriendRequestFailed(error.error)))
     );
   }
@@ -137,17 +138,12 @@ export class FriendsState {
   ) {
     const requests = getState().requests;
     patchState({
-      requests: {
-        ...requests,
-        uuid: {
-          ...requests[uuid],
-          request: {
-            ...requests[uuid].request,
-            confirmed: true,
-            confirmedAt: new Date()
-          }
+      requests: Object.keys(requests).reduce((draft, requestId) => {
+        if (requestId !== uuid) {
+          draft[requestId] = requests[requestId];
         }
-      }
+        return draft;
+      }, {})
     });
   }
 
@@ -167,6 +163,15 @@ export class FriendsState {
         { outlets: { popup: ['notification', 'request-new-friend'] } }
       ])
     );
+  }
+
+  @Action(Logout)
+  logout({ dispatch, setState }: StateContext<Friends>) {
+    setState({
+      friends: {},
+      userSearch: {},
+      requests: {}
+    });
   }
 
   @Action([

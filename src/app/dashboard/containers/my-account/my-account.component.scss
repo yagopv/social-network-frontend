@@ -18,7 +18,11 @@
     color: $main;
   }
 
-  @include respond-above(sm) {
+  @include respond-above(md) {
+    padding: 20px 10%;
+  }
+
+  @include respond-above(lg) {
     padding: 20px 20%;
   }
 }
