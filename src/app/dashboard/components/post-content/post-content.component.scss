@@ -5,6 +5,11 @@
   .post-content-head {
     display: flex;
     align-items: center;
+    margin: -21px;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+    background: $dark;
+    color: $white;
     sn-avatar {
       width: 64px;
       height: 64px;
@@ -16,7 +21,7 @@
     }
   }
   .post-content-body {
-    margin: 20px 0;
+    margin: 30px 0;
     h1,
     h2,
     h3,
