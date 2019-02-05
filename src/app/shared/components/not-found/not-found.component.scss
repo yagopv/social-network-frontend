@@ -1,0 +1,41 @@
+@import '~src/scss/colors.scss';
+@import '~src/scss/colors.scss';
+@import '~src/scss/breakpoints.scss';
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background: $dark;
+  height: 100%;
+  padding-top: 20%;
+  h1 {
+    font-size: 10em;
+    color: $white;
+  }
+  ul {
+    li {
+      text-align: center;
+      margin: 10px;
+      a {
+        font-size: 1.2em;
+        &:hover {
+          border-bottom: 2px solid $white;
+        }
+      }
+    }
+  }
+  @include respond-above(sm) {
+    padding-top: 10%;
+    h1 {
+      font-size: 20em;
+    }
+    ul {
+      li {
+        display: inline-block;
+        margin: 0 20px;
+      }
+    }
+  }
+}
