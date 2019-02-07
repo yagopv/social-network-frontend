@@ -10,7 +10,6 @@ import {
   AddComment,
   DeletePost
 } from '../../store/post.actions';
-import { PostCollection } from '../../models/post-collection.model';
 import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
 import { Profile } from '../../../auth/models/profile.model';
