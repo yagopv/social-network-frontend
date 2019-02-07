@@ -18,19 +18,29 @@
       border: 1px solid $main;
     }
     fa-icon {
-      position: absolute;
-      right: 25px;
-      top: 25px;
-      display: none;
-      cursor: pointer;
+      &.trash {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        display: none;
+        cursor: pointer;
+      }
     }
     .comments {
       padding: 20px;
     }
+    .show-more {
+      font-weight: 1.4rem;
+      text-align: right;
+      margin-top: 10px;
+      cursor: pointer;
+    }
     &:hover {
       fa-icon {
-        display: inline;
-        color: $white;
+        &.trash {
+          display: inline;
+          color: $white;
+        }
       }
     }
   }

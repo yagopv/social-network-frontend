@@ -14,11 +14,33 @@
     <section>
       <sn-post-comment
         @listItems
-        *ngFor="let comment of post.comments; trackBy: commentIdentity"
+        *ngFor="
+          let comment of (post.comments
+            | slice: 0:(commentsPage + 1) * commentsPageSize);
+          trackBy: commentIdentity
+        "
         [comment]="comment"
         [user]="user"
       ></sn-post-comment>
+      <p
+        class="show-more"
+        *ngIf="(commentsPage + 1) * commentsPageSize < post.comments.length"
+        (click)="commentsPage = commentsPage + 1"
+      >
+        <fa-icon [icon]="moreCommentsIcon"></fa-icon> Show more comments
+      </p>
+      <p
+        class="show-more"
+        *ngIf="(commentsPage + 1) * commentsPageSize >= post.comments.length"
+        (click)="commentsPage = 0"
+      >
+        <fa-icon [icon]="lessCommentsIcon"></fa-icon> Show less comments
+      </p>
     </section>
   </section>
-  <fa-icon [icon]="deleteCommentIcon" (click)="deletePost()"></fa-icon>
+  <fa-icon
+    class="trash"
+    [icon]="deleteCommentIcon"
+    (click)="deletePost()"
+  ></fa-icon>
 </article>

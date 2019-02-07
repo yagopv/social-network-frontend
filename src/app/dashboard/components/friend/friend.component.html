@@ -4,14 +4,14 @@
     <h5>{{ friend?.fullName }}</h5>
     <div class="friend-toolbar">
       <a href="" (click)="addFriend()" snPreventDefault *ngIf="!friend.isFriend"
-        ><fa-icon [icon]="addIcon"></fa-icon> Add
+        ><fa-icon [icon]="addIcon"></fa-icon> Add to my friends
       </a>
       <a
         href=""
         (click)="removeFriend()"
         snPreventDefault
         *ngIf="friend.isFriend"
-        ><fa-icon [icon]="removeIcon"></fa-icon> Remove
+        ><fa-icon [icon]="removeIcon"></fa-icon> Remove from my friends
       </a>
     </div>
   </div>

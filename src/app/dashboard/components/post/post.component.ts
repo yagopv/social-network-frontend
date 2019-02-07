@@ -3,7 +3,11 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Post } from '../../models/post.model';
 import { Profile } from '../../../auth/models/profile.model';
 import { Comment } from '../../models/comment.model';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTrashAlt,
+  faPlusCircle,
+  faMinusCircle
+} from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   LIST_ANIMATION,
@@ -23,6 +27,10 @@ export class PostComponent {
   @Output() delete = new EventEmitter();
 
   deleteCommentIcon: IconProp = faTrashAlt;
+  commentsPage = 0;
+  commentsPageSize = 3;
+  moreCommentsIcon = faPlusCircle;
+  lessCommentsIcon = faMinusCircle;
 
   addComment(content: string) {
     this.comment.emit({
