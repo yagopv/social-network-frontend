@@ -5,12 +5,18 @@
   placeholder="Qué estas pensando?"
 ></sn-publisher>
 
-<!-- Removing trackBy cause the post to rerender -->
-<ng-container *ngFor="let post of (posts$ | async); trackBy: postIdentity">
-  <sn-post
-    [post]="post"
-    [user]="user$ | async"
-    (comment)="addComment($event)"
-    (delete)="deletePost($event)"
-  ></sn-post>
+<!-- ng-container is a trick for use the async pipe -->
+<!-- https://itnext.io/angular-animations-stagger-over-static-and-async-data-3907c4889479 -->
+<ng-container *ngIf="(posts$ | async) as posts">
+  <section @list>
+    <!-- Removing trackBy cause the post to rerender -->
+    <sn-post
+      @listItems
+      *ngFor="let post of posts; trackBy: postIdentity"
+      [post]="post"
+      [user]="user$ | async"
+      (comment)="addComment($event)"
+      (delete)="deletePost($event)"
+    ></sn-post>
+  </section>
 </ng-container>

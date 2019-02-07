@@ -18,6 +18,7 @@ import {
 import { PostService } from '../services/post.service';
 import { PostCollection } from '../models/post-collection.model';
 import { Logout } from '../../auth/store/auth.actions';
+import { Post } from '../models/post.model';
 
 @State<PostCollection>({
   name: 'posts',
@@ -27,7 +28,7 @@ export class PostState {
   constructor(private store: Store, private postService: PostService) {}
 
   @Selector()
-  static getPosts(state: PostCollection) {
+  static getPosts(state: PostCollection): Post[] {
     return Object.values(state);
   }
 

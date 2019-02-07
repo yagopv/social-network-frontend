@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   siteName: 'hack a bos',
-  apiBaseUrl: 'http://7be12e7d.ngrok.io/api'
+  apiBaseUrl: 'https://social-network.serveo.net/api'
 };
 
 /*

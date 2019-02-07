@@ -34,4 +34,8 @@ brew services start mongodb (stop)
 brew services start mysql (stop)
 
 mysql -u root -p 
+
+https://social-network.serveo.net
+
+ssh -R social-network:80:localhost:8000 serveo.net
 ```
