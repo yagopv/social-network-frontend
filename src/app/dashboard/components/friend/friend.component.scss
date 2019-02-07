@@ -8,6 +8,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s, ese-in;
+  cursor: pointer;
+  &:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
   &.is-friend {
     background-color: $dark;
   }
