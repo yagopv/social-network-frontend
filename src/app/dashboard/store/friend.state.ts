@@ -24,6 +24,7 @@ import { SetErrors } from '../../error/store/error.actions';
 import { FriendService } from '../services/friend.service';
 import { Navigate } from '@ngxs/router-plugin';
 import { Logout } from '../../auth/store/auth.actions';
+import { applySourceSpanToStatementIfNeeded } from '@angular/compiler/src/output/output_ast';
 
 @State<Friends>({
   name: 'friends',
@@ -84,7 +85,10 @@ export class FriendsState {
   }
 
   @Action(GetFriends)
-  getFriends({ dispatch }: StateContext<Friends>) {
+  getFriends({ dispatch, patchState }: StateContext<Friends>) {
+    patchState({
+      friends: {}
+    });
     return this.friendService.getFriends().pipe(
       tap(friends => dispatch(new GetFriendsSuccess(friends))),
       catchError(error => dispatch(new GetFriendsFailed(error.error)))

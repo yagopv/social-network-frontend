@@ -1,7 +1,9 @@
 <sn-search-user></sn-search-user>
+
 <div class="friends-grid">
   <sn-friend
     *ngFor="let friend of (friends$ | async)"
+    @listItems
     [friend]="friend"
     (add)="addFriend($event)"
     (remove)="removeFriend($event)"
