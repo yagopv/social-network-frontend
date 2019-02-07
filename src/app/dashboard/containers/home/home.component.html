@@ -7,8 +7,9 @@
 
 <!-- ng-container is a trick for use the async pipe -->
 <!-- https://itnext.io/angular-animations-stagger-over-static-and-async-data-3907c4889479 -->
+
 <ng-container *ngIf="(posts$ | async) as posts">
-  <section @list>
+  <section @list *ngIf="posts.length">
     <!-- Removing trackBy cause the post to rerender -->
     <sn-post
       @listItems
