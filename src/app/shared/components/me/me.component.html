@@ -1,4 +1,6 @@
 <div class="user">
   <sn-avatar [user]="user"></sn-avatar>
-  <p>{{ user?.fullName }}</p>
+  <a routerLink="/my-account">
+    <b>{{ user?.fullName }}</b>
+  </a>
 </div>

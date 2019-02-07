@@ -125,7 +125,7 @@ export class AuthState {
     LoginFailed,
     RegisterFailed,
     GetUserProfileFailed,
-    UpdateUserProfile
+    UpdateUserProfileFailed
   ])
   error({ dispatch }: StateContext<Auth>, { errors }: any) {
     // Use ngxs Action or this is going to fail because running outside NgZone

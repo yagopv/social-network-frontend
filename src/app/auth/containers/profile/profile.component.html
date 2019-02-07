@@ -9,7 +9,7 @@
         [control]="updateProfileForm.get('preferences.isPublicProfile')"
       >
         <label class="checkbox-wrapper"
-          >Is your profile public
+          >Is your profile public?
           <input type="checkbox" formControlName="isPublicProfile" />
           <span class="checkmark"></span>
         </label>
@@ -23,9 +23,7 @@
           formControlName="linkedIn"
         />
       </sn-form-control>
-      <sn-form-control
-        [control]="updateProfileForm.get('preferences.twitter')"
-      >
+      <sn-form-control [control]="updateProfileForm.get('preferences.twitter')">
         <input
           type="text"
           placeholder="Enter you Twitter public profile"
