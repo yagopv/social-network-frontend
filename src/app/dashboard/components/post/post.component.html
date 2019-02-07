@@ -11,11 +11,14 @@
       [user]="post.author"
       (publish)="addComment($event)"
     ></sn-publisher>
-    <ng-container
-      *ngFor="let comment of post.comments; trackBy: commentIdentity"
-    >
-      <sn-post-comment [comment]="comment" [user]="user"></sn-post-comment>
-    </ng-container>
+    <section>
+      <sn-post-comment
+        @listItems
+        *ngFor="let comment of post.comments; trackBy: commentIdentity"
+        [comment]="comment"
+        [user]="user"
+      ></sn-post-comment>
+    </section>
   </section>
   <fa-icon [icon]="deleteCommentIcon" (click)="deletePost()"></fa-icon>
 </article>

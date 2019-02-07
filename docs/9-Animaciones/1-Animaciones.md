@@ -269,42 +269,5 @@ class MyInsertRemoveComponent {
 
 ---
 
-## Routing animations
-
-- Las animaciones de cambios se hacen utilizando las técnicas vistas
-- Cuando se hace un cambio de ruta, el router de Angular avisará de ese cambio a un trigger llamado @routeAnimations
-
----
-
-## Routing animations. Paso 1
-
-Lo primero será configurar un @routeAnimations trigger
-
-```javascript
-<div class="route-container" [@routeAnimations]="...">
-  <router-outlet></router-outlet>
-</div>
-```
-
----
-
-## Routing animations. Paso 2
-
-Las rutas se pueden definir con información especifica haciendo referencia a las animaciones
-
-```javascript
-const ROUTES = [
-  { component: HomePage, path: '', data: {animation: 'HomePage' }},
-  { component: ProfilePage, path: '/profile/:id', data: {animation: 'ProfilePage' }},
-  { component: AboutPage, path: '/about', data: {animation: 'AboutPage' }},
-  { component: ContactPage, path: '/contact', data: {animation: 'ContactPage' }},
-]
-```
-
-```html
-<div class="route-container" [@routeAnimations]="prepareRoute(outlet)">
-  <router-outlet #outlet="outlet"></router-outlet>
-</div>
-```
 
 

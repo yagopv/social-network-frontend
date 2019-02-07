@@ -18,7 +18,7 @@ import { ActivatedRoute } from '@angular/router';
 import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
-} from '../../../shared/animations/slide-down.animation';
+} from '../../../shared/animations/list.animation';
 
 @Component({
   selector: 'sn-home',

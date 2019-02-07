@@ -5,11 +5,16 @@ import { Profile } from '../../../auth/models/profile.model';
 import { Comment } from '../../models/comment.model';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import {
+  LIST_ANIMATION,
+  LIST_ITEMS_ANIMATION
+} from '../../../shared/animations/list.animation';
 
 @Component({
   selector: 'sn-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  styleUrls: ['./post.component.scss'],
+  animations: [LIST_ANIMATION, LIST_ITEMS_ANIMATION]
 })
 export class PostComponent {
   @Input() post: Post;
