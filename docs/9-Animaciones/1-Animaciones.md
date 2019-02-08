@@ -41,7 +41,7 @@ class AppModule {}
 
 ```html
 
-<!-- Anima cuando `someStateValue` cambiar -->
+<!-- Anima cuando `someStateValue` cambia. Usamos state() -->
 <div [@myAnimationTrigger]="someStateValue">
   ...
 </div>
@@ -54,7 +54,7 @@ class AppModule {}
 
 ---
 
-## Paso 1
+## Definición de animaciones 
 
 La animación se define en el @Component
 
@@ -81,7 +81,7 @@ class MyComponentWithAnimations {
 
 ---
 
-## Paso 2
+## Creación de triggers
 
 Un trigger lanza la transición que consiste en varios pasos o estados
 
@@ -99,14 +99,15 @@ trigger('myAnimationTrigger', [
 
 ---
 
-## Paso 3
+## Creación de estados
 
 Cuando la animación se completa se irá al estado correspondiente y se aplicarán los estilos definidos
+Esta animación y la anterior son equivalentes
 
 ```javascript
 trigger('myAnimationTrigger', [
-  state('visible', style({ opacity: 1 })),
-  state('hidden', style({ opacity: 0 })),
+  state('visible', style({ opacity: 1 })), // Estilos iniciales
+  state('hidden', style({ opacity: 0 })), // Estilos iniciales
   transition('* => visible', [
     animate('500ms')
   ]),
@@ -203,7 +204,7 @@ trigger('myAnimationTrigger', [
 Cuando un item se inserta o elimina del DOM se usan :enter y :leave
 
 ```javascript
- // <div *ngIf="exp" @myInsertRemoveTrigger>...</div>
+ // Template => <div *ngIf="exp" @myInsertRemoveTrigger>...</div> 
 
 trigger('myInsertRemoveTrigger', [
   transition(':enter', [
@@ -234,9 +235,9 @@ Cuando una animación comienza o finaliza emite callbacks
   ],
   template: `
     <div *ngIf="exp"
-          @myInsertRemoveTrigger
-         (@myInsertRemoveTrigger.start)="onAnimationEvent($event)"
-         (@myInsertRemoveTrigger.done)="onAnimationEvent($event)">...</div>
+        @myInsertRemoveTrigger
+        (@myInsertRemoveTrigger.start)="onAnimationEvent($event)"
+        (@myInsertRemoveTrigger.done)="onAnimationEvent($event)">...</div>
   `
 })
 class MyInsertRemoveComponent {
@@ -269,5 +270,116 @@ class MyInsertRemoveComponent {
 
 ---
 
+## query()
 
+El gran poder de las animaciones con Angular esta en query()
+Se utiliza para seleccionar elementos DOM desde un padre
+
+```javascript
+trigger('pageAnimations', [
+  transition(':enter', [
+    query('.hero, form', [
+      style({opacity: 0, transform: 'translateY(-100px)'}),
+      stagger(-30, [
+        animate('500ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'none' }))
+      ])
+    ])
+  ])
+])
+```
+
+---
+
+## stagger()
+
+Se usa junto con query para producir un retardo entre los elementos a animar.
+Muy poderosa para la animación de listas
+
+```javascript
+transition(':decrement', [
+  query(':leave', [
+    stagger(50, [
+      animate('300ms ease-out', style({ opacity: 0, width: '0px' })),
+    ]),
+  ])
+])
+```
+
+---
+
+## group() &  sequence()
+
+Sirve para lanzar animaciones en paralelo
+
+```javascript
+transition('void => *', [
+  style({ width: 10, transform: 'translateX(50px)', opacity: 0 }),
+  // or sequence()
+  group([
+    animate('0.3s 0.1s ease', style({
+      transform: 'translateX(0)',
+      width: 120
+    })),
+    animate('0.3s ease', style({
+      opacity: 1
+    }))
+  ])
+])
+```
+
+---
+
+## :increment & :decrement
+
+Se lanzan cuando un valor numérico se incrementa o decrementa
+
+```javascript
+trigger('filterAnimation', [
+  transition(':enter, * => 0, * => -1', []),
+  transition(':increment', [
+    query(':enter', [
+      style({ opacity: 0, width: '0px' }),
+      stagger(50, [
+        animate('300ms ease-out', style({ opacity: 1, width: '*' })),
+      ]),
+    ], { optional: true })
+  ]),
+  transition(':decrement', [
+    query(':leave', [
+      stagger(50, [
+        animate('300ms ease-out', style({ opacity: 0, width: '0px' })),
+      ]),
+    ])
+  ]),
+])
+```
+
+---
+
+## animateChild()
+
+Si voy a animar elementos hijos es necesario que esperen a que el padre haya acabado sus propias animaciones
+
+```javascript
+  transition(':enter', [
+    // Skip child selection of listItems in sn-post-comment
+    query('@listItems:not(sn-post-comment)', stagger(300, animateChild()), {
+      optional: true
+    })
+  ])
+```
+
+
+---
+
+## Router animations
+
+```html
+<div [@routeAnimation]="prepRouteState(routerOutlet)">
+  <!-- make sure to keep the ="outlet" part -->
+  <router-outlet #routerOutlet="outlet"></div>
+<div>
+```
+
+---
 
