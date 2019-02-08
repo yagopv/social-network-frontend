@@ -1,10 +1,10 @@
-<sn-dashboard-header></sn-dashboard-header>
-<div class="app-layout">
-  <nav>
-    <sn-me [user]="user$ | async"></sn-me>
-    <sn-dashboard-nav (logout)="logout()"></sn-dashboard-nav>
-  </nav>
-  <main><router-outlet></router-outlet></main>
-  <aside><sn-dashboard-aside></sn-dashboard-aside></aside>
-  <footer><sn-dashboard-footer></sn-dashboard-footer></footer>
-</div>
+<header>
+  <sn-dashboard-header></sn-dashboard-header>
+</header>
+<nav>
+  <sn-me [user]="user$ | async"></sn-me>
+  <sn-dashboard-nav (logout)="logout()"></sn-dashboard-nav>
+</nav>
+<main><router-outlet></router-outlet></main>
+<aside><sn-dashboard-aside></sn-dashboard-aside></aside>
+<footer><sn-dashboard-footer></sn-dashboard-footer></footer>

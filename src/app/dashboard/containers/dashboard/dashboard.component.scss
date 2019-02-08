@@ -1,80 +1,62 @@
 @import '~src/scss/colors.scss';
 @import '~src/scss/breakpoints.scss';
 
-sn-dashboard-header {
-  background: $main;
-  height: 50px;
-  position: fixed;
-  width: 100%;
-}
+:host {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px repeat(3, auto) 50px;
+  grid-template-areas:
+    'header'
+    'nav'
+    'main'
+    'aside'
+    'footer';
 
-div {
-  &.app-layout {
-    padding-top: 50px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, auto) 100px;
+  header {
+    grid-area: header;
+    background: $main;
+    height: 50px;
+  }
+
+  nav {
+    grid-area: nav;
+    background-color: $contrast;
+    padding: 20px 10px;
+  }
+
+  main {
+    grid-area: main;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  aside {
+    grid-area: aside;
+  }
+
+  footer {
+    grid-area: footer;
+    background-color: $main;
+  }
+
+  @include respond-above(sm) {
+    height: 100vh;
+    grid-template-columns: minmax(150px, 200px) 5fr minmax(300px, 2fr);
+    grid-template-rows: 50px auto 1fr 50px;
     grid-template-areas:
+      'header header header'
       'nav nav nav'
-      'main main main'
-      'aside aside aside'
+      'main main aside'
       'footer footer footer';
-    height: 100%;
+  }
 
-    nav {
-      position: relative;
-      grid-area: nav;
-      background-color: $contrast;
-      padding: 20px 10px;
-    }
-
-    main {
-      grid-area: main;
-      overflow: inherit;
-    }
-
-    aside {
-      grid-area: aside;
-    }
-
-    footer {
-      grid-area: footer;
-      background-color: $main;
-    }
-
-    sn-dashboard-nav,
-    sn-dashboard-aside {
-      display: block;
-    }
-
-    @include respond-above(sm) {
-      height: 100vh;
-      grid-template-columns: minmax(150px, 200px) 5fr minmax(300px, 2fr);
-      grid-template-rows: auto 1fr 50px;
-      grid-template-areas:
-        'nav nav nav'
-        'main main aside'
-        'footer footer footer';
-
-      main {
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-    }
-
-    @include respond-above(lg) {
-      height: 100vh;
-      grid-template-columns: minmax(150px, 200px) 5fr minmax(200px, 300px);
-      grid-template-rows: 1fr 50px;
-      grid-template-areas:
-        'nav main aside'
-        'footer footer footer';
-
-      nav,
-      main,
-      aside {
-        height: calc(100vh - 100px);
-      }
-    }
+  @include respond-above(lg) {
+    height: 100vh;
+    grid-template-columns: minmax(150px, 200px) 5fr minmax(200px, 300px);
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas:
+      'header header header'
+      'nav main aside'
+      'footer footer footer';
   }
 }
