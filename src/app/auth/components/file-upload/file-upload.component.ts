@@ -3,8 +3,8 @@ import { AuthService } from '../../services/auth.service';
 
 import {
   faCheck,
-  faCrosshairs,
-  faUserCircle
+  faUserCircle,
+  faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 import { interval } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -64,7 +64,7 @@ export class FileUploadComponent {
     }
 
     if (this.selectedFile.status === 'fail') {
-      return faCrosshairs;
+      return faExclamationTriangle;
     }
 
     return faUserCircle;

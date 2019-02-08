@@ -12,5 +12,6 @@
     *ngIf="selectedFile"
     [icon]="getIcon()"
     [spin]="selectedFile?.status !== 'ok' && selectedFile?.status !== 'fail'"
+    [style.color]="selectedFile?.status === 'fail' ? 'red' : 'white'"
   ></fa-icon>
 </label>
