@@ -5,11 +5,11 @@ import { AuthState } from '../../../auth/store/auth.state';
 import { Profile } from '../../../auth/models/profile.model';
 
 @Component({
-  selector: 'sn-dashboard-layout',
-  templateUrl: './dashboard-layout.component.html',
-  styleUrls: ['./dashboard-layout.component.scss']
+  selector: 'sn-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardLayoutComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   @Select(AuthState.getUser) user$: Profile;
 
   constructor(private store: Store) {}
