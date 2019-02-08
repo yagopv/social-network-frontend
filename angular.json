@@ -32,6 +32,9 @@
               "src/scss/styles.scss",
               "./node_modules/simple-css-reset/reset.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/scss"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -90,6 +93,9 @@
               "src/scss/styles.scss",
               "./node_modules/simple-css-reset/reset.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/scss"]
+            },
             "scripts": [],
             "assets": [
               "src/favicon.ico",
