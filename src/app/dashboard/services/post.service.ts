@@ -11,8 +11,10 @@ import { Post } from '../models/post.model';
 export class PostService {
   constructor(private http: HttpClient) {}
 
-  getWall(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${environment.apiBaseUrl}/user/wall`);
+  getWall(uuid?: string): Observable<Post[]> {
+    return this.http.get<Post[]>(
+      `${environment.apiBaseUrl}/user/wall${uuid ? uuid : ''}`
+    );
   }
 
   getFeed(userId?: string): Observable<Post[]> {

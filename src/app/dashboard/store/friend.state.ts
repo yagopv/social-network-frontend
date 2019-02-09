@@ -24,7 +24,6 @@ import { SetErrors } from '../../error/store/error.actions';
 import { FriendService } from '../services/friend.service';
 import { Navigate } from '@ngxs/router-plugin';
 import { Logout } from '../../auth/store/auth.actions';
-import { applySourceSpanToStatementIfNeeded } from '@angular/compiler/src/output/output_ast';
 
 @State<Friends>({
   name: 'friends',
