@@ -13,7 +13,7 @@ import {
 import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
 import { Profile, Friend } from '../../../auth/models/profile.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION

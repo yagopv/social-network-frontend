@@ -4,8 +4,14 @@
     <div>
       <h4>
         <a [routerLink]="['/user', post.author.uuid, 'wall']"
-          ><b>{{ post.author.fullName }}</b></a
+          ><b>{{ post.author.fullName }} </b></a
         >
+        <ng-container *ngIf="post.author.uuid !== post.owner.uuid">
+          <fa-icon [icon]="arrowRight"></fa-icon>
+          <a [routerLink]="['/user', post.owner.uuid, 'wall']"
+            ><b> {{ post.owner.fullName }}</b></a
+          >
+        </ng-container>
       </h4>
       <small>{{ post.createdAt | userFriendlyDate }}</small>
     </div>
