@@ -17,9 +17,7 @@ export class FriendsComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  ngOnInit() {
-    this.store.dispatch(new GetFriends());
-  }
+  ngOnInit() {}
 
   addFriend(uuid: string) {
     this.store.dispatch(new AddFriend(uuid));

@@ -67,7 +67,7 @@ export class PostState {
       state => state.auth
     );
 
-    return this.postService.addPost(publish.content).pipe(
+    return this.postService.addPost(publish.content, publish.uuid).pipe(
       tap(post => {
         dispatch(
           new AddPostSuccess({ ...post, author: { uuid, avatarUrl, fullName } })

@@ -23,8 +23,10 @@ export class PostService {
     return this.http.get<Post[]>(`${environment.apiBaseUrl}/user${path}/feed`);
   }
 
-  addPost(content: string): Observable<Post> {
-    return this.http.post<Post>(`${environment.apiBaseUrl}/post`, {
+  addPost(content: string, userId?: string): Observable<Post> {
+    const path = userId ? `/${userId}` : '';
+
+    return this.http.post<Post>(`${environment.apiBaseUrl}/post${path}`, {
       content
     });
   }

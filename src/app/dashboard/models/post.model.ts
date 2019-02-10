@@ -13,4 +13,5 @@ export interface Post {
 
 export interface PostRequest {
   content: string;
+  uuid?: string;
 }

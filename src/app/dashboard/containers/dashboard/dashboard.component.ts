@@ -3,6 +3,7 @@ import { Store, Select } from '@ngxs/store';
 import { Logout, GetUserProfile } from '../../../auth/store/auth.actions';
 import { AuthState } from '../../../auth/store/auth.state';
 import { Profile } from '../../../auth/models/profile.model';
+import { GetFriends } from '../../store/friend.actions';
 
 @Component({
   selector: 'sn-dashboard',
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit() {
-    this.store.dispatch(new GetUserProfile());
+    this.store.dispatch([new GetUserProfile(), new GetFriends()]);
   }
 
   logout() {

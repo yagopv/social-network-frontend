@@ -34,15 +34,18 @@ export class WallComponent implements OnInit {
 
   content: string;
 
+  wallOwner: string;
+
   constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.store.dispatch(new GetPosts(this.route.snapshot.params.userId));
+    this.wallOwner = this.route.snapshot.params.userId;
+    this.store.dispatch(new GetPosts(this.wallOwner));
   }
 
   publishPost(content: string) {
     this.store
-      .dispatch(new AddPost({ content }))
+      .dispatch(new AddPost({ content, uuid: this.wallOwner }))
       .subscribe(() => (this.content = ''));
   }
 
