@@ -2,7 +2,7 @@
   [user]="user$ | async"
   (publish)="publishPost($event)"
   [content]="content"
-  placeholder="Qué estas pensando?"
+  [placeholder]="placeholder"
 ></sn-publisher>
 
 <sn-errors [errors]="errors$ | async"></sn-errors>

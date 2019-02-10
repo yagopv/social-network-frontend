@@ -12,7 +12,7 @@ import {
 } from '../../store/post.actions';
 import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
-import { Profile } from '../../../auth/models/profile.model';
+import { Profile, Friend } from '../../../auth/models/profile.model';
 import { ActivatedRoute } from '@angular/router';
 import {
   LIST_ANIMATION,
@@ -20,6 +20,7 @@ import {
 } from '../../../shared/animations/list.animation';
 import { ErrorState } from '../../../error/store/error.state';
 import { Error } from '../../../error/models/error.model';
+import { FriendsState } from '../../store/friend.state';
 
 @Component({
   selector: 'sn-wall',
@@ -29,18 +30,24 @@ import { Error } from '../../../error/models/error.model';
 })
 export class WallComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<Post[]>;
-  @Select(AuthState.getUser) user$: Profile;
+  @Select(AuthState.getUser) user$: Observable<Profile>;
+  @Select(state => state.friends) friends$: Observable<Friend[]>;
   @Select(ErrorState) errors$: Observable<Error>;
 
   content: string;
 
   wallOwner: string;
+  placeholder: string;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.wallOwner = this.route.snapshot.params.userId;
     this.store.dispatch(new GetPosts(this.wallOwner));
+
+    this.placeholder = this.wallOwner
+      ? 'Leave a comment'
+      : 'What are you thinking?';
   }
 
   publishPost(content: string) {

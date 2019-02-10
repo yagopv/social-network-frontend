@@ -20,7 +20,6 @@ import {
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
 import { Auth } from '../models/auth.model';
-import { Error } from '../../error/models/error.model';
 
 @State<Auth>({
   name: 'auth',
