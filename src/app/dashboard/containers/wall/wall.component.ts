@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
@@ -20,7 +20,6 @@ import {
 } from '../../../shared/animations/list.animation';
 import { ErrorState } from '../../../error/store/error.state';
 import { Error } from '../../../error/models/error.model';
-import { FriendsState } from '../../store/friend.state';
 
 @Component({
   selector: 'sn-wall',
@@ -39,15 +38,24 @@ export class WallComponent implements OnInit {
   wallOwner: string;
   placeholder: string;
 
-  constructor(private store: Store, private route: ActivatedRoute) {}
+  constructor(
+    private store: Store,
+    private route: ActivatedRoute,
+    private element: ElementRef
+  ) {}
 
   ngOnInit() {
-    this.wallOwner = this.route.snapshot.params.userId;
-    this.store.dispatch(new GetPosts(this.wallOwner));
+    // We should subscribe as Angular does not renrender if only the param of thhe route change
+    this.route.params.subscribe(routeParams => {
+      this.wallOwner = routeParams.userId;
+      this.store.dispatch(new GetPosts(this.wallOwner));
 
-    this.placeholder = this.wallOwner
-      ? 'Leave a comment'
-      : 'What are you thinking?';
+      this.placeholder = this.wallOwner
+        ? 'Leave a comment'
+        : 'What are you thinking?';
+
+      this.element.nativeElement.parentElement.scrollTop = 0;
+    });
   }
 
   publishPost(content: string) {
