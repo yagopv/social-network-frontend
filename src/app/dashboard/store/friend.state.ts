@@ -76,7 +76,7 @@ export class FriendsState {
     const friends = getState().friends;
     patchState({
       userSearch: users.reduce((draft, user) => {
-        user.isFriend = friends[user.uuid] ? true : false;
+        user.isMyFriend = friends[user.uuid] ? true : false;
         draft[user.uuid] = user;
         return draft;
       }, {})
@@ -101,7 +101,7 @@ export class FriendsState {
   ) {
     patchState({
       friends: friends.reduce((draft, friend) => {
-        friend.isFriend = true;
+        friend.isMyFriend = true;
         draft[friend.uuid] = friend;
         return draft;
       }, {})

@@ -3,7 +3,9 @@
     <sn-avatar [user]="post.author"></sn-avatar>
     <div>
       <h4>
-        <b>{{ post.author.fullName }}</b>
+        <a [routerLink]="['/user', post.author.uuid, 'home']"
+          ><b>{{ post.author.fullName }}</b></a
+        >
       </h4>
       <small>{{ post.createdAt | userFriendlyDate }}</small>
     </div>

@@ -1,6 +1,6 @@
 import { Profile } from '../../auth/models/profile.model';
 import { Error } from '../../error/models/error.model';
-import { FriendRequest } from '../models/friend-request.model';
+import { Friend } from '../models/friend.model';
 
 export class SearchUsers {
   static readonly type = '[Friend] SearchUsers';
@@ -20,7 +20,7 @@ export class GetFriends {
 }
 export class GetFriendsSuccess {
   static readonly type = '[Friend] GetFriendsSuccess';
-  constructor(public friends: FriendRequest[]) {}
+  constructor(public friends: Friend[]) {}
 }
 export class GetFriendsFailed {
   static readonly type = '[Friend] GetFriendsFailed';
@@ -33,7 +33,7 @@ export class GetFriendRequests {
 }
 export class GetFriendRequestsSuccess {
   static readonly type = '[Friend] GetFriendRequestsSuccess';
-  constructor(public requests: FriendRequest[]) {}
+  constructor(public requests: Friend[]) {}
 }
 export class GetFriendRequestFailed {
   static readonly type = '[Friend] GetFriendRequestFailed';

@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Profile } from '../../../auth/models/profile.model';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { Friend } from '../../models/friend.model';
 
 @Component({
   selector: 'sn-friend',
@@ -9,7 +10,7 @@ import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./friend.component.scss']
 })
 export class FriendComponent {
-  @Input() friend: Profile;
+  @Input() friend: Profile | Friend;
   @Output() add = new EventEmitter();
   @Output() remove = new EventEmitter();
 

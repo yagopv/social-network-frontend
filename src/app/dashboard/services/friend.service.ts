@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { FriendRequest } from '../models/friend-request.model';
+import { Friend } from '../models/friend.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,11 @@ export class FriendService {
   constructor(private http: HttpClient) {}
 
   getFriends() {
-    return this.http.get<FriendRequest[]>(
-      `${environment.apiBaseUrl}/user/friends`
-    );
+    return this.http.get<Friend[]>(`${environment.apiBaseUrl}/user/friends`);
   }
 
   getFriendRequests() {
-    return this.http.get<FriendRequest[]>(
+    return this.http.get<Friend[]>(
       `${environment.apiBaseUrl}/user/friendrequests`
     );
   }

@@ -4,7 +4,8 @@ export interface Profile {
   fullName: string;
   avatarUrl: string;
   preferences: Preferences;
-  isFriend: boolean;
+  friends: Friend[];
+  isMyFriend: boolean;
 }
 
 export interface Preferences {
@@ -12,4 +13,12 @@ export interface Preferences {
   linkedIn: string;
   twitter: string;
   github: string;
+}
+
+export interface Friend {
+  uuid: string;
+  confirmed: boolean;
+  createdAt: Date;
+  confirmedAt: Date;
+  rejectedAt: Date;
 }
