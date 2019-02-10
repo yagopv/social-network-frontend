@@ -19,6 +19,7 @@ import { PostService } from '../services/post.service';
 import { PostCollection } from '../models/post-collection.model';
 import { Logout } from '../../auth/store/auth.actions';
 import { Post } from '../models/post.model';
+import { SetErrors } from '../../error/store/error.actions';
 
 @State<PostCollection>({
   name: 'posts',
@@ -36,7 +37,7 @@ export class PostState {
   getPosts({ dispatch }: StateContext<PostCollection>, { userId }: GetPosts) {
     return this.postService.getWall(userId).pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
-      catchError(error => dispatch(new GetPostsFailed(error)))
+      catchError(error => dispatch(new GetPostsFailed(error.error)))
     );
   }
 
@@ -72,7 +73,7 @@ export class PostState {
           new AddPostSuccess({ ...post, author: { uuid, avatarUrl, fullName } })
         );
       }),
-      catchError(error => dispatch(new AddPostFailed(error)))
+      catchError(error => dispatch(new AddPostFailed(error.error)))
     );
   }
 
@@ -138,7 +139,7 @@ export class PostState {
           )
         );
       }),
-      catchError(error => dispatch(new AddCommentFailed(error)))
+      catchError(error => dispatch(new AddCommentFailed(error.error)))
     );
   }
 
@@ -164,8 +165,8 @@ export class PostState {
   }
 
   @Action([AddPostFailed, GetPostsFailed, AddCommentFailed, DeletePostFailed])
-  error(ctx: StateContext<PostCollection>, action: any) {
-    console.log(action);
+  error({ dispatch }: StateContext<PostCollection>, { errors }: any) {
+    dispatch(new SetErrors(errors));
   }
 
   private uuidv4() {

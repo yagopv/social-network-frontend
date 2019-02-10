@@ -3,6 +3,10 @@
 :host {
   padding: 20px;
   display: block;
+  sn-errors {
+    display: block;
+    margin-top: 20px;
+  }
   @include respond-above(lg) {
     padding: 20px 100px;
   }

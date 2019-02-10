@@ -23,11 +23,13 @@ import { MyAccountComponent } from './containers/my-account/my-account.component
 import { AuthModule } from '../auth/auth.module';
 import { SearchUserComponent } from './containers/search-user/search-user.component';
 import { FriendsState } from './store/friend.state';
+import { ErrorModule } from '../error/error.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    ErrorModule,
     DashboardRoutingModule,
     FontAwesomeModule,
     AuthModule,

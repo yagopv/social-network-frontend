@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
@@ -18,6 +18,8 @@ import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
 } from '../../../shared/animations/list.animation';
+import { ErrorState } from '../../../error/store/error.state';
+import { Error } from '../../../error/models/error.model';
 
 @Component({
   selector: 'sn-home',
@@ -28,6 +30,7 @@ import {
 export class HomeComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<Post[]>;
   @Select(AuthState.getUser) user$: Profile;
+  @Select(ErrorState) errors$: Observable<Error>;
 
   content: string;
 

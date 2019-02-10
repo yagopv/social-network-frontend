@@ -5,6 +5,8 @@
   placeholder="Qué estas pensando?"
 ></sn-publisher>
 
+<sn-errors [errors]="errors$ | async"></sn-errors>
+
 <!-- ng-container is a trick for use the async pipe -->
 <!-- https://itnext.io/angular-animations-stagger-over-static-and-async-data-3907c4889479 -->
 

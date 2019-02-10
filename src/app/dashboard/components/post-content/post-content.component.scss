@@ -43,5 +43,12 @@
       list-style-type: circle;
       padding-left: 30px;
     }
+    pre {
+      padding: 15px;
+      border-radius: 5px;
+      background: $dark;
+      color: $white;
+      display: inline-block;
+    }
   }
 }
