@@ -61,7 +61,7 @@ export class AuthState {
     const returnUrl = this.store.selectSnapshot(
       state => state.router.state.root.queryParams['return-url']
     );
-    dispatch(new Navigate([returnUrl || '/home']));
+    dispatch(new Navigate([returnUrl || '/wall']));
   }
 
   @Action(Register, { cancelUncompleted: true })

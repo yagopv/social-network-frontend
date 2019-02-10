@@ -12,7 +12,7 @@ import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
 import { FriendsComponent } from './containers/friends/friends.component';
 import { PostComponent } from './components/post/post.component';
-import { HomeComponent } from './containers/home/home.component';
+import { WallComponent } from './containers/wall/wall.component';
 import { NgxsModule } from '@ngxs/store';
 import { PostState } from './store/post.state';
 import { SharedModule } from '../shared/shared.module';
@@ -41,7 +41,7 @@ import { ErrorModule } from '../error/error.module';
     DashboardHeaderComponent,
     DashboardComponent,
     DashboardNavComponent,
-    HomeComponent,
+    WallComponent,
     FriendComponent,
     FriendsComponent,
     FriendRequestsComponent,
