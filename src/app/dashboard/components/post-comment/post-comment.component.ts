@@ -10,5 +10,5 @@ import { Profile } from '../../../auth/models/profile.model';
 })
 export class PostCommentComponent {
   @Input() comment: Comment;
-  @Input() user: Profile;
+  @Input() currentUser: Profile;
 }

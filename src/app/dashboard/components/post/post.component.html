@@ -8,7 +8,7 @@
     <hr />
     <sn-publisher
       placeholder="Publica un comentario"
-      [user]="post.author"
+      [user]="currentUser"
       (publish)="addComment($event)"
     ></sn-publisher>
     <section>
@@ -20,7 +20,7 @@
           trackBy: commentIdentity
         "
         [comment]="comment"
-        [user]="user"
+        [currentUser]="currentUser"
       ></sn-post-comment>
       <p
         class="show-more"

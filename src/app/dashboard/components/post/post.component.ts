@@ -22,7 +22,7 @@ import {
 })
 export class PostComponent {
   @Input() post: Post;
-  @Input() user: Profile;
+  @Input() currentUser: Profile;
   @Output() comment = new EventEmitter();
   @Output() delete = new EventEmitter();
 

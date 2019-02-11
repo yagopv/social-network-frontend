@@ -29,7 +29,7 @@ import { Error } from '../../../error/models/error.model';
 })
 export class WallComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<Post[]>;
-  @Select(AuthState.getUser) user$: Observable<Profile>;
+  @Select(AuthState.getUser) currentUser$: Observable<Profile>;
   @Select(state => state.friends) friends$: Observable<Friend[]>;
   @Select(ErrorState) errors$: Observable<Error>;
 

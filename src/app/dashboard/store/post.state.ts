@@ -63,14 +63,17 @@ export class PostState {
     { dispatch }: StateContext<PostCollection>,
     { postRequest: publish }: AddPost
   ) {
-    const { avatarUrl, fullName, uuid } = this.store.selectSnapshot(
-      state => state.auth
-    );
-
+    const currentState = this.store.selectSnapshot(state => state);
+    const currentUser = currentState.auth;
+    const friends = currentState.friends.friends;
     return this.postService.addPost(publish.content, publish.uuid).pipe(
       tap(post => {
         dispatch(
-          new AddPostSuccess({ ...post, author: { uuid, avatarUrl, fullName } })
+          new AddPostSuccess({
+            ...post,
+            author: currentUser,
+            owner: publish.uuid ? friends[publish.uuid] : currentUser
+          })
         );
       }),
       catchError(error => dispatch(new AddPostFailed(error.error)))

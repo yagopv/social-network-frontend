@@ -1,4 +1,4 @@
-<div class="post-comment" [class.me]="comment.author.uuid === user.uuid">
+<div class="post-comment" [class.me]="comment.author.uuid === currentUser.uuid">
   <sn-avatar [user]="comment.author"></sn-avatar>
   <div class="post-message">
     <h5>
