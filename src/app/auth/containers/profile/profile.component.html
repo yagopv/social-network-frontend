@@ -6,6 +6,15 @@
     </sn-form-control>
     <div formGroupName="preferences">
       <sn-form-control
+        [control]="updateProfileForm.get('preferences.description')"
+      >
+        <textarea
+          rows="10"
+          placeholder="Tell us something about you"
+          formControlName="description"
+        ></textarea>
+      </sn-form-control>
+      <sn-form-control
         [control]="updateProfileForm.get('preferences.isPublicProfile')"
       >
         <label class="checkbox-wrapper"

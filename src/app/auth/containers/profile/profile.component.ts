@@ -27,7 +27,8 @@ export class ProfileComponent implements OnInit {
         isPublicProfile: [false],
         linkedIn: ['', [UrlValidator]],
         twitter: ['', [UrlValidator]],
-        github: ['', [UrlValidator]]
+        github: ['', [UrlValidator]],
+        description: ['']
       })
     },
     { updateOn: 'blur' }
@@ -44,6 +45,7 @@ export class ProfileComponent implements OnInit {
           linkedIn: '',
           twitter: '',
           github: '',
+          description: '',
           ...preferences
         }
       })

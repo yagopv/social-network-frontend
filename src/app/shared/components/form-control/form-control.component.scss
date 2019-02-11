@@ -3,8 +3,8 @@
 div {
   display: block;
   margin: 30px 0;
-  height: 50px;
   ::ng-deep {
+    textarea,
     input[type='text'],
     input[type='email'],
     input[type='password'] {
@@ -18,12 +18,18 @@ div {
       background: $white;
       height: 100%;
       transition: all 0.2s ease-in;
+      height: 50px;
       &:focus {
         box-shadow: 0 0 3px 2px $main;
       }
       &::placeholder {
         color: $main;
       }
+    }
+
+    textarea {
+      height: auto;
+      padding: 10px;
     }
 
     .checkbox-wrapper {
@@ -78,6 +84,7 @@ div {
       margin-top: 5px;
       color: $error;
       font-size: 0.9rem;
+      position: absolute;
       fa-icon {
         font-size: 0.8rem;
         position: relative;

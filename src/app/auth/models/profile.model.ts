@@ -10,9 +10,10 @@ export interface Profile {
 
 export interface Preferences {
   isPublicProfile: boolean;
-  linkedIn: string;
-  twitter: string;
-  github: string;
+  linkedIn?: string;
+  twitter?: string;
+  github?: string;
+  description?: string;
 }
 
 export interface Friend {
