@@ -6,7 +6,6 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { Post } from '../../models/post.model';
-import { markViewDirty } from '@angular/core/src/render3/instructions';
 import marked from 'marked';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';

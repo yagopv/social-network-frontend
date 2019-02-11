@@ -1,4 +1,11 @@
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import {
+  State,
+  Action,
+  StateContext,
+  Selector,
+  Store,
+  createSelector
+} from '@ngxs/store';
 import { tap, catchError, map } from 'rxjs/operators';
 
 import { Friends } from '../models/friends.model';
@@ -24,6 +31,7 @@ import { SetErrors } from '../../error/store/error.actions';
 import { FriendService } from '../services/friend.service';
 import { Navigate } from '@ngxs/router-plugin';
 import { Logout } from '../../auth/store/auth.actions';
+import { Friend } from '../../auth/models/profile.model';
 
 @State<Friends>({
   name: 'friends',
@@ -48,6 +56,15 @@ export class FriendsState {
   @Selector()
   static getFriendRequests({ requests }: Friends) {
     return Object.values(requests);
+  }
+
+  static getFriend(uuid: string) {
+    return createSelector(
+      [FriendsState],
+      (state: Friends) => {
+        return state.friends[uuid];
+      }
+    );
   }
 
   @Action(SearchUsers)

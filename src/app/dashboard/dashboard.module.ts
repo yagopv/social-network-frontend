@@ -24,6 +24,7 @@ import { AuthModule } from '../auth/auth.module';
 import { SearchUserComponent } from './containers/search-user/search-user.component';
 import { FriendsState } from './store/friend.state';
 import { ErrorModule } from '../error/error.module';
+import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { ErrorModule } from '../error/error.module';
     PostCommentCounterComponent,
     PostContentComponent,
     MyAccountComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    ProfileInfoComponent
   ]
 })
 export class DashboardModule {}

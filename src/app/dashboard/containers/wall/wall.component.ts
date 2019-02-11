@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
 
 import { PostState } from '../../store/post.state';
@@ -12,14 +13,15 @@ import {
 } from '../../store/post.actions';
 import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
-import { Profile, Friend } from '../../../auth/models/profile.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Profile } from '../../../auth/models/profile.model';
 import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
 } from '../../../shared/animations/list.animation';
 import { ErrorState } from '../../../error/store/error.state';
 import { Error } from '../../../error/models/error.model';
+import { FriendsState } from '../../store/friend.state';
+import { Friend } from '../../models/friend.model';
 
 @Component({
   selector: 'sn-wall',
@@ -30,13 +32,12 @@ import { Error } from '../../../error/models/error.model';
 export class WallComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<Post[]>;
   @Select(AuthState.getUser) currentUser$: Observable<Profile>;
-  @Select(state => state.friends) friends$: Observable<Friend[]>;
   @Select(ErrorState) errors$: Observable<Error>;
 
+  friend: Friend;
   content: string;
-
   wallOwner: string;
-  placeholder: string;
+  placeholder = '';
 
   constructor(
     private store: Store,
@@ -47,13 +48,19 @@ export class WallComponent implements OnInit {
   ngOnInit() {
     // We should subscribe as Angular does not renrender if only the param of thhe route change
     this.route.params.subscribe(routeParams => {
-      this.wallOwner = routeParams.userId;
-      this.store.dispatch(new GetPosts(this.wallOwner));
-
-      this.placeholder = this.wallOwner
-        ? 'Leave a comment'
-        : 'What are you thinking?';
-
+      this.store.dispatch(new GetPosts(routeParams.userId));
+      if (routeParams.userId) {
+        this.store
+          .select(FriendsState.getFriend(routeParams.userId))
+          .subscribe((friend: Friend) => {
+            if (friend) {
+              this.friend = friend;
+              this.placeholder = `Leave a comment to ${friend.fullName}`;
+            }
+          });
+      } else {
+        this.placeholder = 'What are you thinking?';
+      }
       this.element.nativeElement.parentElement.scrollTop = 0;
     });
   }

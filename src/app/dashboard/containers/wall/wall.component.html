@@ -1,3 +1,5 @@
+<sn-profile-info *ngIf="friend" [user]="friend"></sn-profile-info>
+
 <sn-publisher
   [user]="currentUser$ | async"
   (publish)="publishPost($event)"
