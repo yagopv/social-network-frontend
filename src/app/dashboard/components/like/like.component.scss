@@ -3,18 +3,29 @@
 :host {
   position: relative;
   margin-left: 20px;
+  fa-icon {
+    color: $dark;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
   span {
+    position: relative;
     background: $dark;
-    padding: 3px 15px;
+    padding: 1px 10px;
     font-size: 1.2rem;
     font-weight: bold;
     color: $white;
-    border-radius: 5px;
-  }
-  fa-icon {
-    margin-left: 5px;
-    color: dark;
-    font-size: 1.8rem;
-    cursor: pointer;
+    margin-left: 10px;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      border-bottom: 8px solid transparent;
+      border-top: 8px solid transparent;
+      border-right: 8px solid $dark;
+      left: -8px;
+      top: 6px;
+    }
   }
 }
