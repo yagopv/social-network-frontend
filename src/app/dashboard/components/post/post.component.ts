@@ -25,10 +25,15 @@ export class PostComponent {
   @Input() currentUser: Profile;
   @Output() comment = new EventEmitter();
   @Output() delete = new EventEmitter();
+  @Output() like = new EventEmitter();
 
   deleteCommentIcon: IconProp = faTrashAlt;
   commentsPage = 0;
   commentsPageSize = 3;
+
+  toggleLike() {
+    this.like.emit();
+  }
 
   addComment(content: string) {
     this.comment.emit({

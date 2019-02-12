@@ -25,6 +25,7 @@ import { SearchUserComponent } from './containers/search-user/search-user.compon
 import { FriendsState } from './store/friend.state';
 import { ErrorModule } from '../error/error.module';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
+import { LikeComponent } from './components/like/like.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { ProfileInfoComponent } from './components/profile-info/profile-info.com
     PostContentComponent,
     MyAccountComponent,
     SearchUserComponent,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    LikeComponent
   ]
 })
 export class DashboardModule {}

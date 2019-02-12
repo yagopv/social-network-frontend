@@ -12,6 +12,12 @@
     &:hover {
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
+      fa-icon {
+        &.trash {
+          display: inline;
+          color: $white;
+        }
+      }
     }
     hr {
       margin-bottom: 20px;
@@ -35,13 +41,8 @@
       margin-top: 10px;
       cursor: pointer;
     }
-    &:hover {
-      fa-icon {
-        &.trash {
-          display: inline;
-          color: $white;
-        }
-      }
+    footer {
+      display: flex;
     }
   }
 }

@@ -63,13 +63,13 @@ export class AddCommentFailed {
 
 export class Like {
   static readonly type = '[Post] Like';
-  constructor(public postUuid: string) {}
+  constructor(public postId: string) {}
 }
 
 export class LikeSuccess {
   static readonly type = '[Post] Like Success';
   constructor(
-    public postUuid: string,
+    public postId: string,
     public isLike: boolean,
     public userUuid: string
   ) {}

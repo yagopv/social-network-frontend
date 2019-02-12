@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Store, Select } from '@ngxs/store';
 
 import { PostState } from '../../store/post.state';
@@ -9,7 +9,8 @@ import {
   GetPosts,
   AddPost,
   AddComment,
-  DeletePost
+  DeletePost,
+  Like
 } from '../../store/post.actions';
 import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
@@ -80,6 +81,10 @@ export class WallComponent implements OnInit {
 
   deletePost(uuid: string) {
     this.store.dispatch(new DeletePost(uuid));
+  }
+
+  likePost(postId: string) {
+    this.store.dispatch(new Like(postId));
   }
 
   postIdentity(index: number, post: Post) {

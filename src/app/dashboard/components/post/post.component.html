@@ -1,37 +1,41 @@
 <article>
   <sn-post-content [post]="post"></sn-post-content>
+  <sn-like [likeCount]="post.likes.length" (like)="toggleLike()"></sn-like>
   <div class="comment"></div>
   <section class="comments">
     <sn-post-comment-counter
       [count]="post.comments.length"
     ></sn-post-comment-counter>
+
     <hr />
+
     <sn-publisher
       placeholder="Publica un comentario"
       [user]="currentUser"
       (publish)="addComment($event)"
     ></sn-publisher>
-    <section>
-      <sn-post-comment
-        @listItems
-        *ngFor="
-          let comment of (post.comments
-            | slice: 0:(commentsPage + 1) * commentsPageSize);
-          trackBy: commentIdentity
-        "
-        [comment]="comment"
-        [currentUser]="currentUser"
-      ></sn-post-comment>
-      <sn-pager
-        type="mini"
-        [(page)]="commentsPage"
-        [pageSize]="commentsPageSize"
-        [count]="post.comments.length"
-        showMoreText="More comments"
-        showLessText="Less comments"
-      ></sn-pager>
-    </section>
+
+    <sn-post-comment
+      @listItems
+      *ngFor="
+        let comment of (post.comments
+          | slice: 0:(commentsPage + 1) * commentsPageSize);
+        trackBy: commentIdentity
+      "
+      [comment]="comment"
+      [currentUser]="currentUser"
+    ></sn-post-comment>
+
+    <sn-pager
+      type="mini"
+      [(page)]="commentsPage"
+      [pageSize]="commentsPageSize"
+      [count]="post.comments.length"
+      showMoreText="More comments"
+      showLessText="Less comments"
+    ></sn-pager>
   </section>
+
   <fa-icon
     class="trash"
     [icon]="deleteCommentIcon"

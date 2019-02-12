@@ -166,27 +166,20 @@ export class PostState {
   }
 
   @Action(Like)
-  like(
-    { dispatch, getState }: StateContext<PostCollection>,
-    { postUuid }: Like
-  ) {
-    const post = getState()[postUuid];
+  like({ dispatch, getState }: StateContext<PostCollection>, { postId }: Like) {
+    const post = getState()[postId];
     const currentState = this.store.selectSnapshot(state => state);
     const currentUser = currentState.auth;
 
     if (post) {
       if (post.likes.indexOf(currentUser.uuid) === -1) {
-        return this.postService.like(postUuid).pipe(
-          tap(() =>
-            dispatch(new LikeSuccess(postUuid, true, currentUser.uuid))
-          ),
+        return this.postService.like(postId).pipe(
+          tap(() => dispatch(new LikeSuccess(postId, true, currentUser.uuid))),
           catchError(error => dispatch(new LikeFailed(error.error)))
         );
       } else {
-        return this.postService.dislike(postUuid).pipe(
-          tap(() =>
-            dispatch(new LikeSuccess(postUuid, false, currentUser.uuid))
-          ),
+        return this.postService.dislike(postId).pipe(
+          tap(() => dispatch(new LikeSuccess(postId, false, currentUser.uuid))),
           catchError(error => dispatch(new LikeFailed(error.error)))
         );
       }
@@ -196,16 +189,16 @@ export class PostState {
   @Action(LikeSuccess)
   likeSuccess(
     { getState, setState }: StateContext<PostCollection>,
-    { postUuid, isLike, userUuid }: LikeSuccess
+    { postId, isLike, userUuid }: LikeSuccess
   ) {
     const posts = getState();
     setState({
       ...posts,
-      [postUuid]: {
-        ...posts[postUuid],
+      [postId]: {
+        ...posts[postId],
         likes: isLike
-          ? [...posts[postUuid].likes, userUuid]
-          : posts[postUuid].likes.filter(uuid => uuid !== userUuid)
+          ? [...posts[postId].likes, userUuid]
+          : posts[postId].likes.filter(uuid => uuid !== userUuid)
       }
     });
   }
