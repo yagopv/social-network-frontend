@@ -43,4 +43,15 @@ export class PostService {
       }
     );
   }
+
+  like(postId: string) {
+    return this.http.post(`${environment.apiBaseUrl}/post/${postId}/like`, {});
+  }
+
+  dislike(postId: string) {
+    return this.http.delete(
+      `${environment.apiBaseUrl}/post/${postId}/like`,
+      {}
+    );
+  }
 }

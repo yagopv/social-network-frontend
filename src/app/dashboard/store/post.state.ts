@@ -13,7 +13,10 @@ import {
   AddCommentFailed,
   DeletePostFailed,
   DeletePost,
-  DeletePostSuccess
+  DeletePostSuccess,
+  Like,
+  LikeSuccess,
+  LikeFailed
 } from './post.actions';
 import { PostService } from '../services/post.service';
 import { PostCollection } from '../models/post-collection.model';
@@ -162,12 +165,63 @@ export class PostState {
     });
   }
 
+  @Action(Like)
+  like(
+    { dispatch, getState }: StateContext<PostCollection>,
+    { postUuid }: Like
+  ) {
+    const post = getState()[postUuid];
+    const currentState = this.store.selectSnapshot(state => state);
+    const currentUser = currentState.auth;
+
+    if (post) {
+      if (post.likes.indexOf(currentUser.uuid) === -1) {
+        return this.postService.like(postUuid).pipe(
+          tap(() =>
+            dispatch(new LikeSuccess(postUuid, true, currentUser.uuid))
+          ),
+          catchError(error => dispatch(new LikeFailed(error.error)))
+        );
+      } else {
+        return this.postService.dislike(postUuid).pipe(
+          tap(() =>
+            dispatch(new LikeSuccess(postUuid, false, currentUser.uuid))
+          ),
+          catchError(error => dispatch(new LikeFailed(error.error)))
+        );
+      }
+    }
+  }
+
+  @Action(LikeSuccess)
+  likeSuccess(
+    { getState, setState }: StateContext<PostCollection>,
+    { postUuid, isLike, userUuid }: LikeSuccess
+  ) {
+    const posts = getState();
+    setState({
+      ...posts,
+      [postUuid]: {
+        ...posts[postUuid],
+        likes: isLike
+          ? [...posts[postUuid].likes, userUuid]
+          : posts[postUuid].likes.filter(uuid => uuid !== userUuid)
+      }
+    });
+  }
+
   @Action(Logout)
   logout({ setState }: StateContext<PostCollection>) {
     setState({});
   }
 
-  @Action([AddPostFailed, GetPostsFailed, AddCommentFailed, DeletePostFailed])
+  @Action([
+    AddPostFailed,
+    GetPostsFailed,
+    AddCommentFailed,
+    DeletePostFailed,
+    LikeFailed
+  ])
   error({ dispatch }: StateContext<PostCollection>, { errors }: any) {
     dispatch(new SetErrors(errors));
   }
