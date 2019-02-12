@@ -38,6 +38,8 @@ export class WallComponent implements OnInit {
   content: string;
   wallOwner: string;
   placeholder = '';
+  postPage = 0;
+  postPageSize = 3;
 
   constructor(
     private store: Store,
@@ -61,6 +63,7 @@ export class WallComponent implements OnInit {
       } else {
         this.placeholder = 'What are you thinking?';
       }
+      this.postPage = 0;
       this.element.nativeElement.parentElement.scrollTop = 0;
     });
   }

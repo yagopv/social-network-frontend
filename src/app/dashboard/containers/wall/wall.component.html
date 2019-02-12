@@ -17,11 +17,22 @@
     <!-- Removing trackBy cause the post to rerender -->
     <sn-post
       @listItems
-      *ngFor="let post of posts; trackBy: postIdentity"
+      *ngFor="
+        let post of (posts | slice: 0:(postPage + 1) * postPageSize);
+        trackBy: postIdentity
+      "
       [post]="post"
       [currentUser]="currentUser$ | async"
       (comment)="addComment($event)"
       (delete)="deletePost($event)"
     ></sn-post>
+    <sn-pager
+      type="big"
+      [(page)]="postPage"
+      [pageSize]="postPageSize"
+      [count]="posts.length"
+      showMoreText="See more posts"
+      showLessText="See less posts"
+    ></sn-pager>
   </section>
 </ng-container>

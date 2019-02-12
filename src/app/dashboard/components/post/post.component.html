@@ -23,9 +23,12 @@
         [currentUser]="currentUser"
       ></sn-post-comment>
       <sn-pager
+        type="mini"
         [(page)]="commentsPage"
         [pageSize]="commentsPageSize"
         [count]="post.comments.length"
+        showMoreText="More comments"
+        showLessText="Less comments"
       ></sn-pager>
     </section>
   </section>

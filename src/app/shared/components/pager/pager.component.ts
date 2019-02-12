@@ -9,6 +9,9 @@ import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 export class PagerComponent implements OnInit {
   @Input() pageSize: number;
   @Input() count: number;
+  @Input() type: string;
+  @Input() showMoreText: string;
+  @Input() showLessText: string;
 
   // Two-way data binding
   // https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html
