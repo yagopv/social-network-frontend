@@ -21,6 +21,7 @@ import { TextAreaDirective } from './directives/textarea-directive';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ClockComponent } from './clock/clock.component';
+import { PagerComponent } from './components/pager/pager.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
@@ -41,7 +42,8 @@ import { ClockComponent } from './clock/clock.component';
     TextAreaDirective,
     AvatarComponent,
     LoaderComponent,
-    ClockComponent
+    ClockComponent,
+    PagerComponent
   ],
   exports: [
     NotFoundComponent,
@@ -60,7 +62,8 @@ import { ClockComponent } from './clock/clock.component';
     TextAreaDirective,
     AvatarComponent,
     LoaderComponent,
-    ClockComponent
+    ClockComponent,
+    PagerComponent
   ]
 })
 export class SharedModule {}

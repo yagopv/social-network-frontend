@@ -29,8 +29,6 @@ export class PostComponent {
   deleteCommentIcon: IconProp = faTrashAlt;
   commentsPage = 0;
   commentsPageSize = 3;
-  moreCommentsIcon = faPlusCircle;
-  lessCommentsIcon = faMinusCircle;
 
   addComment(content: string) {
     this.comment.emit({
