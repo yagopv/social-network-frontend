@@ -2,7 +2,7 @@
   <sn-avatar [user]="comment.author"></sn-avatar>
   <div class="post-message">
     <h5>
-      <a [routerLink]="['/user', comment.author.uuid, 'wall']">{{
+      <a [routerLink]="getLink(comment.author.uuid)">{{
         comment.author.fullName
       }}</a>
       <small>{{ comment.createdAt | userFriendlyDate }}</small>

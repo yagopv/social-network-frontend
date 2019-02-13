@@ -11,4 +11,12 @@ import { Profile } from '../../../auth/models/profile.model';
 export class PostCommentComponent {
   @Input() comment: Comment;
   @Input() currentUser: Profile;
+
+  getLink(uuid: string) {
+    if (uuid === this.currentUser.uuid) {
+      return ['/wall'];
+    } else {
+      return ['/user', uuid, 'wall'];
+    }
+  }
 }

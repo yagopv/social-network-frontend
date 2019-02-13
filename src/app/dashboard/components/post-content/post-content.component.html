@@ -3,12 +3,12 @@
     <sn-avatar [user]="post.author"></sn-avatar>
     <div>
       <h4>
-        <a [routerLink]="['/user', post.author.uuid, 'wall']"
+        <a [routerLink]="getLink(post.author.uuid)"
           ><b>{{ post.author.fullName }} </b></a
         >
         <ng-container *ngIf="post.author.uuid !== post.owner.uuid">
           <fa-icon [icon]="arrowRight"></fa-icon>
-          <a [routerLink]="['/user', post.owner.uuid, 'wall']"
+          <a [routerLink]="getLink(post.owner.uuid)"
             ><b> {{ post.owner.fullName }}</b></a
           >
         </ng-container>

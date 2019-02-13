@@ -1,5 +1,5 @@
 <article>
-  <sn-post-content [post]="post"></sn-post-content>
+  <sn-post-content [post]="post" [currentUser]="currentUser"></sn-post-content>
   <sn-like [likeCount]="post.likes.length" (like)="toggleLike()"></sn-like>
   <div class="comment"></div>
   <section class="comments">
