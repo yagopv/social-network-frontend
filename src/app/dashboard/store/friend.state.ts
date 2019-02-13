@@ -194,7 +194,7 @@ export class FriendsState {
   }
 
   @Action(Logout)
-  logout({ dispatch, setState }: StateContext<Friends>) {
+  logout({ setState }: StateContext<Friends>) {
     setState({
       friends: {},
       userSearch: {},

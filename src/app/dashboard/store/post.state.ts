@@ -1,5 +1,6 @@
 import { State, StateContext, Action, Selector, Store } from '@ngxs/store';
 import { catchError, tap } from 'rxjs/operators';
+import { Navigate } from '@ngxs/router-plugin';
 
 import {
   GetPosts,
@@ -40,7 +41,7 @@ export class PostState {
   getPosts({ dispatch }: StateContext<PostCollection>, { userId }: GetPosts) {
     return this.postService.getWall(userId).pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
-      catchError(error => dispatch(new GetPostsFailed(error.error)))
+      catchError(error => dispatch(new GetPostsFailed(error.error, userId)))
     );
   }
 
@@ -59,6 +60,18 @@ export class PostState {
         return draft;
       }, {})
     );
+  }
+
+  @Action([GetPostsFailed])
+  getPostsFailed(
+    { dispatch }: StateContext<PostCollection>,
+    { errors, uuid }: any
+  ) {
+    if (errors && errors.filter(error => error.status === 403).length > 0) {
+      dispatch(new Navigate(['/user', uuid, 'private', 'wall']));
+    } else {
+      dispatch(new SetErrors(errors));
+    }
   }
 
   @Action(AddPost)
@@ -208,13 +221,7 @@ export class PostState {
     setState({});
   }
 
-  @Action([
-    AddPostFailed,
-    GetPostsFailed,
-    AddCommentFailed,
-    DeletePostFailed,
-    LikeFailed
-  ])
+  @Action([AddPostFailed, AddCommentFailed, DeletePostFailed, LikeFailed])
   error({ dispatch }: StateContext<PostCollection>, { errors }: any) {
     dispatch(new SetErrors(errors));
   }
