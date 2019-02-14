@@ -1,4 +1,11 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  ViewChildren,
+  QueryList
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -26,6 +33,7 @@ import { Error } from '../../../error/models/error.model';
 import { FriendsState } from '../../store/friend.state';
 import { Friend } from '../../models/friend.model';
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
+import { PostComponent } from '../../components/post/post.component';
 
 @Component({
   selector: 'sn-wall',
@@ -38,6 +46,7 @@ export class WallComponent implements OnInit {
   @Select(AuthState.getUser) currentUser$: Observable<Profile>;
   @Select(ErrorState) errors$: Observable<Error>;
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
+  @ViewChildren(PostComponent) posts: QueryList<PostComponent>;
 
   friend: Friend;
   content: string;
@@ -71,14 +80,20 @@ export class WallComponent implements OnInit {
       }
       this.postPage = 0;
       this.element.nativeElement.parentElement.scrollTop = 0;
+    });
 
-      this.actions$.pipe(ofAction(AddPostSuccess)).subscribe(() => {
-        this.publisher.reset();
-      });
+    this.actions$.pipe(ofAction(AddPostSuccess)).subscribe(() => {
+      this.publisher.resetContent();
+      this.publisher.resetHeight();
+    });
 
-      this.actions$.pipe(ofAction(AddCommentSuccess)).subscribe(() => {
-        this.publisher.content = '';
-      });
+    this.actions$.pipe(ofAction(AddCommentSuccess)).subscribe(({ postId }) => {
+      const post = this.posts.find(
+        postComponent => postComponent.post.id === postId
+      );
+      if (post) {
+        post.resetComment();
+      }
     });
   }
 

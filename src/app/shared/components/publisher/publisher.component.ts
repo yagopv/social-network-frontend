@@ -7,7 +7,8 @@ import {
   ElementRef,
   OnChanges,
   SimpleChange,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectorRef
 } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
@@ -26,12 +27,18 @@ export class PublisherComponent {
 
   @ViewChild('text') text: ElementRef;
 
+  constructor(private changeDetector: ChangeDetectorRef) {}
   content = '';
 
   faCaretSquareRight: IconProp = faCaretSquareRight;
 
-  reset() {
+  resetContent() {
     this.content = '';
+    // This is necesary because the post has the OnPush strategy
+    this.changeDetector.markForCheck();
+  }
+
+  resetHeight() {
     this.text.nativeElement.style.height = '30px';
   }
 

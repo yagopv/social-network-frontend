@@ -3,7 +3,8 @@ import {
   Input,
   EventEmitter,
   Output,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  ViewChild
 } from '@angular/core';
 
 import { Post } from '../../models/post.model';
@@ -15,13 +16,14 @@ import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
 } from '../../../shared/animations/list.animation';
+import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
 
 @Component({
   selector: 'sn-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss'],
   animations: [LIST_ANIMATION, LIST_ITEMS_ANIMATION],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush // This avoid rerender in another posts
 })
 export class PostComponent {
   @Input() post: Post;
@@ -30,6 +32,8 @@ export class PostComponent {
   @Output() comment = new EventEmitter();
   @Output() delete = new EventEmitter();
   @Output() like = new EventEmitter();
+
+  @ViewChild(PublisherComponent) publisher: PublisherComponent;
 
   deleteCommentIcon: IconProp = faTrashAlt;
   commentsPage = 0;
@@ -52,5 +56,9 @@ export class PostComponent {
 
   commentIdentity(index: number, comment: Comment) {
     return comment.id;
+  }
+
+  resetComment() {
+    this.publisher.resetContent();
   }
 }
