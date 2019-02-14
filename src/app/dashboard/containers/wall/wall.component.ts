@@ -1,8 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { Store, Select } from '@ngxs/store';
+import { Store, Select, Actions, ofAction } from '@ngxs/store';
 
 import { PostState } from '../../store/post.state';
 import {
@@ -10,7 +10,9 @@ import {
   AddPost,
   AddComment,
   DeletePost,
-  Like
+  Like,
+  AddPostSuccess,
+  AddCommentSuccess
 } from '../../store/post.actions';
 import { Post } from '../../models/post.model';
 import { AuthState } from '../../../auth/store/auth.state';
@@ -23,6 +25,7 @@ import { ErrorState } from '../../../error/store/error.state';
 import { Error } from '../../../error/models/error.model';
 import { FriendsState } from '../../store/friend.state';
 import { Friend } from '../../models/friend.model';
+import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
 
 @Component({
   selector: 'sn-wall',
@@ -34,6 +37,7 @@ export class WallComponent implements OnInit {
   @Select(PostState.getPosts) posts$: Observable<Post[]>;
   @Select(AuthState.getUser) currentUser$: Observable<Profile>;
   @Select(ErrorState) errors$: Observable<Error>;
+  @ViewChild(PublisherComponent) publisher: PublisherComponent;
 
   friend: Friend;
   content: string;
@@ -45,7 +49,8 @@ export class WallComponent implements OnInit {
   constructor(
     private store: Store,
     private route: ActivatedRoute,
-    private element: ElementRef
+    private element: ElementRef,
+    private actions$: Actions
   ) {}
 
   ngOnInit() {
@@ -66,13 +71,19 @@ export class WallComponent implements OnInit {
       }
       this.postPage = 0;
       this.element.nativeElement.parentElement.scrollTop = 0;
+
+      this.actions$.pipe(ofAction(AddPostSuccess)).subscribe(() => {
+        this.publisher.reset();
+      });
+
+      this.actions$.pipe(ofAction(AddCommentSuccess)).subscribe(() => {
+        this.publisher.content = '';
+      });
     });
   }
 
   publishPost(content: string) {
-    this.store
-      .dispatch(new AddPost({ content, uuid: this.wallOwner }))
-      .subscribe(() => (this.content = ''));
+    this.store.dispatch(new AddPost({ content, uuid: this.wallOwner }));
   }
 
   addComment({ postId, message }: { postId: string; message: string }) {

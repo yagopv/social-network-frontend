@@ -13,29 +13,26 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 import { Author } from '../../../dashboard/models/author.model';
 import { Profile } from 'selenium-webdriver/firefox';
-import { text } from '@angular/core/src/render3';
 
 @Component({
   selector: 'sn-publisher',
   templateUrl: './publisher.component.html',
   styleUrls: ['./publisher.component.scss']
 })
-export class PublisherComponent implements OnChanges {
+export class PublisherComponent {
   @Input() placeholder: string;
   @Input() user: Profile | Author;
-  @Input() content: string;
   @Output() publish = new EventEmitter();
 
   @ViewChild('text') text: ElementRef;
 
+  content = '';
+
   faCaretSquareRight: IconProp = faCaretSquareRight;
 
-  constructor() {}
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.content && changes.content.currentValue === '') {
-      this.text.nativeElement.style.height = '30px';
-    }
+  reset() {
+    this.content = '';
+    this.text.nativeElement.style.height = '30px';
   }
 
   publishStatus() {

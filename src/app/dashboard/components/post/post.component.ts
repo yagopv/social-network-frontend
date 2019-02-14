@@ -26,6 +26,7 @@ import {
 export class PostComponent {
   @Input() post: Post;
   @Input() currentUser: Profile;
+
   @Output() comment = new EventEmitter();
   @Output() delete = new EventEmitter();
   @Output() like = new EventEmitter();
