@@ -1,6 +1,6 @@
 import { Injectable, DoCheck } from '@angular/core';
 
-window.counter = 0;
+window['counter'] = 0;
 
 // For demonstrate change detection. Play adding or removing change detection from clock and post components
 @Injectable({
@@ -8,7 +8,7 @@ window.counter = 0;
 })
 export class BaseComponentService implements DoCheck {
   ngDoCheck() {
-    window.counter = window.counter + 1;
-    console.log(window.counter);
+    window['counter'] = window['counter'] + 1;
+    console.log(window['counter']);
   }
 }
