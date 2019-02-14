@@ -1,4 +1,10 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 import { Post } from '../../models/post.model';
 import { Profile } from '../../../auth/models/profile.model';
@@ -14,7 +20,8 @@ import {
   selector: 'sn-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss'],
-  animations: [LIST_ANIMATION, LIST_ITEMS_ANIMATION]
+  animations: [LIST_ANIMATION, LIST_ITEMS_ANIMATION],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostComponent {
   @Input() post: Post;

@@ -12,7 +12,8 @@ import { map, startWith } from 'rxjs/operators';
       </h2>
     </div>
   `,
-  styleUrls: ['./clock.component.scss']
+  styleUrls: ['./clock.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClockComponent {
   clock$ = interval(60000).pipe(
