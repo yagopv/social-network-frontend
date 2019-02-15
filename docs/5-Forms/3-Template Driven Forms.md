@@ -1,5 +1,7 @@
- theme: Next, 8
+theme: Next, 8
 autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez
 
 # Template-driven Forms
 

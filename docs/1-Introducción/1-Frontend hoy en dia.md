@@ -1,4 +1,7 @@
 theme: Next, 8
+autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez
 
 # Frontend hoy en día
 
@@ -15,8 +18,4 @@ https://github.com/kamranahmedse/developer-roadmap
 https://2018.stateofjs.com/
 
 ---
-
-## Octoverse
-
-https://octoverse.github.com/
 

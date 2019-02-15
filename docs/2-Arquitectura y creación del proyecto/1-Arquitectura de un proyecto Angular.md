@@ -1,10 +1,13 @@
 theme: Next, 8
+autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez
 
 # Que es Angular?
 
 Angular es una plataforma para la creación de aplicaciones en HTML y TypeScript.
 
-Angular esta escrito en Typescript y conforma un ecosistema de librerias que tratan de resolver un problema complejo de una forma un tanto dogmática (En comparación con otros Frameworks / Librerías)
+Angular esta escrito en Typescript y forma un ecosistema de librerias que tratan de resolver un problema complejo de una forma un tanto dogmática (En comparación con otros Frameworks / Librerías)
 
 ---
 

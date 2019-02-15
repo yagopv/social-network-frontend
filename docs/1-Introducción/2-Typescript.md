@@ -1,11 +1,13 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez
 
 # TypeScript
 
 ---
 
-# TypeScript
+## TypeScript
 
 - TypeScript es un superset de Javascript (ES5 y ES6), por tanto podemos utilizar practicamente todas las posibilidades que nos brinden las nuevas versiones de Javascript y el compilador de Typescript se encargará de convertirlos ficheros al formato que hayamos configurado y que los navegadores actuales comprendan
 
@@ -15,7 +17,7 @@ autoscale: true
 
 ---
 
-# Sintaxis general
+## Sintaxis general
 
 ```javascript
 let variable: type;
@@ -28,7 +30,7 @@ const post: Post = new Post();
 
 ---
 
-# Generics
+## Generics
 
 - TypeScript soporta lo que en muchos lenguajes se denomina "generics" 
 
@@ -40,7 +42,7 @@ const posts: Array<Post> = [new Post()];
 
 ---
 
-# Any
+## any
 
 `any` representa cualquier valor
 
@@ -51,7 +53,7 @@ changing = true; // sin problema
 
 ---
 
-# Union types
+## Union types
 
 Nos permite usar varios tipos
 
@@ -62,7 +64,7 @@ changing = true; // sin problema
 
 ---
 
-# Enums
+## Enums
 
 ```javascript
 enum PostStatus {published, draft, deleted}
@@ -72,7 +74,7 @@ post.status = PostStatus.draft;
 
 ---
 
-# Return types
+## Return types
 
 Podemos especificar el tipo de retorno de una función
 
@@ -88,7 +90,7 @@ function log(): void { }
 
 ---
 
-# Interfaces
+## Interfaces
 
 Javascript es dinámico y es una de sus grandes cualidades
 
@@ -110,7 +112,7 @@ Esto fuerza el parámetro a ser score y el compilador lo detectará
 
 ---
 
-# Interfaces
+## Interfaces
 
 Lo normal es usar las interfaces declarándolas de antemano
 
@@ -125,7 +127,7 @@ function addPointsToScore(player: HasScore, points: number): void {
 
 ---
 
-# Interfaces
+## Interfaces
 
 También puedo definir funciones en la interfaz
 
@@ -142,7 +144,7 @@ function startRunning(runner: Runner): void {
 
 ---
 
-# Parámetros opcionales
+## Parámetros opcionales
 
 En Javascript si un parámetro no existe se convertirá en undefined al invocar a la función.
 
@@ -157,7 +159,7 @@ function addPointsToScore(player: HasScore, points?: number): void {
 
 ---
 
-# Classes. Implementación de interfaces
+## Classes. Implementación de interfaces
 
 Puedo usar clases ES6. Las clases pueden implementar interfaces como en otros lenguajes de programación
 
@@ -176,7 +178,7 @@ class HungryRunner implements CanRun, CanEat {
 
 ---
 
-# Classes. Class properties
+## Classes. Class properties
 
 Puedo utilizar propiedades de clase. Esto no es una característica de ES6 y sólo lo puedo hacer a tavés de Typescript
 
@@ -194,7 +196,7 @@ class Post {
 
 ---
 
-# private y public shorcut
+## private y public shorcut
 
 En typescript
 
@@ -219,7 +221,7 @@ class Post {
 ```
 
 ---
-# Decorators
+## Decorators
 
 - Puede que se estandaricen en un futuro
 - Ampliamente utilizados por Angular
@@ -227,7 +229,7 @@ class Post {
 
 ---
 
-# Decorators
+## Decorators
 
 ```javascript
 class PostService {
@@ -249,7 +251,7 @@ const Log = function () {
 
 ---
 
-# Decorators
+## Decorators
 
 - _target_: El método objetivo de nuestro decorator
 - _name_: El nombre del método objetivo
@@ -257,7 +259,7 @@ const Log = function () {
 
 ---
 
-# Decorators
+## Decorators
 
 ```javascript
 postService.getPosts();
@@ -268,13 +270,13 @@ postService.getPost(1);
 
 ---
 
-# Decorators
+## Decorators
 
 [Explorando los diferentes decorators en Angular](https://netbasal.com/exploring-the-various-decorators-in-angular-b208875b207c)
 
 ---
 
-# Instalando types
+## Instalando types
 
 Por ejemplo para usar Typescript con angular 1.x
 
@@ -285,6 +287,7 @@ npm install --save-dev @types/angular
 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
 Al instalar un tipo el compilador lo detectará automáticamente si está en `node_modules`
+
 ---
 
 

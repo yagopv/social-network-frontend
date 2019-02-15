@@ -1,11 +1,13 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez
 
 # SCSS
 
 ---
 
-# SCSS
+## SCSS
 
 - Es un precompilador de CSS
 - Nos da una serie de beneficios sobre escribir solamente CSS como el nesting o el uso de variables y mixins
@@ -13,7 +15,7 @@ autoscale: true
 
 ---
 
-# Variables
+## Variables
 
 SCSS
 
@@ -29,7 +31,7 @@ body {
 
 ---
 
-# Variables
+## Variables
 
 CSS
 
@@ -42,7 +44,7 @@ body {
 
 ---
 
-# Nesting
+## Nesting
 
 SCSS
 
@@ -66,7 +68,7 @@ nav {
 
 ---
 
-# Nesting
+## Nesting
 
 CSS
 
@@ -88,7 +90,7 @@ nav a {
 
 ---
 
-# Partials
+## Partials
 
 SCSS
 
@@ -106,7 +108,7 @@ ol {
 
 ---
 
-# Partials
+## Partials
 
 CSS
 
@@ -123,7 +125,7 @@ body {
 
 ---
 
-# Mixins
+## Mixins
 
 ```scss
 @mixin transform($property) {
@@ -135,7 +137,7 @@ body {
 
 ---
 
-# Mixins
+## Mixins
 
 ```css
 .box {
