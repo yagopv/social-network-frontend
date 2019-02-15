@@ -1,7 +1,7 @@
 theme: Next, 8
 autoscale: true
 build-lists: true
-footer: @Yago Pérez Vázquez
+footer: @Yago Pérez Vázquez 2019
 
 # Quien soy ?
 
@@ -19,7 +19,7 @@ footer: @Yago Pérez Vázquez
 
 # Accenture
 
-Empece mi carrera profesional en Barcelona en Accenture ...
+Empece mi carrera profesional en Barcelona en Accenture despues de una beca
 
 ---
 
@@ -27,7 +27,7 @@ Empece mi carrera profesional en Barcelona en Accenture ...
 
 # Mango
 
-... Y la continue en Mango, la empresa textil ...
+Unos años después la continue en Mango, la empresa textil
 
 ---
 
@@ -35,27 +35,27 @@ Empece mi carrera profesional en Barcelona en Accenture ...
 
 # Everis
 
-Volví a La Coruña a Everis unos cuantos años después ...
+y despues de un tiempo regresé a La Coruña a Everis
 
 ---
 
-![](https://media.giphy.com/media/KGVgi2nOVkCoE/giphy.gif)
+![inline 120%](https://media.giphy.com/media/KGVgi2nOVkCoE/giphy.gif)
 
 ---
 
-![fit](https://media.giphy.com/media/11ZSwQNWba4YF2/giphy.gif)
+![inline 100%](https://media.giphy.com/media/11ZSwQNWba4YF2/giphy.gif)
 
 ---
 
 ![right fit](http://forumtic.upc.edu/wp-content/uploads/2016/03/Tecnocom.jpg)
 
-# Asi que hui a Tecnocom
+# De alli huí literalmente a Tecnocom
 
-Y encontre bastante paz de forma inesperada ... Incluso despues de trabajar muchos años para ...
+Y encontre bastante paz de forma inesperada ... Incluso después de trabajar muchos años para nuestra amiga
 
 ---
 
-![fit](https://www.marcasrenombradas.com/wp-content/uploads/2014/08/Inditex-750x421.jpg)
+![inline 100%](https://www.marcasrenombradas.com/wp-content/uploads/2014/08/Inditex-750x421.jpg)
 
 ---
 
@@ -63,15 +63,19 @@ Y encontre bastante paz de forma inesperada ... Incluso despues de trabajar much
 
 # Indra
 
-Luego nos compro Indra ... 💩
+Luego nos compro Indra 💩
 
 ---
 
-![right fit](https://pbs.twimg.com/profile_images/938387100038238208/e-V2wJE5_400x400.jpg)
+![right fit 100%](https://pbs.twimg.com/profile_images/938387100038238208/e-V2wJE5_400x400.jpg)
 
 # Mobgen
 
-Pero llega un momento en el que siempre necesitas un cambio asi que me fui para Mobgen
+Pero siempre me llega el momento en el que necesito probar algo nuevo así que me mudé de nuevo a Mobgen por todas las cosas positivas que había escuchado
+
+---
+
+![](https://www.youtube.com/watch?v=HhzPwVaMCfo&t=74s)
 
 ---
 
@@ -79,13 +83,14 @@ Pero llega un momento en el que siempre necesitas un cambio asi que me fui para 
 
 # Accenture
 
-Y no se como Mobgen acabo siendo comprada por Accenture ... asi que he cerrado el circulo y estoy donde empecé
+Pero al final estoy donde había empezado 😱
 
 ---
 
-- [https://www.linkedin.com/in/yagopv/](https://www.linkedin.com/in/yagopv/)
-- [http://portfolio.yagoperez.com/](http://portfolio.yagoperez.com/)
-- [yagoperez@outlook.com](mailto:yagoperez@outlook.com)
+## Podeis encontrarme en 
+
+- [https://www.linkedin.com/in/yagopv/](https://www.linkedin.com/in/yagopv)
+- [http://portfolio.yagoperez.com/](http://portfolio.yagoperez.com)
 - [https://twitter.com/yperezva](https://twitter.com/yperezva)
+- [yagoperez@outlook.com](mailto:yagoperez@outlook.com)
 
----
