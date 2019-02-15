@@ -15,25 +15,25 @@ ng serve
 
 ---
 
-###Estructura de directorios generada
+## Estructura de directorios generada
 
 https://angular.io/guide/file-structure
 
-###Explorar angular.json
+## Explorar angular.json
 
 https://github.com/angular/angular-cli/wiki/angular-workspace
 
-### Browser support y polyfills
+## Browser support y polyfills
 
 https://angular.io/guide/browser-support
 
 ---
 
-###Dependencias y librerias en nuestro package.json
+## Dependencias y librerias en nuestro package.json
 
 https://angular.io/guide/npm-packages
 
-### Configuración de Typescript
+## Configuración de Typescript
 
 https://angular.io/guide/typescript-configuration
 

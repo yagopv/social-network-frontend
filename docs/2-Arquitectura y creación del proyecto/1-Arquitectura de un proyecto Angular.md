@@ -3,7 +3,11 @@ autoscale: true
 build-lists: true
 footer: @Yago Pérez Vázquez
 
-# Que es Angular?
+# Arquitectura
+
+--
+
+## Que es Angular?
 
 Angular es una plataforma para la creación de aplicaciones en HTML y TypeScript.
 
@@ -15,7 +19,7 @@ Angular esta escrito en Typescript y forma un ecosistema de librerias que tratan
 
 ---
 
-# Componentes y directivas
+## Componentes y directivas
 
 - Los componentes son las piezas fundamentales de nuestra aplicación encargadas de la gestión de diferentes partes de nuestra interfaz. Una aplicación es en general un arbol de componentes
 
@@ -44,7 +48,7 @@ class MyDirective() {}
 
 ---
 
-# Modulos
+## Módulos
 
 - Un módulo en Angular es un conjunto de componentes, servicios, directivas, pipes, etc. Los elementos del conjunto deberían constituir una unidad funcional de nuestra aplicación
 
@@ -76,7 +80,7 @@ class AppModule {}
 
 ---
 
-# Templates
+## Templates
 
 - Las templates en Angular combinan HTML tradicional con una sintaxis especial que define Angular. Esta sintaxis permite enlazar los modelos de datos de nuestros componentes con las plantillas
 
@@ -96,12 +100,12 @@ Data binding es el conjunto de utilidades o técnicas que crean un mecanismo par
 
 ---
 
-# Services
+## Services
 
 Los _Services_ son clases que ofrecen funcionalidad y gestión del estado de la aplicación. Normalmente los usaremos con datos que no pertenecen a ninguna vista concreta sino a la aplicación en global
 
 ---
 
-# Inyección de dependencias
+## Inyección de dependencias
 
 Es el mecanismo que permite inyectar servicios en los componentes. Este mecanismo nos permite inyectar por ejemplo la misma instancia de un servicio en diferentes partes de la aplicación
