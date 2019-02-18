@@ -15,6 +15,10 @@ footer: @Yago Pérez Vázquez 2019
 
 ---
 
+![](https://media.giphy.com/media/QeIemzJ8zzakE/giphy.gif)
+
+---
+
 ## Variables
 
 SCSS

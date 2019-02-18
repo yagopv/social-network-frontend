@@ -16,8 +16,12 @@ footer: @Yago Pérez Vázquez 2019
 - La caracteristica principal que añade TypeScript es la del tipado de datos
 
 - Otras funcionalidades que aporta son los _Decorators_, ampliamente utilizados en Angular
+
 ---
 
+![](https://media.giphy.com/media/xUOwGdD7RGT4CTnUaY/giphy.gif)
+
+---
 
 ## Sintaxis general
 
