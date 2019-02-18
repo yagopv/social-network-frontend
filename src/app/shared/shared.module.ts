@@ -22,6 +22,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ClockComponent } from './components/clock/clock.component';
 import { PagerComponent } from './components/pager/pager.component';
+import { NullDefaultDirective } from './directives/null-default.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
@@ -43,7 +44,8 @@ import { PagerComponent } from './components/pager/pager.component';
     AvatarComponent,
     LoaderComponent,
     ClockComponent,
-    PagerComponent
+    PagerComponent,
+    NullDefaultDirective
   ],
   exports: [
     NotFoundComponent,
@@ -63,7 +65,8 @@ import { PagerComponent } from './components/pager/pager.component';
     AvatarComponent,
     LoaderComponent,
     ClockComponent,
-    PagerComponent
+    PagerComponent,
+    NullDefaultDirective
   ]
 })
 export class SharedModule {}

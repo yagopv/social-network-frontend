@@ -12,6 +12,7 @@
           rows="10"
           placeholder="Tell us something about you"
           formControlName="description"
+          snNullDefault
         ></textarea>
       </sn-form-control>
       <sn-form-control
@@ -30,6 +31,7 @@
           type="text"
           placeholder="Enter you LinkedIn public profile"
           formControlName="linkedIn"
+          snNullDefault
         />
       </sn-form-control>
       <sn-form-control [control]="updateProfileForm.get('preferences.twitter')">
@@ -37,6 +39,7 @@
           type="text"
           placeholder="Enter you Twitter public profile"
           formControlName="twitter"
+          snNullDefault
         />
       </sn-form-control>
       <sn-form-control [control]="updateProfileForm.get('preferences.github')">
@@ -44,6 +47,7 @@
           type="text"
           placeholder="Enter you Github public profile"
           formControlName="github"
+          snNullDefault
         />
       </sn-form-control>
     </div>

@@ -57,6 +57,7 @@ export class ProfileComponent implements OnInit {
       this.markFormGroupTouched(this.updateProfileForm);
       return;
     }
+
     this.store.dispatch(new UpdateUserProfile(this.updateProfileForm.value));
   }
 
