@@ -15,48 +15,6 @@ ng serve
 
 ---
 
-## Estructura de directorios generada
-
-https://angular.io/guide/file-structure
-
----
-
-## Explorar la configuración en _angular.json_
-
-https://angular.io/guide/workspace-config
-
----
-
-## Explorar package.json
-
-https://angular.io/guide/npm-packages
-
----
-
-## Browser support y polyfills
-
-https://angular.io/guide/browser-support
-
----
-
-## Configuración Typescript
-
-https://angular.io/guide/typescript-configuration
-
----
-
-## Dependencias y librerias en nuestro package.json
-
-https://angular.io/guide/npm-packages
-
----
-
-## Configuración de Typescript
-
-https://angular.io/guide/typescript-configuration
-
----
-
 ### Añadir scripts y hojas de estilos de forma global
 
 ```javascript
@@ -74,4 +32,18 @@ npm install simple-reset-css --save
 }
 ...
 ```
+
+---
+
+## El proyecto Angular
+
+|Tema|Docs|
+|---|---|
+|**Estructura de directorios**|https://angular.io/guide/file-structure|
+|**Configuración workspace**|https://angular.io/guide/workspace-config|
+|**Configuración npm**|https://angular.io/guide/npm-packages|
+|**Soporte navegadores**|https://angular.io/guide/browser-support|
+|**Configuración Typescript**|https://angular.io/guide/typescript-configuration|
+
+
 
