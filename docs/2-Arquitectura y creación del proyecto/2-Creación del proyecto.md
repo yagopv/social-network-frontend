@@ -19,9 +19,19 @@ ng serve
 
 https://angular.io/guide/file-structure
 
-## Explorar angular.json
+---
 
-https://github.com/angular/angular-cli/wiki/angular-workspace
+## Explorar la configuración en _angular.json_
+
+https://angular.io/guide/workspace-config
+
+---
+
+## Explorar package.json
+
+https://angular.io/guide/npm-packages
+
+---
 
 ## Browser support y polyfills
 
@@ -29,25 +39,39 @@ https://angular.io/guide/browser-support
 
 ---
 
+## Configuración Typescript
+
+https://angular.io/guide/typescript-configuration
+
+---
+
 ## Dependencias y librerias en nuestro package.json
 
 https://angular.io/guide/npm-packages
+
+---
 
 ## Configuración de Typescript
 
 https://angular.io/guide/typescript-configuration
 
-
-
 ---
 
-# Añadir scripts y hojas de estilos de forma global
+### Añadir scripts y hojas de estilos de forma global
 
-- Instalar simple-reset-css
-
-```bash
+```javascript
+// Instalar simple-reset-css
 npm install simple-reset-css --save
-```
 
-- Añadir la hoja de estilos en `angular.json`
+// Añadir la hoja de estilos en `angular.json` en arquitect/build/styles y configurar stylePreprocessorOptions scss
+...
+"styles": [
+  "src/scss/styles.scss",
+  "./node_modules/simple-css-reset/reset.css"
+],
+"stylePreprocessorOptions": {
+  "includePaths": ["src/scss"]
+}
+...
+```
 
