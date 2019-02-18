@@ -5,6 +5,8 @@ import { NgControl } from '@angular/forms';
   selector: 'input[snNullDefault], textarea[snNullDefault]'
 })
 export class NullDefaultDirective {
+  // NgControl: A base class that all control FormControl-based directives extend. It binds a FormControl object to a DOM element
+  // Cannot use FormControl here because is not injectable
   constructor(private ngControl: NgControl) {}
 
   @HostListener('change', ['$event.target'])
