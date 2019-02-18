@@ -5,6 +5,7 @@ import { Friends } from '../../models/friends.model';
 import { Observable } from 'rxjs';
 import { GetFriends, AddFriend } from '../../store/friend.actions';
 import { LIST_ITEMS_ANIMATION } from '../../../shared/animations/list.animation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sn-friends',
@@ -15,7 +16,7 @@ import { LIST_ITEMS_ANIMATION } from '../../../shared/animations/list.animation'
 export class FriendsComponent implements OnInit {
   @Select(FriendsState.getSearchFriends) friends$: Observable<Friends>;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit() {}
 
@@ -25,5 +26,9 @@ export class FriendsComponent implements OnInit {
 
   removeFriend(uuid: string) {
     console.log(uuid);
+  }
+
+  navigateToWall(uuid: string) {
+    this.router.navigate(['/user', uuid, 'wall']);
   }
 }

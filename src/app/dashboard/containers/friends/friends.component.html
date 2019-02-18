@@ -7,5 +7,6 @@
     [friend]="friend"
     (add)="addFriend($event)"
     (remove)="removeFriend($event)"
+    (click)="navigateToWall(friend.uuid)"
   ></sn-friend>
 </div>
