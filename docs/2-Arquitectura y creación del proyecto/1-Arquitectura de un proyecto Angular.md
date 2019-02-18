@@ -3,31 +3,32 @@ autoscale: true
 build-lists: true
 footer: @Yago Pérez Vázquez 2019
 
-# Arquitectura
-
---
-
-## Que es Angular?
-
-Angular es una plataforma para la creación de aplicaciones en HTML y TypeScript.
-
-Angular esta escrito en Typescript y forma un ecosistema de librerias que tratan de resolver un problema complejo de una forma un tanto dogmática (En comparación con otros Frameworks / Librerías)
+# Arquitectura Angular
 
 ---
 
-![fit](https://angular.io/generated/images/guide/architecture/overview2.png)
+## Que es Angular?
+
+- Angular es una plataforma para la creación de aplicaciones en HTML y TypeScript.
+
+- Angular es un ecosistema de librerias que tratan de resolver un problema complejo de una forma un tanto dogmática
+
+![right fit](https://angular.io/generated/images/guide/architecture/overview2.png)
+
 
 ---
 
 ## Componentes y directivas
 
-- Los componentes son las piezas fundamentales de nuestra aplicación encargadas de la gestión de diferentes partes de nuestra interfaz. Una aplicación es en general un arbol de componentes
+- Los componentes son las piezas fundamentales de nuestra aplicación encargadas de la gestión de diferentes partes de nuestra interfaz
 
-- Se declaran mediante el decorator `@Component` y tienen un ciclo de vida que nos permite realizar acciones tanto en su creación y linkado con el DOM, como en su actualización como en su destrucción y eliminación del DOM.
+- Una aplicación es en general un arbol de componentes
 
----
+- Se declaran mediante el decorator `@Component`
 
-![fit](https://angular.io/generated/images/guide/architecture/component-tree.png)
+- Tienen un ciclo de vida que nos permite realizar acciones tanto en su creación y attach al DOM, como en su actualización, destrucción y eliminación
+
+![right fit 120%](https://angular.io/generated/images/guide/architecture/component-tree.png)
 
 ---
 
@@ -39,10 +40,9 @@ class MyComponent() {}
 class MyDirective() {}
 ```
 
-- _moduleId_: Cuando indicamos un id templateUrl y styleUrl se resuelven de forma relativa al componente
 - _selector_: string que permite identificar el componente a compilar y renderizar
-- _providers_: Lista de providers para la vista y su posible contenido proyectado
-- _viewProviders_: Lista de proveedores solo para la vista (Útil en libs)
+- _providers_: Lista de providers para la vista y sus hijos
+- _viewProviders_: Lista de providers solo para la vista
 - _template | templateUrl_: Plantilla inline o externa de un componente
 - _styles | styleUrls_: Lista de estilos inline o hoja de estilos externa
 
@@ -50,7 +50,9 @@ class MyDirective() {}
 
 ## Módulos
 
-- Un módulo en Angular es un conjunto de componentes, servicios, directivas, pipes, etc. Los elementos del conjunto deberían constituir una unidad funcional de nuestra aplicación
+- Conjunto de componentes, servicios, directivas, pipes, etc. 
+
+- Los elementos del módulo deberían constituir una unidad funcional en nuestra aplicación
 
 - Organizar una aplicación en módulos fomenta la reusabilidad
 
@@ -64,13 +66,13 @@ exports: ..., providers: ..., bootstrap: ...})
 class AppModule {}
 ```
 
-- _declarations_: Componentes, directivas y pipes del NgModule
+- _declarations_: Componentes, directivas y pipes que forman parte del módulo
 
-- _exports_: Subconjunto de declarations que serán usables desde otros módulos
+- _exports_: Subconjunto de declarations que se exporta para ser usados en otros módulos
 
-- _imports_: Otros módulos utilizados en el _NgModule_ que se está declarando
+- _imports_: Otros módulos utilizados en el _NgModule_ que se está declarando. Se añaden a _declarations_
 
-- _providers_: Declaración y definición de la manera de construir un Servicio de nuestra aplicación para el  NgModule en el que se está declarando. Se convierten en globales y accesibles desde cualquier parte de la aplicación aunque también se pueden crear a nivel de componente
+- _providers_: Declaración y definición de la manera de construir providers en nuestra aplicación. Se convierten en globales y accesibles desde cualquier parte de la aplicación aunque también se pueden crear a nivel de componente
 
 ---
 
@@ -82,7 +84,7 @@ class AppModule {}
 
 ## Templates
 
-- Las templates en Angular combinan HTML tradicional con una sintaxis especial que define Angular. Esta sintaxis permite enlazar los modelos de datos de nuestros componentes con las plantillas
+- Combinan HTML tradicional con una sintaxis especial que define Angular. Esta sintaxis permite enlazar los modelos de datos de nuestros componentes con las plantillas
 
 - En las plantillas podemos usar directivas con el objetivo de realizar flujo de control, como si un lenguaje de programación se tratase (if, else, for, switch ...)
 
@@ -94,9 +96,9 @@ class AppModule {}
 
 Data binding es el conjunto de utilidades o técnicas que crean un mecanismo para conectar la aplicación con el HTML
 
-- _Event binding_ permite a la aplicación responder a acciones del usuario
+- _Event binding_ permite a la aplicación responder a acciones del usuario (click, hover, mousedown ...)
 
-- _Property binding_ permite interpolar valores calculados durante la ejecución de la aplicación en el HTML de las plantillas
+- _Property binding_ permite enviar valores calculados durante la ejecución de la aplicación al HTML de las plantillas
 
 ---
 
@@ -108,4 +110,6 @@ Los _Services_ son clases que ofrecen funcionalidad y gestión del estado de la 
 
 ## Inyección de dependencias
 
-Es el mecanismo que permite inyectar servicios en los componentes. Este mecanismo nos permite inyectar por ejemplo la misma instancia de un servicio en diferentes partes de la aplicación
+- Es el mecanismo que permite inyectar servicios en los componentes
+
+- Este mecanismo nos permite inyectar por ejemplo la misma instancia de un servicio en diferentes partes de la aplicación (Singleton)

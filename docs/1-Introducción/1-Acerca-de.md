@@ -7,7 +7,7 @@ footer: @Yago Pérez Vázquez 2019
 
 ---
 
-![](https://media.giphy.com/media/YdsVEhV2jVgvrMZxX3/giphy.gif)
+![](https://media.giphy.com/media/KQm5O05y9rzQA/giphy.gif)
 
 ---
 

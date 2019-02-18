@@ -11,19 +11,24 @@ footer: @Yago Pérez Vázquez 2019
 
 - TypeScript es un superset de Javascript (ES5 y ES6), por tanto podemos utilizar practicamente todas las posibilidades que nos brinden las nuevas versiones de Javascript y el compilador de Typescript se encargará de convertirlos ficheros al formato que hayamos configurado y que los navegadores actuales comprendan
 
-- Además la caracteristica principal que añade TypeScripe es la del tipado de datos
+- Continuamente se actualiza con nuevas funcionalidades que provienen del estándar
 
-- Añade alguna cosa más como los Decorators, ampliamente utilizados en Angular
+- La caracteristica principal que añade TypeScript es la del tipado de datos
 
+- Otras funcionalidades que aporta son los _Decorators_, ampliamente utilizados en Angular
 ---
+
 
 ## Sintaxis general
 
 ```javascript
 let variable: type;
 
-const counter: number = 0;
+// Realmente aqui no es necesario el tipo ya que lo infiere
+const counter: number = 0; 
+
 const name: string = 'Yago';
+
 const post: Post = new Post();
 
 ```
@@ -32,22 +37,23 @@ const post: Post = new Post();
 
 ## Generics
 
-- TypeScript soporta lo que en muchos lenguajes se denomina "generics" 
-
 ```javascript
-const posts: Array<Post> = [new Post()];
-```
+// TypeScript soporta lo que en muchos lenguajes se denomina _Generics_ 
 
-- Ahora el array sólo puede contener Post. En caso contrario el compilador nos lo indicaría con un error
+const posts: Array<Post> = [new Post()];
+
+// Ahora el array sólo puede contener Post. En caso contrario el compilador nos lo indicaría con un error
+```
 
 ---
 
 ## any
 
-`any` representa cualquier valor
-
 ```javascript
+// any representa cualquier valor
+
 let changing: any = 2;
+
 changing = true; // sin problema
 ```
 
@@ -55,10 +61,11 @@ changing = true; // sin problema
 
 ## Union types
 
-Nos permite usar varios tipos
-
 ```javascript
+// Nos permite usar varios tipos
+
 let changing: number | boolean = 2;
+
 changing = true; // sin problema
 ```
 
@@ -68,7 +75,9 @@ changing = true; // sin problema
 
 ```javascript
 enum PostStatus {published, draft, deleted}
+
 const post = new Post(); 
+
 post.status = PostStatus.draft;
 ```
 
@@ -76,15 +85,13 @@ post.status = PostStatus.draft;
 
 ## Return types
 
-Podemos especificar el tipo de retorno de una función
-
 ```javascript
+// Podemos especificar el tipo de retorno de una función
 function getPosts(): Post[] { }
 ```
 
-Si la función no devuelve nada puedo usar `void`
-
 ```javascript
+// Si la función no devuelve nada puedo usar `void`
 function log(): void { }
 ```
 
@@ -92,29 +99,26 @@ function log(): void { }
 
 ## Interfaces
 
-Javascript es dinámico y es una de sus grandes cualidades
-
 ```javascript
+// Javascript es dinámico y es una de sus grandes cualidades
 function addPointsToScore(player, points) { 
   player.score += points;
 }
-```
 
-Esta función se puede aplicar a cualquier objeto con una propiedad `score`. Cómo lo traduzco a TypeScript
+// Esta función se puede aplicar a cualquier objeto con una propiedad `score`. Cómo lo traduzco a TypeScript
+```
 
 ```javascript
 function addPointsToScore(player: { score: number; }, points: number): void { 
   player.score += points;
 }
-```
 
-Esto fuerza el parámetro a ser score y el compilador lo detectará
+// Fuerza el parámetro a ser score y el compilador lo detectará
+```
 
 ---
 
 ## Interfaces
-
-Lo normal es usar las interfaces declarándolas de antemano
 
 ```javascript
 interface HasScore { 
@@ -129,9 +133,8 @@ function addPointsToScore(player: HasScore, points: number): void {
 
 ## Interfaces
 
-También puedo definir funciones en la interfaz
-
 ```javascript
+// Puedo definir funciones en la interfaz
 interface Runner { 
   id: number;
   run(meters: number): void;
@@ -146,11 +149,10 @@ function startRunning(runner: Runner): void {
 
 ## Parámetros opcionales
 
-En Javascript si un parámetro no existe se convertirá en undefined al invocar a la función.
-
-Si la función esta tipada entonces el compilador nos avisará del error, pero, que pasa si realmente el parámetro es opcional. Para estos casos tengo el operador `?`
-
 ```javascript
+// En Javascript si un parámetro no existe se convertirá en undefined al invocar a la función
+// Si la función esta tipada entonces el compilador nos avisará del error, pero, que pasa si realmente el parámetro es opcional
+// Para estos casos tengo el operador '?'
 function addPointsToScore(player: HasScore, points?: number): void { 
   points = points || 0;
   player.score += points;
@@ -161,9 +163,9 @@ function addPointsToScore(player: HasScore, points?: number): void {
 
 ## Classes. Implementación de interfaces
 
-Puedo usar clases ES6. Las clases pueden implementar interfaces como en otros lenguajes de programación
-
 ```javascript
+// Puedo usar clases ES6. Las clases pueden implementar interfaces como en otros lenguajes de programación
+
 interface CanRun { 
   run(meters: number): void;
 }
@@ -180,9 +182,8 @@ class HungryRunner implements CanRun, CanEat {
 
 ## Classes. Class properties
 
-Puedo utilizar propiedades de clase. Esto no es una característica de ES6 y sólo lo puedo hacer a tavés de Typescript
-
 ```javascript
+// Puedo utilizar propiedades de clase. Esto no es una característica de ES6 y sólo lo puedo hacer a tavés de Typescript
 class Post { 
   maxLines = 25;
 
@@ -198,17 +199,13 @@ class Post {
 
 ## private y public shorcut
 
-En typescript
-
 ```javascript
+// En typescript
 class Post {
   constructor(public id: number, private content: string) { }
 }
-```
 
-equivale a 
-
-```javascript
+// equivale a 
 class Post {
   public id: number;
   private content: string;
@@ -223,9 +220,9 @@ class Post {
 ---
 ## Decorators
 
-- Puede que se estandaricen en un futuro
+- Posiblemente parte del estándar en el futuro
 - Ampliamente utilizados por Angular
-- Es una forma de añadir metadatos a su target (Un método, una clase ...)
+- Es una forma de añadir metadatos a un target como podría ser un método, una clase ...
 
 ---
 
@@ -273,6 +270,7 @@ postService.getPost(1);
 ## Decorators
 
 [Explorando los diferentes decorators en Angular](https://netbasal.com/exploring-the-various-decorators-in-angular-b208875b207c)
+[Creación de decorators](https://toddmotto.com/angular-decorators)
 
 ---
 
@@ -288,7 +286,7 @@ npm install --save-dev @types/angular
 
 Al instalar un tipo el compilador lo detectará automáticamente si está en `node_modules`
 
----
+
 
 
 
