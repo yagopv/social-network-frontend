@@ -3,14 +3,18 @@ autoscale: true
 build-lists: true
 footer: @Yago Pérez Vázquez 2019
 
-# **@Input**
+# Interacción entre componentes
 
-- `Input` nos permite enviar datos de un componente padre a su hijo
+---
+
+## @Input
+
+- Nos permite enviar datos de un componente padre a su hijo
 - Los datos del padre se envían al hijo mediante *property binding*
 
 ---
 
-### Uso de **@Input**
+### Uso de @Input
 
 **Componente hijo**
 
@@ -61,14 +65,11 @@ export class HeroParentComponent {
 
 ---
 
-### Interceptar @Input con **set**
+### Interceptar @Input con set
 
 Para observar cambios que afectan sólo a una propiedad
 
-
-
 [.code-highlight: all]
-
 [.code-highlight: 9-11]
 
 ```javascript
@@ -99,7 +100,6 @@ export class NameChildComponent {
 Para observar cambios que afectan a múltiples propiedades
 
 [.code-highlight: all]
-
 [.code-highlight: 15-29]
 
 ```javascript
@@ -141,17 +141,14 @@ export class VersionChildComponent implements OnChanges {
 
 ---
 
-# **@Output**
+## @Output
 
-- `@Output` nos permite enviar datos de un component a su padre mediante `EventEmitter`
-
+- Nos permite enviar datos de un component a su padre mediante `EventEmitter`
 - Será el API pública del componente
 
 ---
 
 ### El padre escucha por eventos que ocurran en su hijo
-
-**Componente hijo**
 
 ```javascript
 @Component({
@@ -178,8 +175,6 @@ export class VoterComponent {
 
 ### El padre escucha por eventos que ocurran en su hijo
 
-**Componente padre**
-
 ```javascript
 @Component({
   selector: 'app-vote-taker',
@@ -205,13 +200,9 @@ export class VoteTakerComponent {
 
 ---
 
-### El padre interactúa con el hijo a través de una variable local
-
-**Componente padre**
+### El padre interactúa con el hijo a través de una variable
 
 ```javascript
-import { Component, OnDestroy, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-countdown-timer',
   template: '<p>{{message}}</p>'
@@ -250,14 +241,9 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
 
 ---
 
-### El padre interactúa con el hijo a través de una variable local
-
-**Componente hijo**
+### El padre interactúa con el hijo a través de una variable
 
 ```javascript
-import { Component }                from '@angular/core';
-import { CountdownTimerComponent }  from './countdown-timer.component';
-
 @Component({
   selector: 'app-countdown-parent-lv',
   template: `

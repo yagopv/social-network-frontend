@@ -22,9 +22,13 @@ footer: @Yago Pérez Vázquez 2019
 
 - Los componentes son las piezas fundamentales de nuestra aplicación encargadas de la gestión de diferentes partes de nuestra interfaz
 
+- Un componente se encarga de controlar una vista 
+
 - Una aplicación es en general un arbol de componentes
 
-- Se declaran mediante el decorator `@Component`
+- Se declaran mediante el decorator @Component o @Directive
+
+- Una directiva no es mas que un componente sin plantilla
 
 - Tienen un ciclo de vida que nos permite realizar acciones tanto en su creación y attach al DOM, como en su actualización, destrucción y eliminación
 
@@ -43,7 +47,7 @@ class MyDirective() {}
 - _selector_: string que permite identificar el componente a compilar y renderizar
 - _providers_: Lista de providers para la vista y sus hijos
 - _viewProviders_: Lista de providers solo para la vista
-- _template | templateUrl_: Plantilla inline o externa de un componente
+- _template | templateUrl_: Plantilla inline o externa de un componente. No aplica a directivas
 - _styles | styleUrls_: Lista de estilos inline o hoja de estilos externa
 
 ---
@@ -90,6 +94,8 @@ class AppModule {}
 
 - Puedes mostrar datos de la aplicación enlazando controles en la plantilla HTML con propiedades en la clase `@Component`
 
+![right fit 120%](https://angular.io/generated/images/guide/architecture/component-databinding.png)
+
 ---
 
 # Data binding
@@ -99,6 +105,9 @@ Data binding es el conjunto de utilidades o técnicas que crean un mecanismo par
 - _Event binding_ permite a la aplicación responder a acciones del usuario (click, hover, mousedown ...)
 
 - _Property binding_ permite enviar valores calculados durante la ejecución de la aplicación al HTML de las plantillas
+
+![right fit 120%](https://angular.io/generated/images/guide/architecture/databinding.png)
+
 
 ---
 

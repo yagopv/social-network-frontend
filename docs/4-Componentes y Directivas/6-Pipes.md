@@ -7,15 +7,14 @@ footer: @Yago Pérez Vázquez 2019
 
 ---
 
-# Qué son?
+## Qué son?
 
-Un `Pipe` es simplemente una función que recibe datos como input y a través de una transformación produce una salida
-
-En Angular tenemos una serie de Pipes disponibles a través del framework pero también podemos crearlas nosotros
+- Una Pipe es simplemente una función que recibe datos como input y a través de una transformación produce una salida
+- En Angular tenemos una serie de Pipes disponibles a través del framework pero también podemos crearlas nosotros
 
 ---
 
-# Angular Pipes
+## Angular Pipes
 
 - `DatePipe`
 - `UpperCasePipe`
@@ -27,7 +26,7 @@ En Angular tenemos una serie de Pipes disponibles a través del framework pero t
 
 ---
 
-# Parámetros
+## Parámetros
 
 Un Pipe puede recibir cualquier número de parámetros opcionales
 
@@ -46,18 +45,17 @@ template: `
 
 ---
 
-# Encadenando Pipes
+## Encadenando Pipes
 
 Podemos encadenar Pipes. El valor de salida de cada una será el de entrada de la siguiente
 
-```html
-The chained hero's birthday is
+```javascript
 {{  birthday | date:'fullDate' | uppercase}}
 ```
 
 ---
 
-# Creación de Pipes
+## Creación de Pipes
 
 ```javascript
 @Pipe({name: 'exponentialStrength'})
@@ -71,14 +69,14 @@ export class ExponentialStrengthPipe implements PipeTransform {
 
 ---
 
-# A tener en cuenta
+## A tener en cuenta
 
 - Puedes usar las Pipes creadas de la misma forma que usarías una propia del framework
 - Las Pipes creadas se deben declarar en el módulo al que pertenezcan en el array de la propiedad *declarations*
 
 ---
 
-# Pure vs Impure
+## Pure vs Impure
 
 El mecanismo de detección de cambios en las Pipes es un tanto especial
 
@@ -87,7 +85,7 @@ El mecanismo de detección de cambios en las Pipes es un tanto especial
 
 ---
 
-#Impure 
+## Impure 
 
 ```javascript
 @Pipe({
@@ -99,13 +97,9 @@ export class FlyingHeroesImpurePipe extends FlyingHeroesPipe {}
 
 ---
 
-#Pure (Por defecto)
+## Pure (Por defecto)
 
 ```javascript
-import { Pipe, PipeTransform } from '@angular/core';
-
-import { Flyer } from './heroes';
-
 @Pipe({ name: 'flyingHeroes' })
 export class FlyingHeroesPipe implements PipeTransform {
   transform(allHeroes: Flyer[]) {
@@ -118,9 +112,9 @@ Las función transform de las Pipes puras ha de ser también pura, es decir, deb
 
 ---
 
-# AsyncPipe
+## AsyncPipe
 
-- Es una Pipe importante dentro del framework. Se trata de una Pipe impura y que es capaz de mantener su propio estado
+- Es una Pipe importante dentro del framework. Se trata de una Pipe que es capaz de mantener su propio estado
 
 - Permite suscribirnos a Promises o Observables y cada vez que se produce una actualización en los mismos se reflejará en la vista
 

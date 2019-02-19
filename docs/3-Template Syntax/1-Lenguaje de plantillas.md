@@ -533,6 +533,10 @@ Se pueden definir variables locales en plantillas mediante _#_. La variable se p
 
 ---
 
+![fit 190%](https://media1.giphy.com/media/12NUbkX6p4xOO4/giphy.gif?cid=e1bb72ff5c6c328e32787a515922863e)
+
+---
+
 ## Resumen
 
 ```javascript
