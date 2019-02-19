@@ -3,7 +3,7 @@ autoscale: true
 build-lists: true
 footer: @Yago Pérez Vázquez 2019
 
-# Ciclo de vida de un componente
+## Ciclo de vida de un componente
 
 Los componentes y directivas en Angular tienen un ciclo de vida en el cual se crean, se modifican, se destruyen. A través de una serie de métodos podremos engancharnos en dichos momentos para realizar las acciones que necesitemos
 
@@ -16,7 +16,7 @@ export class MyComponent implements OnInit {
 ```
 ---
 
-# Métodos del ciclo de vida
+## Métodos del ciclo de vida
 
 - _ngOnChanges()_ Se llama cada vez que las propiedades de entrada del componente (_@Input_) se modifican. Se llama antes de _ngOnInit()_.
 
@@ -44,7 +44,7 @@ export class MyComponent implements OnInit {
 
 ---
 
-# Demo
+## Demo
 
-### [https://stackblitz.com/angular/roqnqkkpdrl?file=src%2Fapp%2Fspy.component.ts](https://stackblitz.com/angular/roqnqkkpdrl?file=src%2Fapp%2Fspy.component.ts)    
+[https://stackblitz.com/angular/roqnqkkpdrl?file=src%2Fapp%2Fspy.component.ts](https://stackblitz.com/angular/roqnqkkpdrl?file=src%2Fapp%2Fspy.component.ts)    
 
