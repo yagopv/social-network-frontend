@@ -7,15 +7,15 @@ footer: @Yago Pérez Vázquez 2019
 
 ---
 
-# Qué son?
+## Qué son?
 
-- Se puede crear practicamente cualquier formuliario con una plantilla
+- Se puede crear practicamente cualquier formulario con una plantilla
 - El flujo del formulario y control de errores lo controlamos directamente en la plantilla mediante el uso de directivas, data-binding y variables
-- Menos flexibles y desde luego no muy reusables pero rápidos y fáciles de usar
+- Menos flexibles y desde luego no muy reusables pero fáciles de crear
 
 ---
 
-# Registrar el módulo
+## FormsModule. Registro
 
 ```javascript
 import { FormsModule } from '@angular/forms';
@@ -33,7 +33,7 @@ El registro de `FormsModule` hace que automáticamente se evalúe cada formulari
 
 ------
 
-# [(ngModel)]
+## [(ngModel)]
 
 `[(ngModel)] ` two-way data binding permite comunicar el modelo con la vista y viceversa de una forma sencilla
 
@@ -49,14 +49,14 @@ La directiva `ngModel` nos permite acceder a un `FormControl` subyacente
 
 ---
 
-# NgForm
+## NgForm
 
 La directiva `NgForm` se añade de forma automática cuando incluimos `FormsModule` a todos los formularios
 
 Podemos referenciarla mediante:
 
 ```html
-<form #myForm="ngForm">
+<form ##myForm="ngForm">
 ```
 
 Esta directiva complementa al elemento  `form`  con funcionalidad extra
@@ -67,7 +67,7 @@ Internamente Angular creará instancias de `FormControl`
 
 ---
 
-# Template variables
+## Template variables
 
 Necesitaremos variables para efectuar la gestión del formulario en la plantilla
 
@@ -76,7 +76,7 @@ Necesitaremos variables para efectuar la gestión del formulario en la plantilla
 <input type="text" class="form-control" id="name"
        required
        [(ngModel)]="model.name" name="name"
-       #name="ngModel">
+       ##name="ngModel">
 <div [hidden]="name.valid || name.pristine"
      class="alert alert-danger">
   Name is required
@@ -85,17 +85,17 @@ Necesitaremos variables para efectuar la gestión del formulario en la plantilla
 
 ---
 
-# Submit
+## Submit
 
 En este caso no difiere de lo visto en `ReactiveForms`
 
 ```html
-<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+<form (ngSubmit)="onSubmit()" ##heroForm="ngForm">
 ```
 
 ---
 
-# Validación
+## Validación
 
 - La validación en los `template-driven forms` se realiza a partir de atributos al igual que la validación HTML nativa. Angular usa directivas para emparejar dichos atributos con funciones encargadas de realizar la validación
 - Cada vez que un valor cambia se ejecuta la validación 
@@ -104,12 +104,12 @@ En este caso no difiere de lo visto en `ReactiveForms`
 
 ---
 
-# Validación
+## Validación
 
 ```html
 <input id="name" name="name" class="form-control"
       required minlength="4" appForbiddenName="bob"
-      [(ngModel)]="hero.name" #name="ngModel" >
+      [(ngModel)]="hero.name" ##name="ngModel" >
 
 <div *ngIf="name.invalid && (name.dirty || name.touched)"
     class="alert alert-danger">
@@ -129,7 +129,7 @@ En este caso no difiere de lo visto en `ReactiveForms`
 
 ---
 
-# Creando validadores
+## Creando validadores
 
 En `template-driven forms` no tenemos acceso directo al `FormControl` por lo que tenemos que añadir una directiva a la plantilla que actúe como contenedor. Para que Angular la reconozca como tal necesitamos registrarla en el módulo correspondiente
 
@@ -142,7 +142,7 @@ En `template-driven forms` no tenemos acceso directo al `FormControl` por lo que
 
 ---
 
-# Creando validadores. La directiva
+## Creando validadores. La directiva
 
 ```javascript
 @Directive({

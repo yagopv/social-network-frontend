@@ -7,17 +7,19 @@ footer: @Yago Pérez Vázquez 2019
 
 ---
 
-# Que son?
+## Que son?
 
-- Propocionan una aproximación a los formularios basada en modelos de datos creados en nuestras clases asociadas a componentes
+- Se basan en la creación de modelos de datos en clases
 - Inmutables. Cada cambio en el estado de un form devuelve un nuevo estado => Eficiencia
 - La implementación esta basada en Observables (Pueden accederse de forma síncrona) 
-- Facilitan el testeo al estar basados en clases
-- Lo que programo es lo que va a pasar y puedo depurarlo
+- Facilitan el testing al estar basados en modelos de datos
+- Lo que programo es lo que va a pasar y por tanto puedo depurarlo. Tengo el control
 
 ---
 
-# Registro del módulo que nos permite usar Reactive Forms
+## ReactiveFormsModule
+
+El módulo que nos permite el uso de los formularios reactivos. Se registra de la siguiente forma:
 
 ```javascript
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,12 +35,11 @@ export class AppModule { }
 
 ---
 
-# FormControl. Registro en el componente
+## FormControl. Registro en componente
+
+FormControl permite el registro de controles en nuestros componentes
 
 ```javascript
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-
 @Component({
   selector: 'app-name-editor',
   templateUrl: './name-editor.component.html',
@@ -51,7 +52,9 @@ export class NameEditorComponent {
 
 ---
 
-# FormControl. Registro en la template
+## FormControl. Registro en template
+
+Luego los asociaremos con las plantillas
 
 ```html
 <label>
@@ -62,18 +65,12 @@ export class NameEditorComponent {
 
 ---
 
-# FormControl. Mostrar el componente
+## FormControl. Acceso a valores
 
-```html
-<app-name-editor></app-name-editor>
-```
+Podemos acceder a los valores subyacentes
 
----
-
-# FormControl. Mostrando valores
-
-- A través del Observable `valueChanges`
-- A través de la propiedad `value`
+- A través del Observable _valueChanges_
+- A través de la propiedad _value_
 
 ```html
 <p>
@@ -83,9 +80,9 @@ export class NameEditorComponent {
 
 ---
 
-# FormControl. Modificando el valor
+## FormControl. Modificando de valores
 
-- A través del método `setValue()`. Modifica el valor y lo valida contra la estructura definida en el `FormControl`
+- A través del método _setValue()_. Modifica el valor y lo valida contra la estructura definida en el FormControl
 
 ```javascript
 updateName() {
@@ -101,14 +98,14 @@ updateName() {
 
 ---
 
-# FormGroup
+## FormGroup
 
-- *FormControl* permite realizar tracking sobre un elemento *input* 
-- *FormGroup* permite controlar el estado de un grupo de *FormControl
+- FormControl permite realizar tracking sobre un elemento input
+- FormGroup permite controlar el estado de un grupo de varios FormControl
 
 ---
 
-# FormGroup. Creamos la instancia
+## FormGroup. Creación del modelo
 
 ```javascript
 @Component({
@@ -126,7 +123,7 @@ export class ProfileEditorComponent {
 
 ---
 
-# FormGroup. Asociación modelo - vista
+## FormGroup. Asociación con template
 
 ```html
 <form [formGroup]="profileForm">
@@ -144,7 +141,7 @@ export class ProfileEditorComponent {
 
 ---
 
-# FormGroup. Submit
+## FormGroup. Submit
 
 ```html
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
@@ -157,12 +154,12 @@ onSubmit() {
 ```
 
 ```html
-<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+<button type="submit">Submit</button>
 ```
 
 ---
 
-#FormGroup. Anidando
+##FormGroup. Nesting en el componente
 
 ```javascript
 @Component({
@@ -186,7 +183,7 @@ export class ProfileEditorComponent {
 
 ---
 
-# FormGroup. Aninando en plantilla
+## FormGroup. Nesting en template
 
 ```html
 <form [formGroup]="profileForm">
@@ -219,15 +216,14 @@ export class ProfileEditorComponent {
 
 ---
 
-# Actualizaciones parciales con *patchValue*
+## Actualizaciones parciales con patchValue
 
-- *setValue*() permite reemplazar el valor de un *FormControl* completamente
-
-- *patchValue()* permite actualizar diversos *FormControl* a la vez
+- _setValue()_ permite reemplazar el valor de un FormControl completamente
+- _patchValue()_ permite actualizar varios FormControl a la vez sin tener que especificar todos
 
 ---
 
-#Ejemplo con patchValue
+## Ejemplo con patchValue
 
 ```javascript
 updateUserProfile() {
@@ -242,16 +238,14 @@ updateUserProfile() {
 
 ---
 
-# FormBuilder
+## FormBuilder
 
-El proceso de creación de un formulario usando *FormGroup* puede resultar repetitivo y monótono. 
-
-
-Angular proporciona un método más declarativo y fácil de usar con *FormBuilder*.
+El proceso de creación de un formulario usando FormGroup puede resultar repetitivo y monótono 
+Angular proporciona un método más declarativo y fácil de usar que básciamente hace lo mismo
 
 ---
 
-# FormBuilder. Ejemplo
+## FormBuilder. Declaración
 
 ```javascript
 @Component({
@@ -277,13 +271,13 @@ export class ProfileEditorComponent {
 
 ---
 
-# Validación
+## Validación
 
 Una parte fundamental en cualquier librería o módulo de gestión de formularios es la validación de los mismos
 
 ---
 
-# Validación en ReactiveForms 
+## Validación en ReactiveForms 
 
 ```javascript
 profileForm = this.fb.group({
@@ -299,18 +293,39 @@ profileForm = this.fb.group({
 ```
 
 ```html
-<input type="text" formControlName="firstName" required>
+<input type="text" formControlName="firstName">
 ```
 
 ---
 
-# Custom Validation
+## Built-in validators
+
+```javascript
+class Validators {
+  static min(min: number): ValidatorFn
+  static max(max: number): ValidatorFn
+  static required(control: AbstractControl): ValidationErrors | null
+  static requiredTrue(control: AbstractControl): ValidationErrors | null
+  static email(control: AbstractControl): ValidationErrors | null
+  static minLength(minLength: number): ValidatorFn
+  static maxLength(maxLength: number): ValidatorFn
+  static pattern(pattern: string | RegExp): ValidatorFn
+  static nullValidator(control: AbstractControl): ValidationErrors | null
+  static compose(validators: ValidatorFn[]): ValidatorFn | null
+  static composeAsync(validators: AsyncValidatorFn[]): AsyncValidatorFn | null
+}
+```
+
+---
+
+## Custom Validation
 
 ```javascript
 export function MailValidator(
   control: AbstractControl
 ): { [key: string]: boolean } {
-  const EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+  const EMAIL_REGEXP = 
+    /^[a-z0-9!##$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
   if (
     control.value &&
@@ -325,13 +340,13 @@ export function MailValidator(
 
 ---
 
-# FormArray
+## FormArray
 
 *FormArray* permite añadir *FormControl* de forma dinámica a nuestros formularios
 
 ---
 
-# FormArray. Ejemplo
+## FormArray. Ejemplo
 
 ```javascript
 profileForm = this.fb.group({
@@ -353,7 +368,7 @@ profileForm = this.fb.group({
 
 ## FormArray. Uso en clase
 
-###Accediendo a los *alias*
+### Accediendo a los alias
 
 ```javascript
 get aliases() {
@@ -363,7 +378,7 @@ get aliases() {
 
 
 
-### FormArray. Añadiendo nuevos *alias*
+### FormArray. Añadiendo nuevos alias
 
 ```javascript
 addAlias() {
@@ -373,7 +388,7 @@ addAlias() {
 
 ---
 
-## FormArray. Uso en la plantilla
+## FormArray. Uso en template
 
 ```html
 <div formArrayName="aliases">
