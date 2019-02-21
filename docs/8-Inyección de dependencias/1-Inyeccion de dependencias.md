@@ -6,7 +6,7 @@ build-lists: true
 
 ---
 
-# En qué consiste el patrón DI
+## En qué consiste el patrón DI
 
 ---
 
@@ -177,7 +177,7 @@ export class UserService {
 
 ---
 
-## Registrando un proveedor
+## Registrando un provider
 
 La forma:
 
@@ -345,7 +345,7 @@ Angular proporciona tokens y providers que podemos usar para modificar el compor
 Cuando especifico el array de providers en el NgModule, el servicio acabará en el bundle final aunque no se esté usando en la aplicación
 Hay una forma de evitarlo (Angular 6+)
 
-```javscript
+```javascript
 @Injectable({
   providedIn: 'root',
 })

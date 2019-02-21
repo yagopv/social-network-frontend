@@ -7,17 +7,16 @@ footer: @Yago Pérez Vázquez 2019
 
 ---
 
-# Módulos en Angular
+## Módulos en Angular
 
 - Los módulos en Angular permiten agrupar componentes, directivas, servicios y otra serie de artefactos que constituyen una unidad funcional
-
 - Son una forma de organizar la aplicación 
-
 - El core de Angular esta formado por una serie de NgModules como FormsModule, HttpClientModule, o RouterModule
+- No tienen nada que ver con ES6 Modules o CommonJS
 
 ---
 
-# Sintaxis
+## Sintaxis
 
 ```javascript
 @NgModule({
@@ -38,17 +37,17 @@ export class AppModule { }
 
 ---
 
-# Declarations
+## declarations
 
 - Lista de clases que pertenecen al módulo. Pipes, Services, Components, Directives
 
-- Las plantillas de los componentes se compilan en el contexto del módulo. Necesito por tanto tener todos los artefactos disponibles o bien declarados o importados
+- Las templates de los componentes se compilan en el contexto del módulo. Necesito por tanto tener todos los artefactos disponibles o bien declarados o importados
 
-- Las clases declaradas no se pueden declarar en otros módulos
+- Las clases declaradas en declarations no se pueden declarar en otros módulos
 
 ---
 
-# Providers
+## providers
 
 - Lista de proveedores para registrar en el  injector del NgModule y que nos permitirán su uso a través del mecanismo de DI. Si es el módulo encargado del bootstrap entonces es el rrot injector
 
@@ -56,23 +55,23 @@ export class AppModule { }
 
 ---
 
-# Imports
+## imports
 
-- Todos los módulos importados es como si sus exports se hubiesen declarado en el NgModule que los importa y por tanto todos sus artefactos pasan a estar disponibles
-
----
-
-# Exports
-
-- Lista de declarations que quiero exportar para su uso por otros módulos
-
-- Es el API pública del NgModule. declarations son privadas y exports pasan a hacer el artefacto público
-
-- Los módulos importandos se pueden exportar
+- Otros módulos que voy a usar en el que estoy definiendo
+- Los módulos importados es como si sus exports se hubiesen declarado en el NgModule que los importa y por tanto todos sus artefactos pasan a estar disponibles
 
 ---
 
-# Bootstrap
+## exports
+
+- Lista de declarations que quiero exportar para su uso por otros módulos mediante import
+- Es el API pública del NgModule. 
+- declarations son privadas y exports públicas
+- Los módulos importandos se pueden a su vez exportar
+
+---
+
+## bootstrap
 
 - Lista de componentes raiz para arrancar la aplicación
 
@@ -80,17 +79,17 @@ export class AppModule { }
 
 ---
 
-# EntryComponents
+## entryComponents
 
-- Lista de componentes que se pueden cargar de forma automática en la aplicación
+- Lista de componentes que se pueden cargar de forma dinámica en la aplicación. No están definidos en ninguan plantilla
 
-- AppComponent y los componentes cargados por el router se añaden de forma automática
+- El componente encargado de hacer el bootstrap y los componentes cargados por el router se añaden de forma automática a los entryComponents
 
-- Otros componentes que se pretendan cargar de forma dinámica se tienen que añadir aquí pero no todas las aplicaciones lo necesitan y no se suele usar
+- Otros componentes que se pretendan cargar de forma dinámica se tienen que añadir
 
 ---
 
-# NgModules comunes
+## NgModules comunes
 
 | NgModule | Import | Uso |
 | --- | --- | --- |
@@ -101,7 +100,9 @@ export class AppModule { }
 | RouterModule | @angular/router | Cuando quiero usar el router|
 | HttpClientModule | @angular/common/http | Para comunicarme con un servidor |
 
---- 
+---
+
+## NgModules comunes
 
 - BrowserModule importa y exporta CommonModule
 
@@ -109,7 +110,7 @@ export class AppModule { }
 
 ---
 
-# Feature Modules
+## Feature Modules
 
 - Agrupaciones funcionales para una aplicación Angular
 
@@ -117,4 +118,4 @@ export class AppModule { }
 
 - Normalmente tendremos un módulo raiz y varios funcionales
 
-- El módulo raiz importara los módulos funcionales para conformar la aplicación
+- El módulo raiz importara los módulos funcionales para formar una aplicación
