@@ -1,25 +1,25 @@
 <div class="skew"></div>
 
 <div class="content">
-  <h1><b>Hey there!! 👋</b></h1>
-  <h2>My name is Yago</h2>
+  <h1>
+    <b>{{ title }}</b>
+  </h1>
+  <h2>{{ subtitle }}</h2>
 
   <hr />
 
-  <p>
-    I'm a frontend developer and love to create beautiful websites !!. You check
-    more about me in the followings sites:
-  </p>
+  <p>{{ description }}</p>
 
-  <a href="http://linkedin.com/yagopv" target="_blank"><b>LinkedIn</b></a>
-  <a href="http://github.com/yagopv" target="_blank"><b>Github</b></a>
-  <a href="http://portfolio.yagoperez.com" target="_blank"><b>Portfolio</b></a>
+  <ng-container *ngFor="let link of links">
+    <a href="link.url" target="_blank"
+      ><b>{{ link.name }}</b></a
+    >
+  </ng-container>
 
   <hr />
 
-  <p>If you want to contact with me you can send me an email or message in:</p>
-  <a href="mailto:yagoperez@outlook.com" target="_blank"
-    ><b>yagoperez@outlook.com</b></a
+  <p>{{ contact.description }}</p>
+  <a href="{{ 'mailto:' + contact.mail }}" target="_blank"
+    ><b>{{ contact.mail }}</b></a
   >
-  <a href="http://twitter.com/yperezva"><b>Twitter</b></a>
 </div>
