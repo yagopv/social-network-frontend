@@ -32,3 +32,27 @@
     <div class="button-wrapper"><button type="submit">Register</button></div>
   </form>
 </sn-form>
+
+<!-- Without the formcontrol wrapper
+      <div class="form-control">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <ng-container
+        *ngIf="
+          registerForm.controls.password.invalid &&
+          (registerForm.controls.password.dirty ||
+            registerForm.controls.password.touched)
+        "
+      >
+        <p
+          class="error-message"
+          *ngIf="registerForm.controls.password.hasError('required')"
+        >
+          This field is mandatory
+        </p>
+      </ng-container>
+    </div>
+-->
