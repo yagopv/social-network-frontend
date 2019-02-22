@@ -10,12 +10,13 @@ build-lists: true
 
 ---
 
-[.code-hightlight: all]
-[.code-hightlight: 3]
-[.code-hightlight: 4]
-[.code-hightlight: 5]
-[.code-hightlight: 3-5]
-[.code-hightlight: all]
+[.code-highlight: all]
+[.code-highlight: 3]
+[.code-highlight: 4]
+[.code-highlight: 5]
+[.code-highlight: 3-5]
+[.code-highlight: all]
+
 ```javascript
 class Car {
   constructor() {
@@ -33,9 +34,9 @@ class Car {
 
 ---
 
+[.code-highlight: all]
+[.code-highlight: 2]
 
-[.code-hightlight: all]
-[.code-hightlight: 2]
 ```javascript
 class Car {
   constructor(engine, tires, doors) {
@@ -99,7 +100,7 @@ class ExampleComponent {
 
 ## Cómo inyectar un servicio en Angular
 
-- A través de la definición del tipo `Http` con Typescript Angular asigna una instacia del Servicio al parámetro `http`
+- A través de la definición del tipo `Http` con Typescript Angular asigna una instacia del servicio al parámetro `http`
 - `tsconfig.json` contiene una propiedad _emitDecoratorMetadata_ establecida a _true_. Esto emite metadata acerca del tipo del parámetro al compilar el TypeScript a JavaScript
 
 ---
@@ -179,8 +180,6 @@ export class UserService {
 
 ## Registrando un provider
 
-La forma:
-
 ```javascript
 @NgModule({
   providers: [AuthService],
@@ -188,7 +187,7 @@ La forma:
 class ExampleModule {}
 ```
 
-es un atajo de:
+es equivalente a:
 
 ```javascript
 @NgModule({
@@ -206,15 +205,13 @@ class ExampleModule {}
 
 ## Registrando un provider
 
-- La propiedad `provide` es el token para el provider que estamos registrando. 
+- La propiedad `provide` es el token para el provider que estamos registrando
 - Angular puede buscar qué esta almacenado bajo el token `AuthService` usando el valor de `useClass`
 - Una de las ventajas que nos proporciona es que podemos tener 2 proveedores diferentes usando la misma clase o sobreescribir el proveedor con otro diferente manteniendo el nombre del token
 
 ---
 
 ## Sobreescribiendo providers
-
-Cambio de requerimiento para usar la autenticación de Facebook en lugar de la implementada
 
 ```javascript
 @NgModule({
@@ -242,7 +239,7 @@ export class AuthModule {}
 export class AuthModule {}
 ```
 
-No necesito modificar las dependenciar en cada componente que use el servicio
+^ No necesito modificar las dependencias en cada componente que use el servicio. Para toda la aplicación el token es AuthService
 
 ---
 
@@ -262,7 +259,7 @@ constructor(@Optional() private logger: Logger) {
 
 ## Value Providers
 
-Podemos proporcionar string, numbers, o objjetos preparados para ser usados en lugar de pedir a Angular que cree una instancia de una clase
+Podemos proporcionar string, numbers, o objetos en lugar de pedir a Angular que cree una instancia de una clase
 
 ```javascript
 export function SilentLoggerFn() {}
@@ -296,8 +293,9 @@ getHeroes() {
 }
 ```
 
-Qué pasa si no quiero inyectar un servicio completo AuthService y solamente quiero hacerlo con la propiedad isAuthorized
-Podemos inyectar Logger pero no isAuthorized => Necesitamos una factoría
+Qué pasa si no quiero inyectar un servicio completo AuthService y solamente quiero saber si el usuario está autorizado.
+
+Podemos inyectar Logger pero no isAuthorized como tal. Necesitamos una factoría
 
 ---
 
@@ -336,18 +334,20 @@ export class HeroesComponent { }
 
 ## Tokens y Providers de Angular
 
-Angular proporciona tokens y providers que podemos usar para modificar el comportamiento del framework como por ejemplo PLATFORM_INITIALIZER, APP_BOOTSTRAP_LISTENER, APP_INITIALIZER, NG_VALIDATORS, RouterModule.forRoot, RouterModule.forChild ...etc.
+- Angular proporcionauna serie de tokens y providers que podemos usar para modificar el comportamiento del framework
+- PLATFORM_INITIALIZER, APP_BOOTSTRAP_LISTENER, APP_INITIALIZER, NG_VALIDATORS, RouterModule.forRoot, RouterModule.forChild son algunos ejemplos
 
 ---
 
 ## Tree-Shaking de providers
 
-Cuando especifico el array de providers en el NgModule, el servicio acabará en el bundle final aunque no se esté usando en la aplicación
+Cuando especifico el array de providers en el NgModule, el servicio acabará en el bundle final aunque no se esté usando en la aplicación ya que no hay forma de saberlo de antemano
+
 Hay una forma de evitarlo (Angular 6+)
 
 ```javascript
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', // Ahora el bundler puede verificar si se usa o no
 })
 export class Service {
 }

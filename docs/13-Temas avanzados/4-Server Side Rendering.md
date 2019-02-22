@@ -94,7 +94,7 @@ ng add @nguniversal/express-engine --clientProject social-network
 
 ---
 
-## Añade esto
+## Y añade esto
 
 Para que funcione lazy loading
 

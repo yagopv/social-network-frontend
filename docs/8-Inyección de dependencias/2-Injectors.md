@@ -16,7 +16,7 @@ build-lists: true
 
 ## Platform Injector
 
-- Se usa internamente durante el bootstrap de la app y es el injector que encontramos más arriba en la jerarquían de inyectores
+- Se usa internamente durante el bootstrap de la app y es el injector que encontramos más arriba en la jerarquía
 - Configura servicios específicos de la plataforma
 - Se pueden configurar más proveedores a través de `extraProviders` en la función platformBrowser()
 
@@ -39,14 +39,14 @@ platform.bootstrapModule(AppModule2);
 
 ## @Injectable
 
-- Podemos configurar en donde queremos inyectar el servicio a través de este decorador usando `providedIn`
-- Es típico usar 'root' que representa el injector de AppModule
+- Podemos configurar en donde queremos inyectar el servicio a través de este decorador y junto con providedIn
+- Es típico usar 'root' que representa el injector de AppModule y válido para la mayoría de casos de uso. Esto generará un servicio Singleton para toda la aplicación
 
 ---
 
-## @Injectable
+## @Injectable. Como se usa
 
-Indicamos a Angular que el inyector de AppModule será el responsable de generar las instancias
+En este caos indicamos a Angular que el inyector de AppModule será el responsable de generar las instancias
 
 ```javascript
 @Injectable({
@@ -59,9 +59,9 @@ export class HeroService {
 
 ---
 
-## @Injectable
+## @Injectable. Como se usa
 
-En este caso declaramos que este servicio debe ser creado por cualquier inyector de HeroModule
+Aquí declaramos que HeroService debe ser creado por cualquier inyector de HeroModule
 
 ```javascript
 @Injectable({
@@ -136,25 +136,17 @@ Limita la búsqueda del proveedor al componente en el que lo usamos
   <span *ngIf="hasLogger">!!!</span></div>`
 })
 export class HeroContactComponent {
- 
   hasLogger = false;
- 
   constructor(
-      @Host()
-      private heroCache: HeroCacheService,
- 
-      @Host() 
-      @Optional()
-      private loggerService: LoggerService
+      @Host() private heroCache: HeroCacheService,
+      @Host() @Optional() private loggerService: LoggerService
   ) {
     if (loggerService) {
       this.hasLogger = true;
       loggerService.logInfo('HeroContactComponent can log!');
     }
   }
- 
   get phoneNumber() { return this.heroCache.hero.phone; }
- 
 }
 ```
 

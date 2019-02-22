@@ -31,9 +31,9 @@ class AppModule {}
 
 ## @triggers
 
-- Las animaciones en Angular se inician a través de propiedades @trigger
+- Las animaciones en Angular se inician a través de un tipo especial de property binding  **[@{trigger_name}]**
 - Cuando una propiedad cambia de estado o un elemento se inserta o desaparece del DOM se lanzará una animación
-- El @trigger está enlazado con el componente, que es donde se define la animación
+- El @trigger está enlazado con el componente, que es donde realmente se declara y define la animación
 
 ---
 
@@ -59,9 +59,6 @@ class AppModule {}
 La animación se define en el @Component
 
 ```javascript
-
-import {transition, trigger} from "@angular/animations";
-
 @Component({
   template: `
     <div [@myAnimationTrigger]="myValue">...</div>
@@ -88,8 +85,8 @@ Un trigger lanza la transición que consiste en varios pasos o estados
 ```javascript
 trigger('myAnimationTrigger', [
   transition('* => visible', [
-    style({ opacity: 0 }),
-    animate('500ms', style({ opacity: 1 }))
+    style({ opacity: 0 }), // Estado inicial
+    animate('500ms', style({ opacity: 1 })) // Qué tiene que hacer
   ]),
   transition('* => hidden', [
     animate('500ms', style({ opacity: 0 }))
@@ -102,6 +99,7 @@ trigger('myAnimationTrigger', [
 ## Creación de estados
 
 Cuando la animación se completa se irá al estado correspondiente y se aplicarán los estilos definidos
+
 Esta animación y la anterior son equivalentes
 
 ```javascript
@@ -121,7 +119,7 @@ trigger('myAnimationTrigger', [
 
 ## style()
 
-style() aplica el estilo a el elemento de forma inmediata
+Aplica el estilo al elemento de forma inmediata
 
 ```javascript
 trigger('myAnimationTrigger', [
@@ -270,6 +268,10 @@ class MyInsertRemoveComponent {
 
 ---
 
+![fit 150%](https://media.giphy.com/media/QGzPdYCcBbbZm/giphy.gif)
+
+---
+
 ## query()
 
 El gran poder de las animaciones con Angular esta en query()
@@ -281,7 +283,8 @@ trigger('pageAnimations', [
     query('.hero, form', [
       style({opacity: 0, transform: 'translateY(-100px)'}),
       stagger(-30, [
-        animate('500ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'none' }))
+        animate('500ms cubic-bezier(0.35, 0, 0.25, 1)', 
+        style({ opacity: 1, transform: 'none' }))
       ])
     ])
   ])
@@ -292,14 +295,16 @@ trigger('pageAnimations', [
 
 ## stagger()
 
-Se usa junto con query para producir un retardo entre los elementos a animar.
-Muy poderosa para la animación de listas
+Se usa junto con query para producir un retardo entre los elementos a animar
+
+Muy útil para la animación de listas
 
 ```javascript
 transition(':decrement', [
   query(':leave', [
     stagger(50, [
-      animate('300ms ease-out', style({ opacity: 0, width: '0px' })),
+      animate('300ms ease-out', 
+      style({ opacity: 0, width: '0px' })),
     ]),
   ])
 ])
@@ -358,28 +363,16 @@ trigger('filterAnimation', [
 
 ## animateChild()
 
-Si voy a animar elementos hijos es necesario que esperen a que el padre haya acabado sus propias animaciones
+Si voy a animar elementos hijos es necesario que esperen a que el padre haya acabado sus propias animaciones ya que tienen prioridad.
+
+En caso contrario no se verían las animaciones del hijo. Esta diseñado para funcionar con query()
 
 ```javascript
-  transition(':enter', [
-    // Skip child selection of listItems in sn-post-comment
-    query('@listItems:not(sn-post-comment)', stagger(300, animateChild()), {
-      optional: true
-    })
-  ])
+transition(':enter', [
+  query('@listItems:not(sn-post-comment)', 
+  stagger(300, animateChild()), {
+    optional: true // Puede no estar presente en el DOM
+  })
+])
 ```
-
-
----
-
-## Router animations
-
-```html
-<div [@routeAnimation]="prepRouteState(routerOutlet)">
-  <!-- make sure to keep the ="outlet" part -->
-  <router-outlet #routerOutlet="outlet"></div>
-<div>
-```
-
----
 
