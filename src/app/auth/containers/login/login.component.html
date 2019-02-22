@@ -1,5 +1,5 @@
 <!-- Template-Driven -->
-<sn-form-group>
+<sn-form>
   <sn-errors [errors]="errors$ | async"></sn-errors>
   <form
     (ngSubmit)="login(loginForm)"
@@ -30,4 +30,4 @@
     </sn-form-control>
     <div class="button-wrapper"><button type="submit">Login</button></div>
   </form>
-</sn-form-group>
+</sn-form>

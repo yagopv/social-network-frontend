@@ -1,4 +1,4 @@
-<sn-form-group>
+<sn-form>
   <sn-errors [errors]="errors$ | async"></sn-errors>
   <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
     <sn-form-control [control]="updateProfileForm.get('fullName')">
@@ -55,4 +55,4 @@
       <button type="submit">Update profile</button>
     </div>
   </form>
-</sn-form-group>
+</sn-form>
