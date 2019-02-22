@@ -7,8 +7,7 @@ import { environment } from '../environments/environment';
 
 @Component({
   selector: 'sn-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   @Select(GlobalState.isFetching) isFetching$: Observable<boolean>;
