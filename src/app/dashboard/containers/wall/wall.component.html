@@ -1,0 +1,38 @@
+<sn-profile-info *ngIf="friend" [user]="friend"></sn-profile-info>
+
+<sn-publisher
+  [user]="currentUser$ | async"
+  (publish)="publishPost($event)"
+  [placeholder]="placeholder"
+></sn-publisher>
+
+<sn-errors [errors]="errors$ | async"></sn-errors>
+
+<!-- ng-container is a trick for use the async pipe -->
+<!-- https://itnext.io/angular-animations-stagger-over-static-and-async-data-3907c4889479 -->
+
+<ng-container *ngIf="(posts$ | async) as posts">
+  <section @list *ngIf="posts.length">
+    <!-- Removing trackBy cause the post to rerender -->
+    <sn-post
+      @listItems
+      *ngFor="
+        let post of (posts | slice: 0:(postPage + 1) * postPageSize);
+        trackBy: postIdentity
+      "
+      [post]="post"
+      [currentUser]="currentUser$ | async"
+      (comment)="addComment($event)"
+      (delete)="deletePost($event)"
+      (like)="likePost(post.id)"
+    ></sn-post>
+    <sn-pager
+      type="big"
+      [(page)]="postPage"
+      [pageSize]="postPageSize"
+      [count]="posts.length"
+      showMoreText="See more posts"
+      showLessText="See less posts"
+    ></sn-pager>
+  </section>
+</ng-container>

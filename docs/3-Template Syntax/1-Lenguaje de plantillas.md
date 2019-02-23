@@ -1,11 +1,13 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez 2019
 
-# Interpolation, expressions y statements
+# Template Syntax
 
 ---
 
-#{{ Interpolation }}
+## {{ Interpolation }}
 
 Angular convierte las expresiones en strings y los inserta en el lugar en el que se están declarando
 
@@ -24,7 +26,7 @@ Interpolation es una sintaxis especial que internamente Angular convierte en _pr
 
 ---
 
-# Expressions
+## Expressions
 
 Las expresiones en plantillas producen valores. La sintaxis similar a Javascript pero con ciertas caracteristicas no permitidas:
 
@@ -37,7 +39,7 @@ Las expresiones en plantillas producen valores. La sintaxis similar a Javascript
 
 ---
 
-# Contexto de la expresión
+## Expression context
 
 Normalmente el contexto será el componente asociado pero también puede utilizar elementos dentro de la plantilla HTML a la que pertenece
 
@@ -54,7 +56,7 @@ El scope de las variables esta limitado a la propia plantilla y el componente as
 
 ---
 
-# Statements
+## Statements
 
 Una declaración o statement responde a un evento lanzado por un binding target (element, component, directive)
 
@@ -66,7 +68,7 @@ La diferencia con las expressiones es que producen efectos colaterales. Una expr
 
 ---
 
-# Contexto de la declaración
+## Statement context
 
 Normalmente es el componente asociado
 
@@ -78,13 +80,13 @@ Normalmente es el componente asociado
 
 ---
 
-# REGLA DE ORO
+## REGLAS DE ORO
 
-Tanto las expresiones como las declaraciones han de ser simples.
+- Tanto las expresiones como las declaraciones han de ser simples
 
-Evitar cálculos complejos o expresiones complejas.
+- Evitar cálculos complejos o expresiones complejas
 
-La complejidad se ha de derivar al componente o servicios
+- La complejidad se ha de derivar al componente o servicios
 
 ---
 
@@ -92,37 +94,39 @@ La complejidad se ha de derivar al componente o servicios
 
 ---
 
-# One way
-
-
+## One way
 
 ### Data source - Target view
 
-```html
+```javascript
 {{expression}}
 [target]="expression"
-bind-target="expression"
+bind-target="expression" // No lo usaremos
 ```
 
 ### Target view - Data source
 
-```html
+```javascript
 (target)="statement"
-on-target="statement"
+on-target="statement" // No lo usaremos
 ```
 
 ---
 
-# Two way
+## Two way
 
-```html
+```javascript
 [(target)]="expression"
 bindon-target="expression"
 ```
 
 ---
 
-# HTML Attributes vs DOM Properties
+![](https://media0.giphy.com/media/9TA8eo1jJzDwc/giphy.gif?cid=e1bb72ff5c6c2bf468596d774d2d8c8c)
+
+---
+
+## HTML Attributes vs DOM Properties
 
 - Los atributos inicializan propiedades o caracteristicas del elemento al que pertenecen. El valor real realmente reside en la propiedad DOM del elemento.
 
@@ -142,43 +146,39 @@ Un ejemplo claro es el uso de value en in input
 
 ---
 
-# [Property binding]
+## [Property binding]
 
 Conocido también como one-way data binding porque solo se propaga desde el componente a la vista
 
----
-
-# Propiedad del elemento - propiedad del componente
-
 ```html
+<!-- [Propiedad del elemento]="Propiedad del componente" -->
 <img [src]="heroImageUrl">
-
 <button [disabled]="isUnchanged">Cancel is disabled</button>
 ```
 
 ---
 
-# Directiva - Propiedad del componente
+## [Property binding]
 
 ```html
+<!-- [Directiva]="Propiedad del componente" -->
 <div [ngClass]="classes">binding to the classes property</div>
 ```
 
 ---
 
-# Propiedad del componente subyacente (Comunicación padre - hijo)
+## [Property binding]
 
 ```html
+<!-- Comunicación padre - hijo -->
 <app-hero-detail [hero]="currentHero"></app-hero-detail>
 ```
 
-Tambien se puede usar la sintaxis `bind-*`
-
-Si omito los brackets entonces la propiedad no se actualizará. En ocasiones es lo buscado.
+**Si omito los brackets entonces la propiedad no se actualizará. En ocasiones es lo buscado**
 
 ---
 
-## Property binding o interpolation?
+## [Property binding] vs {{ interpolation }}
 
 Normalmente son intercambiables y es una cuestión de preferencia.
 
@@ -192,11 +192,12 @@ Normalmente son intercambiables y es una cuestión de preferencia.
 
 ---
 
-# Attribute binding (La excepción que confirma la regla)
+## Attribute binding (La excepción que confirma la regla)
 
 Deciamos que **El data binding de Angular funciona a nivel de DOM Properties y Eventos**
 
-Hay una excepción y es cuando utilizamos _attribute binding_. Hay ciertos atributos HTML que podemos necesitar enlazar utilizando nuestras clases modelo por ejemplo, atributos de accesibilidad (ARIA), SVGs, o _table spans (colspan)_ que no tienen correspondencia con propiedades del elemento en el DOM
+Hay una excepción y es cuando utilizamos _attribute binding_.
+Hay ciertos atributos HTML que podemos necesitar enlazar utilizando nuestras clases modelo por ejemplo, atributos de accesibilidad (ARIA), SVGs, o _table spans (colspan)_ que no tienen correspondencia con propiedades del elemento en el DOM
 
 ---
 
@@ -213,12 +214,11 @@ Template parse errors:
 Can't bind to 'colspan' since it isn't a known native property
 ```
 
-Lo cual efectivamente cumple nuestra regla. Como lo solucionamos ?
+Lo cual efectivamente cumple nuestra regla de que Angular funciona a nivel de properties. Como lo solucionamos ?
 
 ```html
  <tr><td [attr.colspan]="1 + 1">One-Two</td></tr>
 ```
-
 ---
 
 Utilizando _attribute binding_!!
@@ -231,13 +231,13 @@ También se suele usar para atributos de accesibilidad
 
 ---
 
-# Class & Style binding
+## Class & Style binding
 
-Podemos añadir clases o estilos inline usando _class_ y _style_ junto a la clase o propiedad que queremos enlazar
+Podemos añadir clases o estilos inline usando [class] y [style] junto a la clase o propiedad que queremos enlazar
 
 ---
 
-# class
+## [class]
 
 ```html
 <!-- Añade o elimina todas las clases a la vez. O todas o ninguna  -->
@@ -247,13 +247,12 @@ Podemos añadir clases o estilos inline usando _class_ y _style_ junto a la clas
 <div [class.special]="isSpecial">The class binding is special</div>
 
 <!-- Sobreescrimos la clase con lo que contenga la propiedad del modelo -->
-<div class="special"
-     [class.special]="!isSpecial">This one is not so special</div>
+<div class="special" [class.special]="!isSpecial">This one is not so special</div>
 ```
 
 ---
 
-# style
+## [style]
 
 ```html
 <button [style.color]="isSpecial ? 'red': 'green'">Red</button>
@@ -264,40 +263,39 @@ Podemos añadir clases o estilos inline usando _class_ y _style_ junto a la clas
 
 ---
 
-# (Event binding)
+## (Event binding)
 
-Los usuarios no se quedan simplemente mirando a la pantalla. El flujo de datos hasta ahora es siempre del componente a la vista
+- Los usuarios no se quedan simplemente mirando a la pantalla. El flujo de datos hasta ahora es siempre del componente a la vista
 
-El binding de eventos nos permite hacer el flujo contrario, de la vista al componente
+- El binding de eventos nos permite hacer el flujo contrario, de la vista al componente
 
 ---
 
-# Eventos nativos
+## Eventos nativos
 
 ```html
 <button (click)="onSave($event)">Save</button>
 <button on-click="onSave($event)">On Save</button>
 ```
 
-El nombre entre `()` representa el evento (eventos estándar de los elementos DOM) sobre el que queremos añadir el listener. `onSave()` representa el método del Componente asociado que queremos ejecutar
-
-`$event` existirá en el contexto de la plantilla y se puede pasar al método ejecutado. `$event` es un objeto de un evento DOM.
-
----
-
-# Eventos custom
-
-Mediante el uso de `EventEmitter` puedo lanzar eventos propios de la aplicación
-
-Es de gran utilidad cuando el componente no necesita conocer la implementación concreta => Reusabilidad
-
-Es un patrón que se usa de forma extendida en la aplicaciones Angular
-
-Por ejemplo, este componente no sabe como efectuar un borrado, simplemente emite un evento:
+- El nombre entre `()` representa el evento (eventos estándar de los elementos DOM) sobre el que queremos añadir el listener. 
+- `onSave()` representa el método del componente asociado que queremos ejecutar
+- `$event` es un objeto normal de un evento DOM
+- `$event` existirá en el contexto de la plantilla y se puede pasar al método ejecutado
 
 ---
 
-```html
+## Eventos custom. EventEmitter
+
+- Mediante el uso de `EventEmitter` puedo lanzar eventos propios de la aplicación
+- Es de gran utilidad cuando el componente no necesita conocer la implementación concreta => Reusabilidad
+- Es un patrón que se usa de forma extendida en la aplicaciones Angular
+
+---
+
+Ejemplo: El siguiente componente no sabe como efectuar un borrado, simplemente emite un evento:
+
+```javascript
 template: `
 <div>
   <img src="{{heroImageUrl}}">
@@ -319,16 +317,17 @@ delete() {
 Desde el padre, que conoce como efectuar el borrado, nos suscribimos al evento
 
 ```html
-<app-hero-detail (deleteRequest)="deleteHero($event)" [hero]="currentHero"></app-hero-detail>
+<app-hero-detail 
+  (deleteRequest)="deleteHero($event)" 
+  [hero]="currentHero"></app-hero-detail>
 ```
 
 ---
 
-# [(Two-way binding)]
+## [(Two-way binding)]
 
-A veces necesitaremos que el binding vaya en ambos sentidos
-
-Esta técnica es la que se usa en los formularios de Angular
+- A veces necesitaremos que el binding vaya en ambos sentidos
+- Esta técnica es la que se usa en los formularios de Angular
 
 ---
 
@@ -359,14 +358,12 @@ export class SizerComponent {
 ---
 
 ```html
-<app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer>
+<app-sizer 
+  [size]="fontSizePx" 
+  (sizeChange)="fontSizePx=$event"></app-sizer>
 ```
 
-
-
 Este patrón tiene su sintaxis propia en Angular
-
-
 
 ```html
 <app-sizer [(size)]="fontSizePx"></app-sizer>
@@ -378,34 +375,27 @@ Este patrón tiene su sintaxis propia en Angular
 
 ---
 
-#Attribute vs Structural Directives
+## Attribute & Structural Directives
 
-Angular permite construir diretivas de dos tipos:
-
-- Attribute: Modifican el comportamiento de los elementos HTML y se aplican como atributos
-
-- Structural: Se responsbilizan de controlar el DOM añadiendo o eliminando nodos
+- **Attribute**: Modifican el comportamiento de los elementos HTML y se aplican como atributos
+- **Structural**: Se responsbilizan de controlar el DOM añadiendo o eliminando nodos
 
 ---
 
-# Built-in attribute directives
+## Built-in attribute directives
 
-Las directivas de atributo van ligadas y modifican el comportamiento de los elementos HTML. Hay varias predefinidas:
+Las directivas de atributo van ligadas y modifican el comportamiento de los elementos HTML. Hay varias predefinidas
 
 ---
 
-# NgClass
+## NgClass
 
 Directiva avanzada para el control del atributo class. Podemos añadir o eliminar varias clases a la vez, cosa que no podríamos hacer a través de property binding con `class`
 
-
-
 ```html
-<div [ngClass]="currentClasses">This div is initially saveable, unchanged, and special</div>
+<div [ngClass]="currentClasses"></div>
 
 ```
-
-...
 
 ```javascript
 currentClasses: {};
@@ -418,20 +408,15 @@ setCurrentClasses() {
   };
 }
 ```
-
 ---
 
-# NgStyle
+## NgStyle
 
 Similar a NgClass pero para los estilos inline
 
 ```html
-<div [ngStyle]="currentStyles">
-  This div is initially italic, normal weight, and extra large (24px).
-</div>
+<div [ngStyle]="currentStyles"></div>
 ```
-
-...
 
 ```javascript
 currentStyles: {};
@@ -447,9 +432,9 @@ setCurrentStyles() {
 
 ---
 
-# NgModel (Two-way data binding)
+## NgModel (Two-way data binding)
 
-Directiva especializada para controlar elementos de un formulario.
+Directiva especializada para controlar elementos de un formulario
 
 ```html
 <input [(ngModel)]="currentHero.name">
@@ -457,7 +442,7 @@ Directiva especializada para controlar elementos de un formulario.
 
 ---
 
-En realidad `ngModel` es simplemente un shorthand de:
+En realidad `ngModel` es simplemente un shorthand de un patrón que sería bastante habitual en Angular:
 
 ```html
 <input
@@ -468,11 +453,14 @@ En realidad `ngModel` es simplemente un shorthand de:
 que a su vez oculta el funcionamiento real del elemento input que seria:
 
 ```html
-<input [value]="currentHero.name"
-       (input)="currentHero.name=$event.target.value" >
+<input 
+  [value]="currentHero.name"
+  (input)="currentHero.name=$event.target.value" >
 ```
 
-El shorthand `[(ngModel)]`solo puede realizar el binding con una propiedad. Si se necesita algo más avanzado se puede recurrir a la forma extendida
+---
+
+El shorthand _[(ngModel)]_ solo puede realizar el binding con una propiedad. Si se necesita algo más avanzado se puede recurrir a la forma extendida
 
 ```html
 <input
@@ -482,13 +470,13 @@ El shorthand `[(ngModel)]`solo puede realizar el binding con una propiedad. Si s
 
 ---
 
-# Built-in structural directives
+## Built-in structural directives
 
 Este tipo de directivas permiten modificar el DOM añadiendo, eliminando o modificando elementos
 
 ---
 
-# NgIf
+## NgIf
 
 Permite añadir o eliminar un elemento del DOM a través de la evaluación boolena de una propiedad o expresión
 
@@ -498,12 +486,14 @@ Permite añadir o eliminar un elemento del DOM a través de la evaluación boole
 
 ---
 
-# NgForOf
+## NgForOf
 
 Esta directiva permite la repetición de un elemento DOM a través de una sintaxis propia que Angular puede interpretar y que se conoce como _microsyntax_
 
 ```html
-<div *ngFor="let hero of heroes; let I=index; trackBy: hero.id">{{i + 1}} - {{hero.name}}</div>
+<div *ngFor="let hero of heroes; let i=index; trackBy: hero.id">
+  {{i + 1}} - {{hero.name}}
+</div>
 ```
 
 - `let` crea una variable local en el contexto de la directiva
@@ -512,7 +502,7 @@ Esta directiva permite la repetición de un elemento DOM a través de una sintax
 
 ---
 
-# NgSwitch
+## NgSwitch
 
 Es un conjunto de directivas que emulan el comportamiento de un bloque switch
 
@@ -529,22 +519,25 @@ Sólo se mostrará el bloque que cumpla la condición. Nótese que ngSwitch es u
 
 ---
 
-# Variables en plantillas
+## Variables en plantillas
 
-Se pueden definir variables locales en plantillas mediante #. La variable se puede referencias en cualquier lado de la plantilla
+Se pueden definir variables locales en plantillas mediante _#_. La variable se puede referenciar en cualquier parte de la plantilla
 
 ```html
 <input #phone placeholder="phone number">
 
-<!-- lots of other elements -->
+...
 
-<!-- phone refers to the input element; pass its `value` to an event handler -->
 <button (click)="callPhone(phone.value)">Call</button>
 ```
 
 ---
 
-# Resumen
+![fit 190%](https://media1.giphy.com/media/12NUbkX6p4xOO4/giphy.gif?cid=e1bb72ff5c6c328e32787a515922863e)
+
+---
+
+## Resumen
 
 ```javascript
 @Component({

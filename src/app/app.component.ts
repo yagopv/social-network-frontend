@@ -3,14 +3,14 @@ import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
 import { GlobalState } from './shared/store/global.state';
+import { environment } from '../environments/environment';
 
 @Component({
-  selector: 'hab-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'sn-root',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   @Select(GlobalState.isFetching) isFetching$: Observable<boolean>;
 
-  title = 'hack-a-bos';
+  title = environment.siteName;
 }

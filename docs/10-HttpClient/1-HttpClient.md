@@ -1,5 +1,6 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
 
 # HttpClient
 
@@ -55,30 +56,41 @@ export class MyService {
 
 ---
 
-```javascript
-http.get(`${baseUrl}/api/races`) .subscribe((response: Array<RaceModel>) => {
-      console.log(response);
-});
+## Uso de HttpClient
 
 Se devuelve un observable que por tanto puedo transformar mediante operadores (o incluso convertir a Promise conm toPromise())
+
+```javascript
+http.get(`${baseUrl}/api/races`)
+    .subscribe((response: Array<RaceModel>) => {
+      console.log(response);
+});
 
 ```
 
 ---
 
-## Leyendo la respuesta completa
+## Leyendo la respuesta
 
-Por defecto se lee el body. A veces podemos necesitar leer cabeceras o cualquier otra cosa en la respuesta
+Por defecto se lee el body. 
+
+A veces podemos necesitar leer cabeceras o cualquier otra cosa en la respuesta
+
+[.code-highlight: all]
+
 [.code-highlight: 5]
+
 ```javascript
-  uploadAvatar(image: File) {
-    const formData = new FormData();
-    formData.append('avatar', image);
-    return this.http.post(`${environment.apiBaseUrl}/user/avatar`, formData, {
+uploadAvatar(image: File) {
+  const formData = new FormData();
+  formData.append('avatar', image);
+  return this.http.post(`${environment.apiBaseUrl}/user/avatar`, formData, {
       observe: 'response'
-    });
-  }
+  });
+}
 ```
+
+
 ---
 
 ## Añadiendo Headers
@@ -102,18 +114,19 @@ this.http.post<Config>(this.configUrl, config, httpOptions)
 ## Parámetros en la URL
 
 ```javascript
-  search(text: string) {
-    return this.http.get<Profile[]>(`${environment.apiBaseUrl}/user/search`, {
-      params: { q: text }
-    });
-  }
+search(text: string) {
+  return this.http.get<Profile[]>(
+      `${environment.apiBaseUrl}/user/search`, {
+    params: { q: text }
+  });
+}
 ```
 
 ---
 
 ## Gestión de errores
 
-catchError se encarga de capturar el error y no provoca un fin en la ejecución del Observable
+catchError se encarga de capturar el error y no provoca el final en la ejecución del Observable
 
 ```javascript
 getConfig() {
@@ -130,12 +143,12 @@ También podría utilizar la función de error del Observer pasado a la subscrip
 
 ## Type-checking de las respuestas
 
-Esto provoca un error en el compilador de TypeScript
+El siguiente código provoca un error en el compilador de TypeScript
 
 ```javascript
 .subscribe((data: Config) => this.config = {
-    configUrl: data['configUrl'],  // data.configUrl typescript error
-    textfile:  data['textfile']
+    configUrl: data.configUrl,  // data.configUrl typescript error
+    textfile:  data.textfile
 });
 ```
 
@@ -147,7 +160,7 @@ getConfig() {
 }
 ```
 
-Ahora ya no tendriamos el error
+Ahora ya no tendriamos dicho error por lo que es la convención
 
 ---
 
@@ -157,7 +170,8 @@ Ahora ya no tendriamos el error
 @Injectable()
 export class MyInterceptor implements HttpInterceptor {
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, 
+            next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req);
   }
 }
@@ -175,7 +189,7 @@ export class MyInterceptor implements HttpInterceptor {
 ## Interceptors
 
 ```javascript
-{ provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true },
+{ provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }
 ```
 
-nulti indica a Angular que este token es una array de valores. Es decir, puedo proporcionar múltiples interceptors en diferentes puntos y Angular lo convertirá en un Array
+multi indica a Angular que este token es una array de valores, es decir, puedo proporcionar múltiples interceptors en diferentes puntos y Angular lo convertirá en un Array

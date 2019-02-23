@@ -9,11 +9,10 @@ import { Error } from '../../../error/models/error.model';
 import { AuthState } from '../../store/auth.state';
 import { Profile } from '../../models/profile.model';
 import { UrlValidator } from '../../../shared/validators/url.validator';
-import { UpdateUserProfile, Logout } from '../../store/auth.actions';
-import { AuthService } from '../../services/auth.service';
+import { UpdateUserProfile } from '../../store/auth.actions';
 
 @Component({
-  selector: 'hab-profile',
+  selector: 'sn-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
@@ -28,7 +27,8 @@ export class ProfileComponent implements OnInit {
         isPublicProfile: [false],
         linkedIn: ['', [UrlValidator]],
         twitter: ['', [UrlValidator]],
-        github: ['', [UrlValidator]]
+        github: ['', [UrlValidator]],
+        description: ['']
       })
     },
     { updateOn: 'blur' }
@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
           linkedIn: '',
           twitter: '',
           github: '',
+          description: '',
           ...preferences
         }
       })
@@ -56,6 +57,7 @@ export class ProfileComponent implements OnInit {
       this.markFormGroupTouched(this.updateProfileForm);
       return;
     }
+
     this.store.dispatch(new UpdateUserProfile(this.updateProfileForm.value));
   }
 

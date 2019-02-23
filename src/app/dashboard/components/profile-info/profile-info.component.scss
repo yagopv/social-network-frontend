@@ -1,0 +1,38 @@
+@import 'colors.scss';
+@import 'breakpoints.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: $dark;
+  border-radius: 10px;
+  padding: 20px;
+  color: $white;
+  div {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    h1 {
+      margin-bottom: 10px;
+    }
+  }
+  ul {
+    display: flex;
+    margin-top: 20px;
+    li {
+      flex: 1;
+      a {
+        color: $white;
+        font-weight: bold;
+      }
+    }
+  }
+  @include respond-above(sm) {
+    flex-direction: row;
+    div {
+      text-align: left;
+    }
+  }
+}

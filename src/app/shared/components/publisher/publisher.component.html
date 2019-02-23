@@ -1,11 +1,12 @@
 <div class="publisher">
-  <hab-avatar [user]="user"></hab-avatar>
+  <sn-avatar [user]="user"></sn-avatar>
   <div class="publisher-text">
     <textarea
-      habTextArea
+      snTextArea
       rows="1"
       [placeholder]="placeholder"
-      [(ngModel)]="publishText"
+      [(ngModel)]="content"
+      #text
     ></textarea>
   </div>
   <button (click)="publishStatus()">

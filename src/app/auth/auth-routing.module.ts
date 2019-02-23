@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SiteLayoutComponent } from '../shared/components/site-layout/site-layout.component';
-
-import { CenteredLayoutComponent } from '../shared/components/centered-layout/centered-layout.component';
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
 
@@ -18,7 +17,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        component: CenteredLayoutComponent,
+        component: AuthLayoutComponent,
         children: [
           {
             path: 'login',

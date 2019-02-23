@@ -13,7 +13,7 @@ export class GetPostsSuccess {
 }
 export class GetPostsFailed {
   static readonly type = '[Posts] GetPostsFailed';
-  constructor(public error: Error[]) {}
+  constructor(public errors: Error[], public uuid: string) {}
 }
 
 export class AddPost {
@@ -28,7 +28,7 @@ export class AddPostSuccess {
 
 export class AddPostFailed {
   static readonly type = '[Posts] AddPostFailed';
-  constructor(public error: Error[]) {}
+  constructor(public errors: Error[]) {}
 }
 
 export class DeletePost {
@@ -43,7 +43,7 @@ export class DeletePostSuccess {
 
 export class DeletePostFailed {
   static readonly type = '[Posts] DeletePostFailed';
-  constructor(public error: Error[]) {}
+  constructor(public errors: Error[]) {}
 }
 
 export class AddComment {
@@ -58,5 +58,24 @@ export class AddCommentSuccess {
 
 export class AddCommentFailed {
   static readonly type = '[Comment] AddCommentFailed';
-  constructor(public error: Error[]) {}
+  constructor(public errors: Error[]) {}
+}
+
+export class Like {
+  static readonly type = '[Post] Like';
+  constructor(public postId: string) {}
+}
+
+export class LikeSuccess {
+  static readonly type = '[Post] Like Success';
+  constructor(
+    public postId: string,
+    public isLike: boolean,
+    public userUuid: string
+  ) {}
+}
+
+export class LikeFailed {
+  static readonly type = '[Post] Like Failed';
+  constructor(public errors: Error[]) {}
 }

@@ -7,7 +7,10 @@ import {
   LoginSuccess,
   RegisterSuccess,
   LoginFailed,
-  RegisterFailed
+  RegisterFailed,
+  UpdateUserProfile,
+  UpdateUserProfileSuccess,
+  UpdateUserProfileFailed
 } from '../../auth/store/auth.actions';
 import {
   AddPost,
@@ -30,7 +33,7 @@ export class GlobalState {
     return isFetching;
   }
 
-  @Action([Login, Register, AddPost, AddComment])
+  @Action([Login, Register, AddPost, AddComment, UpdateUserProfile])
   startFetching({ patchState }: StateContext<Global>) {
     patchState({ isFetching: true });
   }
@@ -40,10 +43,12 @@ export class GlobalState {
     RegisterSuccess,
     AddPostSuccess,
     AddCommentSuccess,
+    UpdateUserProfileSuccess,
     LoginFailed,
     RegisterFailed,
     AddPostFailed,
-    AddCommentFailed
+    AddCommentFailed,
+    UpdateUserProfileFailed
   ])
   endFetching({ patchState }: StateContext<Global>) {
     patchState({ isFetching: false });

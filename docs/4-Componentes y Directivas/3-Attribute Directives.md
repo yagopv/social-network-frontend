@@ -1,14 +1,22 @@
 theme: Next, 8
+autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez 2019
+
 
 # Attribute Directives
 
-### Modifican la apariencia o comportamiento de un elemento, componente o otra directiva
+---
+
+## Attribute Directives
+
+Se encargan de modificar la apariencia o comportamiento de un elemento, componente o otra directiva
 
 ---
 
-# @Directive
+## @Directive
 
-Se definen usando el `decorator` *@Directive*
+Se definen usando el decorator @Directive
 
 ```javascript
 import { Directive } from '@angular/core';
@@ -23,7 +31,7 @@ export class HighlightDirective {
 
 ---
 
-# ElementRef
+## ElementRef
 
 Podemos inyectar `ElementRef` para permitir acceso al elemento *host* a través de su propiedad *nativeElement*
 
@@ -44,7 +52,7 @@ export class HighlightDirective {
 
 ---
 
-# HostListener
+## HostListener
 
 Con `HostListener` podemos suscribirnos a eventos DOM
 
@@ -66,7 +74,7 @@ private highlight(color: string) {
 
 ---
 
-# @Input
+## @Input
 
 Podemos usar `@Input` para enviar valores a la Directiva como venimos haciendo habitualmente
 
@@ -84,8 +92,7 @@ Podemos usar `@Input` para enviar valores a la Directiva como venimos haciendo h
 
 ---
 
-# @HostBinding
-
+## @HostBinding
 
 
 Puedo utilizar `HostBinding` para enlazar con atributos del elemento contenedor

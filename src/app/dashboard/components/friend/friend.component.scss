@@ -1,4 +1,4 @@
-@import '~src/scss/colors.scss';
+@import 'colors.scss';
 
 .friend {
   background-color: $main;
@@ -8,20 +8,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+  transition: transform 0.3s, ese-in;
+  cursor: pointer;
+  &:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  &.is-friend {
+    background-color: $dark;
   }
   .friend-details {
     margin-left: 10px;
     flex: 1;
     .friend-toolbar {
+      margin-top: 5px;
       a {
         color: $light;
         font-size: 0.8rem;
         display: inline-block;
-        margin-left: 5px;
       }
     }
   }

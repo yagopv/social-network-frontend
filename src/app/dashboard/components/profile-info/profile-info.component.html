@@ -1,0 +1,18 @@
+<sn-avatar [user]="user"></sn-avatar>
+<div>
+  <h1>
+    <b>{{ user.fullName }}</b>
+  </h1>
+  <p>{{ user.preferences?.description }}</p>
+  <ul>
+    <li *ngIf="user.preferences?.linkedIn">
+      <a [href]="user.preferences?.linkedIn" target="_blank">LinkedIn</a>
+    </li>
+    <li *ngIf="user.preferences?.twitter">
+      <a [href]="user.preferences?.twitter" target="_blank">Twitter</a>
+    </li>
+    <li *ngIf="user.preferences?.github">
+      <a [href]="user.preferences?.github" target="_blank">Github</a>
+    </li>
+  </ul>
+</div>

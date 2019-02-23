@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
+import { Component, OnInit } from '@angular/core';
+import { Store, Select, ofAction, Actions } from '@ngxs/store';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -7,15 +7,14 @@ import { MailValidator } from '../../../shared/validators/mail.validator';
 import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
 import { ErrorState } from '../../../error/store/error.state';
 import { Error } from '../../../error/models/error.model';
-import { Register } from '../../store/auth.actions';
-import { ResetErrors } from '../../../error/store/error.actions';
+import { Register, RegisterSuccess } from '../../store/auth.actions';
 
 @Component({
-  selector: 'hab-register',
+  selector: 'sn-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   @Select(ErrorState) errors$: Observable<Error>;
   registerForm = this.fb.group(
     {
@@ -27,8 +26,19 @@ export class RegisterComponent {
     { validators: MatchPasswordValidator, updateOn: 'blur' }
   );
 
-  constructor(private fb: FormBuilder, private store: Store) {
+  constructor(
+    private fb: FormBuilder,
+    private store: Store,
+    private actions$: Actions
+  ) {
+    // Sample observable showing values
     // this.registerForm.valueChanges.subscribe(value => console.log(value));
+  }
+
+  ngOnInit() {
+    this.actions$.pipe(ofAction(RegisterSuccess)).subscribe(() => {
+      this.registerForm.reset();
+    });
   }
 
   register() {

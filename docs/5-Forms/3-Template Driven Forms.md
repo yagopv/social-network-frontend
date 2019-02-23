@@ -1,19 +1,21 @@
- theme: Next, 8
+theme: Next, 8
 autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez 2019
 
 # Template-driven Forms
 
 ---
 
-# Qué son?
+## Qué son?
 
-- Se puede crear practicamente cualquier formuliario con una plantilla
+- Se puede crear practicamente cualquier formulario con una plantilla
 - El flujo del formulario y control de errores lo controlamos directamente en la plantilla mediante el uso de directivas, data-binding y variables
-- Menos flexibles y desde luego no muy reusables pero rápidos y fáciles de usar
+- Menos flexibles y desde luego no muy reusables pero fáciles de crear
 
 ---
 
-# Registrar el módulo
+## FormsModule. Registro
 
 ```javascript
 import { FormsModule } from '@angular/forms';
@@ -31,41 +33,37 @@ El registro de `FormsModule` hace que automáticamente se evalúe cada formulari
 
 ------
 
-# [(ngModel)]
-
-`[(ngModel)] ` two-way data binding permite comunicar el modelo con la vista y viceversa de una forma sencilla
+## [(ngModel)]
 
 ```html
 <input type="text" id="name" required [(ngModel)]="model.name" name="name">
 ```
 
-La directiva `ngModel` permite comprobar si el elemento subyacente ha sido visitado (touched), se ha introducido información (dirty) o si es válido (valid)
+- `[(ngModel)] ` two-way data binding permite comunicar el modelo con la vista y viceversa de una forma sencilla
 
-Además actualiza el control con una serie de clases especiales en función de su estado (`ng-touched`,` ng-dirty`,` ng-valid`,`ng-untouched`,` ng-pristine`,` ng-invalid`)
+- `ngModel` permite comprobar si el elemento ha sido visitado (touched), se ha introducido información (dirty) o si es válido (valid)
 
-La directiva `ngModel` nos permite acceder a un `FormControl` subyacente
+- Actualiza el control con una serie de clases en función de su estado (`ng-touched`, `ng-dirty`, `ng-valid`, `ng-untouched`, `ng-pristine`, `ng-invalid`)
+
+- `ngModel` nos permite acceder a un `FormControl` subyacente
 
 ---
 
-# NgForm
-
-La directiva `NgForm` se añade de forma automática cuando incluimos `FormsModule` a todos los formularios
-
-Podemos referenciarla mediante:
+## NgForm
 
 ```html
 <form #myForm="ngForm">
 ```
 
-Esta directiva complementa al elemento  `form`  con funcionalidad extra
-
-Contiene los controles que se han creado mediante la directiva  `ngModel`  y el atributo  `name` (obligatorio) monitorizando sus propiedades incluida su validez. Además podemos checkear la validez del formulario mediante la propiedad  `valid`.
-
-Internamente Angular creará instancias de `FormControl`
+- `NgForm` se añade de forma automática cuando incluimos `FormsModule` a todos los formularios
+- Complementa al elemento  `form`  con funcionalidad extra
+- Contiene los controles que se han creado mediante la directiva  `ngModel`  y el atributo  `name` (obligatorio) monitorizando sus propiedades incluida su validez. 
+- Podemos checkear la validez del formulario mediante la propiedad  `valid`.
+- Internamente Angular creará instancias de `FormControl`
 
 ---
 
-# Template variables
+## Template variables
 
 Necesitaremos variables para efectuar la gestión del formulario en la plantilla
 
@@ -83,7 +81,7 @@ Necesitaremos variables para efectuar la gestión del formulario en la plantilla
 
 ---
 
-# Submit
+## Submit
 
 En este caso no difiere de lo visto en `ReactiveForms`
 
@@ -91,69 +89,4 @@ En este caso no difiere de lo visto en `ReactiveForms`
 <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
 ```
 
----
 
-# Validación
-
-- La validación en los `template-driven forms` se realiza a partir de atributos al igual que la validación HTML nativa. Angular usa directivas para emparejar dichos atributos con funciones encargadas de realizar la validación
-- Cada vez que un valor cambia se ejecuta la validación 
-- Podemos inspeccionar el resultado exportando el control a través de una variable
-- Podemos utilizar validaciones personalizadas a través de creación de directivas
-
----
-
-# Validación
-
-```html
-<input id="name" name="name" class="form-control"
-      required minlength="4" appForbiddenName="bob"
-      [(ngModel)]="hero.name" #name="ngModel" >
-
-<div *ngIf="name.invalid && (name.dirty || name.touched)"
-    class="alert alert-danger">
-
-  <div *ngIf="name.errors.required">
-    Name is required.
-  </div>
-  <div *ngIf="name.errors.minlength">
-    Name must be at least 4 characters long.
-  </div>
-  <div *ngIf="name.errors.forbiddenName">
-    Name cannot be Bob.
-  </div>
-
-</div>
-```
-
----
-
-# Creando validadores
-
-En `template-driven forms` no tenemos acceso directo al `FormControl` por lo que tenemos que añadir una directiva a la plantilla que actúe como contenedor. Para que Angular la reconozca como tal necesitamos registrarla en el módulo correspondiente
-
-
-```javascript
-  providers: [
-    { provide: NG_VALIDATORS, useExisting: MailValidatorDirective, multi: true }
-  ]
-```
-
----
-
-# Creando validadores. La directiva
-
-```javascript
-@Directive({
-  selector: '[habMail]',
-  providers: [
-    { provide: NG_VALIDATORS, useExisting: MailValidatorDirective, multi: true }
-  ]
-})
-export class MailValidatorDirective implements Validator {
-  @Input('habMail') mail: string;
-
-  validate(control: AbstractControl): { [key: string]: any } | null {
-    return MailValidator(control);
-  }
-}
-```

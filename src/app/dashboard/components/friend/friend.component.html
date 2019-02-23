@@ -1,14 +1,22 @@
-<div class="friend">
-  <hab-avatar [user]="friend" width="80px" height="80px"></hab-avatar>
+<div class="friend" [ngClass]="{ 'is-friend': friend.isMyFriend }">
+  <sn-avatar [user]="friend" width="80px" height="80px"></sn-avatar>
   <div class="friend-details">
     <h5>{{ friend?.fullName }}</h5>
     <div class="friend-toolbar">
-      <a href="" (click)="addFriend()" habPreventDefault
-        ><fa-icon [icon]="addIcon"></fa-icon> Add
+      <a
+        href=""
+        (click)="addFriend()"
+        snPreventDefault
+        *ngIf="!friend.isMyFriend"
+        ><fa-icon [icon]="addIcon"></fa-icon> Add to my friends
       </a>
-      <a href="" (click)="removeFriend()" habPreventDefault
-        ><fa-icon [icon]="removeIcon"></fa-icon> Remove</a
-      >
+      <a
+        href=""
+        (click)="removeFriend()"
+        snPreventDefault
+        *ngIf="friend.isMyFriend"
+        ><fa-icon [icon]="removeIcon"></fa-icon> Remove from my friends
+      </a>
     </div>
   </div>
 </div>

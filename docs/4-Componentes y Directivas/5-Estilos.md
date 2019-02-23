@@ -1,19 +1,26 @@
 theme: Next, 8
+autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez 2019
 
-# Dando estilos a nuestros componentes
+# Estilos en componentes
+
+--- 
+
+## Dando estilos a nuestros componentes
 
 - Las aplicaciones Angular pueden reciben estilos usando CSS. También podremos utilizar precompiladores como SASS de forma sencilla
 - Los estilos se aplican de forma modular, es decir, el scope es el componente y las clases y estilos definidos no afectan al resto de la aplicación. Asimismo los estilos definidos en otros componentes tampoco afectarán al que estemos implementando
 
 ---
 
-# Selectores especiales
+## Selectores especiales
 
 **:host**
 
 El pseudoselector *:host* permite hacer referencia y dar estilos al elemento que se encarga de definir el componente para su renderizado. El elemento definido en la propiedad *selector*
 
-```html
+```css
 :host {
   display: block;
   border: 1px solid black;
@@ -28,13 +35,13 @@ El pseudoselector *:host* permite hacer referencia y dar estilos al elemento que
 
 
 
-# Selectores especiales
+## Selectores especiales
 
 **:host-context**
 
 Permite hacer algo que con CSS estándar no podemos. Seleccionar un elemento padre.
 
-```html
+```css
 :host-context(.theme-light) h2 {
   background-color: #eef;
 }
@@ -42,7 +49,7 @@ Permite hacer algo que con CSS estándar no podemos. Seleccionar un elemento pad
 
 ---
 
-# Carga de estilos en un componente
+## Carga de estilos en un componente
 
 - A través de *styles* o *styleUrls*
 - Inline en la *template* del componente
@@ -50,7 +57,7 @@ Permite hacer algo que con CSS estándar no podemos. Seleccionar un elemento pad
 
 ---
 
-# Propiedad *styles*
+## Propiedad *styles*
 
 ```javascript
 @Component({
@@ -68,7 +75,7 @@ export class HeroAppComponent {
 
 ---
 
-#Propiedad *styleUrls*
+##Propiedad *styleUrls*
 
 ```javascript
 @Component({
@@ -86,7 +93,7 @@ export class HeroAppComponent {
 
 ---
 
-# Inline en la *template*
+## Inline en la *template*
 
 ```javascript
 @Component({
@@ -107,7 +114,7 @@ export class HeroAppComponent {
 
 ---
 
-# CSS *@imports*
+## CSS *@imports*
 
 ```javascript
 @import './hero-details-box.css';
@@ -115,16 +122,16 @@ export class HeroAppComponent {
 
 ---
 
-# Definiendo el tipo de modularidad - *viewEncapsulation*
+## Definiendo el tipo de modularidad - *viewEncapsulation*
 
-- *ShadowDom* - Implementación nativa de ShadowDom. Soporte limitado
-- *Native* - Implmentación nativa también pero de un estándar anterior
-- *Emulated* - Por defecto si no se especifica otra. Simula *ShadowDom* y por tanto soporta todos los navegadores
-- *None* - Los estilos se aplicacarán de forma global
+- **ShadowDom** - Implementación nativa de ShadowDom. Soporte limitado
+- **Native** - Implementación nativa también pero de un estándar anterior
+- **Emulated** - Por defecto si no se especifica otra. Simula ShadowDom y por tanto soporta todos los navegadores
+- **None** - Los estilos se aplicacarán de forma global
 
 ---
 
-# CSS generado
+## CSS generado
 
 ```html
 <hero-details _nghost-pmm-5>

@@ -11,14 +11,16 @@ import { Post } from '../models/post.model';
 export class PostService {
   constructor(private http: HttpClient) {}
 
-  getFeed(userId?: string): Observable<Post[]> {
+  getWall(userId?: string): Observable<Post[]> {
     const path = userId ? `/${userId}` : '';
 
-    return this.http.get<Post[]>(`${environment.apiBaseUrl}/user${path}/feed`);
+    return this.http.get<Post[]>(`${environment.apiBaseUrl}/user/wall${path}`);
   }
 
-  addPost(content: string): Observable<Post> {
-    return this.http.post<Post>(`${environment.apiBaseUrl}/post`, {
+  addPost(content: string, userId?: string): Observable<Post> {
+    const path = userId ? `/${userId}` : '';
+
+    return this.http.post<Post>(`${environment.apiBaseUrl}/post${path}`, {
       content
     });
   }
@@ -33,6 +35,17 @@ export class PostService {
       {
         message
       }
+    );
+  }
+
+  like(postId: string) {
+    return this.http.post(`${environment.apiBaseUrl}/post/${postId}/like`, {});
+  }
+
+  dislike(postId: string) {
+    return this.http.delete(
+      `${environment.apiBaseUrl}/post/${postId}/like`,
+      {}
     );
   }
 }

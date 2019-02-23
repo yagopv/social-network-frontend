@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Profile } from '../../../auth/models/profile.model';
 
 @Component({
-  selector: 'hab-me',
+  selector: 'sn-me',
   templateUrl: './me.component.html',
   styleUrls: ['./me.component.scss']
 })

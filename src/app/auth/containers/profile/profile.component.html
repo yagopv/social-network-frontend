@@ -1,47 +1,58 @@
-<hab-form-group>
-  <hab-errors [errors]="errors$ | async"></hab-errors>
+<sn-form>
+  <sn-errors [errors]="errors$ | async"></sn-errors>
   <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
-    <hab-form-control [control]="updateProfileForm.get('fullName')">
+    <sn-form-control [control]="updateProfileForm.get('fullName')">
       <input type="text" placeholder="Name" formControlName="fullName" />
-    </hab-form-control>
+    </sn-form-control>
     <div formGroupName="preferences">
-      <hab-form-control
+      <sn-form-control
+        [control]="updateProfileForm.get('preferences.description')"
+      >
+        <textarea
+          rows="10"
+          placeholder="Tell us something about you"
+          formControlName="description"
+          snNullDefault
+        ></textarea>
+      </sn-form-control>
+      <sn-form-control
         [control]="updateProfileForm.get('preferences.isPublicProfile')"
       >
         <label class="checkbox-wrapper"
-          >Is your profile public
+          >Is your profile public?
           <input type="checkbox" formControlName="isPublicProfile" />
           <span class="checkmark"></span>
         </label>
-      </hab-form-control>
-      <hab-form-control
+      </sn-form-control>
+      <sn-form-control
         [control]="updateProfileForm.get('preferences.linkedIn')"
       >
         <input
           type="text"
           placeholder="Enter you LinkedIn public profile"
           formControlName="linkedIn"
+          snNullDefault
         />
-      </hab-form-control>
-      <hab-form-control
-        [control]="updateProfileForm.get('preferences.twitter')"
-      >
+      </sn-form-control>
+      <sn-form-control [control]="updateProfileForm.get('preferences.twitter')">
         <input
           type="text"
           placeholder="Enter you Twitter public profile"
           formControlName="twitter"
+          snNullDefault
         />
-      </hab-form-control>
-      <hab-form-control [control]="updateProfileForm.get('preferences.github')">
+      </sn-form-control>
+      <sn-form-control [control]="updateProfileForm.get('preferences.github')">
         <input
           type="text"
           placeholder="Enter you Github public profile"
           formControlName="github"
+          snNullDefault
         />
-      </hab-form-control>
+      </sn-form-control>
     </div>
     <div class="button-wrapper">
       <button type="submit">Update profile</button>
     </div>
   </form>
-</hab-form-group>
+</sn-form>

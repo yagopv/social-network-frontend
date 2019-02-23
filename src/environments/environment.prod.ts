@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://hackabos.azurewebsites.net/api'
+  siteName: 'hack a bos',
+  apiBaseUrl: 'https://social-network.serveo.net/api'
 };

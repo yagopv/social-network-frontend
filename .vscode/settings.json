@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/030ad0fd-efd4-4dfa-a4bd-eb8184fa6e98/resourceGroups/Default-Web-WestEurope/providers/Microsoft.Web/sites/social-network",
+  "appService.deploySubpath": "dist/social-network"
+}

@@ -14,7 +14,7 @@ import { ResetErrors } from '../store/error.actions';
 import { Store } from '@ngxs/store';
 
 @Component({
-  selector: 'hab-errors',
+  selector: 'sn-errors',
   template: `
     <div class="errors" *ngIf="errors?.length">
       <p *ngFor="let error of errors">
@@ -34,7 +34,7 @@ export class ErrorComponent implements OnDestroy {
   closeIcon: IconProp = faTimesCircle;
 
   resetErrors() {
-    this.reset.emit();
+    this.store.dispatch(new ResetErrors());
   }
 
   getErrorMessage({ detail, data }: Error): string {

@@ -1,0 +1,16 @@
+@import 'breakpoints.scss';
+
+:host {
+  padding: 20px;
+  display: block;
+  sn-profile-info {
+    margin-bottom: 20px;
+  }
+  sn-errors {
+    display: block;
+    margin-top: 20px;
+  }
+  @include respond-above(lg) {
+    padding: 20px 100px;
+  }
+}

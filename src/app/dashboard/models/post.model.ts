@@ -4,6 +4,7 @@ import { Comment } from './comment.model';
 export interface Post {
   likes: any[];
   author: Author;
+  owner: Author;
   content: string;
   comments: Comment[];
   createdAt: number;
@@ -12,4 +13,5 @@ export interface Post {
 
 export interface PostRequest {
   content: string;
+  uuid?: string;
 }

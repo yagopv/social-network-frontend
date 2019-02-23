@@ -1,47 +1,44 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
 
 # Angular Router
 
---- 
 
-# Single Page Applications (SPA)
+
+---
+
+![left fit](https://media1.giphy.com/media/xT0Gqe9Ap0qSOLicKc/giphy.gif?cid=e1bb72ff5c6e6d2a6479414f6f1c1657)
+
+## Single Page Applications (SPA)
 
 - Tradicionalmente la navegación se realizaba a través de un servidor que generaba el código HTML de la página y lo enviaba al cliente conectado
-
 - Desde hace unos años nuevos modelos se han establecido como Single Page Applicactions o Server Side Rendering
+- En una SPA entregamos una plantilla HTML básica al cliente con una serie de bundles javascript y a partir de ahí es el cliente el encargado de construir la página
 
 ---
 
-# Single Page Applications (SPA)
+## SPA. Ventajas
 
-- En una SPA entregamos una plantilla HTML básica al cliente y a partir de ahí es el cliente el encargado de construir la página
-
-- El renderizado inicial es mas lento pero a partir de ahi los posteriores serán mås råpidos
-
----
-
-# SPA. Ventajas
-
-- Una vez cargada la velocidad y respuesta de la página es mayor y la experiencia de usuario mejora
+- Una vez cargadala página  la velocidad y respuesta de la página es mayor y la experiencia de usuario mejora
 
 - El cacheo de datos en local es muy efectivo
 
-- Capacidad de debug aumenta con los frameworks JS y herramientas disponibles en los navegadores
+- Capacidad de depuración aumenta con los frameworks JS y herramientas disponibles en los navegadores
 
-- Desacoplamiento claro de API REST
+- Desacoplamiento claro de un API REST
 
 ---
 
-# SPA. Inconvenientes 
+## SPA. Inconvenientes
 
+- El renderizado inicial es mas lento 
 - SEO. Google no renderiza perfectamente JS
-
-- Browser History, moverse entre estados. Necesitamos ayuda, por ejemplo el router de Angular
+- Browser History, moverse entre estados. Necesitamos ayuda, por ejemplo el **Router de Angular**
 
 ---
 
-# El navegador y su modelo de navegación
+## El navegador y su modelo de navegación
 
 - A través de direcciones en la barra de direcciones
 - A través de eventos click en links
@@ -49,21 +46,21 @@ autoscale: true
 
 ---
 
-# Angular Router
+## Angular Router
 
-El router de Angular, como en el resto de Frameworks intenta replicar el modelo de navegación de los navegadores y facilitar el uso de la SPA
+El router de Angular, como en el resto de Frameworks JS intenta replicar el modelo de navegación de los navegadores y facilitar el uso de la SPA
 
 ---
 
-# Configuración del router
+## Configuración del router
 
-- Necesito configurar la URL base o decirle a Angular a partir de dónde encontrar las rutas
+Necesito configurar la URL base o decirle a Angular a partir de dónde encontrar las rutas
 
 ```html
 <base href="/">
 ```
 
-- Importar el módulo
+Tengo que Importar el módulo
 
 ```javascript
 import { RouterModule, Routes } from '@angular/router';
@@ -71,7 +68,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 ---
 
-# Configuración del router
+## Configuración del router
 
 Creación de las rutas. El orden importa y gana la primera que coincida
 
@@ -94,9 +91,7 @@ const appRoutes: Routes = [
 
 ---
 
-# Configuración del router
-
-Configurando el NgModule
+## Configuración del router en NgModule
 
 ```javascript
 @NgModule({
@@ -113,27 +108,27 @@ export class AppModule { }
 ```
 
 ---
-# Router
+## Router
 
 Es el [servicio](https://angular.io/api/router/Router) que nos permite realizar la navegación entre rutas así como el acceso a todas las propiedades principales
 
 ---
-# Routes
+## Routes
 
-Define el array de rutas de la aplicación y sus mapeos con el correspondiente componente
+El tipo que define el array de rutas de la aplicación y sus mapeos con el correspondiente componente
 
 ---
-# Route
+## Route
 
-- Cada uno de los objetos que forman el array de Routes
+- La interfaz de cada uno de los objetos que forman el array de Routes
 
 - Define cómo el Router debe navegar a un componente basado en un patrón de URL
 
 ---
 
-# RouterOutlet
+## RouterOutlet
 
-Se encarga de marcar la posición en la que empezar a renderizar en la plantilla
+Directiva que se encarga de marcar la posición en la que empezar a renderizar en la plantilla
 
 ```html
 <router-outlet></router-outlet>
@@ -141,7 +136,7 @@ Se encarga de marcar la posición en la que empezar a renderizar en la plantilla
 
 ---
 
-# RouterLink
+## RouterLink
 
 Directiva para navegación entre rutas. Admite strings o array dinámico
 
@@ -155,7 +150,7 @@ Directiva para navegación entre rutas. Admite strings o array dinámico
 ```
 
 ---
-# RouterLink dinámico
+## RouterLink dinámico
 
 ```html
 // /team/11/user/bob;details=true
@@ -168,7 +163,7 @@ Directiva para navegación entre rutas. Admite strings o array dinámico
 ```
 
 ---
-# RouterLinkActive
+## RouterLinkActive
 
 Directiva para añadir o eliminar clases en función de si una ruta esta activa o no
 
@@ -178,15 +173,15 @@ Directiva para añadir o eliminar clases en función de si una ruta esta activa 
 
 ---
 
-# RouterState
+## RouterState
 
+- El estado actual del Router
 - Después de cada navegación se contruye el arbol de rutas activadas (ActivatedRoute)
-
 - Se puede acceder al RouterState a través del servicio Router
 
 ---
 
-# RouterState
+## RouterState
 
 ```javascript
 @Component({templateUrl:'template.html'})
@@ -203,7 +198,7 @@ class MyComponent {
 
 ---
 
-# ActivatedRoute
+## ActivatedRoute
 
 Servicio que se utiliza para acceder a la información de la ruta actual
 
@@ -221,17 +216,18 @@ class MyComponent {
 
 ---
 
-# ActivatedRouteSnapshot
+## ActivatedRouteSnapshot
 
-En muchos casos utilizaré el snapshot de la ruta. ActivatedRoute contiene muchas propiedades Observables por lo que resulta interesante para suscribirse a cambios
-
-ActivatedRouteSnapshot en cambio nos proporciona acceso al valor actual de dichas propiedades
+- En muchos casos utilizaré el snapshot de la ruta. 
+- ActivatedRoute contiene muchas propiedades Observables por lo que resulta interesante para suscribirse a cambios
+- ActivatedRouteSnapshot en cambio nos proporciona acceso al valor actual de dichas propiedades
 
 ---
 
-# Router Events
+## Router Events
 
-El router [emite eventos](https://angular.io/guide/router#router-events) en cada navegación. Lo hace a través de una propiedad Observable Router.events
+- El router [emite eventos](https://angular.io/guide/router#router-events) en cada navegación.
+- Emite eventos a través de la propiedad Observable Router.events
 
 ---
 
@@ -243,7 +239,7 @@ El router [emite eventos](https://angular.io/guide/router#router-events) en cada
   templateUrl: './routable.component.html',
   styleUrls: ['./routable.component.css']
 })
-export class Routable1Component implements OnInit {
+export class RoutableComponent implements OnInit {
  
   navStart: Observable<NavigationStart>;
  
@@ -262,13 +258,13 @@ export class Routable1Component implements OnInit {
 
 ---
 
-# Routing component
+## Routing component
 
 Se dice que un componente es un routing component cuando tiene un RouterOutlet en su plantilla
 
 ---
 
-# Routing Module
+## Routing Module
 
 Es habitual crear uno o más módulos para definir las rutas Este módulo se importará en el módulo principal o funcional asociado
 
@@ -289,7 +285,7 @@ export class AppRoutingModule {}
 
 ---
 
-# Child Routes. Definiendo las rutas
+## Child Routes. Definiendo las rutas
 
 ```javascript
 const crisisCenterRoutes: Routes = [
@@ -318,7 +314,7 @@ const crisisCenterRoutes: Routes = [
 
 ---
 
-# Child Routes. Definiendo el Routing Module como módulo funcional
+## Child Routes. Definiendo el Routing Module como módulo funcional
 
 ```javascript
 @NgModule({
@@ -334,7 +330,7 @@ export class CrisisCenterRoutingModule { }
 
 ---
 
-# Guards
+## Guards
 
 ```javascript
 @Injectable({
@@ -352,7 +348,7 @@ export class AuthGuard implements CanActivate {
 
 ---
 
-# Guards
+## Guards
 
 ```javascript
 const adminRoutes: Routes = [
@@ -376,7 +372,7 @@ const adminRoutes: Routes = [
 
 ---
 
-# Lazy Loading
+## Lazy Loading
 
 Mediante lazy loading puedo cargar módulos de forma asíncrono al navegar a la ruta correspondiente
 
@@ -389,7 +385,7 @@ Mediante lazy loading puedo cargar módulos de forma asíncrono al navegar a la 
 
 ---
 
-# Resolvers. Definición
+## Resolvers. Definición
 
 ```javascript
 @Injectable({
@@ -418,7 +414,7 @@ export class CrisisDetailResolverService implements Resolve<Crisis> {
 
 ---
 
-# Resolvers. Uso
+## Resolvers. Uso
 
 ```javascript
 {

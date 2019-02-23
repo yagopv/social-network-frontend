@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationModel } from './notification.model';
 
 @Component({
-  selector: 'hab-notification',
+  selector: 'sn-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss']
 })

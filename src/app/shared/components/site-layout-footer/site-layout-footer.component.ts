@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'hab-site-layout-footer',
+  selector: 'sn-site-layout-footer',
   templateUrl: './site-layout-footer.component.html',
   styleUrls: ['./site-layout-footer.component.scss']
 })

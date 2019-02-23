@@ -1,18 +1,20 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
+footer: @Yago Pérez Vázquez 2019
 
-#Structural Directives
+# Structural Directives
 
 ---
 
-#Structural Directives
+## Structural Directives
 
 - Son responsables de añadir, eliminar o modificar elementos del DOM
 - Se pueden aplicar a cualquier *host element*
 
 ---
 
-# Eliminar vs ocultar 
+## Eliminar vs ocultar 
 
 Otra forma de NO mostrar un elemento DOM sería
 
@@ -31,7 +33,7 @@ Pero aunque el resultado visual sea el mismo las diferencias son mayores
 
 ---
 
-# (*)
+## *
 
 - Las directivas estructurales tienen una sintaxis particular utilizando un asterisco _*_ 
 
@@ -39,7 +41,7 @@ Pero aunque el resultado visual sea el mismo las diferencias son mayores
 
 ---
 
-# NgIf
+## NgIf
 
 ```html
 <div *ngIf="hero" class="name">{{hero.name}}</div>
@@ -51,7 +53,7 @@ Pero aunque el resultado visual sea el mismo las diferencias son mayores
 
 ---
 
-# NgFor
+## NgFor
 
 ```html
 <div *ngFor="let hero of heroes; let i=index; let odd=odd; trackBy: trackById" [class.odd]="odd">
@@ -65,7 +67,7 @@ Pero aunque el resultado visual sea el mismo las diferencias son mayores
 
 ---
 
-# NgSwitch
+## NgSwitch
 
 ```html
 <div [ngSwitch]="hero?.emotion">
@@ -94,7 +96,7 @@ Pero aunque el resultado visual sea el mismo las diferencias son mayores
 
 ---
 
-# <ng-template />
+## <ng-template />
 
 - Es un elemento del framework para mostrar HTML
 - Nunca se visualiza en el DOM, es un elemento Angular que desaparece tras la compilación
@@ -102,7 +104,7 @@ Pero aunque el resultado visual sea el mismo las diferencias son mayores
 
 ---
 
-# <ng-container />
+## <ng-container />
 
 - Se puedo usar `ng-container` en caso de no disponer de un elemento host
 - Reducimos riesgo de recibir estilos globales
@@ -110,7 +112,7 @@ Pero aunque el resultado visual sea el mismo las diferencias son mayores
 
 ---
 
-# Ejemplo
+## Ejemplo
 
 ```javascript
 @Directive({ 

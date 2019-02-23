@@ -1,5 +1,5 @@
-@import '~src/scss/colors.scss';
-@import '~src/scss/breakpoints.scss';
+@import 'colors.scss';
+@import 'breakpoints.scss';
 
 :host {
   display: block;
@@ -18,7 +18,11 @@
     color: $main;
   }
 
-  @include respond-above(sm) {
+  @include respond-above(md) {
+    padding: 20px 10%;
+  }
+
+  @include respond-above(lg) {
     padding: 20px 20%;
   }
 }

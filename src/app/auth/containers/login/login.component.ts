@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { NgForm, AbstractControl } from '@angular/forms';
-
 import { Observable } from 'rxjs';
-import { Store, Select } from '@ngxs/store';
+import { Store, Select, Actions, ofAction } from '@ngxs/store';
 
 import { LoginModel } from './login.model';
 import { ErrorState } from '../../../error/store/error.state';
-import { ResetErrors } from '../../../error/store/error.actions';
-import { Login } from '../../store/auth.actions';
+import { Login, LoginFailed } from '../../store/auth.actions';
+import { withLatestFrom } from 'rxjs/operators';
+import { Error } from '../../../error/models/error.model';
 
 @Component({
-  selector: 'hab-login',
+  selector: 'sn-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   @Select(ErrorState) errors$: Observable<Error>;
   loginModel: LoginModel = new LoginModel();
 
-  constructor(private route: ActivatedRoute, private store: Store) {}
+  constructor(private actions$: Actions, private store: Store) {}
+
+  ngOnInit() {
+    this.actions$.pipe(ofAction(LoginFailed)).subscribe(() => {
+      this.loginModel.password = '';
+    });
+  }
 
   login(form: NgForm) {
     if (!form.valid) {
@@ -27,9 +32,7 @@ export class LoginComponent {
       return;
     }
 
-    this.store
-      .dispatch(new Login(form.value))
-      .subscribe(() => (this.loginModel.password = ''));
+    this.store.dispatch(new Login(form.value));
   }
 
   private markControlsAsTouched(controls: { [key: string]: AbstractControl }) {

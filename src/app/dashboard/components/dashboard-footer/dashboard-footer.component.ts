@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'hab-dashboard-footer',
+  selector: 'sn-dashboard-footer',
   templateUrl: './dashboard-footer.component.html',
   styleUrls: ['./dashboard-footer.component.scss']
 })

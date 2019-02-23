@@ -1,39 +1,42 @@
-@import '~src/scss/colors.scss';
+@import 'colors.scss';
 
-.post-comment {
-  display: flex;
-  align-items: center;
-  margin: 25px 0;
+:host {
+  display: block;
+  .post-comment {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
 
-  hab-avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-  }
+    sn-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
 
-  .post-message {
-    margin-left: 20px;
-    background-color: $main;
-    color: $white;
-    border-radius: 10px;
-    padding: 15px;
-    max-width: 500px;
-    h5 {
-      small {
-        margin-left: 10px;
+    .post-message {
+      margin-left: 20px;
+      background-color: $main;
+      color: $white;
+      border-radius: 10px;
+      padding: 15px;
+      max-width: 500px;
+      h5 {
+        small {
+          margin-left: 10px;
+        }
+      }
+      p {
+        margin-top: 5px;
       }
     }
-    p {
-      margin-top: 5px;
-    }
-  }
-  &.me {
-    flex-direction: row-reverse;
-    .post-message {
-      margin-right: 20px;
-      margin-left: 0;
-      color: $main;
-      background-color: $white;
+    &.me {
+      flex-direction: row-reverse;
+      .post-message {
+        margin-right: 20px;
+        margin-left: 0;
+        color: $white;
+        background-color: $dark;
+      }
     }
   }
 }

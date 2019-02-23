@@ -1,23 +1,24 @@
 <!-- Template-Driven -->
-<hab-form-group>
-  <hab-errors [errors]="errors$ | async"></hab-errors>
+<sn-form>
+  <sn-errors [errors]="errors$ | async"></sn-errors>
   <form
     (ngSubmit)="login(loginForm)"
+    (keyup.enter)="login(loginForm)"
     #loginForm="ngForm"
     [ngFormOptions]="{ updateOn: 'blur' }"
   >
-    <hab-form-control [control]="email">
+    <sn-form-control [control]="email">
       <input
         type="text"
         placeholder="Email"
         required
-        habMail
+        snMail
         [(ngModel)]="loginModel.email"
         name="email"
         #email="ngModel"
       />
-    </hab-form-control>
-    <hab-form-control [control]="password">
+    </sn-form-control>
+    <sn-form-control [control]="password">
       <input
         type="password"
         placeholder="Password"
@@ -26,7 +27,7 @@
         name="password"
         #password="ngModel"
       />
-    </hab-form-control>
+    </sn-form-control>
     <div class="button-wrapper"><button type="submit">Login</button></div>
   </form>
-</hab-form-group>
+</sn-form>

@@ -1,7 +1,12 @@
 :host {
+  display: block;
   padding: 15px;
-  hab-search-user {
+  sn-search-user {
     display: block;
     margin-bottom: 20px;
+  }
+  sn-friend-requests {
+    margin: 20px 0;
+    display: block;
   }
 }

@@ -1,5 +1,6 @@
 import { State, StateContext, Action, Selector, Store } from '@ngxs/store';
 import { catchError, tap } from 'rxjs/operators';
+import { Navigate } from '@ngxs/router-plugin';
 
 import {
   GetPosts,
@@ -13,10 +14,16 @@ import {
   AddCommentFailed,
   DeletePostFailed,
   DeletePost,
-  DeletePostSuccess
+  DeletePostSuccess,
+  Like,
+  LikeSuccess,
+  LikeFailed
 } from './post.actions';
 import { PostService } from '../services/post.service';
 import { PostCollection } from '../models/post-collection.model';
+import { Logout } from '../../auth/store/auth.actions';
+import { Post } from '../models/post.model';
+import { SetErrors } from '../../error/store/error.actions';
 
 @State<PostCollection>({
   name: 'posts',
@@ -26,15 +33,15 @@ export class PostState {
   constructor(private store: Store, private postService: PostService) {}
 
   @Selector()
-  static getPosts(state: PostCollection) {
+  static getPosts(state: PostCollection): Post[] {
     return Object.values(state);
   }
 
   @Action(GetPosts)
   getPosts({ dispatch }: StateContext<PostCollection>, { userId }: GetPosts) {
-    return this.postService.getFeed(userId).pipe(
+    return this.postService.getWall(userId).pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
-      catchError(error => dispatch(new GetPostsFailed(error)))
+      catchError(error => dispatch(new GetPostsFailed(error.error, userId)))
     );
   }
 
@@ -55,22 +62,37 @@ export class PostState {
     );
   }
 
+  @Action([GetPostsFailed])
+  getPostsFailed(
+    { dispatch }: StateContext<PostCollection>,
+    { errors, uuid }: any
+  ) {
+    if (errors && errors.filter(error => error.status === 403).length > 0) {
+      dispatch(new Navigate(['/user', uuid, 'private', 'wall']));
+    } else {
+      dispatch(new SetErrors(errors));
+    }
+  }
+
   @Action(AddPost)
   addPost(
     { dispatch }: StateContext<PostCollection>,
     { postRequest: publish }: AddPost
   ) {
-    const { avatarUrl, fullName, uuid } = this.store.selectSnapshot(
-      state => state.auth
-    );
-
-    return this.postService.addPost(publish.content).pipe(
+    const currentState = this.store.selectSnapshot(state => state);
+    const currentUser = currentState.auth;
+    const friends = currentState.friends.friends;
+    return this.postService.addPost(publish.content, publish.uuid).pipe(
       tap(post => {
         dispatch(
-          new AddPostSuccess({ ...post, author: { uuid, avatarUrl, fullName } })
+          new AddPostSuccess({
+            ...post,
+            author: currentUser,
+            owner: publish.uuid ? friends[publish.uuid] : currentUser
+          })
         );
       }),
-      catchError(error => dispatch(new AddPostFailed(error)))
+      catchError(error => dispatch(new AddPostFailed(error.error)))
     );
   }
 
@@ -136,7 +158,7 @@ export class PostState {
           )
         );
       }),
-      catchError(error => dispatch(new AddCommentFailed(error)))
+      catchError(error => dispatch(new AddCommentFailed(error.error)))
     );
   }
 
@@ -156,9 +178,52 @@ export class PostState {
     });
   }
 
-  @Action([AddPostFailed, GetPostsFailed, AddCommentFailed, DeletePostFailed])
-  error(ctx: StateContext<PostCollection>, action: any) {
-    console.log(action);
+  @Action(Like)
+  like({ dispatch, getState }: StateContext<PostCollection>, { postId }: Like) {
+    const post = getState()[postId];
+    const currentState = this.store.selectSnapshot(state => state);
+    const currentUser = currentState.auth;
+
+    if (post) {
+      if (post.likes.indexOf(currentUser.uuid) === -1) {
+        return this.postService.like(postId).pipe(
+          tap(() => dispatch(new LikeSuccess(postId, true, currentUser.uuid))),
+          catchError(error => dispatch(new LikeFailed(error.error)))
+        );
+      } else {
+        return this.postService.dislike(postId).pipe(
+          tap(() => dispatch(new LikeSuccess(postId, false, currentUser.uuid))),
+          catchError(error => dispatch(new LikeFailed(error.error)))
+        );
+      }
+    }
+  }
+
+  @Action(LikeSuccess)
+  likeSuccess(
+    { getState, setState }: StateContext<PostCollection>,
+    { postId, isLike, userUuid }: LikeSuccess
+  ) {
+    const posts = getState();
+    setState({
+      ...posts,
+      [postId]: {
+        ...posts[postId],
+        likes: isLike
+          ? [...posts[postId].likes, userUuid]
+          : posts[postId].likes.filter(uuid => uuid !== userUuid)
+      }
+    });
+  }
+
+  @Action(Logout)
+  logout({ setState }: StateContext<PostCollection>) {
+    setState({});
+  }
+
+  @Action([AddPostFailed, AddCommentFailed, DeletePostFailed, LikeFailed])
+  error({ dispatch }: StateContext<PostCollection>, { errors }: any) {
+    dispatch(new SetErrors(errors));
   }
 
   private uuidv4() {

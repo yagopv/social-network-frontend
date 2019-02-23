@@ -1,11 +1,12 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
 
 # ngxs-store
 
 ---
 
-# Porqué ngxs?
+## Porqué ngxs?
 
 - Es simple. ngrx/store y ngrx/effects generan demasiado boilerplate
 - Puedo utilizar RxJS pero no es totalmente necesario un conocimiento profundo del framework
@@ -14,14 +15,18 @@ autoscale: true
 
 ---
 
-# Instalación
+## Instalación
 
 ```bash
-$ npm install @ngxs/store @ngxs/devtools-plugin @ngxs/logger-plugin @ngxs/router-plugin --save
+$ npm install 
+	@ngxs/store
+    @ngxs/devtools-plugin
+    @ngxs/logger-plugin
+    @ngxs/router-plugin --save
 ```
 ---
 
-# Bootstrap en AppModule
+## Bootstrap en AppModule
 
 ```javascript
 @NgModule({
@@ -41,21 +46,25 @@ $ npm install @ngxs/store @ngxs/devtools-plugin @ngxs/logger-plugin @ngxs/router
 export class AppModule {}
 ```
 
-En Feature modules
+---
+
+## Bootstrap en feature modules
 
 ```javascript
 NgxsModule.forFeature([PostState])
 ```
 
----
 
-# Diagrama de flujo
-
-![inline](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-L9CoGJCq3UCfKJ7RCUg%2F-LVrR_Jobt3NVt61AhlH%2F-LVrRb1WdI1nngz9VmFm%2Fdiagram.png?generation=1547118480096027&alt=media)
 
 ---
 
-# Actions
+## Como funciona ngxs/store
+
+[Diagrama de flujo ngxs](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-L9CoGJCq3UCfKJ7RCUg%2F-LVrR_Jobt3NVt61AhlH%2F-LVrRb1WdI1nngz9VmFm%2Fdiagram.png?generation=1547118480096027&alt=media)
+
+---
+
+## Actions
 
 ```javascript
 export class Login {
@@ -76,9 +85,7 @@ export class LoginFailed {
 
 ---
 
-# Dispatching Actions
-
-En un componente.
+## Dispatching Actions
 
 El dispatch devuelve un Observable por lo que me puedo subscribir
 
@@ -91,7 +98,7 @@ this.store.dispatch(new Login(form.value))
 
 ---
 
-# State
+## State
 
 ```javascript
 @State<ErrorModel[]>({
@@ -115,7 +122,7 @@ export class ErrorState {
 
 ---
 
-# Async State
+## Async State
 
 ```javascript
 export interface AuthStateModel {
@@ -147,7 +154,7 @@ export class AuthState {
 
 ---
 
-# Select
+## Select
 
 ```javascript
 export class HomeComponent implements OnInit {
@@ -164,14 +171,14 @@ export class HomeComponent implements OnInit {
 
 ---
 
-# Memoized Selectors
+## Memoized Selectors
 
 - El termino memoizing indica un tipo de función cachea y devuelve el mismo valor siempre que los parámetros de entrada no se modifiquen. Es un concepto ampliamente utilizado con las librerías de State Management
 
 - ngxs nos proporciona un decorator @Selector para realizar memoizing de partes de nuestro estado
 
 ---
-# Selectors
+## Selectors
 
 ```javascript
 export class PostState {
@@ -189,7 +196,7 @@ export class PostState {
 
 ---
 
-# Dynamic Selectors
+## Dynamic Selectors
 
 ```javascript
 @State<PostViewModel[]>({
@@ -211,11 +218,11 @@ export class PostState {
 
 ---
 
-# Seleccionando de múltiples estados
+## Seleccionando de múltiples estados
+
 ```javascript
 @State<PostViewModel[]>({ ... })
 export class PostState {
-​
   @Selector([AuthState])
   static postsFromCurrentUser(state: PostViewModel[], authState: Auth) {
     return state.filter(p => p.user.id === authState.currentUser.id);

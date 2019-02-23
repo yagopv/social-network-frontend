@@ -1,4 +1,6 @@
 <div class="user">
-  <hab-avatar [user]="user"></hab-avatar>
-  <p>{{ user?.fullName }}</p>
+  <sn-avatar [user]="user"></sn-avatar>
+  <a routerLink="/my-account">
+    <b>{{ user?.fullName }}</b>
+  </a>
 </div>

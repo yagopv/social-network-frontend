@@ -20,7 +20,6 @@ import {
 } from './auth.actions';
 import { SetErrors } from '../../error/store/error.actions';
 import { Auth } from '../models/auth.model';
-import { Error } from '../../error/models/error.model';
 
 @State<Auth>({
   name: 'auth',
@@ -61,7 +60,7 @@ export class AuthState {
     const returnUrl = this.store.selectSnapshot(
       state => state.router.state.root.queryParams['return-url']
     );
-    dispatch(new Navigate([returnUrl || '/home']));
+    dispatch(new Navigate([returnUrl || '/wall']));
   }
 
   @Action(Register, { cancelUncompleted: true })
@@ -125,14 +124,14 @@ export class AuthState {
     LoginFailed,
     RegisterFailed,
     GetUserProfileFailed,
-    UpdateUserProfile
+    UpdateUserProfileFailed
   ])
   error({ dispatch }: StateContext<Auth>, { errors }: any) {
     // Use ngxs Action or this is going to fail because running outside NgZone
     dispatch(new SetErrors(errors));
   }
 
-  @Action(Logout, { cancelUncompleted: true })
+  @Action(Logout)
   logout({ dispatch, setState }: StateContext<Auth>) {
     this.authService.logout();
     setState(null);

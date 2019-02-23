@@ -1,8 +1,10 @@
-<div class="post-comment" [class.me]="comment.author.uuid === user.uuid">
-  <hab-avatar [user]="comment.author"></hab-avatar>
+<div class="post-comment" [class.me]="comment.author.uuid === currentUser.uuid">
+  <sn-avatar [user]="comment.author"></sn-avatar>
   <div class="post-message">
     <h5>
-      {{ comment.author.fullName }}
+      <a [routerLink]="getLink(comment.author.uuid)">{{
+        comment.author.fullName
+      }}</a>
       <small>{{ comment.createdAt | userFriendlyDate }}</small>
     </h5>
     <p>{{ comment.message }}</p>

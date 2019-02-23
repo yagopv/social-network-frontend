@@ -1,5 +1,6 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
 
 # Observables
 
@@ -7,12 +8,14 @@ autoscale: true
 
 ## Que es un Observable
 
-- Un Observable representa un stream por el que fluyen datos que podemos manipular mediante operadores y finalmente obtener mediante una subscripción
-- Proporciona soporte para el envío de mensajes entre publicadores y subscriptores
+- Un Observable representa un stream por el que fluyen datos que podemos manipular mediante operadores y finalmente recuperarlos mediante una subscripción
+- Proporciona soporte para el envío de mensajes entre publicadores y subscriptores. Patrón pub/sub
 - Son declarativos, no se ejecutan hasta que consumidor se subscribe
 - El consumidor recibe notificaciones hasta que  la función se completa, se da de baja o se produce un error no controlado
 
 ---
+
+## Creando un Observable
 
 ```javascript
 const observable = Observable.create(function (observer) {
@@ -25,17 +28,28 @@ const observable = Observable.create(function (observer) {
   }, 1000);
 });
 
-// observer => { next, error, complete }
+// A subscribe le paso el observer => { next, error, complete }
+observable.subscribe(next, error, complete); // Lo ejecutamos
+
+
 ```
 
 ---
 
-## Qué nos dan los Observables que no tengamos ya
+## Qué nos proporcionan los Observables que no tengamos ya
 
 |      | Single   | Multiple   |
 | ---  | ---      | ---        |
 | Pull | Function | Generator  |
 | Push | Promise  | Observable |
+
+^ Las funciones me permiten hacer pull de un valor. Las ejecuto y recupero un valor
+
+^ Los generators lo mismo pero con N valores
+
+^ Las Promise espero a que se haga push de un resultado
+
+^ Los observables son parecidos en algún aspecto a las Promises pero nos proporcionan N resultados
 
 ---
 
@@ -44,18 +58,17 @@ const observable = Observable.create(function (observer) {
 - En un sistema Pull el consumidor determina cuando recibe los datos del productor. El productor no sabe cuando se enviarán estos datos. Las funciones de Javascript y los generators son un claro ejemplo
 - En un sistema Push el productor determina cuando enviar los datos al consumidor. El consumidor no sabe cuando va a recibir estos datos. Las Promises y los Observables encajan en este sistema
 - Las Funciones y los Observables son sistemas Pasivos, es decir, hasta que no se invocan no comienzan a producir valores. Las Promises y los generators son sistemas Activos que producen valores
-- Suscribirse a un observable es equivalente a llamar a una función (call() o apply() vs subscribe())
+- Suscribirse a un observable es equivalente a llamar a una función ((), call() o apply() vs subscribe())
 
 ---
 
 ## Creación de un Observable de forma declarativa
 
-Observable haciendo push de los valores 1,2,3 y después de un segundo el 4 para completarse posteriormente
+El siguiente Observable emite un string hi cada segundo durante un tiempo indefinido
+
 Observable.create es un alias para el constructor de Observable
 
 ```javascript
-import { Observable } from 'rxjs';
-
 const observable = Observable.create(function subscribe(observer) {
   const id = setInterval(() => {
     observer.next('hi')
@@ -67,7 +80,7 @@ const observable = Observable.create(function subscribe(observer) {
 
 ## Suscripción a un Observable
 
-Cuando me suscribo a un Observable le paso un Observer, que basicamente es in objeto con tres funciones { next, error, complete }
+Cuando me suscribo a un Observable le paso un Observer, que basicamente es un objeto con tres funciones { next, error, complete }
 
 ```javascript
 observable.subscribe(x => console.log(x));
@@ -90,8 +103,6 @@ Cada suscripción a un Observable es independiente y es como una nueva "llamada 
 Cuando se produce un error también se dejan de enviar valores por lo que es una buena idea controlarlos mediante try/catch
 
 ```javascript
-import { Observable } from 'rxjs';
- 
 const observable = Observable.create(function subscribe(observer) {
   try {
     observer.next(1);
@@ -108,18 +119,14 @@ const observable = Observable.create(function subscribe(observer) {
 
 ## Complete
 ```javascript
-import { Observable } from 'rxjs';
-
 const observable = Observable.create(function subscribe(observer) {
   observer.next(1);
   observer.next(2);
   observer.next(3);
   observer.complete();
-  observer.next(4);
+  observer.next(4); // no se envía
 });
 ```
-
-4 no se envía
 
 ---
 
@@ -139,14 +146,14 @@ El pipe async de Angular cancela las suscripciones por si mismo por lo que nos a
 
 ## Retornando la función para eliminar la suscripción
 
+A veces necesito más control para eliminar la subcripción
+
 ```javascript
-var observable = Rx.Observable.create(function subscribe(observer) {
-  // Keep track of the interval resource
+var observable = Observable.create(function subscribe(observer) {
   var intervalID = setInterval(() => {
     observer.next('hi');
   }, 1000);
 
-  // Provide a way of canceling and disposing the interval resource
   return function unsubscribe() {
     clearInterval(intervalID);
   };
@@ -161,20 +168,27 @@ var observable = Rx.Observable.create(function subscribe(observer) {
 
 ## Subjects
 
-- Deciamos que cada subscribe sobre un Observable representaba un contexto de ejecución diferente en el que no se compartía nada
-- Una Subject es un tipo especial de Observable que permite compartir suscripciones a varios Observers y además puede emitir valores a todos ellos (multicast)
+- Cada subscribe sobre un Observable representaba un contexto de ejecución diferente en el que no se compartía nada
+
+- Subject es un tipo especial de Observable que permite compartir suscripciones a varios Observers y además puede emitir valores a todos ellos (multicast)
+
 - **Una Subject es un Observable** y por tanto podemos subscribirnos a ella proporcionando un Observer. El funcionamiento es el mismo pero internamente no se crea un nuevo contexto de ejecución y simplemente registra al nuevo Observer en la lista de Observers de la Subject
+
 - **Una Subject es un Observer** y por tanto tiene acceso a los métodos next, error y complete. Puede por tanto emitir valores a todos los Observers conectados
+
 - Además, como una Subject es un Observer puedo proporcionarla como parámetro a la función subscribe de cualquier Observable
+
 ---
 
 ## Subject con varios subscriptores
 
 ```javascript
 const subject = new Subject<number>();
+
 subject.subscribe({
   next: (v) => console.log(`observerA: ${v}`)
 });
+
 subject.subscribe({
   next: (v) => console.log(`observerB: ${v}`)
 });
@@ -190,13 +204,17 @@ subject.next(2);
 
 ## Subject como Observer
 
-En este ejemplo estamos conviertiendo un Observable unicast a multicast siendo el método para que la ejecución de un Observable pueda compartirse por varios Observers
+^ En este ejemplo estamos conviertiendo un Observable unicast a multicast 
+
+^ El método para que la ejecución de un Observable puede compartirse por varios Observers
 
 ```javascript
 const subject = new Subject<number>();
+
 subject.subscribe({
   next: (v) => console.log(`observerA: ${v}`)
 });
+
 subject.subscribe({
   next: (v) => console.log(`observerB: ${v}`)
 });
@@ -205,7 +223,8 @@ const observable = from([1, 2, 3]);
 observable.subscribe(subject);
 
 // Logs:
-// observerA: 1 | observerB: 1 | observerA: 2 | observerB: 2 | observerA: 3 | observerB: 3
+// observerA: 1 | observerB: 1 | observerA: 2 |
+// observerB: 2 | observerA: 3 | observerB: 3
 ```
 
 ---
@@ -221,8 +240,12 @@ observable.subscribe(subject);
 
 ---
 
+## BehaviorSubject. Cómo se usa?
+
 ```javascript
-const subject = new BehaviorSubject(0); // 0 is the initial value
+const subject = new BehaviorSubject(0); // 0 es el valor inicial
+
+// Nada más suscibirse recibe el valor inicial
 subject.subscribe({
   next: (v) => console.log(`observerA: ${v}`)
 });
@@ -234,7 +257,8 @@ subject.subscribe({
 subject.next(3);
 
 // Logs
-// observerA: 0 | observerA: 1 | observerA: 2 | observerB: 2 | observerA: 3 | observerB: 3
+// observerA: 0 | observerA: 1 | observerA: 2 |
+// observerB: 2 | observerA: 3 | observerB: 3
 ```
 
 ---
@@ -245,6 +269,8 @@ subject.next(3);
 - Tenemos funciones de creación de Observables, condicionales, combinación, filtrado, transformación, ...
 
 ---
+
+## Operators
 
 Esta función genera valores para los cuadrados de los números impares
 
@@ -263,12 +289,12 @@ El operador pipe es una función de un Observable RxJS que habilita realizar com
 
 ## Operators
 
-- Creation:	from,fromEvent, of
-- Combination:	combineLatest, concat, merge, startWith , withLatestFrom, zip
-- Filtering:	debounceTime, distinctUntilChanged, filter, take, takeUntil
-- Transformation:	bufferTime, concatMap, map, mergeMap, scan, switchMap
-- Utility:	tap
-- Multicasting:	share
+- Creation: from, fromEvent, of, ...
+- Combination: combineLatest, concat, merge, startWith , withLatestFrom, zip, ...
+- Filtering: debounceTime, distinctUntilChanged, filter, take, takeUntil, ...
+- Transformation: bufferTime, concatMap, map, mergeMap, scan, switchMap, ...
+- Utility: tap
+- Multicasting: share
 
 ---
 
@@ -280,7 +306,7 @@ El operador pipe es una función de un Observable RxJS que habilita realizar com
 
 ---
 
-## EventEmitter
+### EventEmitter
 
 ```javascript
 @Component({
@@ -288,23 +314,18 @@ El operador pipe es una función de un Observable RxJS que habilita realizar com
   template: `
   <div class="zippy">
     <div (click)="toggle()">Toggle</div>
-    <div [hidden]="!visible">
-      <ng-content></ng-content>
-    </div>
-  </div>`})
- 
+    <div [hidden]="!visible"><ng-content></ng-content></div>
+  </div>`
+})
 export class ZippyComponent {
   visible = true;
   @Output() open = new EventEmitter<any>();
   @Output() close = new EventEmitter<any>();
- 
+
   toggle() {
     this.visible = !this.visible;
-    if (this.visible) {
-      this.open.emit(null);
-    } else {
-      this.close.emit(null);
-    }
+    if (this.visible) { this.open.emit(null); } 
+    else { this.close.emit(null); }
   }
 }
 ```
@@ -313,7 +334,7 @@ export class ZippyComponent {
 
 ## Peticiones HTTP
 
-Las ventajas que proporciona son:
+Las ventajas que proporciona sobre el uso de Promises son:
 
 - Observables no modifican la respuesta del servidor por lo que se pueden aplicar operadores para transformarla a nuestro gusto
 - Las peticiones HTTP se pueden cancelar a través de unsubscribe()
@@ -353,11 +374,8 @@ Router.events proporciona eventos de  navegación como observables. Se pueden fi
   styleUrls: ['./routable.component.css']
 })
 export class Routable1Component implements OnInit {
- 
   navStart: Observable<NavigationStart>;
- 
   constructor(private router: Router) {
-    // Create a new Observable that publishes only the NavigationStart event
     this.navStart = router.events.pipe(
       filter(evt => evt instanceof NavigationStart)
     ) as Observable<NavigationStart>;
@@ -396,11 +414,10 @@ export class Routable2Component implements OnInit {
 ## Reactive Forms
 
 Los formularios contienen una serie de propiedades como observables para monitorizar los valores y las modificaciones en los mismos
-FormControl proporciona propiedades como valueChanges o statusChanges que nos dan enventos de cambio en los valores de los inputs
+
+FormControl proporciona propiedades como valueChanges o statusChanges que nos dan eventos de cambio en los valores de los inputs
 
 ```javascript
-import { FormGroup } from '@angular/forms';
- 
 @Component({
   selector: 'my-component',
   template: 'MyComponent Template'
@@ -408,7 +425,6 @@ import { FormGroup } from '@angular/forms';
 export class MyComponent implements OnInit {
   nameChangeLog: string[] = [];
   heroForm: FormGroup;
- 
   ngOnInit() {
     this.logNameChange();
   }
@@ -420,6 +436,10 @@ export class MyComponent implements OnInit {
   }
 }
 ```
+
+---
+
+![fit 150%](https://media1.giphy.com/media/qarm0QWkRRloQ/giphy.gif?cid=e1bb72ff5c6fc6f84e6e3762594f4868)
 
 ---
 

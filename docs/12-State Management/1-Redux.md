@@ -1,28 +1,29 @@
 theme: Next, 8
 autoscale: true
+build-lists: true
 
 # Redux
 
 ---
 
-[Diagrama Redux](https://cdn-images-1.medium.com/max/1600/0*cntBtPADjE2ykLSP.png)
+![fit 150%](https://cdn-images-1.medium.com/max/1600/0*cntBtPADjE2ykLSP.png)
 
 ---
 
-# Store
+## Store
 
 - Un Store es el contenedor del estado de nuestra aplicación
 
 - Sólo se puede modificar mediante dispatch de acciones
 
 ---
-# State
+## State
 
 - El State es el estado actual de los datos de nuestra aplicación en un momento del tiempo
 
 ---
 
-# Actions
+## Actions
 
 - Contienen información acerca de las modificaciones que queremos realizar en un Store
 
@@ -37,7 +38,7 @@ autoscale: true
 
 ---
 
-# Action creators
+## Action creators
 
 - Funciones que se encargan de crear un Action
 
@@ -52,7 +53,7 @@ function GetPost(postId) {
 
 ---
 
-# Reducers
+## Reducers
 
 - Funciones puras que reciben el estado actual de la aplicación más un Action para devolver un nuevo estado
 
@@ -60,7 +61,7 @@ function GetPost(postId) {
 
 ---
 
-# Reducers
+## Reducers
 
 ```javascript
 function myReducer(state, action) {
@@ -87,7 +88,7 @@ function myReducer(state, action) {
 
 ---
 
-# Selectors
+## Selectors
 
 - Un Selector es un función de utilidad que nos permite seleccionar fragmentos del estado de nuestra aplicación
 
@@ -97,7 +98,7 @@ function myReducer(state, action) {
 
 ---
 
-# Selectors
+## Selectors
 
 ```javascript
 export const totalSelector = createSelector(

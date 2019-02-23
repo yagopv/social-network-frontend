@@ -1,16 +1,44 @@
 <article>
-  <hab-post-content [post]="post"></hab-post-content>
-  <hab-post-comment-counter
-    [count]="post.comments.length"
-  ></hab-post-comment-counter>
-  <hr />
-  <hab-publisher
-    placeholder="Publica un comentario"
-    [user]="post.author"
-    (publish)="addComment($event)"
-  ></hab-publisher>
-  <ng-container *ngFor="let comment of post.comments; trackBy: commentIdentity">
-    <hab-post-comment [comment]="comment" [user]="user"></hab-post-comment>
-  </ng-container>
-  <fa-icon [icon]="deleteCommentIcon" (click)="deletePost()"></fa-icon>
+  <sn-post-content [post]="post" [currentUser]="currentUser"></sn-post-content>
+  <sn-like [likeCount]="post.likes.length" (like)="toggleLike()"></sn-like>
+  <div class="comment"></div>
+  <section class="comments">
+    <sn-post-comment-counter
+      [count]="post.comments.length"
+    ></sn-post-comment-counter>
+
+    <hr />
+
+    <sn-publisher
+      placeholder="Publica un comentario"
+      [user]="currentUser"
+      (publish)="addComment($event)"
+    ></sn-publisher>
+
+    <sn-post-comment
+      @listItems
+      *ngFor="
+        let comment of (post.comments
+          | slice: 0:(commentsPage + 1) * commentsPageSize);
+        trackBy: commentIdentity
+      "
+      [comment]="comment"
+      [currentUser]="currentUser"
+    ></sn-post-comment>
+
+    <sn-pager
+      type="mini"
+      [(page)]="commentsPage"
+      [pageSize]="commentsPageSize"
+      [count]="post.comments.length"
+      showMoreText="More comments"
+      showLessText="Less comments"
+    ></sn-pager>
+  </section>
+
+  <fa-icon
+    class="trash"
+    [icon]="deleteCommentIcon"
+    (click)="deletePost()"
+  ></fa-icon>
 </article>
