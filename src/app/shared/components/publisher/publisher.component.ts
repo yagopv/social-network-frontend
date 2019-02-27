@@ -48,4 +48,10 @@ export class PublisherComponent {
     }
     this.publish.emit(this.content);
   }
+
+  exploreKeyPressed(event: KeyboardEvent) {
+    if (event.which === 13 && event.metaKey) {
+      this.publishStatus();
+    }
+  }
 }

@@ -6,6 +6,7 @@
       rows="1"
       [placeholder]="placeholder"
       [(ngModel)]="content"
+      (keydown)="exploreKeyPressed($event)"
       #text
     ></textarea>
   </div>
