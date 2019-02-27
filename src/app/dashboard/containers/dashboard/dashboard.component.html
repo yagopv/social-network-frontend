@@ -1,5 +1,7 @@
 <header>
-  <sn-dashboard-header></sn-dashboard-header>
+  <sn-dashboard-header
+    (selectIcon)="toggleLayout($event)"
+  ></sn-dashboard-header>
 </header>
 <nav>
   <sn-me [user]="user$ | async"></sn-me>

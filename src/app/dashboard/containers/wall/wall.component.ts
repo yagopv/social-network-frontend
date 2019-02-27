@@ -53,7 +53,7 @@ export class WallComponent implements OnInit {
   wallOwner: string;
   placeholder = '';
   postPage = 0;
-  postPageSize = 3;
+  postPageSize = 10;
 
   constructor(
     private store: Store,

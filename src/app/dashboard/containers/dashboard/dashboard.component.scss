@@ -60,3 +60,17 @@
       'footer footer footer';
   }
 }
+
+:host-context(.grid) {
+  nav,
+  aside,
+  footer {
+    display: none;
+  }
+
+  grid-template-rows: 50px repeat(3, auto);
+
+  grid-template-areas:
+    'header header header'
+    'main main main';
+}
