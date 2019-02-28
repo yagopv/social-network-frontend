@@ -5,9 +5,6 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
-  OnChanges,
-  SimpleChange,
-  SimpleChanges,
   ChangeDetectorRef
 } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
