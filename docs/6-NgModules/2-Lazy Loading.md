@@ -5,11 +5,7 @@ footer: @Yago Pérez Vázquez 2019
 
 # Lazy Loading
 
-
-
 ---
-
-
 
 ## Lazy Loading
 

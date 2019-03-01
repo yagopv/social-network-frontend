@@ -4,8 +4,6 @@ build-lists: true
 
 # Angular Router
 
-
-
 ---
 
 ![left fit](https://media1.giphy.com/media/xT0Gqe9Ap0qSOLicKc/giphy.gif?cid=e1bb72ff5c6e6d2a6479414f6f1c1657)
