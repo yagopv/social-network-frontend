@@ -1,6 +1,7 @@
 theme: Next, 8
 autoscale: true
 build-lists: true
+slidenumbers: true
 
 # Inyección de dependencias (DI)
 
