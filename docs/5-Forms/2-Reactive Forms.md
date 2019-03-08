@@ -141,6 +141,25 @@ export class ProfileEditorComponent {
 
 ---
 
+
+## FormGroup. Asociación con template 2
+
+```html
+<form [formGroup]="profileForm">
+  <label>
+    First Name:
+    <input type="text" formControlName="profileForm.get('firstName')">
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="profileForm.get('lastName')">
+  </label>
+</form>
+```
+
+---
+
 ## FormGroup. Submit
 
 ```html
