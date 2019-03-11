@@ -84,3 +84,10 @@ autoscale: true
 - Elige el momento adecuado para eliminarlas
 
 ---
+
+## Open office hype & Slack party
+
+- Las oficinas abiertas son muy agradables pero el rendimiento se ve penalizado
+- Las herramientas de mensajeria hacen que la concentración se resienta. El desarrollador cuando entra en un estado de concentración (flow) es cuando es extremadamente productivo
+
+

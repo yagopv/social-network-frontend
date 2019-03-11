@@ -15,6 +15,7 @@ export class AboutComponent {
     { url: 'http://portfolio.yagoperez.com', name: 'Portfolio' },
     { url: 'http://twitter.com/yperezva', name: 'Twitter' }
   ];
+
   contact = {
     description: 'If you want to contact with me you can send me an email to:',
     mail: 'yagoperez@outlook.com'
