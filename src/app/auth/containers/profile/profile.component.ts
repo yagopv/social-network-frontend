@@ -13,8 +13,7 @@ import { UpdateUserProfile } from '../../store/auth.actions';
 
 @Component({
   selector: 'sn-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
   @Select(ErrorState) errors$: Observable<Error>;

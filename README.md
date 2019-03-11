@@ -41,3 +41,8 @@ Tunnel for public use
 autossh -M 0 -R {custom-subdomain}:80:localhost:{port} serveo.net
 ```
 
+## Publish
+
+```
+npx angular-cli-ghpages --dir=dist/social-network
+```
