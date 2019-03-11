@@ -1,7 +1,7 @@
 theme: Next, 8
 autoscale: true
-build-lists: true
 footer: @Yago Pérez Vázquez 2019
+slidenumbers: true
 
 # Reactive Forms
 
@@ -135,6 +135,25 @@ export class ProfileEditorComponent {
   <label>
     Last Name:
     <input type="text" formControlName="lastName">
+  </label>
+</form>
+```
+
+---
+
+
+## FormGroup. Asociación con template 2
+
+```html
+<form [formGroup]="profileForm">
+  <label>
+    First Name:
+    <input type="text" formControlName="profileForm.get('firstName')">
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="profileForm.get('lastName')">
   </label>
 </form>
 ```

@@ -1,12 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Profile } from '../../../auth/models/profile.model';
 import { Author } from '../../../dashboard/models/author.model';
 import { Friend } from '../../../dashboard/models/friend.model';
+import { FADE_IN_OUT_ANIMATION } from '../../animations/fade.animation';
 
 @Component({
   selector: 'sn-avatar',
   template: `
-    <img [src]="imageUrl" [ngStyle]="{ width: width, height: height }" />
+    <img
+      [@fade]="fadeAnimValue"
+      [src]="imageUrl"
+      [ngStyle]="{ width: width, height: height }"
+    />
   `,
   styles: [
     `
@@ -14,10 +19,12 @@ import { Friend } from '../../../dashboard/models/friend.model';
         border-radius: 50%;
       }
     `
-  ]
+  ],
+  animations: [FADE_IN_OUT_ANIMATION]
 })
-export class AvatarComponent {
+export class AvatarComponent implements OnDestroy {
   imageUrl = '';
+  fadeAnimValue = 'in';
 
   @Input()
   set user(user: Profile | Author | Friend) {
@@ -29,4 +36,8 @@ export class AvatarComponent {
 
   @Input() width: string;
   @Input() height: string;
+
+  ngOnDestroy() {
+    this.fadeAnimValue = 'out';
+  }
 }

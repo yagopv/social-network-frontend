@@ -50,10 +50,9 @@ export class WallComponent implements OnInit {
 
   friend: Friend;
   content: string;
-  wallOwner: string;
   placeholder = '';
   postPage = 0;
-  postPageSize = 3;
+  postPageSize = 10;
 
   constructor(
     private store: Store,
@@ -98,7 +97,8 @@ export class WallComponent implements OnInit {
   }
 
   publishPost(content: string) {
-    this.store.dispatch(new AddPost({ content, uuid: this.wallOwner }));
+    const uuid = this.friend && this.friend.uuid;
+    this.store.dispatch(new AddPost({ content, uuid }));
   }
 
   addComment({ postId, message }: { postId: string; message: string }) {

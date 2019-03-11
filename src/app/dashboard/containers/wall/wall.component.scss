@@ -14,3 +14,22 @@
     padding: 20px 100px;
   }
 }
+
+:host-context(.grid) {
+  sn-post {
+    display: inline-block;
+    width: 100%;
+  }
+
+  @include respond-above(sm) {
+    .post-list {
+      column-count: 2;
+    }
+  }
+
+  @include respond-above(lg) {
+    .post-list {
+      column-count: 3;
+    }
+  }
+}

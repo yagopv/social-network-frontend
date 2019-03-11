@@ -16,6 +16,8 @@ import { ErrorModule } from '../error/error.module';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import { AuthLayoutComponent } from './components/auth-layout/auth-layout.compon
     RegisterComponent,
     ProfileComponent,
     FileUploadComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ReactiveFormComponent,
+    TemplateDrivenFormComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -1,7 +1,7 @@
 theme: Next, 8
 autoscale: true
-build-lists: true
 footer: @Yago Pérez Vázquez 2019
+slidenumbers: true
 
 # Quien soy ?
 
@@ -19,7 +19,7 @@ footer: @Yago Pérez Vázquez 2019
 
 # Accenture
 
-Empece mi carrera profesional en Barcelona en Accenture despues de una beca
+Empece mi carrera profesional en Barcelona en Accenture
 
 ---
 
@@ -47,7 +47,7 @@ y despues de un tiempo regresé a La Coruña a Everis
 
 ---
 
-![right fit](http://forumtic.upc.edu/wp-content/uploads/2016/03/Tecnocom.jpg)
+![right fit](https://www.vectorlogo.es/wp-content/uploads/2016/12/logo-vector-tecnocom.jpg)
 
 # De alli huí literalmente a Tecnocom
 
@@ -71,7 +71,7 @@ Luego nos compro Indra 💩
 
 # Mobgen
 
-Pero siempre me llega el momento en el que necesito probar algo nuevo así que me mudé de nuevo a Mobgen por todas las cosas positivas que había escuchado
+Pero siempre me llega el momento en el que necesito probar algo nuevo así que me actualmente trabajo para Mobgen
 
 ---
 
@@ -87,10 +87,15 @@ Pero al final estoy donde había empezado 😱
 
 ---
 
+## Qué es lo que he hecho?
+
+[http://portfolio.yagoperez.com/](http://portfolio.yagoperez.com)
+
+---
+
 ## Podeis encontrarme en 
 
 - [https://www.linkedin.com/in/yagopv/](https://www.linkedin.com/in/yagopv)
-- [http://portfolio.yagoperez.com/](http://portfolio.yagoperez.com)
 - [https://twitter.com/yperezva](https://twitter.com/yperezva)
 - [yagoperez@outlook.com](mailto:yagoperez@outlook.com)
 

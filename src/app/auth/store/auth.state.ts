@@ -44,10 +44,35 @@ export class AuthState {
   // ngxs will subscribe to the post observable for you if you return it from the action
   @Action(Login, { cancelUncompleted: true })
   login({ dispatch }: StateContext<Auth>, action: Login) {
+    // HTTP Request using subscribe
+    // ----------------------------
+    // this.authService.login(action.login).subscribe({
+    //   next: data => dispatch(new LoginSuccess(data)),
+    //   error: error => dispatch(new LoginFailed(error.error))
+    // });
+
+    // HTTP Request returning an Onservable => auto subscribe in ngxs
+    // --------------------------------------------------------------
     return this.authService.login(action.login).pipe(
       tap(data => dispatch(new LoginSuccess(data))),
       catchError(error => dispatch(new LoginFailed(error.error)))
     );
+
+    // HTTP Request using Promises then/catch
+    // --------------------------------------
+    // this.authService
+    //   .loginWithPromise(action.login)
+    //   .then(data => dispatch(new LoginSuccess(data)))
+    //   .catch(error => dispatch(new LoginFailed(error.error)));
+
+    // HTTP Request using Promises async/await
+    // ---------------------------------------
+    // try {
+    //   const data = await this.authService.loginWithPromise(action.login);
+    //   dispatch(new LoginSuccess(data));
+    // } catch (error) {
+    //   dispatch(new LoginFailed(error.error));
+    // }
   }
 
   @Action(LoginSuccess)

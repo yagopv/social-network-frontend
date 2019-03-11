@@ -57,6 +57,12 @@ html {
   }
 }
 
+// Remove outlines for tab focus
+:focus {
+  outline: 0;
+}
+
+// Beautiful scrollbars
 ::-webkit-scrollbar {
   width: 3px;
 }

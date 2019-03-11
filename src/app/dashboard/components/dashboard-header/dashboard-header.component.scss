@@ -10,9 +10,21 @@
     color: $white;
     font-size: 1.4rem;
     text-decoration: none;
+    flex: 1;
     span {
       margin-left: 10px;
       font-family: 'Knewave', cursive;
+    }
+  }
+
+  .toolbar {
+    fa-icon {
+      cursor: pointer;
+      color: $white;
+      margin: 0 5px;
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 }

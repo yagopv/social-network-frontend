@@ -1,0 +1,40 @@
+<form [formGroup]="profileForm" (ngSubmit)="submitForm()">
+  <div>
+    <input type="text" formControlName="firstName" placeholder="First Name" />
+    <div
+      *ngIf="
+        profileForm.get('firstName').invalid &&
+        profileForm.get('firstName').dirty
+      "
+    >
+      <span *ngIf="profileForm.get('firstName').hasError('required')"
+        >required</span
+      >
+      <span *ngIf="profileForm.get('firstName').hasError('minlength')"
+        >Min length</span
+      >
+    </div>
+  </div>
+  <div>
+    <input type="text" formControlName="lastName" placeholder="Last Name" />
+    <div
+      *ngIf="
+        profileForm.get('lastName').invalid &&
+        profileForm.get('lastName').dirty &&
+        profileForm.get('lastName').touched
+      "
+    >
+      <span *ngIf="profileForm.get('lastName').hasError('required')"
+        >required</span
+      >
+      <span *ngIf="profileForm.get('lastName').hasError('minlength')"
+        >Min length</span
+      >
+    </div>
+  </div>
+  <button>
+    Submit Form
+  </button>
+</form>
+
+<p>{{ profileForm.value | json }}</p>

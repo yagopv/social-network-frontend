@@ -5,9 +5,6 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
-  OnChanges,
-  SimpleChange,
-  SimpleChanges,
   ChangeDetectorRef
 } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -47,5 +44,11 @@ export class PublisherComponent {
       return;
     }
     this.publish.emit(this.content);
+  }
+
+  exploreKeyPressed(event: KeyboardEvent) {
+    if (event.which === 13 && event.metaKey) {
+      this.publishStatus();
+    }
   }
 }

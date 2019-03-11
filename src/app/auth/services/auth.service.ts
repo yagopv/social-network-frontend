@@ -34,6 +34,26 @@ export class AuthService {
       );
   }
 
+  async loginWithPromise({ email, password }: LoginModel) {
+    return this.http
+      .post<LoginResponse>(`${environment.apiBaseUrl}/account/login`, {
+        email,
+        password
+      })
+      .toPromise()
+      .then(user => {
+        if (user && user.accessToken) {
+          const { accessToken, refreshToken } = user;
+          localStorage.setItem(
+            'auth',
+            JSON.stringify({ accessToken, refreshToken })
+          );
+        }
+
+        return user;
+      });
+  }
+
   register(register: RegisterRequest) {
     return this.http.post<any>(`${environment.apiBaseUrl}/account`, register);
   }
