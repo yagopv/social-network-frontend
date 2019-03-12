@@ -38,7 +38,21 @@
       ]
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "api-freshness",
+      "patterns": [
+        "\\/api\\/user\\/.*",
+        "\\/api\\/friends\\/.*",
+        "\\/api\\/post\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 100,
+      "maxAge": 259200000,
+      "timeoutMs": 10000,
+      "version": 1
+    }
+  ],
   "hashTable": {
     "/5.6407461ae097e33b43cb.js": "30cb71c6d941223e8d2d19856c773270ebee2e2b",
     "/6.26e9ea27bf27d8471e61.js": "329076e0dcd18ca02ed05f0e0f1d2e9cef060e4a",
