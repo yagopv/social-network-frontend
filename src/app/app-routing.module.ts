@@ -21,7 +21,7 @@ const routes: Routes = [
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   {
-    path: 'about',
+    path: '',
     loadChildren: './about/about.module#AboutModule'
   },
   {
