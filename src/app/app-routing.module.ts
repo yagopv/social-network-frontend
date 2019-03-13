@@ -17,12 +17,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [AuthGuard],
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
+    loadChildren: './about/about.module#AboutModule'
   },
   {
-    path: 'about',
-    loadChildren: './about/about.module#AboutModule'
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   {
     path: 'notification/:notificationName',
