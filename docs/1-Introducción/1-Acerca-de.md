@@ -3,7 +3,7 @@ autoscale: true
 footer: @Yago Pérez Vázquez 2019
 slidenumbers: true
 
-# Quien soy ?
+# Hola !! 👋
 
 ---
 
@@ -17,25 +17,31 @@ slidenumbers: true
 
 ![right fit](https://www.territorimac.com/wp-content/uploads/2017/08/what-is-accenture.jpg)
 
-# Accenture
+## Accenture
 
-Empece mi carrera profesional en Barcelona en Accenture
+- Jefe de equipo en Banc Sabadell
+- Desarrollo aplicaciones bancarias
+- Proyectos en el area de seguros
 
 ---
 
 ![right fit](http://4.bp.blogspot.com/-ndgFUrHRX7s/UlwkWkk1CuI/AAAAAAAAAt0/pyZuValaJhU/s1600/mango-logo.jpg)
 
-# Mango
+## Mango
 
-Unos años después la continue en Mango, la empresa textil
+- Departamento de contabilidad e innovación
+- Desarrollo aplicaciones internas
+- Desarrollo aplicaciones internas contables y mango.com
 
 ---
 
 ![right fit](https://mesadetemporada.com/wp-content/uploads/2018/10/everis-logo.png)
 
-# Everis
+## Everis
 
-y despues de un tiempo regresé a La Coruña a Everis
+- PM - Industria
+- Web - Maestros financieros en Inditex
+- Consultoría estratégica en Estrella Galicia
 
 ---
 
@@ -49,13 +55,19 @@ y despues de un tiempo regresé a La Coruña a Everis
 
 ![right fit](https://www.vectorlogo.es/wp-content/uploads/2016/12/logo-vector-tecnocom.jpg)
 
-# De alli huí literalmente a Tecnocom
+## Tecnocom
 
-Y encontre bastante paz de forma inesperada ... Incluso después de trabajar muchos años para nuestra amiga
-
----
-
-![inline 100%](https://www.marcasrenombradas.com/wp-content/uploads/2014/08/Inditex-750x421.jpg)
+- Ecommerce Inditex 
+  - Web - stradivarius.com, oysho.com, zarahome.com (x2), bershka.com, massimodutti.com
+  - Web Mobile - uterque.com, pullandbear.com, oysho.com
+  - Android - Oysho, ZaraHome, Bershka
+  - Core - Desarrollo lib core ITX (Android + Web) y Tecnocom (Web)
+  - Web - Aplicaciones internas STL
+  - Web - ITX intranet
+- Web - Mapfre Intranet
+- Banco Pastor
+  - Consulting - Migración BP
+  - BI en Banco Pastor 
 
 ---
 
@@ -71,7 +83,8 @@ Luego nos compro Indra 💩
 
 # Mobgen
 
-Pero siempre me llega el momento en el que necesito probar algo nuevo así que me actualmente trabajo para Mobgen
+- Roche - SyncApp (React Native)
+- Shell - SSO (React, Redux)
 
 ---
 
@@ -81,15 +94,22 @@ Pero siempre me llega el momento en el que necesito probar algo nuevo así que m
 
 ![right fit](https://www.territorimac.com/wp-content/uploads/2017/08/what-is-accenture.jpg)
 
-# Accenture
+## Accenture
 
 Pero al final estoy donde había empezado 😱
 
 ---
 
-## Qué es lo que he hecho?
+## Open Source
 
-[http://portfolio.yagoperez.com/](http://portfolio.yagoperez.com)
+[https://github.com/yagopv](https://github.com/yagopv)
+
+- Proyectos con Angular, React, Vue
+- Libs JS
+
+## Portfolio
+
+- [http://portfolio.yagoperez.com/](http://portfolio.yagoperez.com)
 
 ---
 
