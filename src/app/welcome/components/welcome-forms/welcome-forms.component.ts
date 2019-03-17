@@ -8,7 +8,14 @@ import { Component } from '@angular/core';
 export class WelcomeFormsComponent {
   isRegisterFormVisible = true;
 
-  toggleForm() {
+  toggleForm(isRegisterClick: boolean) {
+    if (
+      (isRegisterClick && this.isRegisterFormVisible) ||
+      (!isRegisterClick && !this.isRegisterFormVisible)
+    ) {
+      return;
+    }
+
     this.isRegisterFormVisible = !this.isRegisterFormVisible;
   }
 }

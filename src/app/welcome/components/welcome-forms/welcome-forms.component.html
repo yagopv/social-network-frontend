@@ -1,10 +1,10 @@
 <div>
   <ul>
     <li [class.selected]="isRegisterFormVisible">
-      <a (click)="toggleForm()">Register</a>
+      <a (click)="toggleForm(true)">Register</a>
     </li>
     <li [class.selected]="!isRegisterFormVisible">
-      <a (click)="toggleForm()">Login</a>
+      <a (click)="toggleForm(false)">Login</a>
     </li>
   </ul>
   <div class="register-form" *snIf="!isRegisterFormVisible">
