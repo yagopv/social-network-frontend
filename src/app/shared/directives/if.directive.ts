@@ -18,7 +18,7 @@ export class IfDirective implements OnChanges {
     private viewContainer: ViewContainerRef
   ) {}
 
-  @Input() snIf;
+  @Input() snIf: boolean;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.snIf.currentValue) {
