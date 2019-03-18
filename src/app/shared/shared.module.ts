@@ -23,6 +23,7 @@ import { ClockComponent } from './components/clock/clock.component';
 import { PagerComponent } from './components/pager/pager.component';
 import { NullDefaultDirective } from './directives/null-default.directive';
 import { IfDirective } from './directives/if.directive';
+import { ColorizerDirective } from './directives/colorizer.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
@@ -45,7 +46,8 @@ import { IfDirective } from './directives/if.directive';
     ClockComponent,
     PagerComponent,
     NullDefaultDirective,
-    IfDirective
+    IfDirective,
+    ColorizerDirective
   ],
   exports: [
     NotFoundComponent,
@@ -66,7 +68,8 @@ import { IfDirective } from './directives/if.directive';
     ClockComponent,
     PagerComponent,
     NullDefaultDirective,
-    IfDirective
+    IfDirective,
+    ColorizerDirective
   ]
 })
 export class SharedModule {}

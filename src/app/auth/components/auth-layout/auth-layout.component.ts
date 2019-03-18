@@ -10,15 +10,15 @@ export class AuthLayoutComponent implements OnInit {
   isLogin: boolean;
   constructor(private router: Router) {
     this.router.events.subscribe((event: RouterEvent) => {
-      if (event.url === '/auth/register') {
-        this.isLogin = false;
-      } else {
-        this.isLogin = true;
-      }
+      this.setInitialText();
     });
   }
 
   ngOnInit() {
+    this.setInitialText();
+  }
+
+  setInitialText() {
     if (this.router.url === '/auth/register') {
       this.isLogin = false;
     } else {
