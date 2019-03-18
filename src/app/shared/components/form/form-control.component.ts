@@ -21,6 +21,9 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
         <p class="error-message" *ngIf="control.hasError('required')">
           <fa-icon [icon]="errorIcon"> </fa-icon> This field is mandatory
         </p>
+        <p class="error-message" *ngIf="control.hasError('minlength')">
+          <fa-icon [icon]="errorIcon"> </fa-icon> The length is invalid
+        </p>
         <p class="error-message" *ngIf="control.hasError('malformedMail')">
           <fa-icon [icon]="errorIcon"> </fa-icon> The Email is not valid
         </p>

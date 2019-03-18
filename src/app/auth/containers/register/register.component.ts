@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   @Select(ErrorState) errors$: Observable<Error>;
   registerForm = this.fb.group(
     {
-      fullName: ['', [Validators.required]],
+      fullName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, MailValidator], [this.emailValidator]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     private emailValidator: EmailExistValidator
   ) {
     // Sample observable showing values
-    // this.registerForm.valueChanges.subscribe(value => console.log(value));
+    this.registerForm.valueChanges.subscribe(value => console.log(value));
   }
 
   ngOnInit() {

@@ -19,6 +19,7 @@ import { AuthLayoutComponent } from './components/auth-layout/auth-layout.compon
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
 import { MailValidatorDirective } from './validators/mail.validator';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   imports: [
