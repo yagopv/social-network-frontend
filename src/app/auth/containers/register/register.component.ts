@@ -3,8 +3,9 @@ import { Store, Select, ofAction, Actions } from '@ngxs/store';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { MailValidator } from '../../../shared/validators/mail.validator';
-import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
+import { MailValidator } from '../../validators/mail.validator';
+import { MatchPasswordValidator } from '../../validators/match-password.validator';
+import { EmailExistValidator } from '../../validators/email-exist.validator';
 import { ErrorState } from '../../../error/store/error.state';
 import { Error } from '../../../error/models/error.model';
 import { Register, RegisterSuccess } from '../../store/auth.actions';
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   registerForm = this.fb.group(
     {
       fullName: ['', [Validators.required]],
-      email: ['', [Validators.required, MailValidator]],
+      email: ['', [Validators.required, MailValidator], [this.emailValidator]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     },
@@ -29,7 +30,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store,
-    private actions$: Actions
+    private actions$: Actions,
+    private emailValidator: EmailExistValidator
   ) {
     // Sample observable showing values
     // this.registerForm.valueChanges.subscribe(value => console.log(value));

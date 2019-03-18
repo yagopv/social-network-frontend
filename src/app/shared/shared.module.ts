@@ -8,7 +8,6 @@ import { NotFoundComponent } from '../shared/components/not-found/not-found.comp
 import { FormComponent } from '../shared/components/form/form.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form/form-control.component';
-import { MailValidatorDirective } from './validators/mail.validator';
 import { PublisherComponent } from './components/publisher/publisher.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
@@ -32,7 +31,6 @@ import { IfDirective } from './directives/if.directive';
     FormComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
-    MailValidatorDirective,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
@@ -54,7 +52,6 @@ import { IfDirective } from './directives/if.directive';
     FormComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
-    MailValidatorDirective,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,

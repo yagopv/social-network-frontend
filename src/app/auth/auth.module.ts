@@ -18,6 +18,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
+import { MailValidatorDirective } from './validators/mail.validator';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { TemplateDrivenFormComponent } from './components/template-driven-form/t
     FileUploadComponent,
     AuthLayoutComponent,
     ReactiveFormComponent,
-    TemplateDrivenFormComponent
+    TemplateDrivenFormComponent,
+    MailValidatorDirective
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

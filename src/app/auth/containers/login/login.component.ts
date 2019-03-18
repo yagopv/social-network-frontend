@@ -6,7 +6,6 @@ import { Store, Select, Actions, ofAction } from '@ngxs/store';
 import { LoginModel } from './login.model';
 import { ErrorState } from '../../../error/store/error.state';
 import { Login, LoginFailed } from '../../store/auth.actions';
-import { withLatestFrom } from 'rxjs/operators';
 import { Error } from '../../../error/models/error.model';
 
 @Component({

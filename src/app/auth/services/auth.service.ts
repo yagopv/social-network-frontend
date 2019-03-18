@@ -55,7 +55,7 @@ export class AuthService {
   }
 
   register(register: RegisterRequest) {
-    return this.http.post<any>(`${environment.apiBaseUrl}/account`, register);
+    return this.http.post(`${environment.apiBaseUrl}/account`, register);
   }
 
   getUserProfile() {
@@ -64,6 +64,16 @@ export class AuthService {
 
   updateUserProfile(profile: Profile) {
     return this.http.put<Profile>(`${environment.apiBaseUrl}/user`, profile);
+  }
+
+  emailExist(email: string) {
+    return this.http.post<{ email: string }>(
+      `${environment.apiBaseUrl}/account/check`,
+      {
+        email
+      },
+      { observe: 'response' }
+    );
   }
 
   logout() {
