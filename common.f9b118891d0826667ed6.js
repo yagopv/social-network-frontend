@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{"9cHt":function(n,t,o){"use strict";o.d(t,"a",function(){return c});var c=function(){function n(){}return n.prototype.onclick=function(n){n.preventDefault(),n.stopPropagation()},n}()}}]);
