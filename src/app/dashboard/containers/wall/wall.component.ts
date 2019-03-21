@@ -62,7 +62,7 @@ export class WallComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // We should subscribe as Angular does not renrender if only the param of thhe route change
+    // We should subscribe as Angular does not re render if only the param of the route change
     this.route.params.subscribe(routeParams => {
       this.store.dispatch(new GetPosts(routeParams.userId));
       if (routeParams.userId) {
