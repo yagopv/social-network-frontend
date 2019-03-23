@@ -34,8 +34,8 @@ export class AvatarComponent implements OnDestroy {
     }
   }
 
-  @Input() width: string;
-  @Input() height: string;
+  @Input() width = '40px';
+  @Input() height = '40px';
 
   ngOnDestroy() {
     this.fadeAnimValue = 'out';
