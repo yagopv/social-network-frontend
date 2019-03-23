@@ -11,16 +11,32 @@ import { Friend } from '../../models/friend.model';
 })
 export class FriendComponent {
   @Input() friend: Profile | Friend;
+  @Output() accept = new EventEmitter();
   @Output() add = new EventEmitter();
   @Output() remove = new EventEmitter();
 
   addIcon: IconProp = faPlus;
   removeIcon: IconProp = faTrashAlt;
 
+  acceptRequest() {
+    this.accept.emit(this.friend.uuid);
+  }
+
   addFriend() {
     this.add.emit(this.friend.uuid);
   }
   removeFriend() {
     this.remove.emit(this.friend.uuid);
+  }
+
+  getSearchStatus(user: Profile | Friend) {
+    if (user['request']) {
+      if (user['request'].confirmedAt === 0) {
+        return 'pending';
+      } else {
+        return 'is-friend';
+      }
+    }
+    return 'not-friend';
   }
 }

@@ -5,6 +5,7 @@
     *ngFor="let friend of (friends$ | async)"
     @listItems
     [friend]="friend"
+    (accept)="acceptFriendRequest($event)"
     (add)="addFriend($event)"
     (remove)="removeFriend($event)"
     (click)="navigateToWall(friend.uuid)"

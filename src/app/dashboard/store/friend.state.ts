@@ -31,7 +31,6 @@ import { SetErrors } from '../../error/store/error.actions';
 import { FriendService } from '../services/friend.service';
 import { Navigate } from '@ngxs/router-plugin';
 import { Logout } from '../../auth/store/auth.actions';
-import { Friend } from '../../auth/models/profile.model';
 
 @State<Friends>({
   name: 'friends',
@@ -87,13 +86,11 @@ export class FriendsState {
 
   @Action(SearchUsersSuccess)
   searchUsersSuccess(
-    { patchState, getState }: StateContext<Friends>,
+    { patchState }: StateContext<Friends>,
     { users }: SearchUsersSuccess
   ) {
-    const friends = getState().friends;
     patchState({
       userSearch: users.reduce((draft, user) => {
-        user.isMyFriend = friends[user.uuid] ? true : false;
         draft[user.uuid] = user;
         return draft;
       }, {})
@@ -118,7 +115,6 @@ export class FriendsState {
   ) {
     patchState({
       friends: friends.reduce((draft, friend) => {
-        friend.isMyFriend = true;
         draft[friend.uuid] = friend;
         return draft;
       }, {})
@@ -165,7 +161,18 @@ export class FriendsState {
     { uuid }: AcceptFriendRequestsSuccess
   ) {
     const requests = getState().requests;
+    const friends = getState().friends;
     patchState({
+      friends: {
+        ...friends,
+        [uuid]: {
+          ...friends[uuid],
+          request: {
+            ...friends[uuid].request,
+            confirmedAt: new Date().getTime()
+          }
+        }
+      },
       requests: Object.keys(requests).reduce((draft, requestId) => {
         if (requestId !== uuid) {
           draft[requestId] = requests[requestId];
@@ -178,7 +185,7 @@ export class FriendsState {
   @Action(AddFriend)
   addFriend({ dispatch }: StateContext<Friends>, { friend }: AddFriend) {
     return this.friendService.addFriend(friend).pipe(
-      tap(requests => dispatch(new AddFriendSuccess())),
+      tap(() => dispatch(new AddFriendSuccess())),
       catchError(error => dispatch(new AddFriendFailed(error.error)))
     );
   }

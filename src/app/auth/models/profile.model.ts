@@ -5,7 +5,6 @@ export interface Profile {
   avatarUrl: string;
   preferences: Preferences;
   friends: Friend[];
-  isMyFriend: boolean;
 }
 
 export interface Preferences {
