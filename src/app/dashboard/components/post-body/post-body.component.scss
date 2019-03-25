@@ -1,0 +1,33 @@
+@import 'colors.scss';
+
+.post-body {
+  padding: 20px;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  ul,
+  li {
+    margin: 10px 0;
+  }
+  h1,
+  h2,
+  h3 {
+    font-weight: bold;
+  }
+  ul {
+    list-style-type: circle;
+    padding-left: 30px;
+  }
+  pre {
+    padding: 15px;
+    border-radius: 5px;
+    background: $dark;
+    color: $white;
+    display: inline-block;
+  }
+}

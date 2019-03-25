@@ -18,7 +18,6 @@ import { PostState } from './store/post.state';
 import { SharedModule } from '../shared/shared.module';
 import { PostCommentComponent } from './components/post-comment/post-comment.component';
 import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
-import { PostContentComponent } from './components/post-content/post-content.component';
 import { MyAccountComponent } from './containers/my-account/my-account.component';
 import { AuthModule } from '../auth/auth.module';
 import { SearchUserComponent } from './containers/search-user/search-user.component';
@@ -27,6 +26,8 @@ import { ErrorModule } from '../error/error.module';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { LikeComponent } from './components/like/like.component';
 import { PrivateWallComponent } from './components/private-wall/private-wall.component';
+import { PostHeadComponent } from './components/post-head/post-head.component';
+import { PostBodyComponent } from './components/post-body/post-body-component';
 
 @NgModule({
   imports: [
@@ -51,12 +52,13 @@ import { PrivateWallComponent } from './components/private-wall/private-wall.com
     PostComponent,
     PostCommentComponent,
     PostCommentCounterComponent,
-    PostContentComponent,
+    PostBodyComponent,
     MyAccountComponent,
     SearchUserComponent,
     ProfileInfoComponent,
     LikeComponent,
-    PrivateWallComponent
+    PrivateWallComponent,
+    PostHeadComponent
   ]
 })
 export class DashboardModule {}
