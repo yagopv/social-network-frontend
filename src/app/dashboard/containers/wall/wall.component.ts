@@ -101,18 +101,6 @@ export class WallComponent implements OnInit {
     this.store.dispatch(new AddPost({ content, uuid }));
   }
 
-  addComment({ postId, message }: { postId: string; message: string }) {
-    this.store.dispatch(new AddComment(postId, message));
-  }
-
-  deletePost(uuid: string) {
-    this.store.dispatch(new DeletePost(uuid));
-  }
-
-  likePost(postId: string) {
-    this.store.dispatch(new Like(postId));
-  }
-
   postIdentity(index: number, post: Post) {
     return post.id;
   }

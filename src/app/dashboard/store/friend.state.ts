@@ -35,9 +35,9 @@ import { Logout } from '../../auth/store/auth.actions';
 @State<Friends>({
   name: 'friends',
   defaults: {
-    friends: {},
-    userSearch: {},
-    requests: {}
+    friends: [],
+    userSearch: [],
+    requests: []
   }
 })
 export class FriendsState {
@@ -49,19 +49,19 @@ export class FriendsState {
 
   @Selector()
   static getSearchFriends({ friends, userSearch }: Friends) {
-    return [...Object.values(userSearch), ...Object.values(friends)];
+    return [...userSearch, ...friends];
   }
 
   @Selector()
   static getFriendRequests({ requests }: Friends) {
-    return Object.values(requests);
+    return requests;
   }
 
   static getFriend(uuid: string) {
     return createSelector(
       [FriendsState],
       (state: Friends) => {
-        return state.friends[uuid];
+        return state.friends.find(friend => friend.uuid === uuid);
       }
     );
   }
@@ -77,7 +77,11 @@ export class FriendsState {
     // Filter out myself and already friends
     return this.authService.search(searchTerm).pipe(
       map(users =>
-        users.filter(user => user.uuid !== currentUserId && !friends[user.uuid])
+        users.filter(
+          user =>
+            user.uuid !== currentUserId &&
+            !friends.find(friend => friend.uuid === user.uuid)
+        )
       ),
       tap(users => dispatch(new SearchUsersSuccess(users))),
       catchError(error => dispatch(new SearchUsersFailed(error.error)))
@@ -90,17 +94,14 @@ export class FriendsState {
     { users }: SearchUsersSuccess
   ) {
     patchState({
-      userSearch: users.reduce((draft, user) => {
-        draft[user.uuid] = user;
-        return draft;
-      }, {})
+      userSearch: users
     });
   }
 
   @Action(GetFriends)
   getFriends({ dispatch, patchState }: StateContext<Friends>) {
     patchState({
-      friends: {}
+      friends: []
     });
     return this.friendService.getFriends().pipe(
       tap(friends => dispatch(new GetFriendsSuccess(friends))),
@@ -114,10 +115,7 @@ export class FriendsState {
     { friends }: GetFriendsSuccess
   ) {
     patchState({
-      friends: friends.reduce((draft, friend) => {
-        draft[friend.uuid] = friend;
-        return draft;
-      }, {})
+      friends
     });
   }
 
@@ -135,12 +133,7 @@ export class FriendsState {
     { requests }: GetFriendRequestsSuccess
   ) {
     patchState({
-      requests: requests.reduce((draft, request) => {
-        if (!request.request.confirmed) {
-          draft[request.uuid] = request;
-        }
-        return draft;
-      }, {})
+      requests: requests.filter(request => !request.request.confirmed)
     });
   }
 
@@ -160,25 +153,20 @@ export class FriendsState {
     { patchState, getState }: StateContext<Friends>,
     { uuid }: AcceptFriendRequestsSuccess
   ) {
-    const requests = getState().requests;
-    const friends = getState().friends;
     patchState({
-      friends: {
-        ...friends,
-        [uuid]: {
-          ...friends[uuid],
-          request: {
-            ...friends[uuid].request,
-            confirmedAt: new Date().getTime()
-          }
+      friends: getState().friends.map(friend => {
+        if (friend.uuid === uuid) {
+          return {
+            ...friend,
+            request: {
+              ...friend.request,
+              confirmedAt: new Date().getTime()
+            }
+          };
         }
-      },
-      requests: Object.keys(requests).reduce((draft, requestId) => {
-        if (requestId !== uuid) {
-          draft[requestId] = requests[requestId];
-        }
-        return draft;
-      }, {})
+        return friend;
+      }),
+      requests: getState().requests.filter(request => request.uuid !== uuid)
     });
   }
 
@@ -203,9 +191,9 @@ export class FriendsState {
   @Action(Logout)
   logout({ setState }: StateContext<Friends>) {
     setState({
-      friends: {},
-      userSearch: {},
-      requests: {}
+      friends: [],
+      userSearch: [],
+      requests: []
     });
   }
 

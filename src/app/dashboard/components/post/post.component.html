@@ -2,7 +2,7 @@
   <sn-post-head [post]="post" [currentUser]="currentUser"></sn-post-head>
   <sn-post-body [post]="post" [currentUser]="currentUser"></sn-post-body>
   <sn-like [likeCount]="post.likes.length" (like)="toggleLike()"></sn-like>
-  <div class="comment"></div>
+
   <section class="comments">
     <sn-post-comment-counter
       [count]="post.comments.length"

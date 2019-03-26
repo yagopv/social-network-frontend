@@ -22,9 +22,6 @@
       "
       [post]="post"
       [currentUser]="currentUser$ | async"
-      (comment)="addComment($event)"
-      (delete)="deletePost($event)"
-      (like)="likePost(post.id)"
     ></sn-post>
   </section>
   <sn-pager

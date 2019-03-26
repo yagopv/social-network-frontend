@@ -10,7 +10,7 @@ import { FADE_IN_OUT_ANIMATION } from '../../animations/fade.animation';
     <img
       [@fade]="fadeAnimValue"
       [src]="imageUrl"
-      [ngStyle]="{ width: width, height: height }"
+      [ngStyle]="{ width: width, height: height, 'min-width': width }"
     />
   `,
   styles: [

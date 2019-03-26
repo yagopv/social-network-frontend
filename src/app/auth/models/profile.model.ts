@@ -18,7 +18,7 @@ export interface Preferences {
 export interface Friend {
   uuid: string;
   confirmed: boolean;
-  createdAt: Date;
-  confirmedAt: Date;
-  rejectedAt: Date;
+  createdAt: number;
+  confirmedAt: number;
+  rejectedAt: number;
 }

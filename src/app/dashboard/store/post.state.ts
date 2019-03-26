@@ -88,7 +88,9 @@ export class PostState {
           new AddPostSuccess({
             ...post,
             author: currentUser,
-            owner: publish.uuid ? friends[publish.uuid] : currentUser
+            owner: publish.uuid
+              ? friends.find(friend => friend.uuid === publish.uuid)
+              : currentUser
           })
         );
       }),
