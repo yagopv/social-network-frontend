@@ -15,9 +15,6 @@ import { PostState } from '../../store/post.state';
 import {
   GetPosts,
   AddPost,
-  AddComment,
-  DeletePost,
-  Like,
   AddPostSuccess,
   AddCommentSuccess
 } from '../../store/post.actions';
@@ -42,7 +39,7 @@ import { PostComponent } from '../../components/post/post.component';
   animations: [LIST_ANIMATION, LIST_ITEMS_ANIMATION]
 })
 export class WallComponent implements OnInit {
-  @Select(PostState.getPosts) posts$: Observable<Post[]>;
+  @Select(PostState) posts$: Observable<Post[]>;
   @Select(AuthState.getUser) currentUser$: Observable<Profile>;
   @Select(ErrorState) errors$: Observable<Error>;
   @ViewChild(PublisherComponent) publisher: PublisherComponent;

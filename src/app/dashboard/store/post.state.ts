@@ -20,25 +20,19 @@ import {
   LikeFailed
 } from './post.actions';
 import { PostService } from '../services/post.service';
-import { PostCollection } from '../models/post-collection.model';
 import { Logout } from '../../auth/store/auth.actions';
 import { Post } from '../models/post.model';
 import { SetErrors } from '../../error/store/error.actions';
 
-@State<PostCollection>({
+@State<Post[]>({
   name: 'posts',
-  defaults: {}
+  defaults: []
 })
 export class PostState {
   constructor(private store: Store, private postService: PostService) {}
 
-  @Selector()
-  static getPosts(state: PostCollection): Post[] {
-    return Object.values(state);
-  }
-
   @Action(GetPosts)
-  getPosts({ dispatch }: StateContext<PostCollection>, { userId }: GetPosts) {
+  getPosts({ dispatch }: StateContext<Post[]>, { userId }: GetPosts) {
     return this.postService.getWall(userId).pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
       catchError(error => dispatch(new GetPostsFailed(error.error, userId)))
@@ -47,26 +41,18 @@ export class PostState {
 
   @Action(GetPostsSuccess)
   getPostsSuccess(
-    { setState }: StateContext<PostCollection>,
+    { setState }: StateContext<Post[]>,
     { posts }: GetPostsSuccess
   ) {
-    const orderedPosts = posts.sort((p1, p2) => {
-      return p2.createdAt - p1.createdAt;
-    });
-
     setState(
-      orderedPosts.reduce((draft, post) => {
-        draft[post.id] = post;
-        return draft;
-      }, {})
+      posts.sort((p1, p2) => {
+        return p2.createdAt - p1.createdAt;
+      })
     );
   }
 
   @Action([GetPostsFailed])
-  getPostsFailed(
-    { dispatch }: StateContext<PostCollection>,
-    { errors, uuid }: any
-  ) {
+  getPostsFailed({ dispatch }: StateContext<Post[]>, { errors, uuid }: any) {
     if (errors && errors.filter(error => error.status === 403).length > 0) {
       dispatch(new Navigate(['/user', uuid, 'private', 'wall']));
     } else {
@@ -76,7 +62,7 @@ export class PostState {
 
   @Action(AddPost)
   addPost(
-    { dispatch }: StateContext<PostCollection>,
+    { dispatch }: StateContext<Post[]>,
     { postRequest: publish }: AddPost
   ) {
     const currentState = this.store.selectSnapshot(state => state);
@@ -100,17 +86,14 @@ export class PostState {
 
   @Action(AddPostSuccess, { cancelUncompleted: true })
   addPostSuccess(
-    { setState, getState }: StateContext<PostCollection>,
+    { setState, getState }: StateContext<Post[]>,
     { post }: AddPostSuccess
   ) {
-    setState({
-      [post.id]: post,
-      ...getState()
-    });
+    setState([post, ...getState()]);
   }
 
   @Action(DeletePost, { cancelUncompleted: true })
-  deletePost({ dispatch }: StateContext<PostCollection>, { uuid }: DeletePost) {
+  deletePost({ dispatch }: StateContext<Post[]>, { uuid }: DeletePost) {
     return this.postService.deletePost(uuid).pipe(
       tap(() => dispatch(new DeletePostSuccess(uuid))),
       catchError(error => dispatch(new DeletePostFailed(error.error)))
@@ -119,23 +102,15 @@ export class PostState {
 
   @Action(DeletePostSuccess)
   deletePostSuccess(
-    { setState, getState }: StateContext<PostCollection>,
+    { setState, getState }: StateContext<Post[]>,
     { uuid }: DeletePostSuccess
   ) {
-    const posts = getState();
-    setState(
-      Object.keys(posts).reduce((draft, postId) => {
-        if (postId !== uuid) {
-          draft[postId] = posts[postId];
-        }
-        return draft;
-      }, {})
-    );
+    setState(getState().filter(post => post.id !== uuid));
   }
 
   @Action(AddComment, { cancelUncompleted: true })
   addComment(
-    { dispatch }: StateContext<PostCollection>,
+    { dispatch }: StateContext<Post[]>,
     { postId, message }: AddComment
   ) {
     const { avatarUrl, fullName } = this.store.selectSnapshot(
@@ -166,22 +141,24 @@ export class PostState {
 
   @Action(AddCommentSuccess)
   addCommentSuccess(
-    { setState, getState }: StateContext<PostCollection>,
+    { setState, getState }: StateContext<Post[]>,
     { comment, postId }: AddCommentSuccess
   ) {
-    const state = getState();
-
-    setState({
-      ...state,
-      [postId]: {
-        ...state[postId],
-        comments: [comment, ...state[postId].comments]
-      }
-    });
+    setState(
+      getState().map(post => {
+        if (post.id === postId) {
+          return {
+            ...post,
+            comments: [comment, ...post.comments]
+          };
+        }
+        return post;
+      })
+    );
   }
 
   @Action(Like)
-  like({ dispatch, getState }: StateContext<PostCollection>, { postId }: Like) {
+  like({ dispatch, getState }: StateContext<Post[]>, { postId }: Like) {
     const post = getState()[postId];
     const currentState = this.store.selectSnapshot(state => state);
     const currentUser = currentState.auth;
@@ -203,28 +180,31 @@ export class PostState {
 
   @Action(LikeSuccess)
   likeSuccess(
-    { getState, setState }: StateContext<PostCollection>,
+    { getState, setState }: StateContext<Post[]>,
     { postId, isLike, userUuid }: LikeSuccess
   ) {
-    const posts = getState();
-    setState({
-      ...posts,
-      [postId]: {
-        ...posts[postId],
-        likes: isLike
-          ? [...posts[postId].likes, userUuid]
-          : posts[postId].likes.filter(uuid => uuid !== userUuid)
-      }
-    });
+    setState(
+      getState().map(post => {
+        if (post.id === postId) {
+          return {
+            ...post,
+            likes: isLike
+              ? [...post.likes, userUuid]
+              : post.likes.filter(uuid => uuid !== userUuid)
+          };
+        }
+        return post;
+      })
+    );
   }
 
   @Action(Logout)
-  logout({ setState }: StateContext<PostCollection>) {
-    setState({});
+  logout({ setState }: StateContext<Post[]>) {
+    setState([]);
   }
 
   @Action([AddPostFailed, AddCommentFailed, DeletePostFailed, LikeFailed])
-  error({ dispatch }: StateContext<PostCollection>, { errors }: any) {
+  error({ dispatch }: StateContext<Post[]>, { errors }: any) {
     dispatch(new SetErrors(errors));
   }
 
