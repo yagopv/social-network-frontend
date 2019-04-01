@@ -1,3 +1,11 @@
-<router-outlet></router-outlet>
+<main gdColumns="1fr" gdRows="auto 1fr auto">
+  <mat-toolbar color="primary">
+    <span>The Social Network</span>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+  <mat-toolbar color="primary">
+    <p>@Yago Pérez Vázquez 2019</p>
+  </mat-toolbar>
+</main>
 <router-outlet name="popup"></router-outlet>
 <sn-loader *ngIf="(isFetching$ | async)"></sn-loader>

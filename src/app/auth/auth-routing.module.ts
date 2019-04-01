@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SiteLayoutComponent } from '../shared/components/site-layout/site-layout.component';
-import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
@@ -9,29 +7,12 @@ import { ReactiveFormComponent } from './components/reactive-form/reactive-form.
 
 const routes: Routes = [
   {
-    path: 'auth',
-    component: SiteLayoutComponent,
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'login'
-      },
-      {
-        path: '',
-        component: AuthLayoutComponent,
-        children: [
-          {
-            path: 'login',
-            component: LoginComponent
-          },
-          {
-            path: 'register',
-            component: RegisterComponent
-          }
-        ]
-      }
-    ]
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'reactive-form',
