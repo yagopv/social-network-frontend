@@ -72,7 +72,7 @@ export class WallComponent implements OnInit {
             }
           });
       } else {
-        this.placeholder = 'What are you thinking?';
+        this.placeholder = 'What are you thinking ?';
       }
       this.postPage = 0;
       this.element.nativeElement.parentElement.scrollTop = 0;

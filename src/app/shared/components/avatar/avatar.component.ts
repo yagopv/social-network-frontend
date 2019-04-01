@@ -8,6 +8,7 @@ import { FADE_IN_OUT_ANIMATION } from '../../animations/fade.animation';
   selector: 'sn-avatar',
   template: `
     <img
+      *ngIf="imageUrl"
       [@fade]="fadeAnimValue"
       [src]="imageUrl"
       [ngStyle]="{ width: width, height: height, 'min-width': width }"
@@ -34,8 +35,8 @@ export class AvatarComponent implements OnDestroy {
     }
   }
 
-  @Input() width = '40px';
-  @Input() height = '40px';
+  @Input() width = 'auto';
+  @Input() height = 'auto';
 
   ngOnDestroy() {
     this.fadeAnimValue = 'out';

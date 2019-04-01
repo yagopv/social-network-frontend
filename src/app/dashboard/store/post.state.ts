@@ -1,4 +1,4 @@
-import { State, StateContext, Action, Selector, Store } from '@ngxs/store';
+import { State, StateContext, Action, Store } from '@ngxs/store';
 import { catchError, tap } from 'rxjs/operators';
 import { Navigate } from '@ngxs/router-plugin';
 
