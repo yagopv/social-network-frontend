@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 import { FormComponent } from '../shared/components/form/form.component';
@@ -29,9 +27,7 @@ import { ColorizerDirective } from './directives/colorizer.directive';
     CommonModule,
     RouterModule,
     FormsModule,
-    FontAwesomeModule,
-    MatToolbarModule,
-    FlexLayoutModule
+    FontAwesomeModule
   ],
   declarations: [
     NotFoundComponent,
@@ -69,9 +65,7 @@ import { ColorizerDirective } from './directives/colorizer.directive';
     PagerComponent,
     NullDefaultDirective,
     IfDirective,
-    ColorizerDirective,
-    MatToolbarModule,
-    FlexLayoutModule
+    ColorizerDirective
   ]
 })
 export class SharedModule {}
