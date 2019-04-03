@@ -1,5 +1,9 @@
-<main>
-  <router-outlet></router-outlet>
-</main>
+<div>
+  <sn-header></sn-header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <sn-footer></sn-footer>
+</div>
 <router-outlet name="popup"></router-outlet>
 <sn-loader *ngIf="(isFetching$ | async)"></sn-loader>

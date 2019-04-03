@@ -5,7 +5,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
-import { FormComponent } from '../shared/components/form/form.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form/form-control.component';
 import { PublisherComponent } from './components/publisher/publisher.component';
@@ -21,17 +20,13 @@ import { PagerComponent } from './components/pager/pager.component';
 import { NullDefaultDirective } from './directives/null-default.directive';
 import { IfDirective } from './directives/if.directive';
 import { ColorizerDirective } from './directives/colorizer.directive';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    FontAwesomeModule
-  ],
+  imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
   declarations: [
     NotFoundComponent,
-    FormComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
     PublisherComponent,
@@ -46,11 +41,12 @@ import { ColorizerDirective } from './directives/colorizer.directive';
     PagerComponent,
     NullDefaultDirective,
     IfDirective,
-    ColorizerDirective
+    ColorizerDirective,
+    HeaderComponent,
+    FooterComponent
   ],
   exports: [
     NotFoundComponent,
-    FormComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
     PublisherComponent,
@@ -65,7 +61,9 @@ import { ColorizerDirective } from './directives/colorizer.directive';
     PagerComponent,
     NullDefaultDirective,
     IfDirective,
-    ColorizerDirective
+    ColorizerDirective,
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule {}

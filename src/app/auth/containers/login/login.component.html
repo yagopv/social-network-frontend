@@ -1,20 +1,14 @@
 <!-- Reactive -->
-<sn-form>
-  <sn-errors [errors]="errors$ | async"></sn-errors>
-  <form [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login()">
-    <sn-form-control [control]="loginForm.get('email')">
-      <input type="text" placeholder="Email" formControlName="email" />
-    </sn-form-control>
-    <sn-form-control [control]="loginForm.get('password')">
-      <input
-        type="password"
-        placeholder="Password"
-        formControlName="password"
-      />
-    </sn-form-control>
-    <div class="button-wrapper"><button type="submit">Login</button></div>
-  </form>
-</sn-form>
+<sn-errors [errors]="errors$ | async"></sn-errors>
+<form [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login()">
+  <sn-form-control [control]="loginForm.get('email')">
+    <input type="text" placeholder="Email" formControlName="email" />
+  </sn-form-control>
+  <sn-form-control [control]="loginForm.get('password')">
+    <input type="password" placeholder="Password" formControlName="password" />
+  </sn-form-control>
+  <div class="button-wrapper"><button type="submit">Login</button></div>
+</form>
 
 <!-- Template-Driven -->
 <!-- <sn-form>

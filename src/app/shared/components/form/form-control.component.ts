@@ -7,7 +7,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
   selector: 'sn-form-control',
   template: `
     <div
-      class="form-control"
+      class="form-group"
       [class.has-error]="
         (control.errors && (control.dirty || control.touched)) ||
         (group?.errors && (group?.dirty || group?.touched))

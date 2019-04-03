@@ -1,16 +1,25 @@
-<div>
-  <ul>
-    <li [class.selected]="isRegisterFormVisible">
-      <a (click)="toggleForm(true)">Register</a>
-    </li>
-    <li [class.selected]="!isRegisterFormVisible">
-      <a (click)="toggleForm(false)">Login</a>
-    </li>
-  </ul>
-  <div class="register-form" *snIf="isRegisterFormVisible">
-    <sn-register></sn-register>
-  </div>
-  <div class="login-form" *snIf="!isRegisterFormVisible">
-    <sn-login></sn-login>
-  </div>
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [class.active]="isRegisterFormVisible"
+      (click)="toggleForm(true)"
+      >Register</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [class.active]="!isRegisterFormVisible"
+      (click)="toggleForm(false)"
+      >Login</a
+    >
+  </li>
+</ul>
+
+<div *snIf="isRegisterFormVisible">
+  <sn-register></sn-register>
+</div>
+<div class="login-form" *snIf="!isRegisterFormVisible">
+  <sn-login></sn-login>
 </div>

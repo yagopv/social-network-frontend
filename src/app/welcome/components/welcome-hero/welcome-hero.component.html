@@ -1,5 +1,16 @@
-<ul>
-  <li *ngFor="let row of rows">
-    <h1><fa-icon [icon]="row.icon"></fa-icon>{{ row.message }}</h1>
-  </li>
-</ul>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome</h1>
+    <p class="lead">
+      The Social Network. A space for sharing
+    </p>
+    <hr class="my-4" />
+    <ul class="list-unstyled">
+      <li *ngFor="let row of rows">
+        <p class="lead">
+          <i [class]="row.icon"></i><span class="ml-2">{{ row.message }}</span>
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>

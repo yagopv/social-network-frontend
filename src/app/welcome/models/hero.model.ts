@@ -2,6 +2,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export interface Hero {
   id: number;
-  icon: IconProp;
+  icon: string;
   message: string;
 }

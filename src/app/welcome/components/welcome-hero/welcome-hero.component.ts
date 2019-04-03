@@ -3,8 +3,7 @@ import { Hero } from '../../models/hero.model';
 
 @Component({
   selector: 'sn-welcome-hero',
-  templateUrl: './welcome-hero.component.html',
-  styleUrls: ['./welcome-hero.component.scss']
+  templateUrl: './welcome-hero.component.html'
 })
 export class WelcomeHeroComponent {
   @Input() rows: Hero[];
