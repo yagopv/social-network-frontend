@@ -1,25 +1,26 @@
-<ul class="nav nav-pills nav-fill">
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      [class.active]="isRegisterFormVisible"
-      (click)="toggleForm(true)"
-      >Register</a
-    >
-  </li>
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      [class.active]="!isRegisterFormVisible"
-      (click)="toggleForm(false)"
-      >Login</a
-    >
-  </li>
-</ul>
-
-<div *snIf="isRegisterFormVisible">
-  <sn-register></sn-register>
-</div>
-<div class="login-form" *snIf="!isRegisterFormVisible">
-  <sn-login></sn-login>
-</div>
+<section class="pl-5 pr-5">
+  <ul class="nav nav-pills nav-fill mb-5">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="isRegisterFormVisible"
+        (click)="toggleForm(true)"
+        >Register</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="!isRegisterFormVisible"
+        (click)="toggleForm(false)"
+        >Login</a
+      >
+    </li>
+  </ul>
+  <div *snIf="isRegisterFormVisible">
+    <sn-register></sn-register>
+  </div>
+  <div class="login-form" *snIf="!isRegisterFormVisible">
+    <sn-login></sn-login>
+  </div>
+</section>

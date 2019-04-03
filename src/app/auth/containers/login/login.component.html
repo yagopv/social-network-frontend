@@ -1,45 +1,31 @@
-<!-- Reactive -->
 <sn-errors [errors]="errors$ | async"></sn-errors>
 <form [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login()">
-  <sn-form-control [control]="loginForm.get('email')">
-    <input type="text" placeholder="Email" formControlName="email" />
-  </sn-form-control>
-  <sn-form-control [control]="loginForm.get('password')">
-    <input type="password" placeholder="Password" formControlName="password" />
-  </sn-form-control>
-  <div class="button-wrapper"><button type="submit">Login</button></div>
-</form>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="text"
+      class="form-control"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <sn-validation-messages
+      [control]="loginForm.get('email')"
+    ></sn-validation-messages>
+  </div>
 
-<!-- Template-Driven -->
-<!-- <sn-form>
-  <sn-errors [errors]="errors$ | async"></sn-errors>
-  <form
-    (ngSubmit)="login(loginForm)"
-    (keyup.enter)="login(loginForm)"
-    #loginForm="ngForm"
-    [ngFormOptions]="{ updateOn: 'blur' }"
-  >
-    <sn-form-control [control]="email">
-      <input
-        type="text"
-        placeholder="Email"
-        required
-        snMail
-        [(ngModel)]="loginModel.email"
-        name="email"
-        #email="ngModel"
-      />
-    </sn-form-control>
-    <sn-form-control [control]="password">
-      <input
-        type="password"
-        placeholder="Password"
-        required
-        [(ngModel)]="loginModel.password"
-        name="password"
-        #password="ngModel"
-      />
-    </sn-form-control>
-    <div class="button-wrapper"><button type="submit">Login</button></div>
-  </form>
-</sn-form> -->
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <sn-validation-messages
+      [control]="loginForm.get('password')"
+    ></sn-validation-messages>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>

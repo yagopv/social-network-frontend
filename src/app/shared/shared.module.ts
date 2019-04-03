@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
-import { FormControlComponent } from './components/form/form-control.component';
 import { PublisherComponent } from './components/publisher/publisher.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
@@ -22,13 +21,13 @@ import { IfDirective } from './directives/if.directive';
 import { ColorizerDirective } from './directives/colorizer.directive';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ValidationMessagesComponent } from './components/validation-messages/validation-messages.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
   declarations: [
     NotFoundComponent,
     ClickPreventDefaultDirective,
-    FormControlComponent,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
@@ -43,12 +42,12 @@ import { FooterComponent } from './components/footer/footer.component';
     IfDirective,
     ColorizerDirective,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ValidationMessagesComponent
   ],
   exports: [
     NotFoundComponent,
     ClickPreventDefaultDirective,
-    FormControlComponent,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
@@ -63,7 +62,8 @@ import { FooterComponent } from './components/footer/footer.component';
     IfDirective,
     ColorizerDirective,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ValidationMessagesComponent
   ]
 })
 export class SharedModule {}
