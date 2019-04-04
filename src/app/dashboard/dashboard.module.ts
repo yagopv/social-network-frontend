@@ -6,8 +6,6 @@ import { FriendRequestsComponent } from './containers/friend-request/friend-requ
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardAsideComponent } from './components/dashboard-aside/dashboard-aside.component';
-import { DashboardFooterComponent } from './components/dashboard-footer/dashboard-footer.component';
-import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
 import { FriendsComponent } from './containers/friends/friends.component';
@@ -41,8 +39,6 @@ import { PostBodyComponent } from './components/post-body/post-body-component';
   ],
   declarations: [
     DashboardAsideComponent,
-    DashboardFooterComponent,
-    DashboardHeaderComponent,
     DashboardComponent,
     DashboardNavComponent,
     WallComponent,

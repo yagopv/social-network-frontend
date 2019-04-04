@@ -18,6 +18,7 @@ import { FADE_IN_OUT_ANIMATION } from '../../animations/fade.animation';
     `
       img {
         border-radius: 50%;
+        max-width: 100%;
       }
     `
   ],

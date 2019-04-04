@@ -1,12 +1,15 @@
-<header>
-  <sn-dashboard-header
-    (selectIcon)="toggleLayout($event)"
-  ></sn-dashboard-header>
-</header>
-<nav>
-  <sn-me [user]="user$ | async"></sn-me>
-  <sn-dashboard-nav (logout)="logout()"></sn-dashboard-nav>
-</nav>
-<main><router-outlet></router-outlet></main>
-<aside><sn-dashboard-aside></sn-dashboard-aside></aside>
-<footer><sn-dashboard-footer></sn-dashboard-footer></footer>
+<div class="container-fluid mt-5">
+  <div class="row">
+    <nav class="col-xs-12 col-lg-2">
+      <sn-me [user]="user$ | async"></sn-me>
+      <sn-dashboard-nav (logout)="logout()"></sn-dashboard-nav>
+    </nav>
+    <main class="col-xs-12 col-md-8 col-lg-7">
+      <router-outlet></router-outlet>
+    </main>
+    <aside class="col-xs-12 col-md-4 col-lg-3">
+      <sn-clock></sn-clock>
+      <sn-friend-requests></sn-friend-requests>
+    </aside>
+  </div>
+</div>

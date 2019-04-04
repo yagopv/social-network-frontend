@@ -12,13 +12,8 @@ import { GetFriends } from '../../store/friend.actions';
 })
 export class DashboardComponent implements OnInit {
   @Select(AuthState.getUser) user$: Profile;
-  @HostBinding('class') layout: string;
 
   constructor(private store: Store) {}
-
-  toggleLayout(layoutType: string) {
-    this.layout = layoutType;
-  }
 
   ngOnInit() {
     this.store.dispatch([new GetUserProfile(), new GetFriends()]);
