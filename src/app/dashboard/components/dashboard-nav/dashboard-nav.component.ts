@@ -7,11 +7,4 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './dashboard-nav.component.html',
   styleUrls: ['./dashboard-nav.component.scss']
 })
-export class DashboardNavComponent {
-  @Output() logout = new EventEmitter();
-  logoutIcon: IconProp = faSignOutAlt;
-
-  logoutUser() {
-    this.logout.emit();
-  }
-}
+export class DashboardNavComponent {}

@@ -1,16 +1,14 @@
-<ul class="dashboard-menu">
-  <li>
-    <a routerLink="/wall" routerLinkActive="active"><b>Dashboard</b></a>
-  </li>
-  <li>
-    <a routerLink="/friends" routerLinkActive="active"><b>Friends</b></a>
-  </li>
-  <li>
-    <a routerLink="/my-account" routerLinkActive="active"><b>My Account</b></a>
-  </li>
-  <li>
-    <a href="" (click)="logoutUser()" snPreventDefault>
-      Logout <fa-icon [icon]="logoutIcon"></fa-icon
-    ></a>
-  </li>
-</ul>
+<nav class="nav flex-column mt-3">
+  <a class="nav-link text-light" routerLink="/wall" routerLinkActive="active"
+    >Dashboard</a
+  >
+  <a class="nav-link text-light" routerLink="/friends" routerLinkActive="active"
+    >Friends</a
+  >
+  <a
+    class="nav-link text-light"
+    routerLink="/my-account"
+    routerLinkActive="active"
+    >My Account</a
+  >
+</nav>

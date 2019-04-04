@@ -8,20 +8,13 @@ import { FADE_IN_OUT_ANIMATION } from '../../animations/fade.animation';
   selector: 'sn-avatar',
   template: `
     <img
+      class="img-responsive rounded-circle"
       *ngIf="imageUrl"
       [@fade]="fadeAnimValue"
       [src]="imageUrl"
       [ngStyle]="{ width: width, height: height, 'min-width': width }"
     />
   `,
-  styles: [
-    `
-      img {
-        border-radius: 50%;
-        max-width: 100%;
-      }
-    `
-  ],
   animations: [FADE_IN_OUT_ANIMATION]
 })
 export class AvatarComponent implements OnDestroy {

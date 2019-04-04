@@ -1,6 +1,6 @@
-<div class="user">
-  <sn-avatar [user]="user"></sn-avatar>
-  <a routerLink="/my-account">
-    <b>{{ user?.fullName }}</b>
+<div class="d-flex align-items-center">
+  <sn-avatar [user]="user" height="40px"></sn-avatar>
+  <a routerLink="/my-account" class="btn btn-link text-light">
+    {{ user?.fullName }}
   </a>
 </div>
