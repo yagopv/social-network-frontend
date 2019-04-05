@@ -1,0 +1,15 @@
+:host {
+  .card {
+    &:hover {
+      .fa-trash-alt {
+        display: inline;
+      }
+    }
+  }
+  .fa-trash-alt {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: none;
+  }
+}

@@ -1,12 +1,23 @@
-<div class="post-comment" [class.me]="comment.author.uuid === currentUser.uuid">
-  <sn-avatar [user]="comment.author"></sn-avatar>
-  <div class="post-message">
-    <h5>
-      <a [routerLink]="getLink(comment.author.uuid)">{{
-        comment.author.fullName
-      }}</a>
-      <small>{{ comment.createdAt | userFriendlyDate }}</small>
-    </h5>
-    <p>{{ comment.message }}</p>
+<div
+  class="d-flex align-items-center"
+  [ngClass]="{ 'flex-row-reverse': comment.author.uuid === currentUser.uuid }"
+>
+  <sn-avatar [user]="comment.author" width="60px" height="60px"></sn-avatar>
+  <div
+    class="ml-3 mr-3 bg-secondary text-light p-2 rounded"
+    [ngClass]="{ 'bg-dark': comment.author.uuid === currentUser.uuid }"
+    style="width: 18rem"
+  >
+    <h4 class="flex-fill">
+      <a
+        class="card-link text-light"
+        [routerLink]="getLink(comment.author.uuid)"
+        ><b>{{ comment.author.fullName }} </b></a
+      >
+    </h4>
+    <p class="text-light">{{ comment.message }}</p>
+    <small class="badge badge-primary">{{
+      comment.createdAt | userFriendlyDate
+    }}</small>
   </div>
 </div>

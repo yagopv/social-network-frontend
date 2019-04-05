@@ -6,7 +6,7 @@ import { Profile } from '../../../auth/models/profile.model';
 @Component({
   selector: 'sn-post-body',
   template: `
-    <div class="post-body" [innerHtml]="content"></div>
+    <div class="card-body" [innerHtml]="content"></div>
   `,
   styleUrls: ['./post-body.component.scss'],
   encapsulation: ViewEncapsulation.None

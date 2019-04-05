@@ -10,8 +10,6 @@ import {
 import { Post } from '../../models/post.model';
 import { Profile } from '../../../auth/models/profile.model';
 import { Comment } from '../../models/comment.model';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
@@ -33,7 +31,6 @@ export class PostComponent {
 
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
 
-  deleteCommentIcon: IconProp = faTrashAlt;
   commentsPage = 0;
   commentsPageSize = 3;
 
