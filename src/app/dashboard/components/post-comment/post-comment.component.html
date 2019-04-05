@@ -5,7 +5,7 @@
   <sn-avatar [user]="comment.author" width="60px" height="60px"></sn-avatar>
   <div
     class="ml-3 mr-3 bg-secondary text-light p-2 rounded"
-    [ngClass]="{ 'bg-dark': comment.author.uuid === currentUser.uuid }"
+    [ngClass]="{ 'bg-primary': comment.author.uuid === currentUser.uuid }"
     style="width: 18rem"
   >
     <h4 class="flex-fill">

@@ -1,4 +1,4 @@
-@import 'colors.scss';
+@import 'styles.scss';
 
 :host {
   position: absolute;
@@ -6,7 +6,7 @@
   height: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba($dark, 0.5);
+  background-color: rgba($primary, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;

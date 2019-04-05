@@ -5,7 +5,7 @@ import { map, startWith } from 'rxjs/operators';
 @Component({
   selector: 'sn-clock',
   template: `
-    <div class="text-center">
+    <div class="card text-center bg-dark text-light pt-2 pb-2">
       <h1>{{ clock$ | async | date }}</h1>
       <h2>
         <b>{{ clock$ | async | date: 'hh:mm a' }}</b>

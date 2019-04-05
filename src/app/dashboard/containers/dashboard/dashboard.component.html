@@ -1,18 +1,18 @@
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-xs-12 col-lg-2 bg-secondary pt-5">
+    <nav class="col-xs-12 col-lg-2 bg-light pt-5">
       <sn-me [user]="user$ | async"></sn-me>
-      <hr class="bg-light" />
+      <hr class="bg-white" />
       <sn-dashboard-nav (logout)="logout()"></sn-dashboard-nav>
-      <hr class="bg-light" />
-      <button class="btn btn-link text-light" (click)="logout()">Logout</button>
+      <hr class="bg-white" />
+      <button class="btn btn-link btn-lg" (click)="logout()">Logout</button>
     </nav>
     <main class="col-xs-12 col-md-8 col-lg-7">
       <router-outlet></router-outlet>
     </main>
     <aside class="col-xs-12 col-md-4 col-lg-3 pt-5">
-      <sn-clock></sn-clock>
       <sn-friend-requests></sn-friend-requests>
+      <sn-clock></sn-clock>
     </aside>
   </div>
 </div>

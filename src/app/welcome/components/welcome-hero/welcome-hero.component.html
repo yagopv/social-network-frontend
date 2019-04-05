@@ -1,15 +1,15 @@
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron bg-primary text-white">
   <div class="container">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-3">Welcome</h1>
     <p class="lead">
       The Social Network. A space for sharing
     </p>
-    <hr class="my-4" />
+    <hr class="my-4 bg-white" />
     <ul class="list-unstyled">
-      <li *ngFor="let row of rows">
-        <p class="lead">
-          <i [class]="row.icon"></i><span class="ml-2">{{ row.message }}</span>
-        </p>
+      <li *ngFor="let row of rows" class="mt-5">
+        <h3>
+          <i [class]="row.icon"></i> <span class="ml-2">{{ row.message }}</span>
+        </h3>
       </li>
     </ul>
   </div>

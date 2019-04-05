@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import {
-  faSearch,
-  faUsers,
-  faComments
-} from '@fortawesome/free-solid-svg-icons';
 import { Hero } from '../../models/hero.model';
 
 @Component({
   selector: 'sn-welcome',
-  templateUrl: './welcome.component.html'
+  templateUrl: './welcome.component.html',
+  styles: [
+    `
+      .container-fluid {
+        display: block;
+        height: 100%;
+      }
+    `
+  ]
 })
 export class WelcomeComponent {
   rows: Hero[] = [

@@ -19,6 +19,11 @@ import { Profile } from 'selenium-webdriver/firefox';
 })
 export class PublisherComponent {
   @Input() placeholder: string;
+
+  @Input() minHeight: string;
+
+  @Input() buttonHeight: string;
+
   @Input() user: Profile | Author;
   @Output() publish = new EventEmitter();
 

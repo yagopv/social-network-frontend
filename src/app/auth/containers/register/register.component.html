@@ -9,7 +9,7 @@
     <input
       id="fullName"
       type="text"
-      class="form-control"
+      class="form-control form-control-lg"
       placeholder="Name"
       formControlName="fullName"
     />
@@ -22,7 +22,7 @@
     <input
       id="email"
       type="email"
-      class="form-control"
+      class="form-control form-control-lg"
       placeholder="Email"
       formControlName="email"
     />
@@ -35,7 +35,7 @@
     <input
       id="password"
       type="password"
-      class="form-control"
+      class="form-control form-control-lg"
       placeholder="Password"
       formControlName="password"
     />
@@ -48,7 +48,7 @@
     <input
       id="confirmPassword"
       type="password"
-      class="form-control"
+      class="form-control form-control-lg"
       placeholder="Confirm the password"
       formControlName="confirmPassword"
     />
@@ -57,5 +57,7 @@
       [group]="registerForm"
     ></sn-validation-messages>
   </div>
-  <button type="submit" class="btn btn-primary">Register</button>
+  <button type="submit" class="btn btn-lg btn-outline-primary mt-2">
+    Register
+  </button>
 </form>

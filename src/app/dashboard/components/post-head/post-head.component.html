@@ -1,19 +1,21 @@
-<div class="card-header">
+<div class="card-header bg-primary">
   <div class="d-flex align-items-center">
-    <sn-avatar [user]="post.author" width="40px" height="40px"></sn-avatar>
+    <sn-avatar [user]="post.author" height="60px"></sn-avatar>
     <div class="ml-3">
       <h4 class="flex-fill">
-        <a class="card-link text-dark" [routerLink]="getLink(post.author.uuid)"
+        <a class="card-link text-white" [routerLink]="getLink(post.author.uuid)"
           ><b>{{ post.author.fullName }} </b></a
         >
         <ng-container *ngIf="post.author.uuid !== post.owner.uuid">
           <fa-icon [icon]="arrowRight"></fa-icon>
-          <a class="card-link text-dark" [routerLink]="getLink(post.owner.uuid)"
+          <a
+            class="card-link text-white"
+            [routerLink]="getLink(post.owner.uuid)"
             ><b> {{ post.owner.fullName }}</b></a
           >
         </ng-container>
       </h4>
-      <small class="badge badge-primary">{{
+      <small class="badge badge-light">{{
         post.createdAt | userFriendlyDate
       }}</small>
     </div>

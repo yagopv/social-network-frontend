@@ -1,6 +1,8 @@
 <div class="d-flex align-items-center">
-  <sn-avatar [user]="user" height="40px"></sn-avatar>
-  <a routerLink="/my-account" class="btn btn-link text-light">
-    {{ user?.fullName }}
-  </a>
+  <sn-avatar [user]="user" height="60px"></sn-avatar>
+  <h5>
+    <a routerLink="/my-account" class="ml-2">
+      {{ user?.fullName }}
+    </a>
+  </h5>
 </div>

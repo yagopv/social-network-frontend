@@ -1,11 +1,13 @@
-<div class="container-fluid mt-5">
+<div class="container-fluid p-5">
   <sn-profile-info *ngIf="friend" [user]="friend"></sn-profile-info>
 
-  <!-- <sn-publisher
+  <sn-publisher
     [user]="currentUser$ | async"
     (publish)="publishPost($event)"
     [placeholder]="placeholder"
-  ></sn-publisher> -->
+    [minHeight]="125"
+    [buttonHeight]="50"
+  ></sn-publisher>
 
   <sn-errors [errors]="errors$ | async"></sn-errors>
 

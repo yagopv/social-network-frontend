@@ -5,7 +5,7 @@
     <input
       id="email"
       type="text"
-      class="form-control"
+      class="form-control form-control-lg"
       placeholder="Email"
       formControlName="email"
     />
@@ -19,7 +19,7 @@
     <input
       id="password"
       type="password"
-      class="form-control"
+      class="form-control form-control-lg"
       placeholder="Password"
       formControlName="password"
     />
@@ -27,5 +27,7 @@
       [control]="loginForm.get('password')"
     ></sn-validation-messages>
   </div>
-  <button type="submit" class="btn btn-primary">Login</button>
+  <button type="submit" class="btn btn-lg btn-outline-primary mt-2">
+    Login
+  </button>
 </form>
