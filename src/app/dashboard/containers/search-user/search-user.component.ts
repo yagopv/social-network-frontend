@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Profile } from '../../../auth/models/profile.model';
 import { fromEvent } from 'rxjs';
 import {
@@ -21,7 +19,6 @@ import { SearchUsers } from '../../store/friend.actions';
 export class SearchUserComponent implements OnInit {
   @ViewChild('searchInput') input: ElementRef;
 
-  searchIcon: IconProp = faSearch;
   users: Profile[] = [];
   constructor(private store: Store) {}
 

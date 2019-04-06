@@ -1,28 +1,33 @@
-<div class="friend" [ngClass]="getSearchStatus(friend)">
-  <sn-avatar [user]="friend" width="80px" height="80px"></sn-avatar>
-  <div class="friend-details">
+<div class="card" [ngClass]="getSearchStatus(friend)">
+  <div class="card-header text-truncate">
     <h5>{{ friend?.fullName }}</h5>
-    <div class="friend-toolbar">
+  </div>
+  <div class="card-body d-flex">
+    <sn-avatar [user]="friend" width="60px" height="60px"></sn-avatar>
+    <div class="ml-3">
       <a
         href=""
         (click)="acceptRequest()"
+        class="text-primary"
         snPreventDefault
-        *ngIf="getSearchStatus(friend) === 'pending'"
-        ><fa-icon [icon]="addIcon"></fa-icon> Accept request
+        *ngIf="getSearchStatus(friend).includes('pending')"
+        ><i class="fa fa-plus"></i> Accept request
       </a>
       <a
         href=""
         (click)="addFriend()"
+        class="text-light"
         snPreventDefault
-        *ngIf="getSearchStatus(friend) === 'not-friend'"
-        ><fa-icon [icon]="addIcon"></fa-icon> Add to my friends
+        *ngIf="getSearchStatus(friend).includes('not-friend')"
+        ><i class="fa fa-plus"></i> Add to my friends
       </a>
       <a
         href=""
         (click)="removeFriend()"
+        class="text-light"
         snPreventDefault
-        *ngIf="getSearchStatus(friend) === 'is-friend'"
-        ><fa-icon [icon]="removeIcon"></fa-icon> Remove from my friends
+        *ngIf="getSearchStatus(friend).includes('is-friend')"
+        ><i class="fa fa-trash-alt"></i> Remove from my friends
       </a>
     </div>
   </div>

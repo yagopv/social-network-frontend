@@ -1,7 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Profile } from '../../../auth/models/profile.model';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Friend } from '../../models/friend.model';
 
 @Component({
@@ -14,9 +12,6 @@ export class FriendComponent {
   @Output() accept = new EventEmitter();
   @Output() add = new EventEmitter();
   @Output() remove = new EventEmitter();
-
-  addIcon: IconProp = faPlus;
-  removeIcon: IconProp = faTrashAlt;
 
   acceptRequest() {
     this.accept.emit(this.friend.uuid);
@@ -32,11 +27,11 @@ export class FriendComponent {
   getSearchStatus(user: Profile | Friend) {
     if (user['request']) {
       if (user['request'].confirmedAt === 0) {
-        return 'pending';
+        return 'pending bg-light text-dark';
       } else {
-        return 'is-friend';
+        return 'is-friend bg-primary text-light';
       }
     }
-    return 'not-friend';
+    return 'not-friend bg-info text-light';
   }
 }

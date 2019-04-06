@@ -1,13 +1,19 @@
-<sn-search-user></sn-search-user>
+<div class="container-fluid mt-5">
+  <sn-search-user></sn-search-user>
 
-<div class="friends-grid">
-  <sn-friend
-    *ngFor="let friend of (friends$ | async)"
-    @listItems
-    [friend]="friend"
-    (accept)="acceptFriendRequest($event)"
-    (add)="addFriend($event)"
-    (remove)="removeFriend($event)"
-    (click)="navigateToWall(friend.uuid)"
-  ></sn-friend>
+  <div class="row">
+    <div
+      class="col-xs-12 col-md-6 col-xl-4 my-2"
+      *ngFor="let friend of (friends$ | async)"
+    >
+      <sn-friend
+        @listItems
+        [friend]="friend"
+        (accept)="acceptFriendRequest($event)"
+        (add)="addFriend($event)"
+        (remove)="removeFriend($event)"
+        (click)="navigateToWall(friend.uuid)"
+      ></sn-friend>
+    </div>
+  </div>
 </div>
