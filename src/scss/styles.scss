@@ -15,6 +15,7 @@ $enable-gradients: false;
 $spacer: 1rem;
 $border-width: 3px;
 $btn-border-radius: 0.25rem;
+$enable-responsive-font-sizes: true;
 
 @import '~node_modules/bootstrap/scss/bootstrap.scss';
 

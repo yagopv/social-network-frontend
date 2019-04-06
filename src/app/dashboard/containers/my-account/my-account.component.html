@@ -1,13 +1,15 @@
-<h4><b>Choose a profile image</b></h4>
+<div class="container-fluid p-5">
+  <h4><b>Choose a profile image</b></h4>
 
-<sn-file-upload [imageUrl]="profileImageUrl"></sn-file-upload>
+  <sn-file-upload [imageUrl]="profileImageUrl"></sn-file-upload>
 
-<hr />
+  <hr />
 
-<h4><b>Update you profile details</b></h4>
+  <h4><b>Update you profile details</b></h4>
 
-<sn-profile></sn-profile>
+  <sn-profile></sn-profile>
 
-<hr />
+  <hr />
 
-<a href="" snPreventDefault (click)="logout()">Logout</a>
+  <a href="" snPreventDefault (click)="logout()">Logout</a>
+</div>
