@@ -5,7 +5,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
-import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { PublisherComponent } from './components/publisher/publisher.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
@@ -27,7 +26,6 @@ import { ValidationMessagesComponent } from './components/validation-messages/va
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
   declarations: [
     NotFoundComponent,
-    ClickPreventDefaultDirective,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
@@ -47,7 +45,6 @@ import { ValidationMessagesComponent } from './components/validation-messages/va
   ],
   exports: [
     NotFoundComponent,
-    ClickPreventDefaultDirective,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
