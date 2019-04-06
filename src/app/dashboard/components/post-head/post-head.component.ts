@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Post } from '../../models/post.model';
-
 import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { Profile } from '../../../auth/models/profile.model';
+import { Profile } from '../../../modules/auth/models/profile.model';
+import { Post } from '../../../modules/dashboard/models/post.model';
 
 @Component({
   selector: 'sn-post-head',

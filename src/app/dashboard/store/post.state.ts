@@ -1,7 +1,7 @@
 import { State, StateContext, Action, Store } from '@ngxs/store';
 import { catchError, tap } from 'rxjs/operators';
 import { Navigate } from '@ngxs/router-plugin';
-
+import { Post } from '../../modules/dashboard/models/post.model';
 import {
   GetPosts,
   GetPostsFailed,
@@ -18,11 +18,10 @@ import {
   Like,
   LikeSuccess,
   LikeFailed
-} from './post.actions';
-import { PostService } from '../services/post.service';
-import { Logout } from '../../auth/store/auth.actions';
-import { Post } from '../models/post.model';
-import { SetErrors } from '../../error/store/error.actions';
+} from '../../modules/dashboard/store/post.actions';
+import { PostService } from '../../modules/dashboard/services/post.service';
+import { SetErrors } from '../../modules/error/store/error.actions';
+import { Logout } from '../../modules/auth/store/auth.actions';
 
 @State<Post[]>({
   name: 'posts',

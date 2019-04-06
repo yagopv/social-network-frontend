@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 
-import { Global } from '../models/global.model';
+import { Global } from '../../core/models/global.model';
 import {
   Login,
   Register,
@@ -11,7 +11,7 @@ import {
   UpdateUserProfile,
   UpdateUserProfileSuccess,
   UpdateUserProfileFailed
-} from '../../auth/store/auth.actions';
+} from '../../modules/auth/store/auth.actions';
 import {
   AddPost,
   AddComment,
@@ -19,7 +19,7 @@ import {
   AddCommentSuccess,
   AddPostFailed,
   AddCommentFailed
-} from '../../dashboard/store/post.actions';
+} from '../../modules/dashboard/store/post.actions';
 
 @State<Global>({
   name: 'global',

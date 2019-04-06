@@ -1,9 +1,12 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
-import { Logout, GetUserProfile } from '../../../auth/store/auth.actions';
-import { AuthState } from '../../../auth/store/auth.state';
-import { Profile } from '../../../auth/models/profile.model';
 import { GetFriends } from '../../store/friend.actions';
+import { Profile } from '../../../modules/auth/models/profile.model';
+import { AuthState } from '../../../modules/auth/store/auth.state';
+import {
+  GetUserProfile,
+  Logout
+} from '../../../modules/auth/store/auth.actions';
 
 @Component({
   selector: 'sn-dashboard',

@@ -13,24 +13,23 @@ import { Store, Select, Actions, ofAction } from '@ngxs/store';
 
 import { PostState } from '../../store/post.state';
 import {
-  GetPosts,
-  AddPost,
-  AddPostSuccess,
-  AddCommentSuccess
-} from '../../store/post.actions';
-import { Post } from '../../models/post.model';
-import { AuthState } from '../../../auth/store/auth.state';
-import { Profile } from '../../../auth/models/profile.model';
-import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
 } from '../../../shared/animations/list.animation';
-import { ErrorState } from '../../../error/store/error.state';
-import { Error } from '../../../error/models/error.model';
-import { FriendsState } from '../../store/friend.state';
-import { Friend } from '../../models/friend.model';
+import { Post } from '../../../modules/dashboard/models/post.model';
+import { AuthState } from '../../../modules/auth/store/auth.state';
+import { Profile } from 'selenium-webdriver/firefox';
+import { ErrorState } from '../../../modules/error/store/error.state';
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
-import { PostComponent } from '../../components/post/post.component';
+import { PostComponent } from '../../../modules/dashboard/components/post/post.component';
+import {
+  GetPosts,
+  AddPostSuccess,
+  AddCommentSuccess,
+  AddPost
+} from '../../../modules/dashboard/store/post.actions';
+import { FriendsState } from '../../../modules/dashboard/store/friend.state';
+import { Friend } from '../../../modules/dashboard/models/friend.model';
 
 @Component({
   selector: 'sn-wall',

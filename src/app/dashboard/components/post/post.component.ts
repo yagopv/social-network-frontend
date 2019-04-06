@@ -1,22 +1,24 @@
 import {
   Component,
   Input,
-  EventEmitter,
-  Output,
   ChangeDetectionStrategy,
   ViewChild
 } from '@angular/core';
 
-import { Post } from '../../models/post.model';
-import { Profile } from '../../../auth/models/profile.model';
-import { Comment } from '../../models/comment.model';
-import {
-  LIST_ANIMATION,
-  LIST_ITEMS_ANIMATION
-} from '../../../shared/animations/list.animation';
-import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
 import { Store } from '@ngxs/store';
-import { DeletePost, AddComment, Like } from '../../store/post.actions';
+import {
+  DeletePost,
+  AddComment,
+  Like
+} from '../../../modules/dashboard/store/post.actions';
+import {
+  LIST_ITEMS_ANIMATION,
+  LIST_ANIMATION
+} from '../../../shared/animations/list.animation';
+import { Profile } from '../../../modules/auth/models/profile.model';
+import { Post } from '../../../modules/dashboard/models/post.model';
+import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
+import { Comment } from '../../../modules/dashboard/models/comment.model';
 
 @Component({
   selector: 'sn-post',

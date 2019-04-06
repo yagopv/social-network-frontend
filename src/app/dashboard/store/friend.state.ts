@@ -8,7 +8,7 @@ import {
 } from '@ngxs/store';
 import { tap, catchError, map } from 'rxjs/operators';
 
-import { Friends } from '../models/friends.model';
+import { Friends } from '../../core/models/friends.model';
 import {
   SearchUsers,
   SearchUsersFailed,
@@ -26,11 +26,11 @@ import {
   AddFriend,
   AddFriendSuccess
 } from './friend.actions';
-import { AuthService } from '../../auth/services/auth.service';
-import { SetErrors } from '../../error/store/error.actions';
-import { FriendService } from '../services/friend.service';
 import { Navigate } from '@ngxs/router-plugin';
-import { Logout } from '../../auth/store/auth.actions';
+import { AuthService } from '../../core/http/auth.service';
+import { FriendService } from '../../modules/dashboard/services/friend.service';
+import { SetErrors } from '../../modules/error/store/error.actions';
+import { Logout } from '../../modules/auth/store/auth.actions';
 
 @State<Friends>({
   name: 'friends',

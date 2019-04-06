@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
-import { Author } from '../../../dashboard/models/author.model';
+import { Author } from '../../../modules/dashboard/models/author.model';
 import { Profile } from 'selenium-webdriver/firefox';
 
 @Component({

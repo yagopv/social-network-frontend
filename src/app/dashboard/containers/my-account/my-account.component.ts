@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
-import { Logout } from '../../../auth/store/auth.actions';
-import { AuthState } from '../../../auth/store/auth.state';
 import { Observable } from 'rxjs';
-import { Auth } from '../../../auth/models/auth.model';
+import { AuthState } from '../../../modules/auth/store/auth.state';
+
+import { Logout } from '../../../modules/auth/store/auth.actions';
+import { Auth } from '../../../modules/auth/models/auth.model';
 
 @Component({
   selector: 'sn-my-account',

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Profile } from '../../../auth/models/profile.model';
 import { fromEvent } from 'rxjs';
 import {
   debounceTime,
@@ -10,6 +9,7 @@ import {
 } from 'rxjs/operators';
 import { Store } from '@ngxs/store';
 import { SearchUsers } from '../../store/friend.actions';
+import { Profile } from '../../../modules/auth/models/profile.model';
 
 @Component({
   selector: 'sn-search-user',

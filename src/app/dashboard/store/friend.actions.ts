@@ -1,6 +1,5 @@
-import { Profile } from '../../auth/models/profile.model';
-import { Error } from '../../error/models/error.model';
-import { Friend } from '../models/friend.model';
+import { Friend } from '../../core/models/friend.model';
+import { Profile } from '../../modules/auth/models/profile.model';
 
 export class SearchUsers {
   static readonly type = '[Friend] SearchUsers';
