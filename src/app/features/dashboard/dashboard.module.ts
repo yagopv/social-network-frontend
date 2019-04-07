@@ -1,7 +1,7 @@
+import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PostComponent } from './components/post/post.component';
 import { WallComponent } from './containers/wall/wall.component';
@@ -19,15 +19,21 @@ import { PostHeadComponent } from './components/post-head/post-head.component';
 import { PostBodyComponent } from './components/post-body/post-body-component';
 import { LayoutModule } from '../../layout/layout.module';
 
+const routes: Routes = [
+  { path: 'wall', component: WallComponent },
+  { path: 'user/:userId/wall', component: WallComponent },
+  { path: 'user/:userId/private/wall', component: PrivateWallComponent }
+];
+
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule.forChild(routes),
     SharedModule,
-    DashboardRoutingModule,
     FontAwesomeModule,
     AuthModule,
-    NgxsModule.forFeature([PostState, FriendsState]),
-    LayoutModule
+    LayoutModule,
+    NgxsModule.forFeature([PostState, FriendsState])
   ],
   declarations: [
     WallComponent,

@@ -18,10 +18,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: './features/about/about.module#AboutModule'
-  },
-  {
-    path: '',
     component: DashboardComponent,
     canActivate: [AuthGuard],
     loadChildren: './features/friends/friends.module#FriendsModule'
@@ -37,6 +33,10 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     loadChildren: './features/dashboard/dashboard.module#DashboardModule'
+  },
+  {
+    path: '',
+    loadChildren: './features/about/about.module#AboutModule'
   },
   {
     path: 'notification/:notificationName',
