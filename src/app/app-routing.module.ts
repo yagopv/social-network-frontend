@@ -20,12 +20,6 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     canActivate: [AuthGuard],
-    loadChildren: './features/friends/friends.module#FriendsModule'
-  },
-  {
-    path: '',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
     loadChildren: './features/my-account/my-account.module#MyAccountModule'
   },
   {
@@ -33,6 +27,12 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     loadChildren: './features/dashboard/dashboard.module#DashboardModule'
+  },
+  {
+    path: '',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    loadChildren: './features/friends/friends.module#FriendsModule'
   },
   {
     path: '',

@@ -30,7 +30,6 @@ import { CoreModule } from './core/ core.module';
       developmentMode: !environment.production
     }),
     SharedModule,
-    LayoutModule,
     AuthModule,
     AppRoutingModule,
     CoreModule,
