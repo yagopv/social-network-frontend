@@ -18,7 +18,6 @@ import {
   UpdateUserProfileSuccess,
   UpdateUserProfileFailed
 } from './auth.actions';
-import { SetErrors } from '../../error/store/error.actions';
 import { Auth } from '../models/auth.model';
 
 @State<Auth>({
@@ -143,16 +142,6 @@ export class AuthState {
     patchState({
       ...profile
     });
-  }
-
-  @Action([
-    LoginFailed,
-    RegisterFailed,
-    GetUserProfileFailed,
-    UpdateUserProfileFailed
-  ])
-  error({ dispatch }: StateContext<Auth>, { errors }: any) {
-    dispatch(new SetErrors(errors));
   }
 
   @Action(Logout)

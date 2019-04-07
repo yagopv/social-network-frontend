@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Store, Select, Actions, ofAction } from '@ngxs/store';
+import { Store, Actions, ofAction } from '@ngxs/store';
 
-import { ErrorState } from '../../../error/store/error.state';
 import { Login, LoginFailed } from '../../store/auth.actions';
-import { Error } from '../../../error/models/error.model';
-import { MailValidator } from '../../validators/mail.validator';
+import { MailValidator } from '../../../../shared/validators/mail.validator';
 
 @Component({
   selector: 'sn-login',
@@ -14,8 +11,6 @@ import { MailValidator } from '../../validators/mail.validator';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  @Select(ErrorState) errors$: Observable<Error>;
-
   loginForm = this.fb.group(
     {
       email: ['', [Validators.required, MailValidator]],

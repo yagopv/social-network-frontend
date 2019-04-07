@@ -1,6 +1,6 @@
 import { LoginRequest } from '../models/login-request.model';
 import { RegisterRequest } from '../models/register-request.model';
-import { Error } from '../../error/models/error.model';
+import { Error } from '../../../core/models/error.model';
 import { LoginResponse } from '../models/login-response.model';
 import { UserProfileResponse } from '../models/user-profile-response.model';
 import { Profile } from '../models/profile.model';

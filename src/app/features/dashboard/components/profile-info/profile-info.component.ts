@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Friend } from '../../models/friend.model';
+import { Friend } from '../../../friends/models/friend.model';
 
 @Component({
   selector: 'sn-profile-info',

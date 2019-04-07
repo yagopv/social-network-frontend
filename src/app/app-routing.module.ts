@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { NotificationComponent } from './shared/components/notification/notification.component';
+import { DashboardComponent } from './layout/components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,19 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    loadChildren: './features/friends/friends.module#FriendsModule'
+  },
+  {
+    path: '',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    loadChildren: './features/my-account/my-account.module#MyAccountModule'
+  },
+  {
+    path: '',
+    component: DashboardComponent,
     canActivate: [AuthGuard],
     loadChildren: './features/dashboard/dashboard.module#DashboardModule'
   },

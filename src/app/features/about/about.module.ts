@@ -8,7 +8,7 @@ import { AboutComponent } from './about.component';
 const routes: Routes = [{ path: 'about', component: AboutComponent }];
 
 @NgModule({
-  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   declarations: [AboutComponent]
 })
 export class AboutModule {}

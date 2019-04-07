@@ -19,10 +19,9 @@ import {
   LikeSuccess,
   LikeFailed
 } from './post.actions';
-import { PostService } from '../services/post.service';
+import { PostService } from '../../../core/http/post.service';
 import { Logout } from '../../auth/store/auth.actions';
 import { Post } from '../models/post.model';
-import { SetErrors } from '../../error/store/error.actions';
 
 @State<Post[]>({
   name: 'posts',
@@ -55,8 +54,6 @@ export class PostState {
   getPostsFailed({ dispatch }: StateContext<Post[]>, { errors, uuid }: any) {
     if (errors && errors.filter(error => error.status === 403).length > 0) {
       dispatch(new Navigate(['/user', uuid, 'private', 'wall']));
-    } else {
-      dispatch(new SetErrors(errors));
     }
   }
 
@@ -201,11 +198,6 @@ export class PostState {
   @Action(Logout)
   logout({ setState }: StateContext<Post[]>) {
     setState([]);
-  }
-
-  @Action([AddPostFailed, AddCommentFailed, DeletePostFailed, LikeFailed])
-  error({ dispatch }: StateContext<Post[]>, { errors }: any) {
-    dispatch(new SetErrors(errors));
   }
 
   private uuidv4() {

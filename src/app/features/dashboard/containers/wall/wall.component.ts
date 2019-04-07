@@ -25,12 +25,10 @@ import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
 } from '../../../../shared/animations/list.animation';
-import { ErrorState } from '../../../error/store/error.state';
-import { Error } from '../../../error/models/error.model';
-import { FriendsState } from '../../store/friend.state';
-import { Friend } from '../../models/friend.model';
+import { FriendsState } from '../../../friends/store/friend.state';
 import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
 import { PostComponent } from '../../components/post/post.component';
+import { Friend } from '../../../friends/models/friend.model';
 
 @Component({
   selector: 'sn-wall',
@@ -41,7 +39,6 @@ import { PostComponent } from '../../components/post/post.component';
 export class WallComponent implements OnInit {
   @Select(PostState) posts$: Observable<Post[]>;
   @Select(AuthState.getUser) currentUser$: Observable<Profile>;
-  @Select(ErrorState) errors$: Observable<Error>;
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
   @ViewChildren(PostComponent) posts: QueryList<PostComponent>;
 

@@ -19,8 +19,9 @@ import { NullDefaultDirective } from './directives/null-default.directive';
 import { IfDirective } from './directives/if.directive';
 import { ColorizerDirective } from './directives/colorizer.directive';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { FooterComponent } from '../layout/components/footer/footer.component';
 import { ValidationMessagesComponent } from './components/validation-messages/validation-messages.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
@@ -41,7 +42,8 @@ import { ValidationMessagesComponent } from './components/validation-messages/va
     ColorizerDirective,
     HeaderComponent,
     FooterComponent,
-    ValidationMessagesComponent
+    ValidationMessagesComponent,
+    FileUploadComponent
   ],
   exports: [
     NotFoundComponent,
@@ -60,7 +62,8 @@ import { ValidationMessagesComponent } from './components/validation-messages/va
     ColorizerDirective,
     HeaderComponent,
     FooterComponent,
-    ValidationMessagesComponent
+    ValidationMessagesComponent,
+    FileUploadComponent
   ]
 })
 export class SharedModule {}

@@ -13,6 +13,8 @@ import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
 import { AuthModule } from './features/auth/auth.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { LayoutModule } from './layout/layout.module';
+import { CoreModule } from './core/ core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,8 +30,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       developmentMode: !environment.production
     }),
     SharedModule,
+    LayoutModule,
     AuthModule,
     AppRoutingModule,
+    CoreModule,
+    LayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })

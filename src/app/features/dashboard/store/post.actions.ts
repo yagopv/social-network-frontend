@@ -1,5 +1,5 @@
 import { Post, PostRequest } from '../models/post.model';
-import { Error } from '../../error/models/error.model';
+import { Error } from '../../../core/models/error.model';
 import { Comment } from '../models/comment.model';
 
 export class GetPosts {

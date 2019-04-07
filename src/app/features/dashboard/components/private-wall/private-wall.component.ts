@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { ActivatedRoute } from '@angular/router';
-import { FriendRequestsComponent } from '../../containers/friend-request/friend-requests.component';
-import { AddFriend } from '../../store/friend.actions';
+import { AddFriend } from '../../../friends/store/friend.actions';
 
 @Component({
   selector: 'sn-private-wall',
