@@ -13,16 +13,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: './modules/welcome/welcome.module#WelcomeModule'
+    loadChildren: './features/welcome/welcome.module#WelcomeModule'
   },
   {
     path: '',
-    loadChildren: './modules/about/about.module#AboutModule'
+    loadChildren: './features/about/about.module#AboutModule'
   },
   {
     path: '',
     canActivate: [AuthGuard],
-    loadChildren: './modules/dashboard/dashboard.module#DashboardModule'
+    loadChildren: './features/dashboard/dashboard.module#DashboardModule'
   },
   {
     path: 'notification/:notificationName',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Profile } from '../../../modules/auth/models/profile.model';
+import { Profile } from '../../../features/auth/models/profile.model';
 
 @Component({
   selector: 'sn-me',

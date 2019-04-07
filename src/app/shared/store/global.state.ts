@@ -11,7 +11,7 @@ import {
   UpdateUserProfile,
   UpdateUserProfileSuccess,
   UpdateUserProfileFailed
-} from '../../modules/auth/store/auth.actions';
+} from '../../features/auth/store/auth.actions';
 import {
   AddPost,
   AddComment,
@@ -19,7 +19,7 @@ import {
   AddCommentSuccess,
   AddPostFailed,
   AddCommentFailed
-} from '../../modules/dashboard/store/post.actions';
+} from '../../features/dashboard/store/post.actions';
 
 @State<Global>({
   name: 'global',

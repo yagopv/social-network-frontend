@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { LoginModel } from '../../modules/auth/containers/login/login.model';
-import { RegisterRequest } from '../../modules/auth/models/register-request.model';
-import { Profile } from '../../modules/auth/models/profile.model';
-import { UserProfileResponse } from '../../modules/auth/models/user-profile-response.model';
-import { LoginResponse } from '../../modules/auth/models/login-response.model';
-import { LoginRequest } from '../../modules/auth/models/login-request.model';
+import { LoginModel } from '../../features/auth/containers/login/login.model';
+import { RegisterRequest } from '../../features/auth/models/register-request.model';
+import { Profile } from '../../features/auth/models/profile.model';
+import { UserProfileResponse } from '../../features/auth/models/user-profile-response.model';
+import { LoginResponse } from '../../features/auth/models/login-response.model';
+import { LoginRequest } from '../../features/auth/models/login-request.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

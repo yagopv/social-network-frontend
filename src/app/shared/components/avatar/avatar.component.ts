@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { Profile } from '../../../modules/auth/models/profile.model';
-import { Author } from '../../../modules/dashboard/models/author.model';
-import { Friend } from '../../../modules/dashboard/models/friend.model';
+import { Profile } from '../../../features/auth/models/profile.model';
+import { Author } from '../../../features/dashboard/models/author.model';
+import { Friend } from '../../../features/dashboard/models/friend.model';
 import { FADE_IN_OUT_ANIMATION } from '../../animations/fade.animation';
 
 @Component({
