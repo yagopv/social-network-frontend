@@ -30,6 +30,7 @@ import { AuthService } from '../../../core/http/auth.service';
 import { FriendService } from '../services/friends.service';
 import { Navigate } from '@ngxs/router-plugin';
 import { Logout } from '../../auth/store/auth.actions';
+import { FriendRequestsService } from '../../friend-requests/services/friend-requests.service';
 
 @State<Friends>({
   name: 'friends',
@@ -43,7 +44,8 @@ export class FriendsState {
   constructor(
     private store: Store,
     private authService: AuthService,
-    private friendService: FriendService
+    private friendService: FriendService,
+    private friendRequestsService: FriendRequestsService
   ) {}
 
   @Selector()
@@ -120,7 +122,7 @@ export class FriendsState {
 
   @Action(GetFriendRequests)
   getFriendRequests({ dispatch }: StateContext<Friends>) {
-    return this.friendService.getFriendRequests().pipe(
+    return this.friendRequestsService.getFriendRequests().pipe(
       tap(requests => dispatch(new GetFriendRequestsSuccess(requests))),
       catchError(error => dispatch(new GetFriendRequestFailed(error.error)))
     );
@@ -141,7 +143,7 @@ export class FriendsState {
     { dispatch }: StateContext<Friends>,
     { uuid }: AcceptFriendRequests
   ) {
-    return this.friendService.acceptFriendRequest(uuid).pipe(
+    return this.friendRequestsService.acceptFriendRequest(uuid).pipe(
       tap(() => dispatch(new AcceptFriendRequestsSuccess(uuid))),
       catchError(error => dispatch(new AcceptFriendRequestFailed(error.error)))
     );
@@ -171,7 +173,7 @@ export class FriendsState {
 
   @Action(AddFriend)
   addFriend({ dispatch }: StateContext<Friends>, { friend }: AddFriend) {
-    return this.friendService.addFriend(friend).pipe(
+    return this.friendRequestsService.addFriend(friend).pipe(
       tap(() => dispatch(new AddFriendSuccess())),
       catchError(error => dispatch(new AddFriendFailed(error.error)))
     );

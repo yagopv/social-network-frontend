@@ -3,7 +3,7 @@
     <nav class="col-xs-12 col-lg-2 bg-light pt-5">
       <sn-me [user]="user$ | async"></sn-me>
       <hr class="bg-white" />
-      <sn-dashboard-nav (logout)="logout()"></sn-dashboard-nav>
+      <sn-nav (logout)="logout()"></sn-nav>
       <hr class="bg-white" />
       <button class="btn btn-link btn-lg" (click)="logout()">Logout</button>
     </nav>

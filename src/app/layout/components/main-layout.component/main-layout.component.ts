@@ -9,10 +9,10 @@ import { Profile } from '../../../features/auth/models/profile.model';
 import { GetFriends } from '../../../features/friends/store/friend.actions';
 
 @Component({
-  selector: 'sn-dashboard',
-  templateUrl: './dashboard.component.html'
+  selector: 'sn-main-layout',
+  templateUrl: './main-layout.component.html'
 })
-export class DashboardComponent implements OnInit {
+export class MainLayoutComponent implements OnInit {
   @Select(AuthState.getUser) user$: Profile;
 
   constructor(private store: Store) {}

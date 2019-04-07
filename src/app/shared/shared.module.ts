@@ -18,8 +18,6 @@ import { PagerComponent } from './components/pager/pager.component';
 import { NullDefaultDirective } from './directives/null-default.directive';
 import { IfDirective } from './directives/if.directive';
 import { ColorizerDirective } from './directives/colorizer.directive';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from '../layout/components/footer/footer.component';
 import { ValidationMessagesComponent } from './components/validation-messages/validation-messages.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
@@ -40,8 +38,6 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     NullDefaultDirective,
     IfDirective,
     ColorizerDirective,
-    HeaderComponent,
-    FooterComponent,
     ValidationMessagesComponent,
     FileUploadComponent
   ],
@@ -60,8 +56,6 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     NullDefaultDirective,
     IfDirective,
     ColorizerDirective,
-    HeaderComponent,
-    FooterComponent,
     ValidationMessagesComponent,
     FileUploadComponent
   ]

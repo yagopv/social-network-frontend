@@ -14,25 +14,4 @@ export class FriendService {
   getFriends() {
     return this.http.get<Friend[]>(`${environment.apiBaseUrl}/user/friends`);
   }
-
-  getFriendRequests() {
-    return this.http.get<Friend[]>(
-      `${environment.apiBaseUrl}/user/friendrequests`
-    );
-  }
-
-  acceptFriendRequest(uuid: string) {
-    return this.http.post(
-      `${environment.apiBaseUrl}/user/friendrequests/accept`,
-      {
-        uuid
-      }
-    );
-  }
-
-  addFriend(uuid: string) {
-    return this.http.post(`${environment.apiBaseUrl}/user/friendrequests`, {
-      friend: uuid
-    });
-  }
 }
