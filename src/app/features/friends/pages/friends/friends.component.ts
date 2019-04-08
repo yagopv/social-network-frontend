@@ -6,6 +6,8 @@ import { AddFriend, AcceptFriendRequests } from '../../store/friend.actions';
 import { LIST_ITEMS_ANIMATION } from '../../../../shared/animations/list.animation';
 import { Router } from '@angular/router';
 import { Friends } from '../../models/friends.model';
+import { FriendStore } from '../../services/friend.store';
+import { Friend } from '../../models/friend.model';
 
 @Component({
   selector: 'sn-friends',
@@ -13,11 +15,21 @@ import { Friends } from '../../models/friends.model';
   animations: [LIST_ITEMS_ANIMATION]
 })
 export class FriendsComponent implements OnInit {
-  @Select(FriendsState.getSearchFriends) friends$: Observable<Friends>;
+  friends$: Observable<Friend[]>;
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(
+    private store: Store,
+    private friendStore: FriendStore,
+    private router: Router
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.friends$ = this.friendStore.state$;
+  }
+
+  searchUsers(searchTerm: string) {
+    this.friends$ = this.friendStore.getSearchUsers(searchTerm);
+  }
 
   acceptFriendRequest(uuid: string) {
     this.store.dispatch(new AcceptFriendRequests(uuid));

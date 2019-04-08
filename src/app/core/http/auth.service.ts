@@ -90,10 +90,4 @@ export class AuthService {
       observe: 'response'
     });
   }
-
-  search(text: string) {
-    return this.http.get<Profile[]>(`${environment.apiBaseUrl}/user/search`, {
-      params: { q: text }
-    });
-  }
 }

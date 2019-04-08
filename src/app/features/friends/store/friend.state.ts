@@ -6,19 +6,11 @@ import {
   Store,
   createSelector
 } from '@ngxs/store';
-import { tap, catchError, map } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 
 import { Friends } from '../models/friends.model';
 import {
-  SearchUsers,
-  SearchUsersFailed,
-  SearchUsersSuccess,
-  GetFriendRequestFailed,
   AddFriendFailed,
-  AcceptFriendRequestFailed,
-  GetFriendRequests,
-  GetFriendRequestsSuccess,
-  AcceptFriendRequests,
   AcceptFriendRequestsSuccess,
   GetFriends,
   GetFriendsSuccess,
@@ -67,38 +59,6 @@ export class FriendsState {
     );
   }
 
-  @Action(SearchUsers)
-  searchUsers(
-    { dispatch, getState }: StateContext<Friends>,
-    { searchTerm }: SearchUsers
-  ) {
-    const currentUserId = this.store.snapshot().auth.uuid;
-    const friends = getState().friends;
-
-    // Filter out myself and already friends
-    return this.authService.search(searchTerm).pipe(
-      map(users =>
-        users.filter(
-          user =>
-            user.uuid !== currentUserId &&
-            !friends.find(friend => friend.uuid === user.uuid)
-        )
-      ),
-      tap(users => dispatch(new SearchUsersSuccess(users))),
-      catchError(error => dispatch(new SearchUsersFailed(error.error)))
-    );
-  }
-
-  @Action(SearchUsersSuccess)
-  searchUsersSuccess(
-    { patchState }: StateContext<Friends>,
-    { users }: SearchUsersSuccess
-  ) {
-    patchState({
-      userSearch: users
-    });
-  }
-
   @Action(GetFriends)
   getFriends({ dispatch, patchState }: StateContext<Friends>) {
     patchState({
@@ -120,35 +80,6 @@ export class FriendsState {
     });
   }
 
-  @Action(GetFriendRequests)
-  getFriendRequests({ dispatch }: StateContext<Friends>) {
-    return this.friendRequestsService.getFriendRequests().pipe(
-      tap(requests => dispatch(new GetFriendRequestsSuccess(requests))),
-      catchError(error => dispatch(new GetFriendRequestFailed(error.error)))
-    );
-  }
-
-  @Action(GetFriendRequestsSuccess)
-  getFriendRequestsSuccess(
-    { patchState }: StateContext<Friends>,
-    { requests }: GetFriendRequestsSuccess
-  ) {
-    patchState({
-      requests: requests.filter(request => !request.request.confirmed)
-    });
-  }
-
-  @Action(AcceptFriendRequests)
-  acceptFriendRequest(
-    { dispatch }: StateContext<Friends>,
-    { uuid }: AcceptFriendRequests
-  ) {
-    return this.friendRequestsService.acceptFriendRequest(uuid).pipe(
-      tap(() => dispatch(new AcceptFriendRequestsSuccess(uuid))),
-      catchError(error => dispatch(new AcceptFriendRequestFailed(error.error)))
-    );
-  }
-
   @Action(AcceptFriendRequestsSuccess)
   acceptFriendRequestSuccess(
     { patchState, getState }: StateContext<Friends>,
@@ -166,8 +97,7 @@ export class FriendsState {
           };
         }
         return friend;
-      }),
-      requests: getState().requests.filter(request => request.uuid !== uuid)
+      })
     });
   }
 

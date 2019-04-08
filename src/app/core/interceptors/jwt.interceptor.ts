@@ -8,16 +8,17 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from '../http/auth.service';
 import { Store } from '@ngxs/store';
+import { UserStore } from '../store/user.store';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private store: Store) {}
+  constructor(private userStore: UserStore) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const currentUser = this.store.selectSnapshot(state => state.auth);
+    const currentUser = this.userStore.state;
 
     if (currentUser && currentUser.accessToken) {
       request = request.clone({

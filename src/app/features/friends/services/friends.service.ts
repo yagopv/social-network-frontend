@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { Friend } from '../models/friend.model';
@@ -13,5 +12,11 @@ export class FriendService {
 
   getFriends() {
     return this.http.get<Friend[]>(`${environment.apiBaseUrl}/user/friends`);
+  }
+
+  search(text: string) {
+    return this.http.get<Friend[]>(`${environment.apiBaseUrl}/user/search`, {
+      params: { q: text }
+    });
   }
 }

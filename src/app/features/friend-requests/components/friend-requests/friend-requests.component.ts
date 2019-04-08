@@ -1,27 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { FriendsState } from '../../../friends/store/friend.state';
-import { Observable } from 'rxjs';
-import {
-  GetFriendRequests,
-  AcceptFriendRequests
-} from '../../../friends/store/friend.actions';
 import { Friend } from '../../../friends/models/friend.model';
+import { FriendRequestsStore } from '../../services/friend-requests.store';
+import { Observable } from 'rxjs';
+import { FriendRequest } from '../../models/friend-requests.models';
 
 @Component({
   selector: 'sn-friend-requests',
   templateUrl: './friend-requests.component.html'
 })
 export class FriendRequestsComponent implements OnInit {
-  @Select(FriendsState.getFriendRequests) requests$: Observable<Friend[]>;
+  requests$: Observable<FriendRequest[]>;
 
-  constructor(private store: Store) {}
+  constructor(private friendRequestsStore: FriendRequestsStore) {}
 
   ngOnInit() {
-    this.store.dispatch(new GetFriendRequests());
+    this.requests$ = this.friendRequestsStore.getPendingRequests();
   }
 
   acceptRequest({ uuid }: Friend) {
-    this.store.dispatch(new AcceptFriendRequests(uuid));
+    this.friendRequestsStore.acceptFriendRequest(uuid);
   }
 }
