@@ -8,8 +8,7 @@ import { Register, RegisterSuccess } from '../../store/auth.actions';
 import { MatchPasswordValidator } from '../../../../shared/validators/match-password.validator';
 import { MailValidator } from '../../../../shared/validators/mail.validator';
 import { EmailExistValidator } from '../../../../shared/validators/email-exist.validator';
-import { AuthService } from '../../../../core/http/auth.service';
-import { UserStore } from '../../../../core/store/user.store';
+import { AuthStore } from '../../../../core/store/auth.store';
 
 @Component({
   selector: 'sn-register',
@@ -32,7 +31,7 @@ export class RegisterComponent implements OnInit {
     private store: Store,
     private actions$: Actions,
     private emailValidator: EmailExistValidator,
-    private userStore: UserStore
+    private authStore: AuthStore
   ) {
     // Sample observable showing values
     this.registerForm.valueChanges.subscribe(value => console.log(value));
@@ -51,7 +50,7 @@ export class RegisterComponent implements OnInit {
     }
 
     const { fullName, email, password } = this.registerForm.value;
-    this.userStore.register({
+    this.authStore.register({
       fullName,
       email,
       password

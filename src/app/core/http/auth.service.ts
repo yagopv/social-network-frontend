@@ -77,10 +77,6 @@ export class AuthService {
     );
   }
 
-  logout() {
-    localStorage.removeItem('auth');
-  }
-
   uploadAvatar(image: File) {
     const formData = new FormData();
 

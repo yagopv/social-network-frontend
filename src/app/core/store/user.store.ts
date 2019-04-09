@@ -8,22 +8,7 @@ import { tap } from 'rxjs/operators';
 @Injectable()
 export class UserStore extends Store<Auth> {
   constructor(private userService: AuthService) {
-    super({ ...JSON.parse(localStorage.getItem('auth')) });
-  }
-
-  login({ email, password }) {
-    return this.userService.login({ email, password }).pipe(
-      tap(user => {
-        this.setState({ ...this.state, ...user });
-        this.getProfile();
-      })
-    );
-  }
-
-  register(registerData) {
-    this.userService
-      .register(registerData)
-      .subscribe(() => console.log('SHOW POPUP'));
+    super(null);
   }
 
   getProfile() {

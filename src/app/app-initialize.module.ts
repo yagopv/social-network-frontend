@@ -3,7 +3,7 @@ import { UserStore } from './core/store/user.store';
 
 export function loadUser(userStore: UserStore) {
   return () => {
-    if (userStore && userStore.state.accessToken) {
+    if (localStorage.getItem('auth')) {
       return userStore.getProfile().toPromise();
     }
     return Promise.resolve();

@@ -7,13 +7,14 @@ import {
 } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { UserStore } from '../store/user.store';
+import { AuthStore } from '../store/auth.store';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private userStore: UserStore) {}
+  constructor(private router: Router, private authStore: AuthStore) {}
 
   canActivate(route: ActivatedRouteSnapshot, snapshot: RouterStateSnapshot) {
-    const currentUser = this.userStore.state;
+    const currentUser = this.authStore.state;
 
     if (currentUser && currentUser.accessToken) {
       return true;

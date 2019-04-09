@@ -1,27 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
-import {
-  Logout,
-  GetUserProfile
-} from '../../../features/auth/store/auth.actions';
-import { AuthState } from '../../../features/auth/store/auth.state';
-import { Profile } from '../../../features/auth/models/profile.model';
-import { GetFriends } from '../../../features/friends/store/friend.actions';
+import { UserStore } from '../../../core/store/user.store';
+import { AuthStore } from '../../../core/store/auth.store';
 
 @Component({
   selector: 'sn-main-layout',
   templateUrl: './main-layout.component.html'
 })
 export class MainLayoutComponent implements OnInit {
-  @Select(AuthState.getUser) user$: Profile;
+  user$;
 
-  constructor(private store: Store) {}
+  constructor(private userStore: UserStore, private authStore: AuthStore) {}
 
   ngOnInit() {
-    this.store.dispatch([new GetUserProfile(), new GetFriends()]);
+    this.user$ = this.userStore.state$;
   }
 
   logout() {
-    this.store.dispatch(new Logout());
+    this.authStore.logout();
   }
 }

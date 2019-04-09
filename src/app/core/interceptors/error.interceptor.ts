@@ -9,10 +9,11 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from '../http/auth.service';
 import { Router } from '@angular/router';
+import { AuthStore } from '../store/auth.store';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authStore: AuthStore, private router: Router) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -23,8 +24,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         console.log('HTTP ERROR: ', error);
         if (error.status === 401) {
           // auto logout if 401 response returned from api
-          this.authService.logout();
-          this.router.navigate(['/login']);
+          this.authStore.logout();
         }
 
         console.log(error);
