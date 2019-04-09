@@ -4,6 +4,8 @@ import { Store, Actions, ofAction } from '@ngxs/store';
 
 import { Login, LoginFailed } from '../../store/auth.actions';
 import { MailValidator } from '../../../../shared/validators/mail.validator';
+import { AuthService } from '../../../../core/http/auth.service';
+import { UserStore } from '../../../../core/store/user.store';
 
 @Component({
   selector: 'sn-login',
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private actions$: Actions,
-    private store: Store
+    private store: Store,
+    private userStore: UserStore
   ) {
     // Sample observable showing values
     this.loginForm.valueChanges.subscribe(value => console.log(value));
@@ -39,7 +42,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.store.dispatch(new Login(this.loginForm.value));
+    this.userStore.login(this.loginForm.value);
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {

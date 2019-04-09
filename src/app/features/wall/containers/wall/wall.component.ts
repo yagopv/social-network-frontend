@@ -29,6 +29,9 @@ import { FriendsState } from '../../../friends/store/friend.state';
 import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
 import { PostComponent } from '../../components/post/post.component';
 import { Friend } from '../../../friends/models/friend.model';
+import { PostStore } from '../../services/post.store';
+import { UserStore } from '../../../../core/store/user.store';
+import { Auth } from '../../../auth/models/auth.model';
 
 @Component({
   selector: 'sn-wall',
@@ -37,8 +40,9 @@ import { Friend } from '../../../friends/models/friend.model';
   animations: [LIST_ANIMATION, LIST_ITEMS_ANIMATION]
 })
 export class WallComponent implements OnInit {
-  @Select(PostState) posts$: Observable<Post[]>;
-  @Select(AuthState.getUser) currentUser$: Observable<Profile>;
+  posts$: Observable<Post[]>;
+  currentUser$: Observable<Auth>;
+
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
   @ViewChildren(PostComponent) posts: QueryList<PostComponent>;
 
@@ -52,13 +56,18 @@ export class WallComponent implements OnInit {
     private store: Store,
     private route: ActivatedRoute,
     private element: ElementRef,
-    private actions$: Actions
+    private actions$: Actions,
+    private postStore: PostStore,
+    private userStore: UserStore
   ) {}
 
   ngOnInit() {
+    this.posts$ = this.postStore.state$;
+    this.currentUser$ = this.userStore.state$;
+
     // We should subscribe as Angular does not re render if only the param of the route change
     this.route.params.subscribe(routeParams => {
-      this.store.dispatch(new GetPosts(routeParams.userId));
+      this.postStore.getPosts(routeParams.userId);
       if (routeParams.userId) {
         this.store
           .select(FriendsState.getFriend(routeParams.userId))

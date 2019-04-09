@@ -19,7 +19,7 @@ import {
   LikeSuccess,
   LikeFailed
 } from './post.actions';
-import { PostService } from '../../../core/http/post.service';
+import { PostService } from '../services/post.service';
 import { Logout } from '../../auth/store/auth.actions';
 import { Post } from '../models/post.model';
 

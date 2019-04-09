@@ -8,6 +8,8 @@ import { Register, RegisterSuccess } from '../../store/auth.actions';
 import { MatchPasswordValidator } from '../../../../shared/validators/match-password.validator';
 import { MailValidator } from '../../../../shared/validators/mail.validator';
 import { EmailExistValidator } from '../../../../shared/validators/email-exist.validator';
+import { AuthService } from '../../../../core/http/auth.service';
+import { UserStore } from '../../../../core/store/user.store';
 
 @Component({
   selector: 'sn-register',
@@ -29,7 +31,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store,
     private actions$: Actions,
-    private emailValidator: EmailExistValidator
+    private emailValidator: EmailExistValidator,
+    private userStore: UserStore
   ) {
     // Sample observable showing values
     this.registerForm.valueChanges.subscribe(value => console.log(value));
@@ -48,13 +51,11 @@ export class RegisterComponent implements OnInit {
     }
 
     const { fullName, email, password } = this.registerForm.value;
-    this.store.dispatch(
-      new Register({
-        fullName,
-        email,
-        password
-      })
-    );
+    this.userStore.register({
+      fullName,
+      email,
+      password
+    });
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
