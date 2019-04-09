@@ -6,15 +6,13 @@
     <ng-container *ngIf="isLogin; then login; else register"> </ng-container>
 
     <ng-template #login>
-      <a routerLink="/auth/register"
+      <a routerLink="/register"
         ><span>Don't have an account. Create one</span></a
       >
     </ng-template>
 
     <ng-template #register>
-      <a routerLink="/auth/login"
-        ><span>Already have an account? Login</span></a
-      >
+      <a routerLink="/login"><span>Already have an account? Login</span></a>
     </ng-template>
   </div>
 </section>

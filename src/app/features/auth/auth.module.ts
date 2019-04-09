@@ -12,9 +12,6 @@ import { RegisterComponent } from './containers/register/register.component';
 import { JwtInterceptor } from '../../core/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from '../../core/interceptors/error.interceptor';
 import { AuthState } from './store/auth.state';
-import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
-import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
-import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
 
 @NgModule({
   imports: [
@@ -27,13 +24,7 @@ import { TemplateDrivenFormComponent } from './components/template-driven-form/t
     FormsModule,
     NgxsModule.forFeature([AuthState])
   ],
-  declarations: [
-    LoginComponent,
-    RegisterComponent,
-    AuthLayoutComponent,
-    ReactiveFormComponent,
-    TemplateDrivenFormComponent
-  ],
+  declarations: [LoginComponent, RegisterComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }

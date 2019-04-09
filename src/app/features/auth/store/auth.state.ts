@@ -148,6 +148,6 @@ export class AuthState {
   logout({ dispatch, setState }: StateContext<Auth>) {
     this.authService.logout();
     setState(null);
-    dispatch(new Navigate(['/auth/login']));
+    dispatch(new Navigate(['/login']));
   }
 }

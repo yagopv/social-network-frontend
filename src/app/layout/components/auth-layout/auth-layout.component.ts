@@ -19,7 +19,7 @@ export class AuthLayoutComponent implements OnInit {
   }
 
   setInitialText() {
-    if (this.router.url === '/auth/register') {
+    if (this.router.url === '/register') {
       this.isLogin = false;
     } else {
       this.isLogin = true;
