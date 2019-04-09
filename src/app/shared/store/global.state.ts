@@ -19,7 +19,7 @@ import {
   AddCommentSuccess,
   AddPostFailed,
   AddCommentFailed
-} from '../../features/dashboard/store/post.actions';
+} from '../../features/wall/store/post.actions';
 
 @State<Global>({
   name: 'global',

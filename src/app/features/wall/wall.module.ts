@@ -47,4 +47,4 @@ const routes: Routes = [
     PostHeadComponent
   ]
 })
-export class DashboardModule {}
+export class WallModule {}

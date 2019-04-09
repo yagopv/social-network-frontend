@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        loadChildren: './features/dashboard/dashboard.module#DashboardModule'
+        loadChildren: './features/wall/wall.module#WallModule'
       },
       {
         path: '',
