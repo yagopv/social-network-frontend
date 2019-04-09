@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, Injector } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -16,21 +16,18 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/ core.module';
 import { UserStore } from './core/store/user.store';
-
-export function loadUser(userStore: UserStore) {
-  return () => {
-    if (userStore && userStore.state.accessToken) {
-      return userStore.getProfile().toPromise();
-    }
-    return Promise.resolve();
-  };
-}
+import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { AppInitializeModule } from './app-initialize.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    AppInitializeModule,
+    CoreModule,
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production
     }),
@@ -42,19 +39,10 @@ export function loadUser(userStore: UserStore) {
     SharedModule,
     AuthModule,
     AppRoutingModule,
-    CoreModule,
     LayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })
-  ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: loadUser,
-      deps: [UserStore],
-      multi: true
-    }
   ],
   bootstrap: [AppComponent]
 })

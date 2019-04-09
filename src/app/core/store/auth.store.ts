@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 @Injectable()
-export class UserStore extends Store<Auth> {
+export class AuthStore extends Store<Auth> {
   constructor(private userService: AuthService) {
     super({ ...JSON.parse(localStorage.getItem('auth')) });
   }

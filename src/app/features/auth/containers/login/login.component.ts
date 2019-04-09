@@ -6,6 +6,7 @@ import { Login, LoginFailed } from '../../store/auth.actions';
 import { MailValidator } from '../../../../shared/validators/mail.validator';
 import { AuthService } from '../../../../core/http/auth.service';
 import { UserStore } from '../../../../core/store/user.store';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sn-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private actions$: Actions,
-    private store: Store,
+    private router: Router,
+    private route: ActivatedRoute,
     private userStore: UserStore
   ) {
     // Sample observable showing values
@@ -42,7 +44,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.userStore.login(this.loginForm.value);
+    this.userStore.login(this.loginForm.value).subscribe(data => {
+      const returnUrl = this.route.queryParams['return-url'];
+      this.router.navigate([returnUrl || '/wall']);
+    });
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {

@@ -10,3 +10,8 @@ export interface Auth {
   avatarUrl: string;
   preferences: Preferences;
 }
+
+export interface AuthTokens {
+  refreshToken: string;
+  accessToken: string;
+}

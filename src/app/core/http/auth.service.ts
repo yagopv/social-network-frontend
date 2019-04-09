@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { LoginModel } from '../../features/auth/containers/login/login.model';
+
 import { RegisterRequest } from '../../features/auth/models/register-request.model';
 import { Profile } from '../../features/auth/models/profile.model';
 import { UserProfileResponse } from '../../features/auth/models/user-profile-response.model';
 import { LoginResponse } from '../../features/auth/models/login-response.model';
 import { LoginRequest } from '../../features/auth/models/login-request.model';
+import { Injectable } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthService {
   constructor(private http: HttpClient) {}
 
