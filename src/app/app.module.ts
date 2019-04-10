@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
-import { AuthModule } from './features/auth/auth.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/ core.module';
@@ -22,9 +21,8 @@ import { AppInitializeModule } from './app-initialize.module';
     AppInitializeModule,
     CoreModule,
     SharedModule,
-    AuthModule,
-    AppRoutingModule,
     LayoutModule,
+    AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })

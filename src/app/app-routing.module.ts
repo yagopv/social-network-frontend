@@ -15,6 +15,11 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: AuthLayoutComponent,
+    loadChildren: './features/auth/auth.module#AuthModule'
+  },
+  {
+    path: '',
     loadChildren: './features/welcome/welcome.module#WelcomeModule'
   },
   {
@@ -34,13 +39,6 @@ const routes: Routes = [
         path: '',
         loadChildren: './features/friends/friends.module#FriendsModule'
       }
-    ]
-  },
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      { path: '', loadChildren: './features/auth/auth.module#AuthModule' }
     ]
   },
   {

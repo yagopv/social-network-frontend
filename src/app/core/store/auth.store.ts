@@ -33,8 +33,8 @@ export class AuthStore extends Store<AuthTokens> {
   }
 
   logout() {
+    this.router.navigate(['/login']);
     localStorage.removeItem('auth');
     this.setState(null);
-    this.router.navigate(['/login']);
   }
 }
