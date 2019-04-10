@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Store, Actions, ofAction } from '@ngxs/store';
 
-import { Login, LoginFailed } from '../../store/auth.actions';
 import { MailValidator } from '../../../../shared/validators/mail.validator';
-import { AuthService } from '../../../../core/http/auth.service';
-import { UserStore } from '../../../../core/store/user.store';
-import { Router, ActivatedRoute } from '@angular/router';
 import { AuthStore } from '../../../../core/store/auth.store';
 
 @Component({
@@ -22,19 +17,15 @@ export class LoginComponent implements OnInit {
     },
     { updateOn: 'blur' }
   );
-  constructor(
-    private fb: FormBuilder,
-    private actions$: Actions,
-    private authStore: AuthStore
-  ) {
+  constructor(private fb: FormBuilder, private authStore: AuthStore) {
     // Sample observable showing values
     this.loginForm.valueChanges.subscribe(value => console.log(value));
   }
 
   ngOnInit() {
-    this.actions$.pipe(ofAction(LoginFailed)).subscribe(() => {
-      this.loginForm.get('password').reset();
-    });
+    // this.actions$.pipe(ofAction(LoginFailed)).subscribe(() => {
+    //   this.loginForm.get('password').reset();
+    // });
   }
 
   login() {

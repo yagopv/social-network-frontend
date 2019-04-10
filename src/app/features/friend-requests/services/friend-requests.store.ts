@@ -32,4 +32,8 @@ export class FriendRequestsStore extends Store<FriendRequest[]> {
         )
       );
   }
+
+  addFriend(uuid: string) {
+    return this.friendRequestsService.addFriend(uuid);
+  }
 }

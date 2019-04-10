@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
 import { ActivatedRoute } from '@angular/router';
-import { AddFriend } from '../../../friends/store/friend.actions';
+import { FriendRequestsStore } from '../../../friend-requests/services/friend-requests.store';
 
 @Component({
   selector: 'sn-private-wall',
@@ -9,10 +8,14 @@ import { AddFriend } from '../../../friends/store/friend.actions';
   styleUrls: ['./private-wall.component.scss']
 })
 export class PrivateWallComponent {
-  constructor(private store: Store, private route: ActivatedRoute) {}
+  constructor(
+    private friendRequestStore: FriendRequestsStore,
+    private route: ActivatedRoute
+  ) {}
 
   friendRequest() {
     const routeSnapshot = this.route.snapshot;
-    this.store.dispatch(new AddFriend(routeSnapshot.params.userId));
+
+    this.friendRequestStore.addFriend(routeSnapshot.params.userId);
   }
 }

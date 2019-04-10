@@ -7,8 +7,6 @@ import {
   ElementRef,
   ChangeDetectorRef
 } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 import { Author } from '../../../features/wall/models/author.model';
 import { Profile } from 'selenium-webdriver/firefox';
 
@@ -31,8 +29,6 @@ export class PublisherComponent {
 
   constructor(private changeDetector: ChangeDetectorRef) {}
   content = '';
-
-  faCaretSquareRight: IconProp = faCaretSquareRight;
 
   resetContent() {
     this.content = '';

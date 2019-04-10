@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, Select, ofAction, Actions } from '@ngxs/store';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 
-import { Error } from '../../../../core/models/error.model';
-import { Register, RegisterSuccess } from '../../store/auth.actions';
 import { MatchPasswordValidator } from '../../../../shared/validators/match-password.validator';
 import { MailValidator } from '../../../../shared/validators/mail.validator';
 import { EmailExistValidator } from '../../../../shared/validators/email-exist.validator';
@@ -28,8 +24,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store,
-    private actions$: Actions,
     private emailValidator: EmailExistValidator,
     private authStore: AuthStore
   ) {
@@ -38,9 +32,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.actions$.pipe(ofAction(RegisterSuccess)).subscribe(() => {
-      this.registerForm.reset();
-    });
+    // this.actions$.pipe(ofAction(RegisterSuccess)).subscribe(() => {
+    //   this.registerForm.reset();
+    // });
   }
 
   register() {

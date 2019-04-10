@@ -6,9 +6,6 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from '../http/auth.service';
-import { Store } from '@ngxs/store';
-import { UserStore } from '../store/user.store';
 import { AuthStore } from '../store/auth.store';
 
 @Injectable()

@@ -1,11 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AuthService } from '../../../core/http/auth.service';
 
-import {
-  faCheck,
-  faUserCircle,
-  faExclamationTriangle
-} from '@fortawesome/free-solid-svg-icons';
 import { interval } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -60,13 +55,13 @@ export class FileUploadComponent {
 
   getIcon() {
     if (this.selectedFile.status === 'ok') {
-      return faCheck;
+      return 'fa fa-check';
     }
 
     if (this.selectedFile.status === 'fail') {
-      return faExclamationTriangle;
+      return 'fa fa-exclamation-triangle';
     }
 
-    return faUserCircle;
+    return 'fa fa-user-circle';
   }
 }

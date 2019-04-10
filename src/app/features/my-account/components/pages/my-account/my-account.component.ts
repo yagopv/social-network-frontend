@@ -1,20 +1,16 @@
-import { Auth } from './../../../../auth/models/auth.model';
 import { Component } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { AuthState } from '../../../../auth/store/auth.state';
-import { Logout } from '../../../../auth/store/auth.actions';
+import { AuthStore } from '../../../../../core/store/auth.store';
+import { UserStore } from '../../../../../core/store/user.store';
 
 @Component({
   selector: 'sn-my-account',
   templateUrl: './my-account.component.html'
 })
 export class MyAccountComponent {
-  @Select(AuthState.getUser) user$: Observable<Auth>;
   profileImageUrl = '';
 
-  constructor(private store: Store) {
-    this.user$.subscribe(user => {
+  constructor(private userStore: UserStore, private authStore: AuthStore) {
+    this.userStore.state$.subscribe(user => {
       if (user && user.avatarUrl !== undefined) {
         this.profileImageUrl =
           user.avatarUrl || `https://api.adorable.io/avatars/128/${user.uuid}`;
@@ -23,6 +19,6 @@ export class MyAccountComponent {
   }
 
   logout() {
-    this.store.dispatch(new Logout());
+    this.authStore.logout();
   }
 }

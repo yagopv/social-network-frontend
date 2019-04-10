@@ -13,8 +13,6 @@ import {
   LIST_ITEMS_ANIMATION
 } from '../../../../shared/animations/list.animation';
 import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
-import { Store } from '@ngxs/store';
-import { DeletePost, AddComment, Like } from '../../store/post.actions';
 import { PostStore } from '../../services/post.store';
 import { UserStore } from '../../../../core/store/user.store';
 

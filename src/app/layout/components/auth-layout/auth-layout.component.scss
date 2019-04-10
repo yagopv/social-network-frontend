@@ -1,5 +1,4 @@
-@import 'colors.scss';
-@import 'breakpoints.scss';
+@import '~src/styles.scss';
 
 section {
   display: flex;
@@ -10,7 +9,7 @@ section {
 
   div {
     width: 100%;
-    border: 5px solid $main;
+    border: 5px solid $primary;
     padding: 30px;
     border-radius: 10px;
   }
@@ -19,15 +18,11 @@ section {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
-    color: $main;
+    color: $primary;
     span {
       &:hover {
-        border-bottom: 1px solid $main;
+        border-bottom: 1px solid $primary;
       }
     }
-  }
-
-  @include respond-above(sm) {
-    padding: 20px 30%;
   }
 }

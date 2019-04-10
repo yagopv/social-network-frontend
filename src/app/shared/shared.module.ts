@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
@@ -22,7 +21,7 @@ import { ValidationMessagesComponent } from './components/validation-messages/va
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   declarations: [
     NotFoundComponent,
     PublisherComponent,

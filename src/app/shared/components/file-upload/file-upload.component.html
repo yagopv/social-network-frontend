@@ -8,10 +8,10 @@
     accept="image/*"
     (change)="processFile(imageInput)"
   />
-  <fa-icon
+  <i
     *ngIf="selectedFile"
-    [icon]="getIcon()"
-    [spin]="selectedFile?.status !== 'ok' && selectedFile?.status !== 'fail'"
+    [ngClass]="getIcon()"
     [style.color]="selectedFile?.status === 'fail' ? 'red' : 'white'"
-  ></fa-icon>
+  ></i>
+  <!-- [spin]="selectedFile?.status !== 'ok' && selectedFile?.status !== 'fail'" -->
 </label>

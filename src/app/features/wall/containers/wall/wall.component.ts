@@ -9,23 +9,11 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { Store, Select, Actions, ofAction } from '@ngxs/store';
-
-import { PostState } from '../../store/post.state';
-import {
-  GetPosts,
-  AddPost,
-  AddPostSuccess,
-  AddCommentSuccess
-} from '../../store/post.actions';
 import { Post } from '../../models/post.model';
-import { AuthState } from '../../../auth/store/auth.state';
-import { Profile } from '../../../auth/models/profile.model';
 import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
 } from '../../../../shared/animations/list.animation';
-import { FriendsState } from '../../../friends/store/friend.state';
 import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
 import { PostComponent } from '../../components/post/post.component';
 import { Friend } from '../../../friends/models/friend.model';
@@ -53,10 +41,8 @@ export class WallComponent implements OnInit {
   postPageSize = 10;
 
   constructor(
-    private store: Store,
     private route: ActivatedRoute,
     private element: ElementRef,
-    private actions$: Actions,
     private postStore: PostStore,
     private userStore: UserStore
   ) {}
@@ -69,14 +55,14 @@ export class WallComponent implements OnInit {
     this.route.params.subscribe(routeParams => {
       this.postStore.getPosts(routeParams.userId);
       if (routeParams.userId) {
-        this.store
-          .select(FriendsState.getFriend(routeParams.userId))
-          .subscribe((friend: Friend) => {
-            if (friend) {
-              this.friend = friend;
-              this.placeholder = `Leave a comment to ${friend.fullName}`;
-            }
-          });
+        // this.store
+        //   .select(FriendsState.getFriend(routeParams.userId))
+        //   .subscribe((friend: Friend) => {
+        //     if (friend) {
+        //       this.friend = friend;
+        //       this.placeholder = `Leave a comment to ${friend.fullName}`;
+        //     }
+        //   });
       } else {
         this.placeholder = 'What are you thinking ?';
       }
@@ -84,19 +70,19 @@ export class WallComponent implements OnInit {
       this.element.nativeElement.parentElement.scrollTop = 0;
     });
 
-    this.actions$.pipe(ofAction(AddPostSuccess)).subscribe(() => {
-      this.publisher.resetContent();
-      this.publisher.resetHeight();
-    });
+    // this.actions$.pipe(ofAction(AddPostSuccess)).subscribe(() => {
+    //   this.publisher.resetContent();
+    //   this.publisher.resetHeight();
+    // });
 
-    this.actions$.pipe(ofAction(AddCommentSuccess)).subscribe(({ postId }) => {
-      const post = this.posts.find(
-        postComponent => postComponent.post.id === postId
-      );
-      if (post) {
-        post.resetComment();
-      }
-    });
+    // this.actions$.pipe(ofAction(AddCommentSuccess)).subscribe(({ postId }) => {
+    //   const post = this.posts.find(
+    //     postComponent => postComponent.post.id === postId
+    //   );
+    //   if (post) {
+    //     post.resetComment();
+    //   }
+    // });
   }
 
   publishPost(content: string) {

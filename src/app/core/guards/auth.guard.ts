@@ -5,8 +5,6 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { Store } from '@ngxs/store';
-import { UserStore } from '../store/user.store';
 import { AuthStore } from '../store/auth.store';
 
 @Injectable({ providedIn: 'root' })

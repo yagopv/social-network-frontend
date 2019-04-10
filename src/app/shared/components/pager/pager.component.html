@@ -4,13 +4,13 @@
     *ngIf="(page + 1) * pageSize < count"
     (click)="changePage(page + 1)"
   >
-    <fa-icon [icon]="moreCommentsIcon"></fa-icon> {{ showMoreText }}
+    <i class="fa fa-plus-circle"></i> {{ showMoreText }}
   </p>
   <p
     [class]="type"
     *ngIf="(page + 1) * pageSize >= count"
     (click)="changePage(0)"
   >
-    <fa-icon [icon]="lessCommentsIcon"></fa-icon> {{ showLessText }}
+    <i class="fa fa-minus-circle"></i> {{ showLessText }}
   </p>
 </ng-container>

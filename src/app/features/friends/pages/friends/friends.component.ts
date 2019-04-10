@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { FriendsState } from '../../store/friend.state';
 import { Observable } from 'rxjs';
-import { AddFriend, AcceptFriendRequests } from '../../store/friend.actions';
 import { LIST_ITEMS_ANIMATION } from '../../../../shared/animations/list.animation';
 import { Router } from '@angular/router';
-import { Friends } from '../../models/friends.model';
 import { FriendStore } from '../../services/friend.store';
 import { Friend } from '../../models/friend.model';
+import { FriendRequestsStore } from '../../../friend-requests/services/friend-requests.store';
 
 @Component({
   selector: 'sn-friends',
@@ -18,7 +15,7 @@ export class FriendsComponent implements OnInit {
   friends$: Observable<Friend[]>;
 
   constructor(
-    private store: Store,
+    private friendRequestStore: FriendRequestsStore,
     private friendStore: FriendStore,
     private router: Router
   ) {}
@@ -32,15 +29,14 @@ export class FriendsComponent implements OnInit {
   }
 
   acceptFriendRequest(uuid: string) {
-    this.store.dispatch(new AcceptFriendRequests(uuid));
+    this.friendRequestStore.acceptFriendRequest(uuid);
   }
-
   addFriend(uuid: string) {
-    this.store.dispatch(new AddFriend(uuid));
+    this.friendRequestStore.addFriend(uuid).subscribe();
   }
 
   removeFriend(uuid: string) {
-    console.log(uuid);
+    console.log('Not implemented in backend!!');
   }
 
   navigateToWall(uuid: string) {
