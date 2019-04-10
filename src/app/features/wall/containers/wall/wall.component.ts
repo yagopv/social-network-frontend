@@ -101,7 +101,7 @@ export class WallComponent implements OnInit {
 
   publishPost(content: string) {
     const uuid = this.friend && this.friend.uuid;
-    this.store.dispatch(new AddPost({ content, uuid }));
+    this.postStore.addPost({ content, uuid }).subscribe();
   }
 
   postIdentity(index: number, post: Post) {

@@ -1,8 +1,6 @@
 import {
   Component,
   Input,
-  EventEmitter,
-  Output,
   ChangeDetectionStrategy,
   ViewChild
 } from '@angular/core';
@@ -17,6 +15,8 @@ import {
 import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
 import { Store } from '@ngxs/store';
 import { DeletePost, AddComment, Like } from '../../store/post.actions';
+import { PostStore } from '../../services/post.store';
+import { UserStore } from '../../../../core/store/user.store';
 
 @Component({
   selector: 'sn-post',
@@ -34,18 +34,20 @@ export class PostComponent {
   commentsPage = 0;
   commentsPageSize = 3;
 
-  constructor(private store: Store) {}
+  constructor(private postStore: PostStore, private userStore: UserStore) {}
 
   addComment(message: string) {
-    this.store.dispatch(new AddComment(this.post.id, message));
+    this.postStore
+      .addComment(this.post.id, message, this.userStore.state)
+      .subscribe();
   }
 
   deletePost() {
-    this.store.dispatch(new DeletePost(this.post.id));
+    this.postStore.deletePost(this.post.id).subscribe();
   }
 
   toggleLike() {
-    this.store.dispatch(new Like(this.post.id));
+    this.postStore.like(this.post.id, this.userStore.state).subscribe();
   }
 
   commentIdentity(index: number, comment: Comment) {
