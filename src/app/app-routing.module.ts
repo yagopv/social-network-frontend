@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './core/guards/auth.guard';
-import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { NotFoundPageComponent } from './shared/pages/not-found-page/not-found-page.component';
 import { NotificationComponent } from './shared/components/notification/notification.component';
 import { MainLayoutComponent } from './layout/components/main-layout.component/main-layout.component';
 import { AuthLayoutComponent } from './layout/components/auth-layout/auth-layout.component';
@@ -50,7 +50,7 @@ const routes: Routes = [
     component: NotificationComponent,
     outlet: 'popup'
   },
-  { path: '**', component: NotFoundComponent }
+  { path: '**', component: NotFoundPageComponent }
 ];
 
 @NgModule({

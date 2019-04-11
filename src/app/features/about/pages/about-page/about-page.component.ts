@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sn-about',
-  templateUrl: './about.component.html'
+  selector: 'sn-about-page',
+  templateUrl: './about-page.component.html'
 })
-export class AboutComponent {
+export class AboutPageComponent {
   title = 'Hey there!! 👋';
   subtitle = 'My name is Yago';
   description = `I'm a frontend developer and love to create beautiful websites !!. You can check more about me in the followings sites:`;

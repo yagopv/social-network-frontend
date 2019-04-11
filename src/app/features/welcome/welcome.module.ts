@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '../../shared/shared.module';
-import { WelcomeComponent } from './pages/welcome.component';
+import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { AuthModule } from '../auth/auth.module';
 import { WelcomeHeroComponent } from './components/welcome-hero/welcome-hero.component';
 import { WelcomeFormsComponent } from './components/welcome-forms/welcome-forms.component';
 
-const routes: Routes = [{ path: 'welcome', component: WelcomeComponent }];
+const routes: Routes = [{ path: 'welcome', component: WelcomePageComponent }];
 
 @NgModule({
   imports: [
@@ -18,6 +18,10 @@ const routes: Routes = [{ path: 'welcome', component: WelcomeComponent }];
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [WelcomeComponent, WelcomeHeroComponent, WelcomeFormsComponent]
+  declarations: [
+    WelcomePageComponent,
+    WelcomeHeroComponent,
+    WelcomeFormsComponent
+  ]
 })
 export class WelcomeModule {}
