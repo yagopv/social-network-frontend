@@ -22,7 +22,7 @@ export class AvatarComponent implements OnDestroy {
 
   @Input()
   set user(user: Profile | Author) {
-    if (user.avatarUrl !== undefined) {
+    if (user && user.avatarUrl !== undefined) {
       this.imageUrl =
         user.avatarUrl || `https://api.adorable.io/avatars/128/${user.uuid}`;
     }

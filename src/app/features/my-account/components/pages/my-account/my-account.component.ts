@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthStore } from '../../../../../core/store/auth.store';
 import { UserStore } from '../../../../../core/store/user.store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sn-my-account',
@@ -9,7 +10,11 @@ import { UserStore } from '../../../../../core/store/user.store';
 export class MyAccountComponent {
   profileImageUrl = '';
 
-  constructor(private userStore: UserStore, private authStore: AuthStore) {
+  constructor(
+    private router: Router,
+    private userStore: UserStore,
+    private authStore: AuthStore
+  ) {
     this.userStore.state$.subscribe(user => {
       if (user && user.avatarUrl !== undefined) {
         this.profileImageUrl =
@@ -20,5 +25,6 @@ export class MyAccountComponent {
 
   logout() {
     this.authStore.logout();
+    this.router.navigate(['/login']);
   }
 }

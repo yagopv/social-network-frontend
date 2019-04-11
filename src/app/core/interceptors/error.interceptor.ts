@@ -23,11 +23,9 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError(error => {
         console.log('HTTP ERROR: ', error);
         if (error.status === 401) {
-          // auto logout if 401 response returned from api
           this.authStore.logout();
+          this.router.navigate(['/login']);
         }
-
-        console.log(error);
 
         return throwError(error);
       })

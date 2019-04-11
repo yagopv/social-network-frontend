@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Auth } from '../../../auth/models/auth.model';
 import { UserStore } from '../../../../core/store/user.store';
 import { AuthStore } from '../../../../core/store/auth.store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sn-my-account',
@@ -12,7 +13,11 @@ export class MyAccountComponent {
   user$: Observable<Auth>;
   profileImageUrl = '';
 
-  constructor(private authStore: AuthStore, private userStore: UserStore) {
+  constructor(
+    private router: Router,
+    private authStore: AuthStore,
+    private userStore: UserStore
+  ) {
     this.userStore.state$.subscribe(user => {
       if (user && user.avatarUrl !== undefined) {
         this.profileImageUrl =
@@ -23,5 +28,6 @@ export class MyAccountComponent {
 
   logout() {
     this.authStore.logout();
+    this.router.navigate(['/login']);
   }
 }
