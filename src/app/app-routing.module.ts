@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { NotificationComponent } from './shared/components/notification/notification.component';
-import { MainLayoutComponent } from './layout/components/main-layout.component/main-layout.component';
-import { AuthLayoutComponent } from './layout/components/auth-layout/auth-layout.component';
+import { MainLayoutComponent } from './layout/main-layout.component/main-layout.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 
 const routes: Routes = [
   {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserStore } from '../../../core/store/user.store';
-import { AuthStore } from '../../../core/store/auth.store';
+import { UserStore } from '../../core/store/user.store';
+import { AuthStore } from '../../core/store/auth.store';
 import { Router } from '@angular/router';
 
 @Component({

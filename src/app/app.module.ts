@@ -20,7 +20,6 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     AppInitializeModule,
     CoreModule,
-    SharedModule,
     LayoutModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
