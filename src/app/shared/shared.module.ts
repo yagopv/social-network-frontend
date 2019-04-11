@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PublisherComponent } from './components/publisher/publisher.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
@@ -23,7 +23,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule],
   declarations: [
-    NotFoundPageComponent,
+    NotFoundComponent,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
@@ -41,7 +41,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     FileUploadComponent
   ],
   exports: [
-    NotFoundPageComponent,
+    NotFoundComponent,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,

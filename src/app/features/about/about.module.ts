@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { AboutComponent } from './about/about.component';
 
-const routes: Routes = [{ path: 'about', component: AboutPageComponent }];
+const routes: Routes = [{ path: 'about', component: AboutComponent }];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
-  declarations: [AboutPageComponent]
+  declarations: [AboutComponent]
 })
 export class AboutModule {}
