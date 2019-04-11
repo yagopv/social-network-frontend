@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { tap } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthStore extends Store<AuthTokens> {
   constructor(private authService: AuthService) {
     super({ ...JSON.parse(localStorage.getItem('auth')) });

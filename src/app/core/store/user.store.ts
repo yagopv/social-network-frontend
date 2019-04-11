@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserStore extends Store<Auth> {
   constructor(private userService: UserService) {
     super(null);
