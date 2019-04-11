@@ -12,7 +12,6 @@ import { map, startWith } from 'rxjs/operators';
       </h2>
     </div>
   `,
-  styleUrls: ['./clock.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClockComponent {
