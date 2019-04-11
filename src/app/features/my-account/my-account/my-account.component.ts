@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthStore } from '../../../../../core/store/auth.store';
-import { UserStore } from '../../../../../core/store/user.store';
 import { Router } from '@angular/router';
+import { UserStore } from '../../../core/store/user.store';
+import { AuthStore } from '../../../core/store/auth.store';
 
 @Component({
   selector: 'sn-my-account',

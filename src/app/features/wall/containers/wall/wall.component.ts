@@ -16,10 +16,9 @@ import {
 } from '../../../../shared/animations/list.animation';
 import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
 import { PostComponent } from '../../components/post/post.component';
-import { Friend } from '../../../friends/models/friend.model';
 import { PostStore } from '../../services/post.store';
 import { UserStore } from '../../../../core/store/user.store';
-import { Auth } from '../../../../core/models/user.models';
+import { Auth, Friend } from '../../../../core/models/user.models';
 
 @Component({
   selector: 'sn-wall',

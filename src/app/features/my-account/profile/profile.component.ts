@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
-import { UrlValidator } from '../../../../shared/validators/url.validator';
-import { UserStore } from '../../../../core/store/user.store';
+import { UrlValidator } from '../../../shared/validators/url.validator';
+import { UserStore } from '../../../core/store/user.store';
 
 @Component({
   selector: 'sn-profile',

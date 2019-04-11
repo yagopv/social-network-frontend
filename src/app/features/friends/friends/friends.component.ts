@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LIST_ITEMS_ANIMATION } from '../../../../shared/animations/list.animation';
+import { LIST_ITEMS_ANIMATION } from '../../../shared/animations/list.animation';
 import { Router } from '@angular/router';
-import { FriendStore } from '../../services/friend.store';
-import { Friend } from '../../models/friend.model';
-import { FriendRequestsStore } from '../../../friend-requests/services/friend-requests.store';
+import { FriendStore } from '../friend.store';
+import { FriendRequestsStore } from '../../friend-requests/friend-requests.store';
+import { Friend } from '../../../core/models/user.models';
 
 @Component({
   selector: 'sn-friends',

@@ -1,8 +1,8 @@
-import { Store } from '../../../shared/store/store';
+import { Store } from '../../shared/store/store';
 import { FriendRequestsService } from './friend-requests.service';
-import { FriendRequest } from '../models/friend-requests.models';
+import { FriendRequest } from './friend-requests.models';
 import { Injectable } from '@angular/core';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

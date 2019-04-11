@@ -3,7 +3,7 @@ import { Store } from '../../../shared/store/store';
 import { Post } from '../models/post.model';
 import { PostService } from './post.service';
 import { UserStore } from '../../../core/store/user.store';
-import { FriendStore } from '../../friends/services/friend.store';
+import { FriendStore } from '../../friends/friend.store';
 import { tap } from 'rxjs/operators';
 import { Auth } from '../../../core/models/user.models';
 

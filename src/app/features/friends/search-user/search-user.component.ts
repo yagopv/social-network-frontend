@@ -14,7 +14,7 @@ import {
   switchMap,
   filter
 } from 'rxjs/operators';
-import { Friend } from '../../models/friend.model';
+import { Friend } from '../../../core/models/user.models';
 
 @Component({
   selector: 'sn-search-user',
