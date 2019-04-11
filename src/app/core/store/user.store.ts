@@ -1,12 +1,12 @@
 import { Store } from '../../shared/store/store';
 import { Auth } from '../../features/auth/models/auth.model';
 import { Injectable } from '@angular/core';
-import { AuthService } from '../http/auth.service';
 import { tap } from 'rxjs/operators';
+import { UserService } from '../services/user.service';
 
 @Injectable()
 export class UserStore extends Store<Auth> {
-  constructor(private userService: AuthService) {
+  constructor(private userService: UserService) {
     super(null);
   }
 

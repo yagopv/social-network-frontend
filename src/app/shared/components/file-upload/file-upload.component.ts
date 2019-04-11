@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { AuthService } from '../../../core/http/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 import { interval } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { UserService } from '../../../core/services/user.service';
 
 class ImageSnippet {
   pending = false;
@@ -21,7 +22,7 @@ export class FileUploadComponent {
 
   selectedFile: ImageSnippet;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userService: UserService) {}
 
   private onSuccess(response: any) {
     this.selectedFile.pending = false;
@@ -45,7 +46,7 @@ export class FileUploadComponent {
     reader.addEventListener('load', (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
 
-      this.authService
+      this.userService
         .uploadAvatar(this.selectedFile.file)
         .subscribe(response => this.onSuccess(response), () => this.onError());
     });

@@ -7,7 +7,7 @@ import {
   ValidationErrors
 } from '@angular/forms';
 import { debounceTime, take, map, catchError } from 'rxjs/operators';
-import { AuthService } from '../../core/http/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class EmailExistValidator implements AsyncValidator {

@@ -1,6 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { UserStore } from './store/user.store';
-import { AuthService } from './http/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
@@ -12,7 +11,6 @@ import { AuthStore } from './store/auth.store';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    AuthService,
     UserStore,
     AuthStore
   ]
