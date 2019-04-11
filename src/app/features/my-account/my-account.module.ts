@@ -1,4 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,9 +12,10 @@ const routes: Routes = [{ path: 'my-account', component: MyAccountComponent }];
   declarations: [MyAccountComponent, ProfileComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
     ReactiveFormsModule,
-    SharedModule
+    FormsModule,
+    SharedModule,
+    RouterModule.forChild(routes)
   ],
   providers: []
 })

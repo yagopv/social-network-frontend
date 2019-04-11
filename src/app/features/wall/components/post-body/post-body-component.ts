@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Post } from '../../models/post.model';
 import marked from 'marked';
-import { Profile } from '../../../auth/models/profile.model';
+import { Profile } from '../../../../core/models/user.models';
 
 @Component({
   selector: 'sn-post-body',

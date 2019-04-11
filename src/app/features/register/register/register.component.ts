@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-
-import { MatchPasswordValidator } from '../../../../shared/validators/match-password.validator';
-import { MailValidator } from '../../../../shared/validators/mail.validator';
-import { EmailExistValidator } from '../../../../shared/validators/email-exist.validator';
-import { AuthStore } from '../../../../core/store/auth.store';
+import { MailValidator } from '../../../shared/validators/mail.validator';
+import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
+import { EmailExistValidator } from '../../../shared/validators/email-exist.validator';
+import { AuthStore } from '../../../core/store/auth.store';
 
 @Component({
   selector: 'sn-register',

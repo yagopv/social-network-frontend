@@ -1,4 +1,4 @@
-import { Preferences } from '../../auth/models/profile.model';
+import { Preferences } from '../../../core/models/user.models';
 
 export interface Friend {
   uuid: string;

@@ -8,9 +8,9 @@ import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LayoutModule } from './layout/layout.module';
-import { CoreModule } from './core/ core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppInitializeModule } from './app-initialize.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],

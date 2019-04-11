@@ -1,5 +1,5 @@
 import { Friend } from './friend.model';
-import { Profile } from '../../auth/models/profile.model';
+import { Profile } from '../../../core/models/user.models';
 
 export interface Friends {
   friends: Friend[];

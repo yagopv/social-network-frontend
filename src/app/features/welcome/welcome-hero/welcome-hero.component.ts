@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Hero } from '../../../core/models/hero.model';
+import { Hero } from '../welcome.models';
 
 @Component({
   selector: 'sn-welcome-hero',

@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 
 import { Post } from '../../models/post.model';
-import { Profile } from '../../../auth/models/profile.model';
 import { Comment } from '../../models/comment.model';
 import {
   LIST_ANIMATION,
@@ -15,6 +14,7 @@ import {
 import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
 import { PostStore } from '../../services/post.store';
 import { UserStore } from '../../../../core/store/user.store';
+import { Profile } from '../../../../core/models/user.models';
 
 @Component({
   selector: 'sn-post',

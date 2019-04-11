@@ -19,7 +19,7 @@ import { PostComponent } from '../../components/post/post.component';
 import { Friend } from '../../../friends/models/friend.model';
 import { PostStore } from '../../services/post.store';
 import { UserStore } from '../../../../core/store/user.store';
-import { Auth } from '../../../auth/models/auth.model';
+import { Auth } from '../../../../core/models/user.models';
 
 @Component({
   selector: 'sn-wall',

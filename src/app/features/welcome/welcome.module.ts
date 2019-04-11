@@ -4,9 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '../../shared/shared.module';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { AuthModule } from '../auth/auth.module';
 import { WelcomeHeroComponent } from './welcome-hero/welcome-hero.component';
 import { WelcomeFormsComponent } from './welcome-forms/welcome-forms.component';
+import { LoginModule } from '../login/login.module';
+import { RegisterModule } from '../register/register.module';
 
 const routes: Routes = [{ path: 'welcome', component: WelcomeComponent }];
 
@@ -14,8 +15,9 @@ const routes: Routes = [{ path: 'welcome', component: WelcomeComponent }];
   imports: [
     CommonModule,
     RouterModule,
-    AuthModule,
     SharedModule,
+    LoginModule,
+    RegisterModule,
     RouterModule.forChild(routes)
   ],
   declarations: [WelcomeComponent, WelcomeHeroComponent, WelcomeFormsComponent]

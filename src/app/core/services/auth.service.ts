@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
-
-import { RegisterRequest } from '../../features/auth/models/register-request.model';
-import { LoginResponse } from '../../features/auth/models/login-response.model';
-import { LoginRequest } from '../../features/auth/models/login-request.model';
+import {
+  LoginRequest,
+  LoginResponse,
+  RegisterRequest
+} from '../models/auth.models';
 
 @Injectable({
   providedIn: 'root'

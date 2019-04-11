@@ -7,7 +7,6 @@ import { WallComponent } from './containers/wall/wall.component';
 import { SharedModule } from '../../shared/shared.module';
 import { PostCommentComponent } from './components/post-comment/post-comment.component';
 import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
-import { AuthModule } from '../auth/auth.module';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { LikeComponent } from './components/like/like.component';
 import { PrivateWallComponent } from './components/private-wall/private-wall.component';
@@ -26,7 +25,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    AuthModule,
     LayoutModule
   ],
   declarations: [

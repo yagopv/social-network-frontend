@@ -16,7 +16,13 @@ const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
-    loadChildren: './features/auth/auth.module#AuthModule'
+    children: [
+      { path: '', loadChildren: './features/login/login.module#LoginModule' },
+      {
+        path: '',
+        loadChildren: './features/register/register.module#RegisterModule'
+      }
+    ]
   },
   {
     path: '',

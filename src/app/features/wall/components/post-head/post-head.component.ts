@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Post } from '../../models/post.model';
-import { Profile } from '../../../auth/models/profile.model';
+import { Profile } from '../../../../core/models/user.models';
 
 @Component({
   selector: 'sn-post-head',

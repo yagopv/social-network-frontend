@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Auth } from '../../../auth/models/auth.model';
 import { UserStore } from '../../../../core/store/user.store';
 import { AuthStore } from '../../../../core/store/auth.store';
 import { Router } from '@angular/router';
+import { Auth } from '../../../../core/models/user.models';
 
 @Component({
   selector: 'sn-my-account',

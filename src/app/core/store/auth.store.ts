@@ -1,8 +1,8 @@
 import { Store } from '../../shared/store/store';
-import { AuthTokens } from '../../features/auth/models/auth.model';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { tap } from 'rxjs/operators';
+import { AuthTokens } from '../models/auth.models';
 
 @Injectable({
   providedIn: 'root'

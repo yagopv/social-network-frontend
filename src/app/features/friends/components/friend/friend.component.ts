@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Profile } from '../../../auth/models/profile.model';
 import { Friend } from '../../models/friend.model';
+import { Profile } from '../../../../core/models/user.models';
 
 @Component({
   selector: 'sn-friend',

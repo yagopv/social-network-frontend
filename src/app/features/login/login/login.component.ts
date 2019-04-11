@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
-import { MailValidator } from '../../../../shared/validators/mail.validator';
-import { AuthStore } from '../../../../core/store/auth.store';
-import { UserStore } from '../../../../core/store/user.store';
+import { MailValidator } from '../../../shared/validators/mail.validator';
+import { AuthStore } from '../../../core/store/auth.store';
+import { UserStore } from '../../../core/store/user.store';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
