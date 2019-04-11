@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'sn-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  template: `
+    <nav class="navbar navbar-dark bg-primary text-light">
+      <a class="navbar-brand">Social Network</a>
+    </nav>
+  `
 })
-export class HeaderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class HeaderComponent {}

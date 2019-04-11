@@ -3,8 +3,7 @@ import { Router, RouterEvent } from '@angular/router';
 
 @Component({
   selector: 'sn-auth-layout',
-  templateUrl: './auth-layout.component.html',
-  styleUrls: ['./auth-layout.component.scss']
+  templateUrl: './auth-layout.component.html'
 })
 export class AuthLayoutComponent implements OnInit {
   isLogin: boolean;
