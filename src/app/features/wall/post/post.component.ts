@@ -5,16 +5,15 @@ import {
   ViewChild
 } from '@angular/core';
 
-import { Post } from '../../models/post.model';
-import { Comment } from '../../models/comment.model';
 import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
-} from '../../../../shared/animations/list.animation';
-import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
-import { PostStore } from '../../services/post.store';
-import { UserStore } from '../../../../core/store/user.store';
-import { Profile } from '../../../../core/models/user.models';
+} from '../../../shared/animations/list.animation';
+import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
+import { PostStore } from '../post.store';
+import { UserStore } from '../../../core/store/user.store';
+import { Profile } from '../../../core/models/user.models';
+import { Post, Comment } from '../wall.models';
 
 @Component({
   selector: 'sn-post',

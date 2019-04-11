@@ -2,16 +2,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PostComponent } from './components/post/post.component';
-import { WallComponent } from './containers/wall/wall.component';
+import { PostComponent } from './post/post.component';
+import { WallComponent } from './wall/wall.component';
 import { SharedModule } from '../../shared/shared.module';
-import { PostCommentComponent } from './components/post-comment/post-comment.component';
-import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
-import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
-import { LikeComponent } from './components/like/like.component';
-import { PrivateWallComponent } from './components/private-wall/private-wall.component';
-import { PostHeadComponent } from './components/post-head/post-head.component';
-import { PostBodyComponent } from './components/post-body/post-body-component';
+import { PostCommentComponent } from './post-comment/post-comment.component';
+import { PostCommentCounterComponent } from './post-comment-counter/post-comment-counter.component';
+import { ProfileInfoComponent } from './profile-info/profile-info.component';
+import { LikeComponent } from './like/like.component';
+import { PrivateWallComponent } from './private-wall/private-wall.component';
+import { PostHeadComponent } from './post-head/post-head.component';
+import { PostBodyComponent } from './post-body/post-body-component';
 import { LayoutModule } from '../../layout/layout.module';
 
 const routes: Routes = [

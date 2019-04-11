@@ -1,5 +1,4 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { Author } from '../../../features/wall/models/author.model';
 import { FADE_IN_OUT_ANIMATION } from '../../animations/fade.animation';
 import { Profile } from '../../../core/models/user.models';
 
@@ -21,7 +20,7 @@ export class AvatarComponent implements OnDestroy {
   fadeAnimValue = 'in';
 
   @Input()
-  set user(user: Profile | Author) {
+  set user(user: Profile) {
     if (user && user.avatarUrl !== undefined) {
       this.imageUrl =
         user.avatarUrl || `https://api.adorable.io/avatars/128/${user.uuid}`;

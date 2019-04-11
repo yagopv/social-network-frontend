@@ -9,16 +9,16 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { Post } from '../../models/post.model';
 import {
   LIST_ANIMATION,
   LIST_ITEMS_ANIMATION
-} from '../../../../shared/animations/list.animation';
-import { PublisherComponent } from '../../../../shared/components/publisher/publisher.component';
-import { PostComponent } from '../../components/post/post.component';
-import { PostStore } from '../../services/post.store';
-import { UserStore } from '../../../../core/store/user.store';
-import { Auth, Friend } from '../../../../core/models/user.models';
+} from '../../../shared/animations/list.animation';
+import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
+import { PostComponent } from '../post/post.component';
+import { PostStore } from '../post.store';
+import { UserStore } from '../../../core/store/user.store';
+import { Auth, Friend } from '../../../core/models/user.models';
+import { Post } from '../wall.models';
 
 @Component({
   selector: 'sn-wall',

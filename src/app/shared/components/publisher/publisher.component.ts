@@ -7,8 +7,7 @@ import {
   ElementRef,
   ChangeDetectorRef
 } from '@angular/core';
-import { Author } from '../../../features/wall/models/author.model';
-import { Profile } from 'selenium-webdriver/firefox';
+import { Profile } from '../../../core/models/user.models';
 
 @Component({
   selector: 'sn-publisher',
@@ -22,7 +21,7 @@ export class PublisherComponent {
 
   @Input() buttonHeight: string;
 
-  @Input() user: Profile | Author;
+  @Input() user: Profile;
   @Output() publish = new EventEmitter();
 
   @ViewChild('text') text: ElementRef;

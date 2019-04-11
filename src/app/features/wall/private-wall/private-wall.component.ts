@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FriendRequestsStore } from '../../../friend-requests/friend-requests.store';
+import { FriendRequestsStore } from '../../friend-requests/friend-requests.store';
 
 @Component({
   selector: 'sn-private-wall',

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Store } from '../../../shared/store/store';
-import { Post } from '../models/post.model';
+import { Store } from '../../shared/store/store';
 import { PostService } from './post.service';
-import { UserStore } from '../../../core/store/user.store';
-import { FriendStore } from '../../friends/friend.store';
+import { UserStore } from '../../core/store/user.store';
+import { FriendStore } from '../friends/friend.store';
 import { tap } from 'rxjs/operators';
-import { Auth } from '../../../core/models/user.models';
+import { Auth } from '../../core/models/user.models';
+import { Post } from './wall.models';
 
 @Injectable({
   providedIn: 'root'

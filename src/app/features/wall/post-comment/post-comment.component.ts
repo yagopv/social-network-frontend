@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-
-import { Comment } from '../../models/comment.model';
-import { Profile } from '../../../../core/models/user.models';
+import { Profile } from '../../../core/models/user.models';
+import { Comment } from '../wall.models';
 
 @Component({
   selector: 'sn-post-comment',
