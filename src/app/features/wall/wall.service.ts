@@ -8,7 +8,7 @@ import { Post } from './wall.models';
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class WallService {
   constructor(private http: HttpClient) {}
 
   getWall(userId?: string): Observable<Post[]> {

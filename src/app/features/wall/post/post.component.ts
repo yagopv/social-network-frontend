@@ -10,7 +10,7 @@ import {
   LIST_ITEMS_ANIMATION
 } from '../../../shared/animations/list.animation';
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
-import { PostStore } from '../post.store';
+import { WallStore } from '../wall.store';
 import { UserStore } from '../../../core/store/user.store';
 import { Profile } from '../../../core/models/user.models';
 import { Post, Comment } from '../wall.models';
@@ -31,7 +31,7 @@ export class PostComponent {
   commentsPage = 0;
   commentsPageSize = 3;
 
-  constructor(private postStore: PostStore, private userStore: UserStore) {}
+  constructor(private postStore: WallStore, private userStore: UserStore) {}
 
   addComment(message: string) {
     this.postStore

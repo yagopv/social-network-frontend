@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '../../shared/store/store';
-import { PostService } from './post.service';
+import { WallService } from './wall.service';
 import { UserStore } from '../../core/store/user.store';
 import { FriendStore } from '../friends/friend.store';
 import { tap } from 'rxjs/operators';
@@ -10,9 +10,9 @@ import { Post } from './wall.models';
 @Injectable({
   providedIn: 'root'
 })
-export class PostStore extends Store<Post[]> {
+export class WallStore extends Store<Post[]> {
   constructor(
-    private postService: PostService,
+    private wallService: WallService,
     private userStore: UserStore,
     private friendStore: FriendStore
   ) {
@@ -20,7 +20,7 @@ export class PostStore extends Store<Post[]> {
   }
 
   getPosts(postId?: string) {
-    this.postService.getWall(postId).subscribe(posts =>
+    this.wallService.getWall(postId).subscribe(posts =>
       this.setState(
         posts.sort((p1, p2) => {
           return p2.createdAt - p1.createdAt;
@@ -32,9 +32,9 @@ export class PostStore extends Store<Post[]> {
   addPost({ content, uuid }) {
     const currentUser = this.userStore.state;
     const friends = this.friendStore.state;
-    return this.postService.addPost(content, uuid).pipe(
+    return this.wallService.addPost(content, uuid).pipe(
       tap(post => {
-        const newPost = {
+        const newPost: Post = {
           ...post,
           author: currentUser,
           owner: uuid
@@ -47,7 +47,7 @@ export class PostStore extends Store<Post[]> {
   }
 
   deletePost(uuid: string) {
-    return this.postService
+    return this.wallService
       .deletePost(uuid)
       .pipe(
         tap(() => this.setState(this.state.filter(post => post.id !== uuid)))
@@ -66,7 +66,7 @@ export class PostStore extends Store<Post[]> {
       }
     };
 
-    return this.postService.addComment(postId, message).pipe(
+    return this.wallService.addComment(postId, message).pipe(
       tap(() => {
         this.setState(
           this.state.map(post => {
@@ -87,7 +87,7 @@ export class PostStore extends Store<Post[]> {
     const targetPost = this.state.find(post => post.id === postId);
     if (targetPost) {
       if (targetPost.likes.indexOf(user.uuid) === -1) {
-        return this.postService.like(postId).pipe(
+        return this.wallService.like(postId).pipe(
           tap(() => {
             this.setState(
               this.state.map(post => {
@@ -103,7 +103,7 @@ export class PostStore extends Store<Post[]> {
           })
         );
       } else {
-        return this.postService.dislike(postId).pipe(
+        return this.wallService.dislike(postId).pipe(
           tap(() => {
             this.setState(
               this.state.map(post => {

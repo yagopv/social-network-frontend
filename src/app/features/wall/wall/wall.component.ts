@@ -15,7 +15,7 @@ import {
 } from '../../../shared/animations/list.animation';
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
 import { PostComponent } from '../post/post.component';
-import { PostStore } from '../post.store';
+import { WallStore } from '../wall.store';
 import { UserStore } from '../../../core/store/user.store';
 import { Auth, Friend } from '../../../core/models/user.models';
 import { Post } from '../wall.models';
@@ -42,7 +42,7 @@ export class WallComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private element: ElementRef,
-    private postStore: PostStore,
+    private postStore: WallStore,
     private userStore: UserStore
   ) {}
 

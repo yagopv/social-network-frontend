@@ -1,7 +1,9 @@
+import { Friend } from '../../core/models/user.models';
+
 export interface Post {
   likes: any[];
   author: Author;
-  owner: Author;
+  owner: Author | Friend;
   content: string;
   comments: Comment[];
   createdAt: number;
