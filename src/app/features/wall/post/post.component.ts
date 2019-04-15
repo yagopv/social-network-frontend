@@ -12,7 +12,7 @@ import {
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
 import { WallStore } from '../wall.store';
 import { UserStore } from '../../../core/store/user.store';
-import { Profile } from '../../../core/models/user.models';
+import { Profile } from '../../../core/core.models';
 import { Post, Comment } from '../wall.models';
 
 @Component({

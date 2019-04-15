@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FriendRequestsStore } from '../friend-requests.store';
 import { Observable } from 'rxjs';
 import { FriendRequest } from '../friend-requests.models';
-import { Friend } from '../../../core/models/user.models';
+import { Friend } from '../../../core/core.models';
 
 @Component({
   selector: 'sn-friend-requests',

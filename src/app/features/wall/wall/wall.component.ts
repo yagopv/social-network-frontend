@@ -17,7 +17,7 @@ import { PublisherComponent } from '../../../shared/components/publisher/publish
 import { PostComponent } from '../post/post.component';
 import { WallStore } from '../wall.store';
 import { UserStore } from '../../../core/store/user.store';
-import { Auth, Friend } from '../../../core/models/user.models';
+import { Auth, Friend } from '../../../core/core.models';
 import { Post } from '../wall.models';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { FADE_IN_OUT_ANIMATION } from '../../animations/fade.animation';
-import { Profile } from '../../../core/models/user.models';
+import { Profile } from '../../../core/core.models';
 
 @Component({
   selector: 'sn-avatar',

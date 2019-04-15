@@ -2,7 +2,7 @@ import { Store } from '../../shared/store/store';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { tap } from 'rxjs/operators';
-import { AuthTokens } from '../models/auth.models';
+import { AuthTokens } from '../core.models';
 
 @Injectable({
   providedIn: 'root'

@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
-import {
-  LoginRequest,
-  LoginResponse,
-  RegisterRequest
-} from '../models/auth.models';
+import { LoginRequest, LoginResponse, RegisterRequest } from '../core.models';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Profile } from '../../../core/models/user.models';
+import { Profile } from '../../../core/core.models';
 import { Post } from '../wall.models';
 
 @Component({

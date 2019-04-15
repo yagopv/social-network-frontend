@@ -4,7 +4,7 @@ import { WallService } from './wall.service';
 import { UserStore } from '../../core/store/user.store';
 import { FriendStore } from '../friends/friend.store';
 import { tap } from 'rxjs/operators';
-import { Auth } from '../../core/models/user.models';
+import { Auth } from '../../core/core.models';
 import { Post } from './wall.models';
 
 @Injectable({

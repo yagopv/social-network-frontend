@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { UserStore } from '../../core/store/user.store';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Friend } from '../../core/models/user.models';
+import { Friend } from '../../core/core.models';
 
 @Injectable({
   providedIn: 'root'

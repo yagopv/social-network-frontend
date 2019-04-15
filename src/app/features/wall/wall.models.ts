@@ -1,4 +1,4 @@
-import { Friend } from '../../core/models/user.models';
+import { Friend } from '../../core/core.models';
 
 export interface Post {
   likes: any[];

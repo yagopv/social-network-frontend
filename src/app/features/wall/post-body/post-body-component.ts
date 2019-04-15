@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import marked from 'marked';
-import { Profile } from '../../../core/models/user.models';
+import { Profile } from '../../../core/core.models';
 import { Post } from '../wall.models';
 
 @Component({
