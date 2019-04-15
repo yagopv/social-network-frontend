@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'sn-footer',
   template: `
     <nav class="navbar navbar-dark bg-primary text-light">
-      @Yago Pérez Vázquez 2019
+      <span>@Yago Pérez Vázquez 2019</span>
+      <a routerLink="/about" class="btn btn-link text-light">About</a>
     </nav>
   `
 })

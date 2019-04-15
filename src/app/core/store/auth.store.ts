@@ -12,7 +12,7 @@ export class AuthStore extends Store<AuthTokens> {
     super({ ...JSON.parse(localStorage.getItem('auth')) });
   }
 
-  login({ email, password }) {
+  login({ email, password }: { email: string; password: string }) {
     return this.authService.login({ email, password }).pipe(
       tap(authTokens => {
         this.setState(authTokens);
@@ -21,12 +21,20 @@ export class AuthStore extends Store<AuthTokens> {
     );
   }
 
-  register(registerData) {
+  register(registerData: {
+    fullName: string;
+    email: string;
+    password: string;
+  }) {
     return this.authService.register(registerData);
   }
 
   logout() {
     localStorage.removeItem('auth');
     this.setState(null);
+  }
+
+  isAuthenticated() {
+    return !!this.state.accessToken;
   }
 }

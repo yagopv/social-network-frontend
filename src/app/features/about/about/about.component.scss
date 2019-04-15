@@ -1,0 +1,11 @@
+@import '~src/styles.scss';
+
+.content {
+  padding: 10% 5%;
+}
+
+@include media-breakpoint-up(sm) {
+  .content {
+    padding: 10% 20%;
+  }
+}
