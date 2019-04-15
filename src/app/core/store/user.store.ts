@@ -2,12 +2,12 @@ import { Store } from '../../shared/store/store';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
-import { Auth } from '../core.models';
+import { SocialNetworkUser } from '../core.models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserStore extends Store<Auth> {
+export class UserStore extends Store<SocialNetworkUser> {
   constructor(private userService: UserService) {
     super(null);
   }

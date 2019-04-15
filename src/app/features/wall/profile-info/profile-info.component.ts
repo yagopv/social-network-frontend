@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Friend } from '../../../core/core.models';
+import { SocialNetworkUser } from '../../../core/core.models';
 
 @Component({
   selector: 'sn-profile-info',
@@ -7,5 +7,5 @@ import { Friend } from '../../../core/core.models';
   styleUrls: ['./profile-info.component.scss']
 })
 export class ProfileInfoComponent {
-  @Input() user: Friend;
+  @Input() user: SocialNetworkUser;
 }

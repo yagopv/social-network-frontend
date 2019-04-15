@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Profile } from '../../../core/core.models';
+import { SocialNetworkUser } from '../../../core/core.models';
 import { Post } from '../wall.models';
 
 @Component({
@@ -9,7 +9,7 @@ import { Post } from '../wall.models';
 })
 export class PostHeadComponent implements OnInit {
   @Input() post: Post;
-  @Input() currentUser: Profile;
+  @Input() currentUser: SocialNetworkUser;
 
   constructor() {}
 

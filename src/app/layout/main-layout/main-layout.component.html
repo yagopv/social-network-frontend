@@ -4,8 +4,10 @@
       <sn-me [user]="user$ | async"></sn-me>
       <hr class="bg-white" />
       <sn-nav (logout)="logout()"></sn-nav>
-      <hr class="bg-white" />
-      <button class="btn btn-link btn-lg" (click)="logout()">Logout</button>
+      <hr class="bg-white d-none d-lg-block" />
+      <button class="btn btn-link btn-lg d-none d-lg-block" (click)="logout()">
+        Logout
+      </button>
     </nav>
     <main class="col-xs-12 col-md-8 col-lg-7">
       <router-outlet></router-outlet>

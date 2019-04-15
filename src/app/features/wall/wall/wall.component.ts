@@ -17,7 +17,7 @@ import { PublisherComponent } from '../../../shared/components/publisher/publish
 import { PostComponent } from '../post/post.component';
 import { WallStore } from '../wall.store';
 import { UserStore } from '../../../core/store/user.store';
-import { Auth, Friend } from '../../../core/core.models';
+import { SocialNetworkUser, Friend } from '../../../core/core.models';
 import { Post } from '../wall.models';
 
 @Component({
@@ -28,7 +28,7 @@ import { Post } from '../wall.models';
 })
 export class WallComponent implements OnInit {
   posts$: Observable<Post[]>;
-  currentUser$: Observable<Auth>;
+  currentUser$: Observable<SocialNetworkUser>;
 
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
   @ViewChildren(PostComponent) posts: QueryList<PostComponent>;

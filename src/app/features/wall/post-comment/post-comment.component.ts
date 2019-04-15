@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Profile } from '../../../core/core.models';
+import { SocialNetworkUser } from '../../../core/core.models';
 import { Comment } from '../wall.models';
 
 @Component({
@@ -9,7 +9,7 @@ import { Comment } from '../wall.models';
 })
 export class PostCommentComponent {
   @Input() comment: Comment;
-  @Input() currentUser: Profile;
+  @Input() currentUser: SocialNetworkUser;
 
   getLink(uuid: string) {
     if (uuid === this.currentUser.uuid) {

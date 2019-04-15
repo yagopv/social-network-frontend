@@ -12,7 +12,7 @@ import {
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
 import { WallStore } from '../wall.store';
 import { UserStore } from '../../../core/store/user.store';
-import { Profile } from '../../../core/core.models';
+import { SocialNetworkUser } from '../../../core/core.models';
 import { Post, Comment } from '../wall.models';
 
 @Component({
@@ -24,7 +24,7 @@ import { Post, Comment } from '../wall.models';
 })
 export class PostComponent {
   @Input() post: Post;
-  @Input() currentUser: Profile;
+  @Input() currentUser: SocialNetworkUser;
 
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
 

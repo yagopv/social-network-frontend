@@ -4,7 +4,7 @@ import { WallService } from './wall.service';
 import { UserStore } from '../../core/store/user.store';
 import { FriendStore } from '../friends/friend.store';
 import { tap } from 'rxjs/operators';
-import { Auth } from '../../core/core.models';
+import { SocialNetworkUser } from '../../core/core.models';
 import { Post } from './wall.models';
 
 @Injectable({
@@ -54,7 +54,7 @@ export class WallStore extends Store<Post[]> {
       );
   }
 
-  addComment(postId: string, message: string, user: Auth) {
+  addComment(postId: string, message: string, user: SocialNetworkUser) {
     const newComment = {
       id: this.uuidv4(),
       message,
@@ -83,7 +83,7 @@ export class WallStore extends Store<Post[]> {
     );
   }
 
-  like(postId: string, user: Auth) {
+  like(postId: string, user: SocialNetworkUser) {
     const targetPost = this.state.find(post => post.id === postId);
     if (targetPost) {
       if (targetPost.likes.indexOf(user.uuid) === -1) {

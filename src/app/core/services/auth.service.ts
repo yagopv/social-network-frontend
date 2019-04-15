@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
-import { LoginRequest, LoginResponse, RegisterRequest } from '../core.models';
+import { AuthTokens } from '../core.models';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,8 @@ import { LoginRequest, LoginResponse, RegisterRequest } from '../core.models';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login({ email, password }: LoginRequest) {
-    return this.http.post<LoginResponse>(
+  login({ email, password }: { email: string; password: string }) {
+    return this.http.post<AuthTokens>(
       `${environment.apiBaseUrl}/account/login`,
       {
         email,
@@ -20,7 +20,7 @@ export class AuthService {
     );
   }
 
-  register(register: RegisterRequest) {
+  register(register: { fullName: string; email: string; password: string }) {
     return this.http.post(`${environment.apiBaseUrl}/account`, register);
   }
 

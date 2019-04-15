@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import marked from 'marked';
-import { Profile } from '../../../core/core.models';
+import { SocialNetworkUser } from '../../../core/core.models';
 import { Post } from '../wall.models';
 
 @Component({
@@ -13,7 +13,7 @@ import { Post } from '../wall.models';
 })
 export class PostBodyComponent implements OnInit {
   @Input() post: Post;
-  @Input() currentUser: Profile;
+  @Input() currentUser: SocialNetworkUser;
   content: string;
 
   ngOnInit() {

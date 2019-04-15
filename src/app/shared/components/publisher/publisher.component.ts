@@ -7,7 +7,7 @@ import {
   ElementRef,
   ChangeDetectorRef
 } from '@angular/core';
-import { Profile } from '../../../core/core.models';
+import { SocialNetworkUser } from '../../../core/core.models';
 
 @Component({
   selector: 'sn-publisher',
@@ -21,7 +21,7 @@ export class PublisherComponent {
 
   @Input() buttonHeight: string;
 
-  @Input() user: Profile;
+  @Input() user: SocialNetworkUser;
   @Output() publish = new EventEmitter();
 
   @ViewChild('text') text: ElementRef;

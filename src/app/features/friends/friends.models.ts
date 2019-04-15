@@ -1,4 +1,4 @@
-import { Preferences, Profile } from '../../core/core.models';
+import { Preferences, SocialNetworkUser } from '../../core/core.models';
 
 export interface FriendRequest {
   uuid: string;
