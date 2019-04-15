@@ -1,17 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  Validators,
-  FormGroup,
-  FormControl,
-  AbstractControl
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { catchError } from 'rxjs/operators';
 
 import { MailValidator } from '../../../shared/validators/mail.validator';
 import { AuthStore } from '../../../core/store/auth.store';
 import { UserStore } from '../../../core/store/user.store';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'sn-login',
@@ -28,10 +22,10 @@ export class LoginComponent {
   );
   constructor(
     private fb: FormBuilder,
-    private authStore: AuthStore,
-    private userStore: UserStore,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authStore: AuthStore,
+    private userStore: UserStore
   ) {}
 
   login() {
