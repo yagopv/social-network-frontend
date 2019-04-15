@@ -1,7 +1,7 @@
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FriendRequest } from './friend-requests.models';
+import { FriendRequest } from '../core.models';
 
 @Injectable({
   providedIn: 'root'

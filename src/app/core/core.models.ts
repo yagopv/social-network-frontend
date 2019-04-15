@@ -49,3 +49,18 @@ export interface ErrorData {
   key: string;
   label: string;
 }
+
+export interface Friend {
+  uuid: string;
+  avatarUrl: string;
+  fullName: string;
+  request: Request;
+  preferences: Preferences;
+}
+
+export interface FriendRequest {
+  uuid: string;
+  avatarUrl: string;
+  fullName: string;
+  request: Request;
+}

@@ -1,10 +1,10 @@
 import { Store } from '../../shared/store/store';
-import { FriendService } from './friends.service';
 import { Injectable } from '@angular/core';
 import { UserStore } from '../../core/store/user.store';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Friend } from './friends.models';
+import { Friend } from '../core.models';
+import { FriendService } from '../services/friends.service';
 
 @Injectable({
   providedIn: 'root'

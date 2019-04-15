@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Store } from '../../shared/store/store';
 import { WallService } from './wall.service';
 import { UserStore } from '../../core/store/user.store';
-import { FriendStore } from '../friends/friend.store';
 import { tap } from 'rxjs/operators';
 import { SocialNetworkUser } from '../../core/core.models';
 import { Post } from './wall.models';
+import { FriendStore } from '../../core/store/friend.store';
 
 @Injectable({
   providedIn: 'root'
