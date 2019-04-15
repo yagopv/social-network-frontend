@@ -2,11 +2,19 @@
   <div
     class="toast fade show"
     role="alert"
+    [ngClass]="{ 'bg-danger text-light': toastService.isErrorToast(toast) }"
     *ngFor="let toast of toastService.toasts; let i = index"
   >
     <div class="toast-header">
-      <img class="rounded mr-2" />
-      <strong class="mr-auto">{{ toast.title }}</strong>
+      <i
+        class="fa fa-exclamation-triangle rounded mr-2"
+        [ngClass]="{ 'text-danger': toastService.isErrorToast(toast) }"
+      ></i>
+      <strong
+        class="mr-auto"
+        [ngClass]="{ 'text-danger': toastService.isErrorToast(toast) }"
+        >{{ toast.title }}</strong
+      >
       <button
         type="button"
         class="ml-2 mb-1 close"
@@ -16,7 +24,7 @@
       </button>
     </div>
     <div class="toast-body">
-      {{ toast.message }}
+      {{ toast.message | capitalize }}
     </div>
   </div>
 </div>
