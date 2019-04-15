@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PublisherComponent } from './components/publisher/publisher.component';
 import { MeComponent } from './components/me/me.component';
-import { NotificationComponent } from './components/notification/notification.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ClockComponent } from './components/clock/clock.component';
@@ -27,7 +26,6 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
-    NotificationComponent,
     CapitalizePipe,
     TextAreaDirective,
     AvatarComponent,
@@ -45,7 +43,6 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
-    NotificationComponent,
     CapitalizePipe,
     TextAreaDirective,
     AvatarComponent,

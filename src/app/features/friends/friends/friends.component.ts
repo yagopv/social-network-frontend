@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FriendStore } from '../../../core/store/friend.store';
 import { FriendRequestsStore } from '../../../core/store/friend-requests.store';
 import { Friend } from '../../../core/core.models';
+import { ModalService } from '../../../core/services/modal.service';
 
 @Component({
   selector: 'sn-friends',
@@ -17,7 +18,8 @@ export class FriendsComponent implements OnInit {
   constructor(
     private friendRequestStore: FriendRequestsStore,
     private friendStore: FriendStore,
-    private router: Router
+    private router: Router,
+    private modalService: ModalService
   ) {}
 
   ngOnInit() {
@@ -29,7 +31,14 @@ export class FriendsComponent implements OnInit {
   }
 
   acceptFriendRequest(uuid: string) {
-    this.friendRequestStore.acceptFriendRequest(uuid);
+    this.friendRequestStore
+      .acceptFriendRequest(uuid)
+      .subscribe(() =>
+        this.modalService.open(
+          'Your request has been emitted',
+          'Now you have to wait until the request will be accepted'
+        )
+      );
   }
   addFriend(uuid: string) {
     this.friendRequestStore.addFriend(uuid).subscribe();

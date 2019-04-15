@@ -1,6 +1,6 @@
 import { Store } from '../../shared/store/store';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { FriendRequestsService } from '../services/friend-requests.service';
 import { FriendRequest } from '../core.models';
@@ -25,11 +25,13 @@ export class FriendRequestsStore extends Store<FriendRequest[]> {
   }
 
   acceptFriendRequest(uuid: string) {
-    this.friendRequestsService
+    return this.friendRequestsService
       .acceptFriendRequest(uuid)
-      .subscribe(() =>
-        this.setState(
-          this.state.filter(friendRequest => friendRequest.uuid !== uuid)
+      .pipe(
+        tap(() =>
+          this.setState(
+            this.state.filter(friendRequest => friendRequest.uuid !== uuid)
+          )
         )
       );
   }

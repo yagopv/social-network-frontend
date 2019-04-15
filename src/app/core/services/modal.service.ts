@@ -7,8 +7,6 @@ export class ModalService {
   content: string;
   buttons: Button[];
 
-  constructor() {}
-
   open(title: string, content: string, ...buttons: Button[]) {
     this.title = title;
     this.content = content;
