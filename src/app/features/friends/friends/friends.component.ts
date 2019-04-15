@@ -4,7 +4,7 @@ import { LIST_ITEMS_ANIMATION } from '../../../shared/animations/list.animation'
 import { Router } from '@angular/router';
 import { FriendStore } from '../friend.store';
 import { FriendRequestsStore } from '../../friend-requests/friend-requests.store';
-import { Friend } from '../../../core/core.models';
+import { Friend } from '../friends.models';
 
 @Component({
   selector: 'sn-friends',

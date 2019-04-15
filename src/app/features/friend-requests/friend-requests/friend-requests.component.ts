@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FriendRequestsStore } from '../friend-requests.store';
 import { Observable } from 'rxjs';
 import { FriendRequest } from '../friend-requests.models';
-import { Friend } from '../../../core/core.models';
 
 @Component({
   selector: 'sn-friend-requests',
@@ -17,7 +16,7 @@ export class FriendRequestsComponent implements OnInit {
     this.requests$ = this.friendRequestsStore.getPendingRequests();
   }
 
-  acceptRequest({ uuid }: Friend) {
+  acceptRequest({ uuid }: FriendRequest) {
     this.friendRequestsStore.acceptFriendRequest(uuid);
   }
 }

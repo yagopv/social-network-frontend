@@ -1,17 +1,9 @@
-import { Preferences, SocialNetworkUser } from '../../core/core.models';
+import { Preferences, Request } from '../../core/core.models';
 
-export interface FriendRequest {
+export interface Friend {
   uuid: string;
   avatarUrl: string;
   fullName: string;
   request: Request;
   preferences: Preferences;
-}
-
-export interface Request {
-  uuid: string;
-  confirmed: boolean;
-  createdAt: number;
-  confirmedAt: number;
-  rejectedAt: number;
 }

@@ -15,7 +15,7 @@ export interface Preferences {
   description?: string;
 }
 
-interface Request {
+export interface Request {
   uuid: string;
   confirmed: boolean;
   createdAt: number;
