@@ -22,9 +22,7 @@ export class AuthStore extends Store<AuthTokens> {
   }
 
   register(registerData) {
-    this.authService
-      .register(registerData)
-      .subscribe(() => console.log('SHOW POPUP'));
+    return this.authService.register(registerData);
   }
 
   logout() {

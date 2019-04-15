@@ -14,15 +14,15 @@
         <button
           type="button"
           class="btn btn-secondary"
-          (onClick)="modalService.close()"
+          (click)="modalService.close()"
         >
           Close
         </button>
         <button
           type="button"
-          class="btn"
-          [ngClass]="button.variant"
+          [class]="'btn btn-' + button.variant"
           *ngFor="let button of modalService.buttons"
+          (click)="button.action()"
         >
           {{ button.label }}
         </button>

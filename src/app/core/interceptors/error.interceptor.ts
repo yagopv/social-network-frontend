@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 import { AuthStore } from '../store/auth.store';
 import { ToastService } from '../services/toast.service';
 
+const SKIP_URLS = ['/account/check'];
+
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(
@@ -31,7 +33,12 @@ export class ErrorInterceptor implements HttpInterceptor {
           this.authStore.logout();
           this.router.navigate(['/login']);
         } else {
-          this.toastService.addErrorToast(error.error[0], 5000);
+          if (
+            error &&
+            SKIP_URLS.filter(url => error.url.indexOf(url) !== -1).length === 0
+          ) {
+            this.toastService.addErrorToast(error.error[0], 5000);
+          }
         }
 
         return throwError(error);
