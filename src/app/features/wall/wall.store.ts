@@ -7,9 +7,7 @@ import { SocialNetworkUser } from '../../core/core.models';
 import { Post } from './wall.models';
 import { FriendStore } from '../../core/store/friend.store';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WallStore extends Store<Post[]> {
   constructor(
     private wallService: WallService,

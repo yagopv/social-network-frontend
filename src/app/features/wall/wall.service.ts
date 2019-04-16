@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Post } from './wall.models';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WallService {
   constructor(private http: HttpClient) {}
 

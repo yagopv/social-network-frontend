@@ -50,12 +50,7 @@ export class RegisterComponent {
         this.registerForm.reset();
         this.modalService.open(
           'Registration finished',
-          'Now, go to your email app and click on the provided link for activate your account',
-          {
-            variant: 'primary',
-            label: 'Ok',
-            action: () => this.modalService.close()
-          }
+          'Now, go to your email app and click on the provided link for activate your account'
         );
       });
   }

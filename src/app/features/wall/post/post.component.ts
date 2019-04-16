@@ -36,7 +36,10 @@ export class PostComponent {
   addComment(message: string) {
     this.postStore
       .addComment(this.post.id, message, this.userStore.state)
-      .subscribe();
+      .subscribe(() => {
+        this.publisher.resetContent();
+        this.publisher.resetHeight();
+      });
   }
 
   deletePost() {

@@ -1,8 +1,10 @@
 :host {
+  display: block;
   .card {
     &:hover {
       .fa-trash-alt {
         display: inline;
+        cursor: pointer;
       }
     }
   }
