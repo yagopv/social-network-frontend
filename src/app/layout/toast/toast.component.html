@@ -4,6 +4,7 @@
     role="alert"
     [ngClass]="{ 'bg-danger text-light': toastService.isErrorToast(toast) }"
     *ngFor="let toast of toastService.toasts; let i = index"
+    @listItems
   >
     <div class="toast-header">
       <i
