@@ -11,6 +11,7 @@ import { ToastComponent } from './toast/toast.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { FriendRequestsModule } from '../features/friend-requests/friend-requests.module';
 import { SharedModule } from '../shared/shared.module';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SharedModule } from '../shared/shared.module';
     FooterComponent,
     AuthLayoutComponent,
     ToastComponent,
-    ModalComponent
+    ModalComponent,
+    LoaderComponent
   ],
   imports: [CommonModule, RouterModule, FriendRequestsModule, SharedModule],
   exports: [
@@ -29,7 +31,8 @@ import { SharedModule } from '../shared/shared.module';
     MainLayoutComponent,
     AuthLayoutComponent,
     ToastComponent,
-    ModalComponent
+    ModalComponent,
+    LoaderComponent
   ]
 })
 export class LayoutModule {}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
+import { LoaderStore } from './core/store/loader.store';
 
 @Component({
   selector: 'sn-root',
@@ -8,4 +9,6 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent {
   title = environment.siteName;
+
+  constructor(public loaderStore: LoaderStore) {}
 }

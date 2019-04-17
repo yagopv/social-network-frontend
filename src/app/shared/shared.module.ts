@@ -7,7 +7,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PublisherComponent } from './components/publisher/publisher.component';
 import { MeComponent } from './components/me/me.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
-import { LoaderComponent } from './components/loader/loader.component';
 import { ClockComponent } from './components/clock/clock.component';
 import { PagerComponent } from './components/pager/pager.component';
 import { ValidationMessagesComponent } from './components/validation-messages/validation-messages.component';
@@ -29,7 +28,6 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     CapitalizePipe,
     TextAreaDirective,
     AvatarComponent,
-    LoaderComponent,
     ClockComponent,
     PagerComponent,
     NullDefaultDirective,
@@ -46,7 +44,6 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     CapitalizePipe,
     TextAreaDirective,
     AvatarComponent,
-    LoaderComponent,
     ClockComponent,
     PagerComponent,
     NullDefaultDirective,
