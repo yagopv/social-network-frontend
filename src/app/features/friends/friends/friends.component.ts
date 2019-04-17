@@ -40,8 +40,15 @@ export class FriendsComponent implements OnInit {
         )
       );
   }
-  addFriend(uuid: string) {
-    this.friendRequestStore.addFriend(uuid).subscribe();
+  addFriend(uuid: string, friend: Friend) {
+    this.friendRequestStore.addFriend(uuid).subscribe(() => {
+      this.modalService.open(
+        'You request has been sent',
+        `When ${
+          friend.fullName
+        } accepts your request then you are going to see him in this list`
+      );
+    });
   }
 
   removeFriend(uuid: string) {

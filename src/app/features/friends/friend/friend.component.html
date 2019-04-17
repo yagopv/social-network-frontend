@@ -6,21 +6,21 @@
     <sn-avatar [user]="friend" width="60px" height="60px"></sn-avatar>
     <div class="ml-3">
       <a
-        (click)="acceptRequest()"
+        (click)="acceptRequest($event)"
         class="text-primary"
         *ngIf="getSearchStatus(friend).includes('pending')"
         ><i class="fa fa-plus"></i> Accept request
       </a>
       <a
         href=""
-        (click)="addFriend()"
+        (click)="addFriend($event)"
         class="text-light"
         *ngIf="getSearchStatus(friend).includes('not-friend')"
         ><i class="fa fa-plus"></i> Add to my friends
       </a>
       <a
         href=""
-        (click)="removeFriend()"
+        (click)="removeFriend($event)"
         class="text-light"
         *ngIf="getSearchStatus(friend).includes('is-friend')"
         ><i class="fa fa-trash-alt"></i> Remove from my friends

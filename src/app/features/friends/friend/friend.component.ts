@@ -11,15 +11,21 @@ export class FriendComponent {
   @Output() add = new EventEmitter();
   @Output() remove = new EventEmitter();
 
-  acceptRequest() {
+  acceptRequest($event: MouseEvent) {
     this.accept.emit(this.friend.uuid);
+    $event.preventDefault();
+    $event.stopPropagation();
   }
 
-  addFriend() {
+  addFriend($event: MouseEvent) {
     this.add.emit(this.friend.uuid);
+    $event.preventDefault();
+    $event.stopPropagation();
   }
-  removeFriend() {
+  removeFriend($event: MouseEvent) {
     this.remove.emit(this.friend.uuid);
+    $event.preventDefault();
+    $event.stopPropagation();
   }
 
   getSearchStatus(user: SocialNetworkUser) {
