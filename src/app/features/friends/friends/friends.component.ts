@@ -30,13 +30,13 @@ export class FriendsComponent implements OnInit {
     this.friends$ = this.friendStore.getSearchUsers(searchTerm);
   }
 
-  acceptFriendRequest(uuid: string) {
+  acceptFriendRequest(uuid: string, friend: Friend) {
     this.friendRequestStore
       .acceptFriendRequest(uuid)
       .subscribe(() =>
         this.modalService.open(
-          'Your request has been emitted',
-          'Now you have to wait until the request will be accepted'
+          'You have a new friend !!',
+          `You and ${friend.fullName} are now friends`
         )
       );
   }

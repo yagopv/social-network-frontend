@@ -9,7 +9,7 @@
       <sn-friend
         @listItems
         [friend]="friend"
-        (accept)="acceptFriendRequest($event)"
+        (accept)="acceptFriendRequest($event, friend)"
         (add)="addFriend($event)"
         (remove)="removeFriend($event)"
         (click)="navigateToWall(friend.uuid)"

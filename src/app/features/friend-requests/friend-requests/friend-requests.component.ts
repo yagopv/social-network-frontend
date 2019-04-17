@@ -20,13 +20,13 @@ export class FriendRequestsComponent implements OnInit {
     this.requests$ = this.friendRequestsStore.getPendingRequests();
   }
 
-  acceptRequest({ uuid }: FriendRequest) {
+  acceptRequest({ uuid, fullName }: FriendRequest) {
     this.friendRequestsStore
       .acceptFriendRequest(uuid)
       .subscribe(() =>
         this.modalService.open(
-          'Your request has been emitted',
-          'Now you have to wait until the request will be accepted'
+          'You have a new friend !!',
+          `You and ${fullName} are now friends`
         )
       );
   }
