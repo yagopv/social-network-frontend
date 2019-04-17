@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
 import { LoaderStore } from './core/store/loader.store';
+import { startWith, tap, delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sn-root',
@@ -10,5 +12,12 @@ import { LoaderStore } from './core/store/loader.store';
 export class AppComponent {
   title = environment.siteName;
 
-  constructor(public loaderStore: LoaderStore) {}
+  isLoading$: Observable<boolean>;
+
+  constructor(public loaderStore: LoaderStore) {
+    this.isLoading$ = this.loaderStore.state$.pipe(
+      startWith(false),
+      delay(0)
+    );
+  }
 }

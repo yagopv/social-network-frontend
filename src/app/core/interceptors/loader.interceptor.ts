@@ -21,7 +21,6 @@ export class LoaderInterceptor implements HttpInterceptor {
     if (i >= 0) {
       this.requests.splice(i, 1);
     }
-    console.log(i, this.requests.length);
     this.loaderStore.setLoading(this.requests.length > 0);
   }
 

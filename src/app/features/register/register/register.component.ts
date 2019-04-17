@@ -27,10 +27,7 @@ export class RegisterComponent {
     private emailValidator: EmailExistValidator,
     private authStore: AuthStore,
     private modalService: ModalService
-  ) {
-    // Sample observable showing values
-    this.registerForm.valueChanges.subscribe(value => console.log(value));
-  }
+  ) {}
 
   register() {
     if (!this.registerForm.valid) {
