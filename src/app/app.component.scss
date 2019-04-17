@@ -1,8 +1,16 @@
+@import '~src/styles.scss';
+
 :host {
   #grid-container {
-    display: grid;
-    height: 100vh;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: auto;
+    display: block;
+  }
+
+  @include media-breakpoint-up(sm) {
+    #grid-container {
+      display: grid;
+      height: 100vh;
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: auto;
+    }
   }
 }

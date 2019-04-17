@@ -1,0 +1,15 @@
+@import '~src/styles.scss';
+
+:host {
+  button {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  @include media-breakpoint-up(md) {
+    button {
+      width: auto;
+      margin-top: 0;
+    }
+  }
+}
