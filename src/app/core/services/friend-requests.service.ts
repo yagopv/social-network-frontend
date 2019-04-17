@@ -17,7 +17,6 @@ export class FriendRequestsService {
   }
 
   acceptFriendRequest(uuid: string) {
-    return of(true);
     return this.http.post(
       `${environment.apiBaseUrl}/user/friendrequests/accept`,
       {
