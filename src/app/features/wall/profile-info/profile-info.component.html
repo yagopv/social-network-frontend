@@ -1,17 +1,19 @@
-<sn-avatar [user]="user"></sn-avatar>
-<div>
-  <h1>
-    <b>{{ user.fullName }}</b>
+<div class="jumbotron mt-5 bg-primary text-light">
+  <h1 class="display-4">
+    <sn-avatar [user]="user" width="120px" height="120px"></sn-avatar>
+    <span class="ml-4">{{ user.fullName }}</span>
   </h1>
-  <p>{{ user.preferences?.description }}</p>
-  <ul>
-    <li *ngIf="user.preferences?.linkedIn">
+  <p class="lead" *ngIf="user.preferences?.description">
+    {{ user.preferences?.description }}
+  </p>
+  <ul class="list-inline">
+    <li class="list-inline-item" *ngIf="user.preferences?.linkedIn">
       <a [href]="user.preferences?.linkedIn" target="_blank">LinkedIn</a>
     </li>
-    <li *ngIf="user.preferences?.twitter">
+    <li class="list-inline-item" *ngIf="user.preferences?.twitter">
       <a [href]="user.preferences?.twitter" target="_blank">Twitter</a>
     </li>
-    <li *ngIf="user.preferences?.github">
+    <li class="list-inline-item" *ngIf="user.preferences?.github">
       <a [href]="user.preferences?.github" target="_blank">Github</a>
     </li>
   </ul>
