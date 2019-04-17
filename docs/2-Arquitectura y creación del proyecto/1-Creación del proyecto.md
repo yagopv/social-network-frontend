@@ -15,22 +15,14 @@ ng serve
 
 ---
 
-### Añadir scripts y hojas de estilos de forma global
+### Añadir bootstrap
 
 ```javascript
-// Instalar simple-reset-css
-npm install simple-css-reset --save
+// Instalar bootstrap
+npm install bootstrap --save
 
-// Añadir la hoja de estilos en `angular.json` en arquitect/build/styles y configurar stylePreprocessorOptions scss
-...
-"styles": [
-  "src/scss/styles.scss",
-  "./node_modules/simple-css-reset/reset.css"
-],
-"stylePreprocessorOptions": {
-  "includePaths": ["src/scss"]
-}
-...
+// Añadir la hoja de estilos en styles.scss
+@import '~node_modules/bootstrap/scss/bootstrap.scss';
 ```
 
 ---
