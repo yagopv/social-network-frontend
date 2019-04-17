@@ -14,7 +14,7 @@ export class PrivateWallComponent {
     private route: ActivatedRoute
   ) {}
 
-  friendRequest() {
+  friendRequest($event: MouseEvent) {
     const routeSnapshot = this.route.snapshot;
 
     this.friendRequestStore
@@ -25,5 +25,8 @@ export class PrivateWallComponent {
           'You have to wait until the request will be accepted'
         )
       );
+
+    $event.preventDefault();
+    $event.stopPropagation();
   }
 }
