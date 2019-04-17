@@ -4,12 +4,16 @@ import { map, tap } from 'rxjs/operators';
 
 import { FriendRequestsService } from '../services/friend-requests.service';
 import { FriendRequest } from '../core.models';
+import { FriendStore } from './friend.store';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FriendRequestsStore extends Store<FriendRequest[]> {
-  constructor(private friendRequestsService: FriendRequestsService) {
+  constructor(
+    private friendRequestsService: FriendRequestsService,
+    private friendStore: FriendStore
+  ) {
     super([]);
     this.friendRequestsService
       .getFriendRequests()
