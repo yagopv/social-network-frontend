@@ -1,0 +1,113 @@
+@import '~src/styles';
+
+:host {
+  position: fixed;
+  top: 0;
+  height: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($primary, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .loader-text {
+    color: rgb(255, 255, 255);
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: normal;
+    font-style: normal;
+    float: left;
+    animation-name: bounceLoaderText;
+    animation-duration: 2.09s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    transform: scale(0.5);
+  }
+
+  #loader-text-1 {
+    animation-delay: 0.75s;
+  }
+  #loader-text-2 {
+    animation-delay: 0.9s;
+  }
+  #loader-text-3 {
+    animation-delay: 1.05s;
+  }
+  #loader-text-4 {
+    animation-delay: 1.2s;
+  }
+  #loader-text-5 {
+    animation-delay: 1.35s;
+  }
+  #loader-text-6 {
+    animation-delay: 1.5s;
+  }
+  #loader-text-7 {
+    animation-delay: 1.64s;
+  }
+  #loader-text-8 {
+    animation-delay: 1.79s;
+  }
+  #loader-text-9 {
+    animation-delay: 1.94s;
+  }
+  #loader-text-10 {
+    animation-delay: 2.09s;
+  }
+  #loader-text-11 {
+    animation-delay: 2.24s;
+  }
+  #loader-text-12 {
+    animation-delay: 2.39s;
+  }
+  #loader-text-13 {
+    animation-delay: 2.54s;
+  }
+  #loader-text-14 {
+    animation-delay: 2.69s;
+  }
+  #loader-text-15 {
+    animation-delay: 2.84s;
+  }
+  #loader-text-16 {
+    animation-delay: 2.99s;
+  }
+
+  #loader-text-4,
+  #loader-text-10 {
+    margin-left: 15px;
+  }
+
+  @keyframes bounceLoaderText {
+    0% {
+      transform: scale(1);
+      color: rgb(255, 255, 255);
+    }
+
+    100% {
+      transform: scale(0.5);
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    .loader-text {
+      font-size: 2.4rem;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .loader-text {
+      font-size: 2.8rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .loader-text {
+      font-size: 3rem;
+    }
+  }
+}

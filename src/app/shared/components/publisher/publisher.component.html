@@ -1,16 +1,23 @@
-<div class="publisher">
-  <sn-avatar [user]="user"></sn-avatar>
-  <div class="publisher-text">
+<div class="d-flex flex-wrap">
+  <sn-avatar [user]="user" height="50px"></sn-avatar>
+  <div class="flex-grow-1 ml-2 mr-2">
     <textarea
+      class="form-control"
+      name="content"
       snTextArea
-      rows="1"
       [placeholder]="placeholder"
       [(ngModel)]="content"
       (keydown)="exploreKeyPressed($event)"
+      [style.minHeight.px]="minHeight"
+      [style.height.px]="minHeight"
       #text
     ></textarea>
   </div>
-  <button (click)="publishStatus()">
-    <fa-icon [icon]="faCaretSquareRight"></fa-icon>
+  <button
+    class="btn btn-info"
+    (click)="publishStatus()"
+    [style.height.px]="buttonHeight"
+  >
+    Publish
   </button>
 </div>

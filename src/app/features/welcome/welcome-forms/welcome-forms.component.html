@@ -1,0 +1,27 @@
+<section class="p-5 bg-white rounded">
+  <ul class="nav nav-tabs justify-content-center mb-2">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="isRegisterFormVisible"
+        (click)="toggleForm(true)"
+        >Register</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="!isRegisterFormVisible"
+        (click)="toggleForm(false)"
+        >Login</a
+      >
+    </li>
+  </ul>
+
+  <div *snIf="isRegisterFormVisible">
+    <sn-register></sn-register>
+  </div>
+  <div class="login-form" *snIf="!isRegisterFormVisible">
+    <sn-login></sn-login>
+  </div>
+</section>

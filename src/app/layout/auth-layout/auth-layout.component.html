@@ -1,0 +1,22 @@
+<section
+  class="d-flex flex-column h-100 align-items-center justify-content-center p-2"
+>
+  <div class="col-sm-10 col-md-8 col-lg-4 border border-primary rounded-lg p-5">
+    <router-outlet></router-outlet>
+
+    <!-- https://toddmotto.com/angular-ngif-else-then -->
+    <ng-container *ngIf="isLogin; then login; else register"> </ng-container>
+
+    <ng-template #login>
+      <a class="d-flex justify-content-end mt-2" routerLink="/register"
+        ><span>Don't have an account. Create one</span></a
+      >
+    </ng-template>
+
+    <ng-template #register>
+      <a class="d-flex justify-content-end mt-2" routerLink="/login"
+        ><span>Already have an account? Login</span></a
+      >
+    </ng-template>
+  </div>
+</section>

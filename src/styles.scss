@@ -1,0 +1,36 @@
+/*! `Custom` Bootstrap 4 theme *
+/* https://themestr.app */
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+$headings-font-family: Oswald;
+$primary: #2f3c48;
+$secondary: #6f7f8c;
+$success: #3e4d59;
+$danger: #cc330d;
+$info: #5c8f94;
+$warning: #6e9fa5;
+$light: #eceeec;
+$dark: #1e2b37;
+$enable-gradients: false;
+$spacer: 1rem;
+$border-width: 3px;
+$btn-border-radius: 0.25rem;
+$enable-responsive-font-sizes: true;
+
+@import '~node_modules/bootstrap/scss/bootstrap.scss';
+
+.ng-touched.ng-invalid {
+  @extend .is-invalid;
+}
+
+.ng-touched.ng-valid {
+  @extend .is-valid;
+}
+
+.is-invalid,
+.is-valid {
+  .invalid-feedback {
+    display: block;
+  }
+}

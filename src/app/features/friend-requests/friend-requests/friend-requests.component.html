@@ -1,0 +1,26 @@
+<ng-container *ngIf="(requests$ | async) as requests"
+  ><div class="card text-white bg-dark mb-3" *ngIf="requests.length">
+    <div class="card-header">Friend Requests</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item bg-dark p-0"
+          *ngFor="let request of requests"
+        >
+          <div class="d-flex align-items-center mt-2 mb-2">
+            <sn-avatar [user]="request" width="50px" height="50px"></sn-avatar>
+            <div class="ml-2">
+              <p>{{ request.fullName }}</p>
+              <button
+                class="btn btn-outline-light btn-sm"
+                (click)="acceptRequest(request)"
+              >
+                Accept request
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div></ng-container
+>
