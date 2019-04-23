@@ -29,7 +29,10 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError(error => {
         console.log('HTTP ERROR: ', error);
-        if (error.status === 401) {
+        if (
+          error.url.indexOf('/account/login') === -1 &&
+          error.status === 401
+        ) {
           this.authStore.logout();
           this.router.navigate(['/login']);
         } else if (
