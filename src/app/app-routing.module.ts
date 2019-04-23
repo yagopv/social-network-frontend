@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuard } from './auth/services/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { NotificationComponent } from './shared/components/notification/notification.component';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 
 const routes: Routes = [
   {
@@ -13,21 +14,41 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: './welcome/welcome.module#WelcomeModule'
+    component: AuthLayoutComponent,
+    children: [
+      { path: '', loadChildren: './features/login/login.module#LoginModule' },
+      {
+        path: '',
+        loadChildren: './features/register/register.module#RegisterModule'
+      }
+    ]
   },
   {
     path: '',
-    loadChildren: './about/about.module#AboutModule'
+    loadChildren: './features/welcome/welcome.module#WelcomeModule'
   },
   {
     path: '',
+    component: MainLayoutComponent,
     canActivate: [AuthGuard],
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
+    children: [
+      {
+        path: '',
+        loadChildren: './features/my-account/my-account.module#MyAccountModule'
+      },
+      {
+        path: '',
+        loadChildren: './features/wall/wall.module#WallModule'
+      },
+      {
+        path: '',
+        loadChildren: './features/friends/friends.module#FriendsModule'
+      }
+    ]
   },
   {
-    path: 'notification/:notificationName',
-    component: NotificationComponent,
-    outlet: 'popup'
+    path: '',
+    loadChildren: './features/about/about.module#AboutModule'
   },
   { path: '**', component: NotFoundComponent }
 ];

@@ -1,0 +1,91 @@
+<form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
+  <div class="form-group">
+    <label for="fullName"></label>
+    <input
+      id="fullName"
+      class="form-control"
+      type="text"
+      placeholder="Name"
+      formControlName="fullName"
+    />
+    <sn-validation-messages
+      [control]="updateProfileForm.get('fullName')"
+    ></sn-validation-messages>
+  </div>
+
+  <div formGroupName="preferences">
+    <div class="form-group">
+      <label for="description"></label>
+      <textarea
+        id="description"
+        class="form-control"
+        rows="10"
+        placeholder="Tell us something about you"
+        formControlName="description"
+        snNullDefault
+      ></textarea>
+      <sn-validation-messages
+        [control]="updateProfileForm.get('preferences.description')"
+      ></sn-validation-messages>
+    </div>
+
+    <div class="form-group">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="isPublicProfile"
+          formControlName="isPublicProfile"
+        />
+        <label class="form-check-label" for="isPublicProfile">
+          Is your profile public?
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="linkedIn"></label>
+      <input
+        id="linkedIn"
+        type="text"
+        class="form-control"
+        placeholder="Enter you LinkedIn public profile"
+        formControlName="linkedIn"
+        snNullDefault
+      />
+      <sn-validation-messages
+        [control]="updateProfileForm.get('preferences.linkedIn')"
+      ></sn-validation-messages>
+    </div>
+    <div class="form-group">
+      <label for="twitter"></label>
+      <input
+        id="twitter"
+        type="text"
+        class="form-control"
+        placeholder="Enter you Twitter public profile"
+        formControlName="twitter"
+        snNullDefault
+      />
+      <sn-validation-messages
+        [control]="updateProfileForm.get('preferences.twitter')"
+      ></sn-validation-messages>
+    </div>
+    <div class="form-group">
+      <label for="github"></label>
+      <input
+        id="github"
+        type="text"
+        class="form-control"
+        placeholder="Enter you Github public profile"
+        formControlName="github"
+        snNullDefault
+      />
+      <sn-validation-messages
+        [control]="updateProfileForm.get('preferences.github')"
+      ></sn-validation-messages>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Update profile</button>
+</form>

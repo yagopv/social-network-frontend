@@ -1,0 +1,19 @@
+<div class="container-fluid mt-5">
+  <sn-search-user (search)="searchUsers($event)"></sn-search-user>
+
+  <div class="row" *ngIf="(friends$ | async) as friends">
+    <div
+      class="col-xs-12 col-md-6 col-xl-4 my-2"
+      *ngFor="let friend of friends"
+    >
+      <sn-friend
+        @listItems
+        [friend]="friend"
+        (accept)="acceptFriendRequest($event, friend)"
+        (add)="addFriend($event, friend)"
+        (remove)="removeFriend($event)"
+        (click)="navigateToWall(friend.uuid)"
+      ></sn-friend>
+    </div>
+  </div>
+</div>

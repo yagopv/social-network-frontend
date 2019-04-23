@@ -1,0 +1,10 @@
+@import '~src/styles.scss';
+
+@include media-breakpoint-up(lg) {
+  .container-fluid {
+    height: 100%;
+    .row {
+      height: 100%;
+    }
+  }
+}

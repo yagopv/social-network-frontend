@@ -1,0 +1,26 @@
+<ng-container *ngIf="control.invalid && (control.dirty || control.touched)">
+  <div class="invalid-feedback" *ngIf="control.hasError('required')">
+    <i class="fa fa-exclamation-triangle"> </i> This field is mandatory
+  </div>
+  <div class="invalid-feedback" *ngIf="control.hasError('minlength')">
+    <i class="fa fa-exclamation-triangle"> </i> The length is invalid
+  </div>
+  <div class="invalid-feedback" *ngIf="control.hasError('malformedMail')">
+    <i class="fa fa-exclamation-triangle"> </i> The Email is not valid
+  </div>
+  <div class="invalid-feedback" *ngIf="control.hasError('malformedUrl')">
+    <i class="fa fa-exclamation-triangle"> </i> The URL is not valid
+  </div>
+  <div class="invalid-feedback" *ngIf="control.hasError('emailExists')">
+    <i class="fa fa-exclamation-triangle"> </i> The email already is taken
+  </div>
+</ng-container>
+<ng-container *ngIf="group?.invalid && (group?.dirty || group?.touched)">
+  <div
+    class="invalid-feedback"
+    *ngIf="control.valid && group.hasError('passwordMismatch')"
+  >
+    <i class="fa fa-exclamation-triangle"></i>
+    Password and confirmation not matching
+  </div>
+</ng-container>
