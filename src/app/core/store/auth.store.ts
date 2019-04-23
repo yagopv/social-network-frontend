@@ -35,6 +35,6 @@ export class AuthStore extends Store<AuthTokens> {
   }
 
   isAuthenticated() {
-    return !!this.state.accessToken;
+    return this.state && !!this.state.accessToken;
   }
 }
