@@ -1,0 +1,17 @@
+<div class="post-content-head">
+  <sn-avatar [user]="post.author" width="auto" height="auto"></sn-avatar>
+  <div>
+    <h4>
+      <a [routerLink]="getLink(post.author.uuid)"
+        ><b>{{ post.author.fullName }} </b></a
+      >
+      <ng-container *ngIf="post.author.uuid !== post.owner.uuid">
+        <fa-icon [icon]="arrowRight"></fa-icon>
+        <a [routerLink]="getLink(post.owner.uuid)"
+          ><b> {{ post.owner.fullName }}</b></a
+        >
+      </ng-container>
+    </h4>
+    <small>{{ post.createdAt | userFriendlyDate }}</small>
+  </div>
+</div>

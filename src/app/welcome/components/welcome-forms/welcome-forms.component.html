@@ -1,16 +1,16 @@
 <div>
   <ul>
     <li [class.selected]="isRegisterFormVisible">
-      <a href="" snPreventDefault (click)="toggleForm()">Register</a>
+      <a (click)="toggleForm(true)">Register</a>
     </li>
     <li [class.selected]="!isRegisterFormVisible">
-      <a href="" snPreventDefault (click)="toggleForm()">Login</a>
+      <a (click)="toggleForm(false)">Login</a>
     </li>
   </ul>
-  <div class="register-form" [hidden]="!isRegisterFormVisible">
+  <div class="register-form" *snIf="isRegisterFormVisible">
     <sn-register></sn-register>
   </div>
-  <div class="login-form" [hidden]="isRegisterFormVisible">
+  <div class="login-form" *snIf="!isRegisterFormVisible">
     <sn-login></sn-login>
   </div>
 </div>

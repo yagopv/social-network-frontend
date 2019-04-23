@@ -21,15 +21,24 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
         <p class="error-message" *ngIf="control.hasError('required')">
           <fa-icon [icon]="errorIcon"> </fa-icon> This field is mandatory
         </p>
+        <p class="error-message" *ngIf="control.hasError('minlength')">
+          <fa-icon [icon]="errorIcon"> </fa-icon> The length is invalid
+        </p>
         <p class="error-message" *ngIf="control.hasError('malformedMail')">
           <fa-icon [icon]="errorIcon"> </fa-icon> The Email is not valid
         </p>
         <p class="error-message" *ngIf="control.hasError('malformedUrl')">
           <fa-icon [icon]="errorIcon"> </fa-icon> The URL is not valid
         </p>
+        <p class="error-message" *ngIf="control.hasError('emailExists')">
+          <fa-icon [icon]="errorIcon"> </fa-icon> The email already is taken
+        </p>
       </ng-container>
       <ng-container *ngIf="group?.invalid && (group?.dirty || group?.touched)">
-        <p class="error-message" *ngIf="group.hasError('passwordMismatch')">
+        <p
+          class="error-message"
+          *ngIf="control.valid && group.hasError('passwordMismatch')"
+        >
           <fa-icon [icon]="errorIcon"></fa-icon>
           Password and confirmation not matching
         </p>

@@ -31,14 +31,13 @@ import { SetErrors } from '../../error/store/error.actions';
 import { FriendService } from '../services/friend.service';
 import { Navigate } from '@ngxs/router-plugin';
 import { Logout } from '../../auth/store/auth.actions';
-import { Friend } from '../../auth/models/profile.model';
 
 @State<Friends>({
   name: 'friends',
   defaults: {
-    friends: {},
-    userSearch: {},
-    requests: {}
+    friends: [],
+    userSearch: [],
+    requests: []
   }
 })
 export class FriendsState {
@@ -50,19 +49,19 @@ export class FriendsState {
 
   @Selector()
   static getSearchFriends({ friends, userSearch }: Friends) {
-    return [...Object.values(userSearch), ...Object.values(friends)];
+    return [...userSearch, ...friends];
   }
 
   @Selector()
   static getFriendRequests({ requests }: Friends) {
-    return Object.values(requests);
+    return requests;
   }
 
   static getFriend(uuid: string) {
     return createSelector(
       [FriendsState],
       (state: Friends) => {
-        return state.friends[uuid];
+        return state.friends.find(friend => friend.uuid === uuid);
       }
     );
   }
@@ -78,7 +77,11 @@ export class FriendsState {
     // Filter out myself and already friends
     return this.authService.search(searchTerm).pipe(
       map(users =>
-        users.filter(user => user.uuid !== currentUserId && !friends[user.uuid])
+        users.filter(
+          user =>
+            user.uuid !== currentUserId &&
+            !friends.find(friend => friend.uuid === user.uuid)
+        )
       ),
       tap(users => dispatch(new SearchUsersSuccess(users))),
       catchError(error => dispatch(new SearchUsersFailed(error.error)))
@@ -87,23 +90,18 @@ export class FriendsState {
 
   @Action(SearchUsersSuccess)
   searchUsersSuccess(
-    { patchState, getState }: StateContext<Friends>,
+    { patchState }: StateContext<Friends>,
     { users }: SearchUsersSuccess
   ) {
-    const friends = getState().friends;
     patchState({
-      userSearch: users.reduce((draft, user) => {
-        user.isMyFriend = friends[user.uuid] ? true : false;
-        draft[user.uuid] = user;
-        return draft;
-      }, {})
+      userSearch: users
     });
   }
 
   @Action(GetFriends)
   getFriends({ dispatch, patchState }: StateContext<Friends>) {
     patchState({
-      friends: {}
+      friends: []
     });
     return this.friendService.getFriends().pipe(
       tap(friends => dispatch(new GetFriendsSuccess(friends))),
@@ -117,11 +115,7 @@ export class FriendsState {
     { friends }: GetFriendsSuccess
   ) {
     patchState({
-      friends: friends.reduce((draft, friend) => {
-        friend.isMyFriend = true;
-        draft[friend.uuid] = friend;
-        return draft;
-      }, {})
+      friends
     });
   }
 
@@ -139,12 +133,7 @@ export class FriendsState {
     { requests }: GetFriendRequestsSuccess
   ) {
     patchState({
-      requests: requests.reduce((draft, request) => {
-        if (!request.request.confirmed) {
-          draft[request.uuid] = request;
-        }
-        return draft;
-      }, {})
+      requests: requests.filter(request => !request.request.confirmed)
     });
   }
 
@@ -164,21 +153,27 @@ export class FriendsState {
     { patchState, getState }: StateContext<Friends>,
     { uuid }: AcceptFriendRequestsSuccess
   ) {
-    const requests = getState().requests;
     patchState({
-      requests: Object.keys(requests).reduce((draft, requestId) => {
-        if (requestId !== uuid) {
-          draft[requestId] = requests[requestId];
+      friends: getState().friends.map(friend => {
+        if (friend.uuid === uuid) {
+          return {
+            ...friend,
+            request: {
+              ...friend.request,
+              confirmedAt: new Date().getTime()
+            }
+          };
         }
-        return draft;
-      }, {})
+        return friend;
+      }),
+      requests: getState().requests.filter(request => request.uuid !== uuid)
     });
   }
 
   @Action(AddFriend)
   addFriend({ dispatch }: StateContext<Friends>, { friend }: AddFriend) {
     return this.friendService.addFriend(friend).pipe(
-      tap(requests => dispatch(new AddFriendSuccess())),
+      tap(() => dispatch(new AddFriendSuccess())),
       catchError(error => dispatch(new AddFriendFailed(error.error)))
     );
   }
@@ -196,9 +191,9 @@ export class FriendsState {
   @Action(Logout)
   logout({ setState }: StateContext<Friends>) {
     setState({
-      friends: {},
-      userSearch: {},
-      requests: {}
+      friends: [],
+      userSearch: [],
+      requests: []
     });
   }
 

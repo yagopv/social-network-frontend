@@ -5,7 +5,6 @@ export interface Profile {
   avatarUrl: string;
   preferences: Preferences;
   friends: Friend[];
-  isMyFriend: boolean;
 }
 
 export interface Preferences {
@@ -19,7 +18,7 @@ export interface Preferences {
 export interface Friend {
   uuid: string;
   confirmed: boolean;
-  createdAt: Date;
-  confirmedAt: Date;
-  rejectedAt: Date;
+  createdAt: number;
+  confirmedAt: number;
+  rejectedAt: number;
 }

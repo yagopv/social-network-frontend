@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   siteName: 'hack a bos',
-  apiBaseUrl: 'http://localhost:8000/api'
+  apiBaseUrl: 'https://josesocialpoc.azurewebsites.net/api'
 };
 
 /*

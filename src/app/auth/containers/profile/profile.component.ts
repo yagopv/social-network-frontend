@@ -8,7 +8,7 @@ import { ErrorState } from '../../../error/store/error.state';
 import { Error } from '../../../error/models/error.model';
 import { AuthState } from '../../store/auth.state';
 import { Profile } from '../../models/profile.model';
-import { UrlValidator } from '../../../shared/validators/url.validator';
+import { UrlValidator } from '../..//validators/url.validator';
 import { UpdateUserProfile } from '../../store/auth.actions';
 
 @Component({

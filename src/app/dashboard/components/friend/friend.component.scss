@@ -13,8 +13,14 @@
   &:hover {
     transform: scale3d(1.1, 1.1, 1.1);
   }
+  &.pending {
+    background-color: $contrast;
+  }
   &.is-friend {
     background-color: $dark;
+  }
+  &.not-friend {
+    background-color: $main;
   }
   .friend-details {
     margin-left: 10px;

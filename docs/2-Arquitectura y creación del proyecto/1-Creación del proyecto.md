@@ -19,7 +19,7 @@ ng serve
 
 ```javascript
 // Instalar simple-reset-css
-npm install simple-reset-css --save
+npm install simple-css-reset --save
 
 // Añadir la hoja de estilos en `angular.json` en arquitect/build/styles y configurar stylePreprocessorOptions scss
 ...

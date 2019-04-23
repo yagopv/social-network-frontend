@@ -17,6 +17,8 @@ import {
   LIST_ITEMS_ANIMATION
 } from '../../../shared/animations/list.animation';
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
+import { Store } from '@ngxs/store';
+import { DeletePost, AddComment, Like } from '../../store/post.actions';
 
 @Component({
   selector: 'sn-post',
@@ -29,29 +31,24 @@ export class PostComponent {
   @Input() post: Post;
   @Input() currentUser: Profile;
 
-  @Output() comment = new EventEmitter();
-  @Output() delete = new EventEmitter();
-  @Output() like = new EventEmitter();
-
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
 
   deleteCommentIcon: IconProp = faTrashAlt;
   commentsPage = 0;
   commentsPageSize = 3;
 
-  toggleLike() {
-    this.like.emit();
-  }
+  constructor(private store: Store) {}
 
-  addComment(content: string) {
-    this.comment.emit({
-      postId: this.post.id,
-      message: content
-    });
+  addComment(message: string) {
+    this.store.dispatch(new AddComment(this.post.id, message));
   }
 
   deletePost() {
-    this.delete.emit(this.post.id);
+    this.store.dispatch(new DeletePost(this.post.id));
+  }
+
+  toggleLike() {
+    this.store.dispatch(new Like(this.post.id));
   }
 
   commentIdentity(index: number, comment: Comment) {

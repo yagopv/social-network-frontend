@@ -15,9 +15,6 @@ import { PostState } from '../../store/post.state';
 import {
   GetPosts,
   AddPost,
-  AddComment,
-  DeletePost,
-  Like,
   AddPostSuccess,
   AddCommentSuccess
 } from '../../store/post.actions';
@@ -42,7 +39,7 @@ import { PostComponent } from '../../components/post/post.component';
   animations: [LIST_ANIMATION, LIST_ITEMS_ANIMATION]
 })
 export class WallComponent implements OnInit {
-  @Select(PostState.getPosts) posts$: Observable<Post[]>;
+  @Select(PostState) posts$: Observable<Post[]>;
   @Select(AuthState.getUser) currentUser$: Observable<Profile>;
   @Select(ErrorState) errors$: Observable<Error>;
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
@@ -62,7 +59,7 @@ export class WallComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // We should subscribe as Angular does not renrender if only the param of thhe route change
+    // We should subscribe as Angular does not re render if only the param of the route change
     this.route.params.subscribe(routeParams => {
       this.store.dispatch(new GetPosts(routeParams.userId));
       if (routeParams.userId) {
@@ -75,7 +72,7 @@ export class WallComponent implements OnInit {
             }
           });
       } else {
-        this.placeholder = 'What are you thinking?';
+        this.placeholder = 'What are you thinking ?';
       }
       this.postPage = 0;
       this.element.nativeElement.parentElement.scrollTop = 0;
@@ -99,18 +96,6 @@ export class WallComponent implements OnInit {
   publishPost(content: string) {
     const uuid = this.friend && this.friend.uuid;
     this.store.dispatch(new AddPost({ content, uuid }));
-  }
-
-  addComment({ postId, message }: { postId: string; message: string }) {
-    this.store.dispatch(new AddComment(postId, message));
-  }
-
-  deletePost(uuid: string) {
-    this.store.dispatch(new DeletePost(uuid));
-  }
-
-  likePost(postId: string) {
-    this.store.dispatch(new Like(postId));
   }
 
   postIdentity(index: number, post: Post) {

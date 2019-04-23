@@ -8,7 +8,6 @@ import { NotFoundComponent } from '../shared/components/not-found/not-found.comp
 import { FormComponent } from '../shared/components/form/form.component';
 import { ClickPreventDefaultDirective } from './directives/click-prevent-default.directive';
 import { FormControlComponent } from './components/form/form-control.component';
-import { MailValidatorDirective } from './validators/mail.validator';
 import { PublisherComponent } from './components/publisher/publisher.component';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MeComponent } from './components/me/me.component';
@@ -23,6 +22,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ClockComponent } from './components/clock/clock.component';
 import { PagerComponent } from './components/pager/pager.component';
 import { NullDefaultDirective } from './directives/null-default.directive';
+import { IfDirective } from './directives/if.directive';
+import { ColorizerDirective } from './directives/colorizer.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
@@ -31,7 +32,6 @@ import { NullDefaultDirective } from './directives/null-default.directive';
     FormComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
-    MailValidatorDirective,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
@@ -45,14 +45,15 @@ import { NullDefaultDirective } from './directives/null-default.directive';
     LoaderComponent,
     ClockComponent,
     PagerComponent,
-    NullDefaultDirective
+    NullDefaultDirective,
+    IfDirective,
+    ColorizerDirective
   ],
   exports: [
     NotFoundComponent,
     FormComponent,
     ClickPreventDefaultDirective,
     FormControlComponent,
-    MailValidatorDirective,
     PublisherComponent,
     UserFriendlyDatePipe,
     MeComponent,
@@ -66,7 +67,9 @@ import { NullDefaultDirective } from './directives/null-default.directive';
     LoaderComponent,
     ClockComponent,
     PagerComponent,
-    NullDefaultDirective
+    NullDefaultDirective,
+    IfDirective,
+    ColorizerDirective
   ]
 })
 export class SharedModule {}

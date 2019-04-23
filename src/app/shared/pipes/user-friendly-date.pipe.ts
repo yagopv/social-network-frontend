@@ -7,6 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class UserFriendlyDatePipe implements PipeTransform {
   transform(value: any, args?: any): any {
     if (value) {
+      // The + operator returns the numeric representation of the object. So in your particular case,
+      // it would appear to be predicating the if on whether or not d is a non-zero number.
       const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
       if (seconds < 29) {
         return 'Just now';

@@ -8,12 +8,13 @@ import { RegisterRequest } from '../models/register-request.model';
 import { Profile } from '../models/profile.model';
 import { UserProfileResponse } from '../models/user-profile-response.model';
 import { LoginResponse } from '../models/login-response.model';
+import { LoginRequest } from '../models/login-request.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login({ email, password }: LoginModel) {
+  login({ email, password }: LoginRequest) {
     return this.http
       .post<LoginResponse>(`${environment.apiBaseUrl}/account/login`, {
         email,
@@ -34,7 +35,7 @@ export class AuthService {
       );
   }
 
-  async loginWithPromise({ email, password }: LoginModel) {
+  async loginWithPromise({ email, password }: LoginRequest) {
     return this.http
       .post<LoginResponse>(`${environment.apiBaseUrl}/account/login`, {
         email,
@@ -55,7 +56,7 @@ export class AuthService {
   }
 
   register(register: RegisterRequest) {
-    return this.http.post<any>(`${environment.apiBaseUrl}/account`, register);
+    return this.http.post(`${environment.apiBaseUrl}/account`, register);
   }
 
   getUserProfile() {
@@ -64,6 +65,16 @@ export class AuthService {
 
   updateUserProfile(profile: Profile) {
     return this.http.put<Profile>(`${environment.apiBaseUrl}/user`, profile);
+  }
+
+  emailExist(email: string) {
+    return this.http.post<{ email: string }>(
+      `${environment.apiBaseUrl}/account/check`,
+      {
+        email
+      },
+      { observe: 'response' }
+    );
   }
 
   logout() {

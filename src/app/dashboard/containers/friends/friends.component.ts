@@ -3,7 +3,11 @@ import { Select, Store } from '@ngxs/store';
 import { FriendsState } from '../../store/friend.state';
 import { Friends } from '../../models/friends.model';
 import { Observable } from 'rxjs';
-import { GetFriends, AddFriend } from '../../store/friend.actions';
+import {
+  GetFriends,
+  AddFriend,
+  AcceptFriendRequests
+} from '../../store/friend.actions';
 import { LIST_ITEMS_ANIMATION } from '../../../shared/animations/list.animation';
 import { Router } from '@angular/router';
 
@@ -19,6 +23,10 @@ export class FriendsComponent implements OnInit {
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit() {}
+
+  acceptFriendRequest(uuid: string) {
+    this.store.dispatch(new AcceptFriendRequests(uuid));
+  }
 
   addFriend(uuid: string) {
     this.store.dispatch(new AddFriend(uuid));

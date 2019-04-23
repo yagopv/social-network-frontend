@@ -31,7 +31,7 @@ export class PublisherComponent {
 
   resetContent() {
     this.content = '';
-    // This is necesary because the post has the OnPush strategy
+    // This is necessary because the post has the OnPush strategy
     this.changeDetector.markForCheck();
   }
 
