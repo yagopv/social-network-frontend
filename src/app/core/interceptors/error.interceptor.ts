@@ -33,8 +33,8 @@ export class ErrorInterceptor implements HttpInterceptor {
           error.url.indexOf('/account/login') === -1 &&
           error.status === 401
         ) {
-          this.authStore.logout();
           this.router.navigate(['/login']);
+          this.authStore.logout();
         } else if (
           error.status === 403 &&
           error.url.indexOf('/user/wall') !== -1
