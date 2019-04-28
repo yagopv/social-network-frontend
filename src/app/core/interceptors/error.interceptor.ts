@@ -30,8 +30,9 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError(error => {
         console.log('HTTP ERROR: ', error);
         if (
-          error.url.indexOf('/account/login') === -1 &&
-          error.status === 401
+          (error.url.indexOf('/account/login') === -1 &&
+            error.status === 401) ||
+          (error.url.indexOf('/user') !== -1 && error.status === 404)
         ) {
           this.router.navigate(['/login']);
           this.authStore.logout();

@@ -1,6 +1,6 @@
 <form
   [formGroup]="registerForm"
-  (ngSubmit)="register()"
+  (ngSubmit)="submitButton.focus(); register()"
   (keyup.enter)="register()"
 >
   <div class="form-group">
@@ -56,7 +56,11 @@
       [group]="registerForm"
     ></sn-validation-messages>
   </div>
-  <button type="submit" class="btn btn-lg btn-outline-primary mt-2">
+  <button
+    type="submit"
+    class="btn btn-lg btn-outline-primary mt-2"
+    #submitButton
+  >
     Register
   </button>
 </form>

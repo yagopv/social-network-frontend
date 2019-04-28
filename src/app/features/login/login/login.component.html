@@ -1,4 +1,8 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login()">
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="submitButton.focus(); login()"
+  (keyup.enter)="login()"
+>
   <div class="form-group">
     <label for="email">Email</label>
     <input
@@ -26,7 +30,11 @@
       [control]="loginForm.get('password')"
     ></sn-validation-messages>
   </div>
-  <button type="submit" class="btn btn-lg btn-outline-primary mt-2">
+  <button
+    type="submit"
+    class="btn btn-lg btn-outline-primary mt-2"
+    #submitButton
+  >
     Login
   </button>
 </form>
