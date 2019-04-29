@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
 import { LoaderStore } from './core/store/loader.store';
-import { startWith, tap, delay } from 'rxjs/operators';
+import { startWith, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
