@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthStore } from '../store/auth.store';
 import { ToastService } from '../services/toast.service';
@@ -31,6 +31,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         console.log('HTTP ERROR: ', error);
         if (
           (error.url.indexOf('/account/login') === -1 &&
+            this.router.routerState.snapshot.url !== '/welcome' &&
             error.status === 401) ||
           (error.url.indexOf('/user') !== -1 && error.status === 404)
         ) {
