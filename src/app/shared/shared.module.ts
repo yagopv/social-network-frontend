@@ -17,6 +17,7 @@ import { IfDirective } from './directives/if.directive';
 import { ColorizerDirective } from './directives/colorizer.directive';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
+import { MarkAsTouchedDirective } from './directives/mark-as-touched.directive';
 
 @NgModule({
   imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
@@ -34,7 +35,8 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     IfDirective,
     ColorizerDirective,
     ValidationMessagesComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    MarkAsTouchedDirective
   ],
   exports: [
     NotFoundComponent,
@@ -50,7 +52,8 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     IfDirective,
     ColorizerDirective,
     ValidationMessagesComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    MarkAsTouchedDirective
   ]
 })
 export class SharedModule {}

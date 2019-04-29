@@ -2,6 +2,7 @@
   [formGroup]="registerForm"
   (ngSubmit)="submitButton.focus(); register()"
   (keyup.enter)="register()"
+  [snMarkAsTouched]="registerForm"
 >
   <div class="form-group">
     <label for="fullName">Name</label>

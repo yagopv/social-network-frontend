@@ -30,7 +30,6 @@ export class LoginComponent {
 
   login() {
     if (!this.loginForm.valid) {
-      this.markFormGroupTouched(this.loginForm);
       return;
     }
 
@@ -47,11 +46,5 @@ export class LoginComponent {
         this.router.navigate([returnUrl || '/wall']);
         this.userStore.getProfile().subscribe();
       });
-  }
-
-  private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-    });
   }
 }
