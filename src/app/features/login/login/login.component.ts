@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { catchError } from 'rxjs/operators';
+import { catchError, takeUntil } from 'rxjs/operators';
 
 import { MailValidator } from '../../../shared/validators/mail.validator';
 import { AuthStore } from '../../../core/store/auth.store';
 import { UserStore } from '../../../core/store/user.store';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'sn-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
+  unsubscribe$: Subject<void> = new Subject();
+
   loginForm = this.fb.group(
     {
       email: ['', [Validators.required, MailValidator]],
@@ -36,6 +39,7 @@ export class LoginComponent {
     this.authStore
       .login(this.loginForm.value)
       .pipe(
+        takeUntil(this.unsubscribe$),
         catchError(error => {
           this.loginForm.get('password').setValue('');
           return error;
@@ -46,5 +50,10 @@ export class LoginComponent {
         this.router.navigate([returnUrl || '/wall']);
         this.userStore.getProfile().subscribe();
       });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
