@@ -1,59 +1,40 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpErrorResponse,
-  HttpResponse,
   HttpRequest,
   HttpHandler,
-  HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpResponse
 } from '@angular/common/http';
+import { tap, catchError } from 'rxjs/operators';
 import { LoaderStore } from '../store/loader.store';
-import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
-  private requests: HttpRequest<any>[] = [];
+  private totalRequests = 0;
 
   constructor(private loaderStore: LoaderStore) {}
 
-  removeRequest(req: HttpRequest<any>) {
-    const i = this.requests.indexOf(req);
-    if (i >= 0) {
-      this.requests.splice(i, 1);
-    }
-    this.loaderStore.setLoading(this.requests.length > 0);
+  intercept(request: HttpRequest<any>, next: HttpHandler) {
+    this.totalRequests++;
+    this.loaderStore.setLoading(true);
+    return next.handle(request).pipe(
+      tap(res => {
+        if (res instanceof HttpResponse) {
+          this.decreaseRequests();
+        }
+      }),
+      catchError(error => {
+        this.decreaseRequests();
+        return throwError(error);
+      })
+    );
   }
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    this.requests.push(req);
-    this.loaderStore.setLoading(true);
-
-    return Observable.create(observer => {
-      const subscription = next.handle(req).subscribe(
-        event => {
-          if (event instanceof HttpResponse) {
-            this.removeRequest(req);
-            observer.next(event);
-          }
-        },
-        err => {
-          this.removeRequest(req);
-          observer.error(err);
-        },
-        () => {
-          this.removeRequest(req);
-          observer.complete();
-        }
-      );
-
-      // Teardown logic in case of cancelled requests
-      return () => {
-        this.removeRequest(req);
-        subscription.unsubscribe();
-      };
-    });
+  private decreaseRequests() {
+    this.totalRequests--;
+    if (this.totalRequests === 0) {
+      this.loaderStore.setLoading(false);
+    }
   }
 }

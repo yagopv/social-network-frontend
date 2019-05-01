@@ -1,7 +1,7 @@
 :host {
   display: block;
   #toast-container {
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     min-width: 300px;

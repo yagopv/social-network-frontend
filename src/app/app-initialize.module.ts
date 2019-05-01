@@ -8,7 +8,15 @@ export function loadUser(
 ) {
   return () => {
     if (localStorage.getItem('auth')) {
-      return userStore.getProfile().toPromise();
+      return new Promise((resolve, reject) => {
+        userStore
+          .getProfile()
+          .toPromise()
+          .then(data => resolve(data))
+          .catch(error => {
+            resolve(error);
+          });
+      });
     }
     return Promise.resolve();
   };

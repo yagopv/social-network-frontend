@@ -8,8 +8,7 @@ import { ModalService } from '../../../core/services/modal.service';
 
 @Component({
   selector: 'sn-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent {
   registerForm = this.fb.group(
@@ -31,7 +30,6 @@ export class RegisterComponent {
 
   register() {
     if (!this.registerForm.valid) {
-      this.markFormGroupTouched(this.registerForm);
       return;
     }
 
@@ -50,11 +48,5 @@ export class RegisterComponent {
           'Now, go to your email app and click on the provided link for activate your account'
         );
       });
-  }
-
-  private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-    });
   }
 }
