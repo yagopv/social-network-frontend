@@ -4,8 +4,7 @@ import { Comment } from '../wall.models';
 
 @Component({
   selector: 'sn-post-comment',
-  templateUrl: './post-comment.component.html',
-  styleUrls: ['./post-comment.component.scss']
+  templateUrl: './post-comment.component.html'
 })
 export class PostCommentComponent {
   @Input() comment: Comment;

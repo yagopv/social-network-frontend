@@ -11,16 +11,11 @@ slidenumbers: true
 
 ---
 
-# Mi nombre es Yago
-
----
-
 ![right fit](https://www.territorimac.com/wp-content/uploads/2017/08/what-is-accenture.jpg)
 
 ## Accenture
 
 - Jefe de equipo en Banc Sabadell
-- Desarrollo aplicaciones bancarias
 - Proyectos en el area de seguros
 
 ---
@@ -29,8 +24,7 @@ slidenumbers: true
 
 ## Mango
 
-- Departamento de contabilidad e innovación
-- Desarrollo aplicaciones internas
+- Departamentos de Contabilidad e Innovación
 - Desarrollo aplicaciones internas contables y mango.com
 
 ---
@@ -40,7 +34,7 @@ slidenumbers: true
 ## Everis
 
 - PM - Industria
-- Web - Maestros financieros en Inditex
+- Web - Maestros financieros en Inditex (Contabilidad, Tipos de cambio, Empresas)
 - Consultoría estratégica en Estrella Galicia
 
 ---
