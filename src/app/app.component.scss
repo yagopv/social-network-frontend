@@ -1,12 +1,12 @@
 @import '~src/styles.scss';
 
 :host {
-  #grid-container {
+  .grid-container {
     display: block;
   }
 
   @include media-breakpoint-up(sm) {
-    #grid-container {
+    .grid-container {
       display: grid;
       height: 100vh;
       grid-template-rows: auto 1fr auto;
