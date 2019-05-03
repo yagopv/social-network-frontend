@@ -24,8 +24,9 @@ slidenumbers: true
 
 ## Mango
 
-- Departamentos de Contabilidad e Innovación
-- Desarrollo aplicaciones internas contables y mango.com
+- I+D 
+- Aplicaciones intranet (Contabilidad)
+- mango.com
 
 ---
 
@@ -33,7 +34,7 @@ slidenumbers: true
 
 ## Everis
 
-- PM - Industria
+- Industria
 - Web - Maestros financieros en Inditex (Contabilidad, Tipos de cambio, Empresas)
 - Consultoría estratégica en Estrella Galicia
 
