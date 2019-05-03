@@ -51,6 +51,39 @@ const posts: Array<Post> = [new Post()];
 
 ---
 
+## Generics
+
+```javascript
+// Sin generics => Ligado a number
+function identity(arg: number): number {
+    return arg;
+}
+```
+
+```javascript
+// Puedo usar any
+function identity(arg: any): any {
+    return arg;
+}
+```
+
+---
+
+## Generics
+
+```javascript
+// Pero mejor un generic
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let output = identity<string>("myString");
+let output = identity("myString"); // Inference
+
+```
+
+---
+
 ## any
 
 ```javascript
