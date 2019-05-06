@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { MailValidator } from '../../../shared/validators/mail.validator';
-import { MatchPasswordValidator } from '../../../shared/validators/match-password.validator';
-import { EmailExistValidator } from '../../../shared/validators/email-exist.validator';
+import { Component, OnDestroy } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MailValidator } from '../../validators/mail.validator';
+import { MatchPasswordValidator } from '../../validators/match-password.validator';
+import { EmailExistValidator } from '../../validators/email-exist.validator';
 import { AuthStore } from '../../../core/store/auth.store';
 import { ModalService } from '../../../core/services/modal.service';
 import { Subject } from 'rxjs';

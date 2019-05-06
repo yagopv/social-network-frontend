@@ -5,6 +5,8 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { RegisterComponent } from './shared/components/register/register.component';
 
 const routes: Routes = [
   {
@@ -13,19 +15,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      { path: '', loadChildren: './features/login/login.module#LoginModule' },
-      {
-        path: '',
-        loadChildren: './features/register/register.module#RegisterModule'
-      }
-    ]
+    path: 'welcome',
+    loadChildren: './features/welcome/welcome.module#WelcomeModule'
   },
   {
-    path: '',
-    loadChildren: './features/welcome/welcome.module#WelcomeModule'
+    path: 'about',
+    loadChildren: './features/about/about.module#AboutModule'
   },
   {
     path: '',
@@ -33,22 +28,37 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: '',
+        path: 'my-account',
         loadChildren: './features/my-account/my-account.module#MyAccountModule'
       },
       {
-        path: '',
+        path: 'friends',
+        loadChildren: './features/friends/friends.module#FriendsModule'
+      },
+      {
+        path: 'wall',
         loadChildren: './features/wall/wall.module#WallModule'
       },
       {
-        path: '',
-        loadChildren: './features/friends/friends.module#FriendsModule'
+        path: 'private-wall',
+        loadChildren:
+          './features/private-wall/private-wall.module#PrivateWallModule'
       }
     ]
   },
   {
     path: '',
-    loadChildren: './features/about/about.module#AboutModule'
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      }
+    ]
   },
   { path: '**', component: NotFoundComponent }
 ];

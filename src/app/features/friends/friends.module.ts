@@ -6,7 +6,7 @@ import { SearchUserComponent } from './search-user/search-user.component';
 import { FriendComponent } from './friend/friend.component';
 import { SharedModule } from '../../shared/shared.module';
 
-const routes: Routes = [{ path: 'friends', component: FriendsComponent }];
+const routes: Routes = [{ path: '', component: FriendsComponent }];
 
 @NgModule({
   declarations: [FriendComponent, FriendsComponent, SearchUserComponent],

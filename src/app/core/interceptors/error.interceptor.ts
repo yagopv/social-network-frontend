@@ -41,12 +41,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           error.status === 403 &&
           error.url.indexOf('/user/wall') !== -1
         ) {
-          this.router.navigate([
-            '/user',
-            error.url.split('/').pop(),
-            'private',
-            'wall'
-          ]);
+          this.router.navigate(['/private-wall', error.url.split('/').pop()]);
         } else {
           if (
             error &&

@@ -56,6 +56,6 @@ export class FriendsComponent implements OnInit {
   }
 
   navigateToWall(uuid: string) {
-    this.router.navigate(['/user', uuid, 'wall']);
+    this.router.navigate(['/wall', uuid]);
   }
 }

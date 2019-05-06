@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { catchError, takeUntil } from 'rxjs/operators';
 
-import { MailValidator } from '../../../shared/validators/mail.validator';
+import { MailValidator } from '../../validators/mail.validator';
 import { AuthStore } from '../../../core/store/auth.store';
 import { UserStore } from '../../../core/store/user.store';
 import { ActivatedRoute, Router } from '@angular/router';
