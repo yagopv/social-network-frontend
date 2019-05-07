@@ -11,7 +11,7 @@ slidenumbers: true
 
 - Se basan en la creación de modelos de datos en clases
 - Inmutables. Cada cambio en el estado de un form devuelve un nuevo estado => Eficiencia
-- La implementación esta basada en Observables (Pueden accederse de forma síncrona) 
+- La implementación esta basada en Observables 
 - Facilitan el testing al estar basados en modelos de datos
 - Lo que programo es lo que va a pasar y por tanto puedo depurarlo. Tengo el control
 

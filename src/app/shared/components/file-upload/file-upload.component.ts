@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
 
 import { interval } from 'rxjs';
 import { take } from 'rxjs/operators';
