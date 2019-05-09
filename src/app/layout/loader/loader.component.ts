@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnDestroy,
+  AfterViewChecked,
+  ChangeDetectorRef
+} from '@angular/core';
 
 @Component({
   selector: 'sn-loader',
@@ -6,6 +13,8 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent implements OnInit, OnDestroy {
+  constructor() {}
+
   ngOnInit() {
     document.body.style.overflow = 'hidden';
   }

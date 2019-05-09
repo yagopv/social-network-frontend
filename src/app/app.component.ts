@@ -15,12 +15,7 @@ export class AppComponent implements OnInit {
   isLoading$: Observable<boolean>;
   @HostBinding('id') routeId;
 
-  constructor(public loaderStore: LoaderService, private router: Router) {
-    this.isLoading$ = this.loaderStore.state$.pipe(
-      startWith(false),
-      delay(0)
-    );
-  }
+  constructor(public loaderService: LoaderService, private router: Router) {}
 
   ngOnInit() {
     // Set a general id in order to use host-context

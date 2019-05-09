@@ -1,15 +1,14 @@
-import { Store } from '../../shared/store/store';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoaderService extends Store<boolean> {
-  constructor() {
-    super(false);
-  }
+export class LoaderService {
+  isLoading = false;
 
-  setLoading(isLoading: boolean) {
-    this.setState(isLoading);
+  setLoading(isLoading) {
+    setTimeout(() => {
+      this.isLoading = isLoading;
+    });
   }
 }

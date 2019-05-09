@@ -3,15 +3,16 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
 import { AuthTokens } from '../core.models';
-import { Store } from '../../shared/store/store';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService extends Store<AuthTokens> {
+export class AuthService {
+  tokens: AuthTokens;
+
   constructor(private http: HttpClient) {
-    super({ ...JSON.parse(localStorage.getItem('auth')) });
+    this.tokens = { ...JSON.parse(localStorage.getItem('auth')) };
   }
 
   login({ email, password }: { email: string; password: string }) {
@@ -22,7 +23,7 @@ export class AuthService extends Store<AuthTokens> {
       })
       .pipe(
         tap(authTokens => {
-          this.setState(authTokens);
+          this.tokens = authTokens;
           localStorage.setItem('auth', JSON.stringify(authTokens));
         })
       );
@@ -44,10 +45,10 @@ export class AuthService extends Store<AuthTokens> {
 
   logout() {
     localStorage.removeItem('auth');
-    this.setState(null);
+    this.tokens = null;
   }
 
   isAuthenticated() {
-    return this.state && !!this.state.accessToken;
+    return this.tokens && !!this.tokens.accessToken;
   }
 }

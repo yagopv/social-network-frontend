@@ -12,15 +12,16 @@ export class MyAccountComponent {
 
   constructor(
     private router: Router,
-    private userStore: UserService,
+    private userService: UserService,
     private authService: AuthService
   ) {
-    this.userStore.state$.subscribe(user => {
-      if (user && user.avatarUrl !== undefined) {
-        this.profileImageUrl =
-          user.avatarUrl || `https://api.adorable.io/avatars/128/${user.uuid}`;
-      }
-    });
+    const { currentUser } = this.userService;
+
+    if (currentUser && currentUser.avatarUrl !== undefined) {
+      this.profileImageUrl =
+        currentUser.avatarUrl ||
+        `https://api.adorable.io/avatars/128/${currentUser.uuid}`;
+    }
   }
 
   logout() {

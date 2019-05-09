@@ -8,18 +8,12 @@ import { UserService } from '../../core/services/user.service';
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss']
 })
-export class MainLayoutComponent implements OnInit {
-  user$;
-
+export class MainLayoutComponent {
   constructor(
     private router: Router,
-    private userStore: UserService,
+    public userService: UserService,
     private authService: AuthService
   ) {}
-
-  ngOnInit() {
-    this.user$ = this.userStore.state$;
-  }
 
   logout() {
     this.authService.logout();

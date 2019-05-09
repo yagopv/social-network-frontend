@@ -6,19 +6,18 @@ import { environment } from '../../../environments/environment';
 import { Post } from './wall.models';
 import { UserService } from '../../core/services/user.service';
 import { FriendService } from '../../core/services/friends.service';
-import { Store } from '../../shared/store/store';
 import { tap } from 'rxjs/operators';
 import { SocialNetworkUser } from '../../core/core.models';
 
 @Injectable()
-export class WallService extends Store<Post[]> {
+export class WallService {
+  posts: Post[] = [];
+
   constructor(
     private http: HttpClient,
     private userService: UserService,
     private friendsService: FriendService
-  ) {
-    super([]);
-  }
+  ) {}
 
   getWall(userId?: string): Observable<Post[]> {
     const path = userId ? `/${userId}` : '';
@@ -26,21 +25,19 @@ export class WallService extends Store<Post[]> {
     return this.http
       .get<Post[]>(`${environment.apiBaseUrl}/user/wall${path}`)
       .pipe(
-        tap(posts =>
-          this.setState(
-            posts.sort((p1, p2) => {
-              return p2.createdAt - p1.createdAt;
-            })
-          )
-        )
+        tap(posts => {
+          this.posts = posts.sort((p1, p2) => {
+            return p2.createdAt - p1.createdAt;
+          });
+        })
       );
   }
 
   addPost(content: string, userId?: string): Observable<Post> {
     const path = userId ? `/${userId}` : '';
 
-    const currentUser = this.userService.state;
-    const friends = this.friendsService.state;
+    const { currentUser } = this.userService;
+    const { friends } = this.friendsService;
 
     return this.http
       .post<Post>(`${environment.apiBaseUrl}/post${path}`, {
@@ -55,17 +52,17 @@ export class WallService extends Store<Post[]> {
               ? friends.find(friend => friend.uuid === userId)
               : currentUser
           };
-          this.setState([newPost, ...this.state]);
+          this.posts = [newPost, ...this.posts];
         })
       );
   }
 
   deletePost(uuid: string) {
-    return this.http
-      .delete(`${environment.apiBaseUrl}/post/${uuid}`)
-      .pipe(
-        tap(() => this.setState(this.state.filter(post => post.id !== uuid)))
-      );
+    return this.http.delete(`${environment.apiBaseUrl}/post/${uuid}`).pipe(
+      tap(() => {
+        this.posts = this.posts.filter(post => post.id !== uuid);
+      })
+    );
   }
 
   addComment(postId: string, message: string, user: SocialNetworkUser) {
@@ -86,40 +83,36 @@ export class WallService extends Store<Post[]> {
       })
       .pipe(
         tap(() => {
-          this.setState(
-            this.state.map(post => {
-              if (post.id === postId) {
-                return {
-                  ...post,
-                  comments: [newComment, ...post.comments]
-                };
-              }
-              return post;
-            })
-          );
+          this.posts = this.posts.map(post => {
+            if (post.id === postId) {
+              return {
+                ...post,
+                comments: [newComment, ...post.comments]
+              };
+            }
+            return post;
+          });
         })
       );
   }
 
   like(postId: string, user: SocialNetworkUser) {
-    const targetPost = this.state.find(post => post.id === postId);
+    const targetPost = this.posts.find(post => post.id === postId);
     if (targetPost) {
       if (targetPost.likes.indexOf(user.uuid) === -1) {
         return this.http
           .post(`${environment.apiBaseUrl}/post/${postId}/like`, {})
           .pipe(
             tap(() => {
-              this.setState(
-                this.state.map(post => {
-                  if (post.id === postId) {
-                    return {
-                      ...post,
-                      likes: [...post.likes, user.uuid]
-                    };
-                  }
-                  return post;
-                })
-              );
+              this.posts = this.posts.map(post => {
+                if (post.id === postId) {
+                  return {
+                    ...post,
+                    likes: [...post.likes, user.uuid]
+                  };
+                }
+                return post;
+              });
             })
           );
       } else {
@@ -127,17 +120,15 @@ export class WallService extends Store<Post[]> {
           .delete(`${environment.apiBaseUrl}/post/${postId}/like`, {})
           .pipe(
             tap(() => {
-              this.setState(
-                this.state.map(post => {
-                  if (post.id === postId) {
-                    return {
-                      ...post,
-                      likes: post.likes.filter(uuid => uuid !== user.uuid)
-                    };
-                  }
-                  return post;
-                })
-              );
+              this.posts = this.posts.map(post => {
+                if (post.id === postId) {
+                  return {
+                    ...post,
+                    likes: post.likes.filter(uuid => uuid !== user.uuid)
+                  };
+                }
+                return post;
+              });
             })
           );
       }

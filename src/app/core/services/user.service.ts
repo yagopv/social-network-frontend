@@ -3,16 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { SocialNetworkUser, Preferences } from '../core.models';
-import { Store } from '../../shared/store/store';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService extends Store<SocialNetworkUser> {
-  constructor(private http: HttpClient) {
-    super(null);
-  }
+export class UserService {
+  currentUser: SocialNetworkUser = null;
+
+  constructor(private http: HttpClient) {}
 
   getUserProfile() {
     return this.http
@@ -21,19 +20,23 @@ export class UserService extends Store<SocialNetworkUser> {
         avatarUrl: string;
         preferences: Preferences;
       }>(`${environment.apiBaseUrl}/user`)
-      .pipe(tap(user => this.setState({ ...this.state, ...user })));
+      .pipe(
+        tap(user => {
+          this.currentUser = { ...this.currentUser, ...user };
+        })
+      );
   }
 
   updateUserProfile(profile: SocialNetworkUser) {
     return this.http
       .put<SocialNetworkUser>(`${environment.apiBaseUrl}/user`, profile)
       .pipe(
-        tap(() =>
-          this.setState({
-            ...this.state,
+        tap(() => {
+          this.currentUser = {
+            ...this.currentUser,
             ...profile
-          })
-        )
+          };
+        })
       );
   }
 

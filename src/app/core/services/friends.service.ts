@@ -3,20 +3,22 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
 import { Friend } from '../core.models';
-import { Store } from '../../shared/store/store';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FriendService extends Store<Friend[]> {
-  search$: Observable<Friend[]>;
+export class FriendService {
+  friends: Friend[];
+  searchResults: Friend[];
 
   constructor(private http: HttpClient, private userService: UserService) {
-    super([]);
-    this.getFriends().subscribe(friends => this.setState(friends));
+    this.getFriends().subscribe(friends => {
+      this.friends = friends;
+      this.searchResults = friends;
+    });
   }
 
   getFriends() {
@@ -24,22 +26,22 @@ export class FriendService extends Store<Friend[]> {
   }
 
   search(text: string) {
-    const currentUser = this.userService.state;
+    const { currentUser } = this.userService;
 
     return this.http
       .get<Friend[]>(`${environment.apiBaseUrl}/user/search`, {
         params: { q: text }
       })
       .pipe(
-        map(users =>
-          users
+        tap(users => {
+          this.searchResults = users
             .filter(
               user =>
                 user.uuid !== currentUser.uuid &&
-                !this.state.find(friend => friend.uuid === user.uuid)
+                !this.friends.find(friend => friend.uuid === user.uuid)
             )
-            .concat(this.state)
-        )
+            .concat(this.friends);
+        })
       );
   }
 }

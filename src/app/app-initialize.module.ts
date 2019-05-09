@@ -3,13 +3,13 @@ import { NotificationService } from './core/services/notification.service';
 import { UserService } from './core/services/user.service';
 
 export function loadUser(
-  userStore: UserService,
+  userService: UserService,
   notificationService: NotificationService // Required in order to show notifications on boostrap
 ) {
   return () => {
     if (localStorage.getItem('auth')) {
-      return new Promise((resolve, reject) => {
-        userStore
+      return new Promise(resolve => {
+        userService
           .getUserProfile()
           .toPromise()
           .then(data => resolve(data))

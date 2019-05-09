@@ -29,9 +29,6 @@ import { FriendService } from '../../../core/services/friends.service';
   providers: [WallService]
 })
 export class WallComponent implements OnInit {
-  posts$: Observable<Post[]>;
-  currentUser$: Observable<SocialNetworkUser>;
-
   @ViewChild(PublisherComponent) publisher: PublisherComponent;
   @ViewChildren(PostComponent) posts: QueryList<PostComponent>;
 
@@ -44,31 +41,29 @@ export class WallComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private element: ElementRef,
-    private wallService: WallService,
-    private userStore: UserService,
+    public wallService: WallService,
+    public userService: UserService,
     private friendService: FriendService
   ) {}
 
   ngOnInit() {
-    this.posts$ = this.wallService.state$;
-    this.currentUser$ = this.userStore.state$;
-
     // We should subscribe as Angular does not re render if only the param of the route change
     this.route.params.subscribe(routeParams => {
-      this.wallService.getWall(routeParams.userId).subscribe();
-      if (routeParams.userId) {
-        const myFriend = this.friendService.state.find(
-          friend => friend.uuid === routeParams.userId
-        );
-        if (myFriend) {
-          this.friend = myFriend;
-          this.placeholder = `Leave a comment to ${myFriend.fullName}`;
+      this.wallService.getWall(routeParams.userId).subscribe(() => {
+        if (routeParams.userId) {
+          const myFriend = this.friendService.friends.find(
+            friend => friend.uuid === routeParams.userId
+          );
+          if (myFriend) {
+            this.friend = myFriend;
+            this.placeholder = `Leave a comment to ${myFriend.fullName}`;
+          }
+        } else {
+          this.placeholder = 'What are you thinking ?';
         }
-      } else {
-        this.placeholder = 'What are you thinking ?';
-      }
-      this.postPage = 0;
-      this.element.nativeElement.parentElement.scrollTop = 0;
+        this.postPage = 0;
+        this.element.nativeElement.parentElement.scrollTop = 0;
+      });
     });
   }
 
