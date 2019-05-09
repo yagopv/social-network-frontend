@@ -1,6 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { environment } from '../environments/environment';
-import { LoaderStore } from './core/store/loader.store';
+import { LoaderService } from './core/services/loader.service';
 import { startWith, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Router, NavigationStart } from '@angular/router';
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   isLoading$: Observable<boolean>;
   @HostBinding('id') routeId;
 
-  constructor(public loaderStore: LoaderStore, private router: Router) {
+  constructor(public loaderStore: LoaderService, private router: Router) {
     this.isLoading$ = this.loaderStore.state$.pipe(
       startWith(false),
       delay(0)

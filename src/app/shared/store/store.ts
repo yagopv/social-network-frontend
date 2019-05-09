@@ -15,5 +15,13 @@ export class Store<T> {
 
   setState(nextState: T): void {
     this.subject$.next(nextState);
+    this.log(nextState);
+  }
+
+  log(nextState: T) {
+    console.group(this.constructor.name);
+    console.log('old state', this.state);
+    console.log('new state', nextState);
+    console.groupEnd();
   }
 }

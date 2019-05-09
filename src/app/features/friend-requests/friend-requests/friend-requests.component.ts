@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FriendRequest } from '../../../core/core.models';
-import { FriendRequestsStore } from '../../../core/store/friend-requests.store';
 import { ModalService } from '../../../core/services/modal.service';
-import { FriendStore } from '../../../core/store/friend.store';
+import { FriendRequestsService } from '../../../core/services/friend-requests.service';
+import { FriendService } from '../../../core/services/friends.service';
 
 @Component({
   selector: 'sn-friend-requests',
@@ -13,23 +13,23 @@ export class FriendRequestsComponent implements OnInit {
   requests$: Observable<FriendRequest[]>;
 
   constructor(
-    private friendRequestsStore: FriendRequestsStore,
-    private friendStore: FriendStore,
+    private friendRequestsService: FriendRequestsService,
+    private friendService: FriendService,
     private modalService: ModalService
   ) {}
 
   ngOnInit() {
-    this.requests$ = this.friendRequestsStore.getPendingRequests();
+    this.requests$ = this.friendRequestsService.getPendingRequests();
   }
 
   acceptRequest({ uuid, fullName }: FriendRequest) {
-    this.friendRequestsStore.acceptFriendRequest(uuid).subscribe(() => {
+    this.friendRequestsService.acceptFriendRequest(uuid).subscribe(() => {
       this.modalService.open(
         'You have a new friend !!',
         `You and ${fullName} are now friends`
       );
-      this.friendStore.setState(
-        this.friendStore.state.map(friend => {
+      this.friendService.setState(
+        this.friendService.state.map(friend => {
           if (friend.uuid === uuid) {
             friend.request.confirmed = true;
             friend.request.confirmedAt = new Date().getTime();

@@ -7,17 +7,17 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
-import { AuthStore } from '../store/auth.store';
 import { ToastService } from '../services/toast.service';
+import { AuthService } from '../services/auth.service';
 
 const SKIP_URLS = ['/account/check'];
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(
-    private authStore: AuthStore,
+    private authService: AuthService,
     private router: Router,
     private toastService: ToastService
   ) {}
@@ -36,7 +36,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           (error.url.indexOf('/user') !== -1 && error.status === 404)
         ) {
           this.router.navigate(['/login']);
-          this.authStore.logout();
+          this.authService.logout();
         } else if (
           error.status === 403 &&
           error.url.indexOf('/user/wall') !== -1

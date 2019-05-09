@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthStore } from '../../core/store/auth.store';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'sn-header',
@@ -20,10 +20,10 @@ import { AuthStore } from '../../core/store/auth.store';
   ]
 })
 export class HeaderComponent {
-  constructor(private authStore: AuthStore) {}
+  constructor(private authService: AuthService) {}
 
   navigateToHome() {
-    if (this.authStore.isAuthenticated()) {
+    if (this.authService.isAuthenticated()) {
       return '/wall';
     }
 

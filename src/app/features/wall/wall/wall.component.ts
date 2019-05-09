@@ -15,19 +15,18 @@ import {
 } from '../../../shared/animations/list.animation';
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
 import { PostComponent } from '../post/post.component';
-import { WallStore } from '../wall.store';
-import { UserStore } from '../../../core/store/user.store';
 import { SocialNetworkUser, Friend } from '../../../core/core.models';
 import { Post } from '../wall.models';
 import { WallService } from '../wall.service';
-import { FriendStore } from '../../../core/store/friend.store';
+import { UserService } from '../../../core/services/user.service';
+import { FriendService } from '../../../core/services/friends.service';
 
 @Component({
   selector: 'sn-wall',
   templateUrl: './wall.component.html',
   styleUrls: ['./wall.component.scss'],
   animations: [LIST_ANIMATION, LIST_ITEMS_ANIMATION],
-  providers: [WallService, WallStore]
+  providers: [WallService]
 })
 export class WallComponent implements OnInit {
   posts$: Observable<Post[]>;
@@ -45,20 +44,20 @@ export class WallComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private element: ElementRef,
-    private wallStore: WallStore,
-    private userStore: UserStore,
-    private friendStore: FriendStore
+    private wallService: WallService,
+    private userStore: UserService,
+    private friendService: FriendService
   ) {}
 
   ngOnInit() {
-    this.posts$ = this.wallStore.state$;
+    this.posts$ = this.wallService.state$;
     this.currentUser$ = this.userStore.state$;
 
     // We should subscribe as Angular does not re render if only the param of the route change
     this.route.params.subscribe(routeParams => {
-      this.wallStore.getPosts(routeParams.userId);
+      this.wallService.getWall(routeParams.userId).subscribe();
       if (routeParams.userId) {
-        const myFriend = this.friendStore.state.find(
+        const myFriend = this.friendService.state.find(
           friend => friend.uuid === routeParams.userId
         );
         if (myFriend) {
@@ -75,7 +74,7 @@ export class WallComponent implements OnInit {
 
   publishPost(content: string) {
     const uuid = this.friend && this.friend.uuid;
-    this.wallStore.addPost({ content, uuid }).subscribe(() => {
+    this.wallService.addPost(content, uuid).subscribe(() => {
       this.publisher.resetContent();
       this.publisher.resetHeight();
     });

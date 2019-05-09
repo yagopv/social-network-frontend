@@ -3,10 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MailValidator } from '../../validators/mail.validator';
 import { MatchPasswordValidator } from '../../validators/match-password.validator';
 import { EmailExistValidator } from '../../validators/email-exist.validator';
-import { AuthStore } from '../../../core/store/auth.store';
 import { ModalService } from '../../../core/services/modal.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'sn-register',
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnDestroy {
   constructor(
     private fb: FormBuilder,
     private emailValidator: EmailExistValidator,
-    private authStore: AuthStore,
+    private authService: AuthService,
     private modalService: ModalService
   ) {}
 
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnDestroy {
 
     const { fullName, email, password } = this.registerForm.value;
 
-    this.authStore
+    this.authService
       .register({
         fullName,
         email,

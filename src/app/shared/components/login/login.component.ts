@@ -1,12 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { catchError, takeUntil } from 'rxjs/operators';
 
 import { MailValidator } from '../../validators/mail.validator';
-import { AuthStore } from '../../../core/store/auth.store';
-import { UserStore } from '../../../core/store/user.store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { AuthService } from '../../../core/services/auth.service';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'sn-login',
@@ -27,8 +27,8 @@ export class LoginComponent implements OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private authStore: AuthStore,
-    private userStore: UserStore
+    private authService: AuthService,
+    private userStore: UserService
   ) {}
 
   login() {
@@ -36,7 +36,7 @@ export class LoginComponent implements OnDestroy {
       return;
     }
 
-    this.authStore
+    this.authService
       .login(this.loginForm.value)
       .pipe(
         takeUntil(this.unsubscribe$),
@@ -48,7 +48,7 @@ export class LoginComponent implements OnDestroy {
       .subscribe(() => {
         const returnUrl = this.route.queryParams['return-url'];
         this.router.navigate([returnUrl || '/wall']);
-        this.userStore.getProfile().subscribe();
+        this.userStore.getUserProfile().subscribe();
       });
   }
 

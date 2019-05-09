@@ -1,16 +1,16 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { UserStore } from './core/store/user.store';
 import { NotificationService } from './core/services/notification.service';
+import { UserService } from './core/services/user.service';
 
 export function loadUser(
-  userStore: UserStore,
+  userStore: UserService,
   notificationService: NotificationService // Required in order to show notifications on boostrap
 ) {
   return () => {
     if (localStorage.getItem('auth')) {
       return new Promise((resolve, reject) => {
         userStore
-          .getProfile()
+          .getUserProfile()
           .toPromise()
           .then(data => resolve(data))
           .catch(error => {
@@ -27,7 +27,7 @@ export function loadUser(
     {
       provide: APP_INITIALIZER,
       useFactory: loadUser,
-      deps: [UserStore, NotificationService],
+      deps: [UserService, NotificationService],
       multi: true
     }
   ]

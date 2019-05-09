@@ -10,10 +10,10 @@ import {
   LIST_ITEMS_ANIMATION
 } from '../../../shared/animations/list.animation';
 import { PublisherComponent } from '../../../shared/components/publisher/publisher.component';
-import { WallStore } from '../wall.store';
-import { UserStore } from '../../../core/store/user.store';
 import { SocialNetworkUser } from '../../../core/core.models';
 import { Post, Comment } from '../wall.models';
+import { UserService } from '../../../core/services/user.service';
+import { WallService } from '../wall.service';
 
 @Component({
   selector: 'sn-post',
@@ -31,10 +31,13 @@ export class PostComponent {
   commentsPage = 0;
   commentsPageSize = 3;
 
-  constructor(private postStore: WallStore, private userStore: UserStore) {}
+  constructor(
+    private wallService: WallService,
+    private userStore: UserService
+  ) {}
 
   addComment(message: string) {
-    this.postStore
+    this.wallService
       .addComment(this.post.id, message, this.userStore.state)
       .subscribe(() => {
         this.publisher.resetContent();
@@ -43,11 +46,11 @@ export class PostComponent {
   }
 
   deletePost() {
-    this.postStore.deletePost(this.post.id).subscribe();
+    this.wallService.deletePost(this.post.id).subscribe();
   }
 
   toggleLike() {
-    this.postStore.like(this.post.id, this.userStore.state).subscribe();
+    this.wallService.like(this.post.id, this.userStore.state).subscribe();
   }
 
   commentIdentity(index: number, comment: Comment) {
