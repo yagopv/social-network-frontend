@@ -4,7 +4,7 @@ export class Store<T> {
   state$: Observable<T>;
   private subject$: BehaviorSubject<T>;
 
-  protected constructor(initialState: T) {
+  constructor(initialState: T) {
     this.subject$ = new BehaviorSubject(initialState);
     this.state$ = this.subject$.asObservable();
   }
