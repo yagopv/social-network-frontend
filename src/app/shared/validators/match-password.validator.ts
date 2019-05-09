@@ -1,11 +1,11 @@
-import { AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 export function MatchPasswordValidator(
-  control: AbstractControl
+  group: FormGroup
 ): { [key: string]: boolean } {
   {
-    const password = control.get('password').value;
-    const confirmPassword = control.get('confirmPassword').value;
+    const password = group.get('password').value;
+    const confirmPassword = group.get('confirmPassword').value;
     if (password !== confirmPassword) {
       return { passwordMismatch: true };
     } else {

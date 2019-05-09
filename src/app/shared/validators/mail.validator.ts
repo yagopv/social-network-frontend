@@ -1,8 +1,7 @@
-import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
-import { Directive, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 export function MailValidator(
-  control: AbstractControl
+  control: FormControl
 ): { [key: string]: boolean } {
   const EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
