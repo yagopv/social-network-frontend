@@ -1,4 +1,4 @@
-<div id="grid-container">
+<div class="grid-container">
   <sn-header></sn-header>
   <main>
     <router-outlet></router-outlet>
@@ -7,4 +7,4 @@
 </div>
 <sn-modal></sn-modal>
 <sn-toast></sn-toast>
-<sn-loader *ngIf="(isLoading$ | async)"></sn-loader>
+<sn-loader *ngIf="isLoading$ | async"></sn-loader>

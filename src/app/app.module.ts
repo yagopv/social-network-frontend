@@ -10,6 +10,7 @@ import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppInitializeModule } from './app-initialize.module';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { CoreModule } from './core/core.module';
     AppInitializeModule,
     CoreModule,
     LayoutModule,
+    SharedModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production

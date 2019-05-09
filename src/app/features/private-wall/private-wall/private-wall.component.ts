@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FriendRequestsStore } from '../../../core/store/friend-requests.store';
 import { ModalService } from '../../../core/services/modal.service';
+import { FriendRequestsService } from '../../../core/services/friend-requests.service';
 
 @Component({
   selector: 'sn-private-wall',
@@ -9,7 +9,7 @@ import { ModalService } from '../../../core/services/modal.service';
 })
 export class PrivateWallComponent {
   constructor(
-    private friendRequestStore: FriendRequestsStore,
+    private friendRequestService: FriendRequestsService,
     private modalService: ModalService,
     private route: ActivatedRoute
   ) {}
@@ -17,7 +17,7 @@ export class PrivateWallComponent {
   friendRequest($event: MouseEvent) {
     const routeSnapshot = this.route.snapshot;
 
-    this.friendRequestStore
+    this.friendRequestService
       .addFriend(routeSnapshot.params.userId)
       .subscribe(() =>
         this.modalService.open(

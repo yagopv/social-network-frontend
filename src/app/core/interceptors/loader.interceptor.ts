@@ -6,14 +6,14 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
-import { LoaderStore } from '../store/loader.store';
+import { LoaderService } from '../services/loader.service';
 import { throwError } from 'rxjs';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
   private totalRequests = 0;
 
-  constructor(private loaderStore: LoaderStore) {}
+  constructor(private loaderStore: LoaderService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     this.totalRequests++;

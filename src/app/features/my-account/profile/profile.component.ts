@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { UrlValidator } from '../../../shared/validators/url.validator';
-import { UserStore } from '../../../core/store/user.store';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'sn-profile',
@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
     { updateOn: 'blur' }
   );
 
-  constructor(private fb: FormBuilder, private userStore: UserStore) {}
+  constructor(private fb: FormBuilder, private userStore: UserService) {}
 
   ngOnInit() {
     this.userStore.state$.subscribe(({ fullName, preferences }) =>
@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.userStore.updateProfile(this.updateProfileForm.value).subscribe();
+    this.userStore.updateUserProfile(this.updateProfileForm.value).subscribe();
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {

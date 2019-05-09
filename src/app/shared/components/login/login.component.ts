@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { catchError } from 'rxjs/operators';
+import { Component, OnDestroy } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { catchError, takeUntil } from 'rxjs/operators';
 
-import { MailValidator } from '../../../shared/validators/mail.validator';
-import { AuthStore } from '../../../core/store/auth.store';
-import { UserStore } from '../../../core/store/user.store';
+import { MailValidator } from '../../validators/mail.validator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { AuthService } from '../../../core/services/auth.service';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'sn-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
+  unsubscribe$: Subject<void> = new Subject();
+
   loginForm = this.fb.group(
     {
       email: ['', [Validators.required, MailValidator]],
@@ -24,8 +27,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private authStore: AuthStore,
-    private userStore: UserStore
+    private authService: AuthService,
+    private userStore: UserService
   ) {}
 
   login() {
@@ -33,9 +36,10 @@ export class LoginComponent {
       return;
     }
 
-    this.authStore
+    this.authService
       .login(this.loginForm.value)
       .pipe(
+        takeUntil(this.unsubscribe$),
         catchError(error => {
           this.loginForm.get('password').setValue('');
           return error;
@@ -44,7 +48,12 @@ export class LoginComponent {
       .subscribe(() => {
         const returnUrl = this.route.queryParams['return-url'];
         this.router.navigate([returnUrl || '/wall']);
-        this.userStore.getProfile().subscribe();
+        this.userStore.getUserProfile().subscribe();
       });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

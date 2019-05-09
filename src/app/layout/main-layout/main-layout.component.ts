@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserStore } from '../../core/store/user.store';
-import { AuthStore } from '../../core/store/auth.store';
 import { Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'sn-main-layout',
@@ -13,8 +13,8 @@ export class MainLayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userStore: UserStore,
-    private authStore: AuthStore
+    private userStore: UserService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class MainLayoutComponent implements OnInit {
   }
 
   logout() {
-    this.authStore.logout();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }

@@ -18,10 +18,14 @@ import { ColorizerDirective } from './directives/colorizer.directive';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 import { MarkAsTouchedDirective } from './directives/mark-as-touched.directive';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
   declarations: [
+    LoginComponent,
+    RegisterComponent,
     NotFoundComponent,
     PublisherComponent,
     UserFriendlyDatePipe,
@@ -39,6 +43,8 @@ import { MarkAsTouchedDirective } from './directives/mark-as-touched.directive';
     MarkAsTouchedDirective
   ],
   exports: [
+    LoginComponent,
+    RegisterComponent,
     NotFoundComponent,
     PublisherComponent,
     UserFriendlyDatePipe,

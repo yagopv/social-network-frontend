@@ -168,7 +168,7 @@ var observable = Observable.create(function subscribe(observer) {
 
 ## Subjects
 
-- Cada subscribe sobre un Observable representaba un contexto de ejecución diferente en el que no se compartía nada
+- Cada subscribe sobre un Observable representaba un contexto de ejecución diferente en el que no se comparte nada
 
 - Subject es un tipo especial de Observable que permite compartir suscripciones a varios Observers y además puede emitir valores a todos ellos (multicast)
 

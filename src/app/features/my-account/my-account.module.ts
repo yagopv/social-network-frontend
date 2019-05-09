@@ -6,7 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 
-const routes: Routes = [{ path: 'my-account', component: MyAccountComponent }];
+const routes: Routes = [{ path: '', component: MyAccountComponent }];
 
 @NgModule({
   declarations: [MyAccountComponent, ProfileComponent],

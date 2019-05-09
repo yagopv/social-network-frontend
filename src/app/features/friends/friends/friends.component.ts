@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LIST_ITEMS_ANIMATION } from '../../../shared/animations/list.animation';
 import { Router } from '@angular/router';
-import { FriendStore } from '../../../core/store/friend.store';
-import { FriendRequestsStore } from '../../../core/store/friend-requests.store';
 import { Friend } from '../../../core/core.models';
 import { ModalService } from '../../../core/services/modal.service';
+import { FriendRequestsService } from '../../../core/services/friend-requests.service';
+import { FriendService } from '../../../core/services/friends.service';
 
 @Component({
   selector: 'sn-friends',
@@ -16,22 +16,22 @@ export class FriendsComponent implements OnInit {
   friends$: Observable<Friend[]>;
 
   constructor(
-    private friendRequestStore: FriendRequestsStore,
-    private friendStore: FriendStore,
+    private friendRequestService: FriendRequestsService,
+    private friendService: FriendService,
     private router: Router,
     private modalService: ModalService
   ) {}
 
   ngOnInit() {
-    this.friends$ = this.friendStore.state$;
+    this.friends$ = this.friendService.state$;
   }
 
   searchUsers(searchTerm: string) {
-    this.friends$ = this.friendStore.getSearchUsers(searchTerm);
+    this.friends$ = this.friendService.search(searchTerm);
   }
 
   acceptFriendRequest(uuid: string, friend: Friend) {
-    this.friendRequestStore
+    this.friendRequestService
       .acceptFriendRequest(uuid)
       .subscribe(() =>
         this.modalService.open(
@@ -41,7 +41,7 @@ export class FriendsComponent implements OnInit {
       );
   }
   addFriend(uuid: string, friend: Friend) {
-    this.friendRequestStore.addFriend(uuid).subscribe(() => {
+    this.friendRequestService.addFriend(uuid).subscribe(() => {
       this.modalService.open(
         'You request has been sent',
         `When ${
@@ -56,6 +56,6 @@ export class FriendsComponent implements OnInit {
   }
 
   navigateToWall(uuid: string) {
-    this.router.navigate(['/user', uuid, 'wall']);
+    this.router.navigate(['/wall', uuid]);
   }
 }

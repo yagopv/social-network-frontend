@@ -2,13 +2,25 @@ import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FriendRequest } from '../core.models';
-import { Observable, of } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+import { Store } from '../../shared/store/store';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FriendRequestsService {
-  constructor(private http: HttpClient) {}
+export class FriendRequestsService extends Store<FriendRequest[]> {
+  constructor(private http: HttpClient) {
+    super([]);
+    this.getFriendRequests().subscribe(requests => this.setState(requests));
+  }
+
+  getPendingRequests() {
+    return this.state$.pipe(
+      map(friendRequests =>
+        friendRequests.filter(friendRequest => !friendRequest.request.confirmed)
+      )
+    );
+  }
 
   getFriendRequests() {
     return this.http.get<FriendRequest[]>(
@@ -17,12 +29,17 @@ export class FriendRequestsService {
   }
 
   acceptFriendRequest(uuid: string) {
-    return this.http.post(
-      `${environment.apiBaseUrl}/user/friendrequests/accept`,
-      {
+    return this.http
+      .post(`${environment.apiBaseUrl}/user/friendrequests/accept`, {
         uuid
-      }
-    );
+      })
+      .pipe(
+        tap(() =>
+          this.setState(
+            this.state.filter(friendRequest => friendRequest.uuid !== uuid)
+          )
+        )
+      );
   }
 
   addFriend(uuid: string) {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserStore } from '../../../core/store/user.store';
-import { AuthStore } from '../../../core/store/auth.store';
+import { AuthService } from '../../../core/services/auth.service';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'sn-my-account',
@@ -12,8 +12,8 @@ export class MyAccountComponent {
 
   constructor(
     private router: Router,
-    private userStore: UserStore,
-    private authStore: AuthStore
+    private userStore: UserService,
+    private authService: AuthService
   ) {
     this.userStore.state$.subscribe(user => {
       if (user && user.avatarUrl !== undefined) {
@@ -24,7 +24,7 @@ export class MyAccountComponent {
   }
 
   logout() {
-    this.authStore.logout();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }
