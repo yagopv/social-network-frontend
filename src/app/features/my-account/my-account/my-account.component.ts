@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { UserService } from '../../../core/services/user.service';
+import { FriendService } from '../../../core/services/friends.service';
 
 @Component({
   selector: 'sn-my-account',
@@ -13,7 +14,8 @@ export class MyAccountComponent {
   constructor(
     private router: Router,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private friendService: FriendService
   ) {
     const { currentUser } = this.userService;
 
@@ -26,6 +28,5 @@ export class MyAccountComponent {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
   }
 }

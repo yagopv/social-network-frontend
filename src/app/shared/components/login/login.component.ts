@@ -4,7 +4,7 @@ import { catchError, takeUntil } from 'rxjs/operators';
 
 import { MailValidator } from '../../validators/mail.validator';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { UserService } from '../../../core/services/user.service';
 
@@ -39,7 +39,7 @@ export class LoginComponent {
       .pipe(
         catchError(error => {
           this.loginForm.get('password').setValue('');
-          return error;
+          return throwError(error);
         })
       )
       .subscribe(() => {

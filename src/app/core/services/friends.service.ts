@@ -15,14 +15,18 @@ export class FriendService {
   searchResults: Friend[];
 
   constructor(private http: HttpClient, private userService: UserService) {
-    this.getFriends().subscribe(friends => {
-      this.friends = friends;
-      this.searchResults = friends;
-    });
+    this.getFriends().subscribe();
   }
 
   getFriends() {
-    return this.http.get<Friend[]>(`${environment.apiBaseUrl}/user/friends`);
+    return this.http
+      .get<Friend[]>(`${environment.apiBaseUrl}/user/friends`)
+      .pipe(
+        tap(friends => {
+          this.friends = friends;
+          this.searchResults = friends;
+        })
+      );
   }
 
   search(text: string) {

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthTokens } from '../core.models';
 import { tap } from 'rxjs/operators';
+import { FriendService } from './friends.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('auth');
-    this.tokens = null;
+    window.location.href = '/login';
   }
 
   isAuthenticated() {

@@ -12,7 +12,7 @@ import { FriendService } from '../../../core/services/friends.service';
   templateUrl: './friends.component.html',
   animations: [LIST_ITEMS_ANIMATION]
 })
-export class FriendsComponent {
+export class FriendsComponent implements OnInit {
   friends$: Observable<Friend[]>;
 
   constructor(
@@ -21,6 +21,12 @@ export class FriendsComponent {
     private router: Router,
     private modalService: ModalService
   ) {}
+
+  ngOnInit() {
+    if (!this.friendService.friends.length) {
+      this.friendService.getFriends().subscribe();
+    }
+  }
 
   searchUsers(searchTerm: string) {
     this.friendService.search(searchTerm).subscribe();
