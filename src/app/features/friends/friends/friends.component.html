@@ -1,10 +1,10 @@
 <div class="container-fluid mt-5">
   <sn-search-user (search)="searchUsers($event)"></sn-search-user>
 
-  <div class="row" *ngIf="(friends$ | async) as friends">
+  <div class="row" *ngIf="friendService.friends">
     <div
       class="col-xs-12 col-md-6 col-xl-4 my-2"
-      *ngFor="let friend of friends"
+      *ngFor="let friend of friendService.searchResults"
     >
       <sn-friend
         @listItems

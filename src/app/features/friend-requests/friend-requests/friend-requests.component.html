@@ -1,4 +1,4 @@
-<ng-container *ngIf="(requests$ | async) as requests"
+<ng-container *ngIf="friendRequestsService.getPendingRequests() as requests"
   ><div class="card text-white bg-dark mb-3" *ngIf="requests.length">
     <div class="card-header">Friend Requests</div>
     <div class="card-body">

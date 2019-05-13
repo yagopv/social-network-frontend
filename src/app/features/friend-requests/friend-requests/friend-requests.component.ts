@@ -9,18 +9,12 @@ import { FriendService } from '../../../core/services/friends.service';
   selector: 'sn-friend-requests',
   templateUrl: './friend-requests.component.html'
 })
-export class FriendRequestsComponent implements OnInit {
-  requests$: Observable<FriendRequest[]>;
-
+export class FriendRequestsComponent {
   constructor(
-    private friendRequestsService: FriendRequestsService,
+    public friendRequestsService: FriendRequestsService,
     private friendService: FriendService,
     private modalService: ModalService
   ) {}
-
-  ngOnInit() {
-    this.requests$ = this.friendRequestsService.getPendingRequests();
-  }
 
   acceptRequest({ uuid, fullName }: FriendRequest) {
     this.friendRequestsService.acceptFriendRequest(uuid).subscribe(() => {
@@ -28,15 +22,13 @@ export class FriendRequestsComponent implements OnInit {
         'You have a new friend !!',
         `You and ${fullName} are now friends`
       );
-      this.friendService.setState(
-        this.friendService.state.map(friend => {
-          if (friend.uuid === uuid) {
-            friend.request.confirmed = true;
-            friend.request.confirmedAt = new Date().getTime();
-          }
-          return friend;
-        })
-      );
+      this.friendService.friends = this.friendService.friends.map(friend => {
+        if (friend.uuid === uuid) {
+          friend.request.confirmed = true;
+          friend.request.confirmedAt = new Date().getTime();
+        }
+        return friend;
+      });
     });
   }
 }

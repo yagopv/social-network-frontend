@@ -15,6 +15,7 @@ import {
   filter
 } from 'rxjs/operators';
 import { Friend } from '../../../core/core.models';
+import { FriendService } from '../../../core/services/friends.service';
 
 @Component({
   selector: 'sn-search-user',
@@ -26,9 +27,7 @@ export class SearchUserComponent implements OnInit {
 
   @Output() search = new EventEmitter<string>();
 
-  users: Friend[] = [];
-
-  constructor() {}
+  constructor(public friendService: FriendService) {}
 
   ngOnInit() {
     fromEvent(this.input.nativeElement, 'keyup')

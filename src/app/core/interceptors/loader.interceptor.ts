@@ -13,11 +13,11 @@ import { throwError } from 'rxjs';
 export class LoaderInterceptor implements HttpInterceptor {
   private totalRequests = 0;
 
-  constructor(private loaderStore: LoaderService) {}
+  constructor(private loaderService: LoaderService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     this.totalRequests++;
-    this.loaderStore.setLoading(true);
+    this.loaderService.setLoading(true);
     return next.handle(request).pipe(
       tap(res => {
         if (res instanceof HttpResponse) {
@@ -34,7 +34,7 @@ export class LoaderInterceptor implements HttpInterceptor {
   private decreaseRequests() {
     this.totalRequests--;
     if (this.totalRequests === 0) {
-      this.loaderStore.setLoading(false);
+      this.loaderService.setLoading(false);
     }
   }
 }

@@ -23,22 +23,20 @@ export class ProfileComponent implements OnInit {
     { updateOn: 'blur' }
   );
 
-  constructor(private fb: FormBuilder, private userStore: UserService) {}
+  constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit() {
-    this.userStore.state$.subscribe(({ fullName, preferences }) =>
-      this.updateProfileForm.setValue({
-        fullName: fullName || '',
-        preferences: {
-          isPublicProfile: false,
-          linkedIn: '',
-          twitter: '',
-          github: '',
-          description: '',
-          ...preferences
-        }
-      })
-    );
+    this.updateProfileForm.setValue({
+      fullName: this.userService.currentUser.fullName || '',
+      preferences: {
+        isPublicProfile: false,
+        linkedIn: '',
+        twitter: '',
+        github: '',
+        description: '',
+        ...this.userService.currentUser.preferences
+      }
+    });
   }
 
   updateProfile() {
@@ -47,7 +45,9 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.userStore.updateUserProfile(this.updateProfileForm.value).subscribe();
+    this.userService
+      .updateUserProfile(this.updateProfileForm.value)
+      .subscribe();
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
