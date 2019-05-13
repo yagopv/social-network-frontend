@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import {
-  AsyncValidator,
-  AbstractControl,
-  ValidationErrors
-} from '@angular/forms';
-import { debounceTime, take, map, catchError } from 'rxjs/operators';
+import { AsyncValidator, ValidationErrors, FormControl } from '@angular/forms';
+import { debounceTime, catchError, map } from 'rxjs/operators';
 import { AuthService } from '../../core/services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class EmailExistValidator implements AsyncValidator {
   constructor(private authService: AuthService) {}
 
-  validate(control: AbstractControl): Observable<ValidationErrors | null> {
+  validate(control: FormControl): Observable<ValidationErrors | null> {
     if (!control.value) {
       return of(null);
     }

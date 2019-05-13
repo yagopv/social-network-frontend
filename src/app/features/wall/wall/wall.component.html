@@ -2,7 +2,7 @@
   <sn-profile-info *ngIf="friend" [user]="friend"></sn-profile-info>
 
   <sn-publisher
-    [user]="currentUser$ | async"
+    [user]="userService.currentUser"
     (publish)="publishPost($event)"
     [placeholder]="placeholder"
     [minHeight]="125"
@@ -12,17 +12,21 @@
   <!-- ng-container is a trick for use the async pipe -->
   <!-- https://itnext.io/angular-animations-stagger-over-static-and-async-data-3907c4889479 -->
 
-  <ng-container *ngIf="(posts$ | async) as posts">
-    <section class="post-list" @list *ngIf="posts.length">
+  <ng-container *ngIf="wallService.posts as posts">
+    <section
+      class="post-list"
+      @list
+      *ngIf="posts.length && userService.currentUser"
+    >
       <!-- Removing trackBy cause the post to rerender -->
       <sn-post
         @listItems
         *ngFor="
-          let post of (posts | slice: 0:(postPage + 1) * postPageSize);
+          let post of posts | slice: 0:(postPage + 1) * postPageSize;
           trackBy: postIdentity
         "
         [post]="post"
-        [currentUser]="currentUser$ | async"
+        [currentUser]="userService.currentUser"
       ></sn-post>
     </section>
     <sn-pager

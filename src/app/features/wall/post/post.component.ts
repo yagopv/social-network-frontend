@@ -33,12 +33,12 @@ export class PostComponent {
 
   constructor(
     private wallService: WallService,
-    private userStore: UserService
+    private userService: UserService
   ) {}
 
   addComment(message: string) {
     this.wallService
-      .addComment(this.post.id, message, this.userStore.state)
+      .addComment(this.post.id, message, this.userService.currentUser)
       .subscribe(() => {
         this.publisher.resetContent();
         this.publisher.resetHeight();
@@ -50,7 +50,9 @@ export class PostComponent {
   }
 
   toggleLike() {
-    this.wallService.like(this.post.id, this.userStore.state).subscribe();
+    this.wallService
+      .like(this.post.id, this.userService.currentUser)
+      .subscribe();
   }
 
   commentIdentity(index: number, comment: Comment) {

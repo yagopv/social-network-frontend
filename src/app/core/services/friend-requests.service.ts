@@ -3,22 +3,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FriendRequest } from '../core.models';
 import { tap, map } from 'rxjs/operators';
-import { Store } from '../../shared/store/store';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FriendRequestsService extends Store<FriendRequest[]> {
+export class FriendRequestsService {
+  friendRequests: FriendRequest[] = [];
+
   constructor(private http: HttpClient) {
-    super([]);
-    this.getFriendRequests().subscribe(requests => this.setState(requests));
+    this.getFriendRequests().subscribe(requests => {
+      this.friendRequests = requests;
+    });
   }
 
   getPendingRequests() {
-    return this.state$.pipe(
-      map(friendRequests =>
-        friendRequests.filter(friendRequest => !friendRequest.request.confirmed)
-      )
+    return this.friendRequests.filter(
+      friendRequest => !friendRequest.request.confirmed
     );
   }
 
@@ -34,11 +34,11 @@ export class FriendRequestsService extends Store<FriendRequest[]> {
         uuid
       })
       .pipe(
-        tap(() =>
-          this.setState(
-            this.state.filter(friendRequest => friendRequest.uuid !== uuid)
-          )
-        )
+        tap(() => {
+          this.friendRequests = this.friendRequests.filter(
+            friendRequest => friendRequest.uuid !== uuid
+          );
+        })
       );
   }
 

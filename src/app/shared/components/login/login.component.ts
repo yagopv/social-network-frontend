@@ -4,7 +4,7 @@ import { catchError, takeUntil } from 'rxjs/operators';
 
 import { MailValidator } from '../../validators/mail.validator';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { UserService } from '../../../core/services/user.service';
 
@@ -13,9 +13,7 @@ import { UserService } from '../../../core/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnDestroy {
-  unsubscribe$: Subject<void> = new Subject();
-
+export class LoginComponent {
   loginForm = this.fb.group(
     {
       email: ['', [Validators.required, MailValidator]],
@@ -39,10 +37,9 @@ export class LoginComponent implements OnDestroy {
     this.authService
       .login(this.loginForm.value)
       .pipe(
-        takeUntil(this.unsubscribe$),
         catchError(error => {
           this.loginForm.get('password').setValue('');
-          return error;
+          return throwError(error);
         })
       )
       .subscribe(() => {
@@ -50,10 +47,5 @@ export class LoginComponent implements OnDestroy {
         this.router.navigate([returnUrl || '/wall']);
         this.userStore.getUserProfile().subscribe();
       });
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 }

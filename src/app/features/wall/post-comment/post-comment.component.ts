@@ -14,7 +14,7 @@ export class PostCommentComponent {
     if (uuid === this.currentUser.uuid) {
       return ['/wall'];
     } else {
-      return ['/user', uuid, 'wall'];
+      return ['/wall', uuid];
     }
   }
 }

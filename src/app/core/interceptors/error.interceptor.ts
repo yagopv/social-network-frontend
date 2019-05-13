@@ -35,7 +35,6 @@ export class ErrorInterceptor implements HttpInterceptor {
             error.status === 401) ||
           (error.url.indexOf('/user') !== -1 && error.status === 404)
         ) {
-          this.router.navigate(['/login']);
           this.authService.logout();
         } else if (
           error.status === 403 &&

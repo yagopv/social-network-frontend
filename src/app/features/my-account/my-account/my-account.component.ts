@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { UserService } from '../../../core/services/user.service';
+import { FriendService } from '../../../core/services/friends.service';
 
 @Component({
   selector: 'sn-my-account',
@@ -12,19 +13,20 @@ export class MyAccountComponent {
 
   constructor(
     private router: Router,
-    private userStore: UserService,
-    private authService: AuthService
+    private userService: UserService,
+    private authService: AuthService,
+    private friendService: FriendService
   ) {
-    this.userStore.state$.subscribe(user => {
-      if (user && user.avatarUrl !== undefined) {
-        this.profileImageUrl =
-          user.avatarUrl || `https://api.adorable.io/avatars/128/${user.uuid}`;
-      }
-    });
+    const { currentUser } = this.userService;
+
+    if (currentUser && currentUser.avatarUrl !== undefined) {
+      this.profileImageUrl =
+        currentUser.avatarUrl ||
+        `https://api.adorable.io/avatars/128/${currentUser.uuid}`;
+    }
   }
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
   }
 }

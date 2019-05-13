@@ -17,17 +17,19 @@ export class FriendsComponent implements OnInit {
 
   constructor(
     private friendRequestService: FriendRequestsService,
-    private friendService: FriendService,
+    public friendService: FriendService,
     private router: Router,
     private modalService: ModalService
   ) {}
 
   ngOnInit() {
-    this.friends$ = this.friendService.state$;
+    if (!this.friendService.friends || !this.friendService.friends.length) {
+      this.friendService.getFriends().subscribe();
+    }
   }
 
   searchUsers(searchTerm: string) {
-    this.friends$ = this.friendService.search(searchTerm);
+    this.friendService.search(searchTerm).subscribe();
   }
 
   acceptFriendRequest(uuid: string, friend: Friend) {

@@ -7,7 +7,7 @@
           ><b>{{ post.author.fullName }} </b></a
         >
         <ng-container *ngIf="post.author.uuid !== post.owner.uuid">
-          <i class="fa fa-long-arrow-alt-right"></i>
+          <i class="fa fa-long-arrow-alt-right text-light"></i>
           <a
             class="card-link text-white"
             [routerLink]="getLink(post.owner.uuid)"
