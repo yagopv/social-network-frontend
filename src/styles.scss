@@ -34,3 +34,8 @@ $enable-responsive-font-sizes: true;
     display: block;
   }
 }
+
+a,
+button {
+  cursor: pointer !important;
+}

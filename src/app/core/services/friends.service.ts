@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
 import { Friend } from '../core.models';
-import { Observable } from 'rxjs';
 import { UserService } from './user.service';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +13,7 @@ export class FriendService {
   friends: Friend[];
   searchResults: Friend[];
 
-  constructor(private http: HttpClient, private userService: UserService) {
-    this.getFriends().subscribe();
-  }
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   getFriends() {
     return this.http

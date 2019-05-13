@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  currentUser: SocialNetworkUser = null;
+  public currentUser: SocialNetworkUser = null;
 
   constructor(private http: HttpClient) {}
 

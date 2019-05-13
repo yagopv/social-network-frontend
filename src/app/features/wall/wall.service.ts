@@ -21,6 +21,13 @@ export class WallService {
 
   getWall(userId?: string): Observable<Post[]> {
     const path = userId ? `/${userId}` : '';
+    let owner = null;
+
+    if (userId) {
+      owner = this.friendsService.friends.find(
+        friend => friend.uuid === userId
+      );
+    }
 
     return this.http
       .get<Post[]>(`${environment.apiBaseUrl}/user/wall${path}`)
@@ -29,6 +36,13 @@ export class WallService {
           this.posts = posts.sort((p1, p2) => {
             return p2.createdAt - p1.createdAt;
           });
+
+          if (userId) {
+            this.posts = this.posts.map(post => {
+              post.owner = owner;
+              return post;
+            });
+          }
         })
       );
   }

@@ -23,7 +23,7 @@ export class FriendsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (!this.friendService.friends.length) {
+    if (!this.friendService.friends || !this.friendService.friends.length) {
       this.friendService.getFriends().subscribe();
     }
   }
